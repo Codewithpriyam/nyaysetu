@@ -1,0 +1,175 @@
+===============================================================
+NYAYSETU — INSTALLED MATERIALS & DEPENDENCIES
+Generated: 2026-08-07
+Project: d:\Nyaysetu\frontend
+===============================================================
+
+═══════════════════════════════════════════════════════════════
+SECTION 1: GSAP PLUGINS INSTALLED & REGISTERED
+═══════════════════════════════════════════════════════════════
+
+Package:   gsap@^3.12.5
+Source:    npm (free)
+File:      src/animations/gsap-config.js
+
+Plugins registered in gsap-config.js:
+┌─────────────────┬──────────────────────────────────────────────────────────┬────────────────┐
+│ Plugin          │ Purpose                                                  │ License        │
+├─────────────────┼──────────────────────────────────────────────────────────┼────────────────┤
+│ ScrollTrigger   │ Scroll-linked animations, section pinning, scrubbing     │ FREE (bundled) │
+│ Flip            │ FLIP layout transition animations                        │ FREE (bundled) │
+│ MotionPath      │ Animate lawyer character along SVG paths                 │ FREE (bundled) │
+│ Observer        │ Unified scroll/touch/pointer event handling              │ FREE (bundled) │
+└─────────────────┴──────────────────────────────────────────────────────────┴────────────────┘
+
+NOT installed (require paid GSAP Club license):
+  - ScrollSmoother  → Replaced with: lenis@^1.x (free, open source)
+  - SplitText       → Text splitting done via custom JS (word/char splitting)
+  - MorphSVG        → Not needed for this phase
+  - DrawSVG         → Not needed for this phase
+
+═══════════════════════════════════════════════════════════════
+SECTION 2: PRODUCTION DEPENDENCIES (npm install)
+═══════════════════════════════════════════════════════════════
+
+┌──────────────────────────────┬─────────────────┬────────────────────────────────────────────┐
+│ Package                      │ Version         │ Purpose                                    │
+├──────────────────────────────┼─────────────────┼────────────────────────────────────────────┤
+│ react                        │ ^18.3.1         │ UI framework                               │
+│ react-dom                    │ ^18.3.1         │ DOM renderer                               │
+│ react-router-dom             │ ^7.x            │ Client-side routing                        │
+│ gsap                         │ ^3.12.5         │ Animation engine (includes 4 free plugins) │
+│ @gsap/react                  │ ^2.1.1          │ useGSAP hook with auto-cleanup             │
+│ @clerk/clerk-react           │ ^5.x            │ Authentication (sign-in, user management)  │
+│ axios                        │ ^1.x            │ HTTP client with interceptors              │
+│ @tanstack/react-query        │ ^5.x            │ Server state management + caching          │
+│ zustand                      │ ^5.x            │ Client state management                    │
+│ react-hook-form              │ ^7.x            │ Form handling                              │
+│ zod                          │ ^3.x            │ Schema validation                          │
+│ clsx                         │ ^2.1.1          │ Conditional class composition              │
+│ react-icons                  │ ^5.3.0          │ Icon library (FA, HI, TI, etc.)            │
+│ react-use                    │ ^17.5.1         │ useWindowScroll hook (navbar)              │
+│ date-fns                     │ ^4.x            │ Date formatting                            │
+│ lenis                        │ ^1.x            │ Smooth scroll (replaces ScrollSmoother)    │
+└──────────────────────────────┴─────────────────┴────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+SECTION 3: DEV DEPENDENCIES (npm install -D)
+═══════════════════════════════════════════════════════════════
+
+┌──────────────────────────────┬─────────────────┬────────────────────────────────────────────┐
+│ Package                      │ Version         │ Purpose                                    │
+├──────────────────────────────┼─────────────────┼────────────────────────────────────────────┤
+│ vite                         │ ^6.x            │ Build tool + dev server                    │
+│ @vitejs/plugin-react         │ ^4.x            │ React fast refresh                         │
+│ tailwindcss                  │ ^3.4.x          │ Utility-first CSS framework                │
+│ postcss                      │ ^8.x            │ CSS processor (required by Tailwind)       │
+│ autoprefixer                 │ ^10.x           │ Vendor prefixes                            │
+│ prettier                     │ ^3.x            │ Code formatting                            │
+│ eslint                       │ ^9.x            │ JavaScript linting                         │
+│ @eslint/js                   │ ^9.x            │ ESLint base config                         │
+│ globals                      │ ^15.x           │ Browser globals for ESLint                 │
+└──────────────────────────────┴─────────────────┴────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+SECTION 4: FONTS INSTALLED
+═══════════════════════════════════════════════════════════════
+
+Location: d:\Nyaysetu\frontend\public\fonts\
+
+Copied from reference repo (local woff2 — no CDN):
+┌────────────────────────────────┬───────────────────────────────────────────┐
+│ File                           │ Font Family / Usage                       │
+├────────────────────────────────┼───────────────────────────────────────────┤
+│ zentry-regular.woff2           │ "zentry" — Display/hero headlines         │
+│ general.woff2                  │ "general" — Labels, nav, UI small caps    │
+│ circularweb-book.woff2         │ "circular-web" — Secondary body text      │
+│ robert-medium.woff2            │ "robert-medium" — Sub-headers             │
+│ robert-regular.woff2           │ "robert-regular" — Body regular           │
+└────────────────────────────────┴───────────────────────────────────────────┘
+
+Loaded via Google Fonts CDN (in index.html <head>):
+┌────────────────────────────────┬───────────────────────────────────────────┐
+│ Font                           │ Usage                                     │
+├────────────────────────────────┼───────────────────────────────────────────┤
+│ Cormorant Garamond             │ Section titles, legal body, premium serif │
+│ Playfair Display               │ Pull quotes, featured text                │
+│ Inter                          │ UI body text, forms, data                 │
+└────────────────────────────────┴───────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+SECTION 5: KEY CONFIGURATION FILES CREATED
+═══════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────┬──────────────────────────────────────────────────┐
+│ File                                │ Purpose                                          │
+├─────────────────────────────────────┼──────────────────────────────────────────────────┤
+│ tailwind.config.js                  │ NyayaSetu design tokens (navy, gold, crimson)     │
+│ vite.config.js                      │ Path aliases + chunk splitting config            │
+│ index.html                          │ SEO meta, OG tags, font preloads                 │
+│ src/index.css                       │ Global styles + Tailwind layers + utilities       │
+│ src/animations/gsap-config.js       │ Central GSAP + ScrollTrigger/Flip/MotionPath reg │
+│ src/animations/useReducedMotion.js  │ prefers-reduced-motion hook                      │
+│ src/animations/useScrollAnimation.js│ Reusable scoped ScrollTrigger hook               │
+│ src/constants/routes.js             │ All route path constants                         │
+│ src/constants/legalCategories.js    │ 8 legal categories with metadata                 │
+│ src/constants/consultationStatus.js │ Consultation state machine constants             │
+│ src/utils/index.js                  │ INR formatter, date utils, cn, etc.              │
+│ src/services/api.js                 │ Axios client with Clerk JWT injection            │
+│ src/store/authStore.js              │ Zustand auth store                               │
+│ src/main.jsx                        │ App entry with QueryClient + BrowserRouter       │
+│ src/App.jsx                         │ Lazy-loaded route configuration                  │
+│ .env.example                        │ Environment variable template                    │
+└─────────────────────────────────────┴──────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+SECTION 6: COMPONENTS CREATED (Phase 2)
+═══════════════════════════════════════════════════════════════
+
+┌────────────────────────────────────────────────┬────────────────────────────────────────┐
+│ File                                           │ Source / Notes                         │
+├────────────────────────────────────────────────┼────────────────────────────────────────┤
+│ src/components/common/Button.jsx               │ Preserved reference repo skew-text     │
+│ src/components/common/AnimatedTitle.jsx        │ Preserved reference repo word-cascade  │
+│ src/components/common/BentoTilt.jsx            │ Preserved reference repo 3D tilt       │
+│ src/components/layout/Navbar.jsx               │ Extended from reference repo           │
+│ src/components/layout/Footer.jsx               │ NyayaSetu brand + legal disclaimer     │
+│ src/components/layout/PageWrapper.jsx          │ Layout shell                           │
+└────────────────────────────────────────────────┴────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+SECTION 7: BACKEND (Spring Boot) — TO BE INSTALLED IN PHASE 7
+═══════════════════════════════════════════════════════════════
+
+Planned dependencies (pom.xml):
+  - spring-boot-starter-web
+  - spring-boot-starter-security
+  - spring-boot-starter-data-jpa
+  - spring-boot-starter-validation
+  - spring-boot-starter-mail
+  - spring-boot-starter-webflux (for WebClient → Groq)
+  - mysql-connector-j
+  - flyway-mysql
+  - jjwt (for Clerk JWT validation)
+  - lombok
+  - mapstruct
+
+Database: MySQL 8+
+Migration: Flyway
+
+═══════════════════════════════════════════════════════════════
+SECTION 8: WHAT REPLACES GSAP CLUB PLUGINS
+═══════════════════════════════════════════════════════════════
+
+┌──────────────────┬─────────────────────────────────────────────────────────┐
+│ Removed (paid)   │ Replacement used                                        │
+├──────────────────┼─────────────────────────────────────────────────────────┤
+│ ScrollSmoother   │ lenis@^1.x — free, momentum scroll, GSAP-compatible     │
+│ SplitText        │ Custom word/character splitting via JS + CSS             │
+│ MorphSVG         │ CSS clip-path transitions (no SVG morphing needed)       │
+│ DrawSVG          │ CSS stroke-dashoffset animation (for decorative lines)   │
+└──────────────────┴─────────────────────────────────────────────────────────┘
+
+===============================================================
+END OF INSTALLED MATERIALS
+===============================================================

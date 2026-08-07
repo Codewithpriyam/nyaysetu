@@ -1,0 +1,30 @@
+==============================================================================
+NYAYASETU — 100% FREE NO-PAYMENT MAP API CONFIGURATION
+==============================================================================
+
+GOOD NEWS: ZERO PAYMENT & ZERO CREDIT CARD NEEDED!
+
+NyayaSetu now uses OpenStreetMap (OSM) / Nominatim Open Data API for live map 
+and advocate lookup across all Indian Districts.
+
+------------------------------------------------------------------------------
+1. OPENSTREETMAP (OSM) LIVE API (100% FREE - NO CREDIT CARD - NO API KEY)
+------------------------------------------------------------------------------
+Status: ACTIVE & INTEGRATED AUTOMATICALLY!
+Features:
+  - 100% Free Live Map & Advocate Search for any District & State in India.
+  - Requires NO credit card, NO billing, NO registration, and NO API Key.
+  - Directly queries live open map nodes.
+
+------------------------------------------------------------------------------
+2. REAL BAR COUNCIL & DISTRICT DATABASE INDEX (BUILT-IN FALLBACK)
+------------------------------------------------------------------------------
+Status: ACTIVE & INTEGRATED AUTOMATICALLY!
+Features:
+  - Covers all 28 States & 8 Union Territories in India.
+  - Displays District Court & Chambers, Bar Council Enrollment IDs, and Phone Numbers.
+
+==============================================================================
+RESULT: You do NOT need to pay anything or enter any credit card details!
+NyayaSetu works 100% FREE out-of-the-box!
+==============================================================================
