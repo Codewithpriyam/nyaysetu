@@ -9,16 +9,19 @@ const FOOTER_LINKS = {
     { label: 'Know Your Rights',  to: ROUTES.KNOW_YOUR_RIGHTS },
     { label: 'Legal Categories',  to: ROUTES.CATEGORIES },
     { label: 'Legal Resources',   to: ROUTES.RESOURCES },
+    { label: 'Help Center',       to: ROUTES.HELP },
+    { label: 'FAQ',               to: ROUTES.FAQ },
   ],
   'Lawyers': [
-    { label: 'Find a Lawyer',    to: ROUTES.LAWYERS },
+    { label: 'Find a Lawyer',     to: ROUTES.LAWYERS },
     { label: 'Request Consultation', to: ROUTES.LAWYERS },
+    { label: 'System Architecture', to: ROUTES.ARCHITECTURE },
   ],
-  'Platform': [
-    { label: 'About NyayaSetu', to: '#about' },
-    { label: 'Privacy Policy',  to: '#privacy' },
-    { label: 'Terms of Use',    to: '#terms' },
-    { label: 'Disclaimer',      to: '#disclaimer' },
+  'Platform & Legal': [
+    { label: 'About Developer',  to: ROUTES.ABOUT },
+    { label: 'Contact Support',   to: ROUTES.CONTACT },
+    { label: 'Privacy Policy',   to: ROUTES.PRIVACY },
+    { label: 'Terms of Use',     to: ROUTES.TERMS },
   ],
 };
 

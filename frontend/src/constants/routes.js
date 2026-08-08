@@ -12,7 +12,15 @@ export const ROUTES = {
   GUIDE:            '/guides/:slug',
   LAWYERS:          '/lawyers',
   LAWYER_PROFILE:   '/lawyers/:id',
+  LAWYER_DETAIL:    '/lawyers/:id',
   RESOURCES:        '/resources',
+  ABOUT:            '/about',
+  ARCHITECTURE:     '/architecture',
+  PRIVACY:          '/privacy',
+  TERMS:            '/terms',
+  CONTACT:          '/contact',
+  HELP:             '/help',
+  FAQ:              '/faq',
 
   // Auth
   SIGN_IN:          '/sign-in',
@@ -50,6 +58,7 @@ export const ROUTES = {
  * Usage: buildRoute(ROUTES.LAWYER_PROFILE, { id: '123' }) → '/lawyers/123'
  */
 export function buildRoute(pattern, params = {}) {
+  if (!pattern) return '#';
   return Object.entries(params).reduce(
     (path, [key, val]) => path.replace(`:${key}`, val),
     pattern

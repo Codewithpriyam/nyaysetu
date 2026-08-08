@@ -1,14 +1,14 @@
 /**
- * NyayaSetu — HeroSection (Poster Style Night Supreme Court Background)
- * Updates:
- *  - Removed Know My Rights button text -> updated to Search Options
- *  - Full-width landscape background (left -> right) with dark text overlay
+ * NyayaSetu — HeroSection Component
+ * Direct AI Integration:
+ *  - Submitting any problem statement redirects straight to the AI Copilot & Resources Page (`/resources`).
+ *  - Automatically triggers Llama-3 70B AI legal assessment for the user's prompt.
  */
 
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TiLocationArrow } from 'react-icons/ti';
-import { MdBalance, MdOutlinePersonSearch } from 'react-icons/md';
+import { MdBalance, MdOutlinePersonSearch, MdOutlineSmartToy } from 'react-icons/md';
 import Button from '@/components/common/Button';
 import { ROUTES } from '@/constants/routes';
 import { useReducedMotion } from '@/animations/useReducedMotion';
@@ -40,11 +40,8 @@ const HeroSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!problemText.trim()) {
-      inputRef.current?.focus();
-      return;
-    }
-    navigate(`${ROUTES.CATEGORIES}`);
+    const query = problemText.trim() || PLACEHOLDER_PROBLEMS[placeholderIdx];
+    navigate(ROUTES.RESOURCES, { state: { initialPrompt: query } });
   };
 
   return (
@@ -83,7 +80,7 @@ const HeroSection = () => {
           <div className="mb-4 flex items-center gap-3">
             <div className="h-0.5 w-10 rounded-full bg-ct-gold" />
             <span className="font-general text-xs font-semibold uppercase tracking-[0.2em] text-ct-gold">
-              NYAYASETU
+              NYAYASETU AI LEGAL COPILOT
             </span>
           </div>
 
@@ -95,10 +92,10 @@ const HeroSection = () => {
 
           {/* Description */}
           <p className="font-inter text-base sm:text-lg text-ct-ivory/90 leading-relaxed max-w-lg mb-8">
-            Understand your rights. Explore your options. Take the right action.
+            Describe your problem in plain language. Our AI Legal Engine analyzes statutory rights, categorizes your case, & recommends verified advocates.
           </p>
 
-          {/* Problem Input Box */}
+          {/* AI Problem Input Box */}
           <form onSubmit={handleSubmit} className="relative max-w-lg">
             <div
               className={`
@@ -129,18 +126,19 @@ const HeroSection = () => {
               />
 
               {/* Input Footer CTA */}
-              <div className="flex items-center justify-between px-5 pb-4 border-t border-ct-gold/10 pt-3">
-                <span className="font-general text-[10px] uppercase tracking-widest text-ct-muted">
-                  Type your problem in plain language
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 pb-4 border-t border-ct-gold/10 pt-3">
+                <span className="font-general text-[10px] uppercase tracking-widest text-ct-gold flex items-center gap-1.5 font-bold">
+                  <MdOutlineSmartToy size={16} className="text-ct-gold" />
+                  <span>Powered by Groq Llama-3 AI Engine</span>
                 </span>
 
                 <button
                   type="submit"
                   id="hero-submit-btn"
-                  className="group flex items-center gap-2 rounded-xl bg-court-gold px-5 py-2.5 font-general text-xs uppercase tracking-widest text-ct-void font-bold transition-all duration-300 hover:shadow-gold-glow hover:scale-105"
-                  aria-label="Search Options"
+                  className="group flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-5 py-2.5 font-general text-xs uppercase tracking-widest text-ct-void font-bold transition-all duration-300 hover:shadow-gold-glow hover:scale-105 shrink-0"
+                  aria-label="Ask AI Assistant"
                 >
-                  <span>Search Options</span>
+                  <span>Ask AI Assistant ✨</span>
                   <TiLocationArrow className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </button>
               </div>
@@ -151,15 +149,15 @@ const HeroSection = () => {
           <div className="mt-5 flex flex-wrap items-center gap-6 text-xs text-ct-ivory/80">
             <div className="flex items-center gap-1.5">
               <div className="h-1.5 w-1.5 rounded-full bg-ct-gold" />
-              <span>Verified Information</span>
+              <span>Instant AI Analysis</span>
             </div>
             <div className="flex items-center gap-1.5">
               <div className="h-1.5 w-1.5 rounded-full bg-ct-gold" />
-              <span>AI Assisted</span>
+              <span>Statutory Rights Guidance</span>
             </div>
             <div className="flex items-center gap-1.5">
               <div className="h-1.5 w-1.5 rounded-full bg-ct-gold" />
-              <span>Private & Secure</span>
+              <span>100% Private & Confidential</span>
             </div>
           </div>
 

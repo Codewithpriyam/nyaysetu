@@ -3,7 +3,9 @@ package com.nyaysetu.backend.config;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nyaysetu.backend.model.Advocate;
+import com.nyaysetu.backend.model.LawyerProfile;
 import com.nyaysetu.backend.repository.AdvocateRepository;
+import com.nyaysetu.backend.repository.LawyerProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -20,10 +22,50 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     private AdvocateRepository advocateRepository;
 
+    @Autowired
+    private LawyerProfileRepository lawyerProfileRepository;
+
     @Override
     public void run(String... args) throws Exception {
+        seedLawyerProfiles();
+        seedAdvocateDatabase();
+    }
+
+    private void seedLawyerProfiles() {
+        if (lawyerProfileRepository.findBySlug("prince-kumar").isEmpty()) {
+            LawyerProfile prince = new LawyerProfile();
+            prince.setSlug("prince-kumar");
+            prince.setName("Adv. Prince Kumar");
+            prince.setCourt("Deoghar Court");
+            prince.setExperienceYears(2);
+            prince.setConsultationCount(18);
+            prince.setPricePerMinute(25.0);
+            prince.setBio("Committed to helping clients navigate complex legal issues with clear, practical guidance.");
+            prince.setLanguages("Hindi, English");
+            prince.setVerificationStatus("VERIFIED");
+            lawyerProfileRepository.save(prince);
+            System.out.println(">>> Initialized LawyerProfile: Adv. Prince Kumar");
+        }
+
+        if (lawyerProfileRepository.findBySlug("shruti").isEmpty()) {
+            LawyerProfile shruti = new LawyerProfile();
+            shruti.setSlug("shruti");
+            shruti.setName("Adv. Shruti");
+            shruti.setCourt("Ranchi High Court");
+            shruti.setExperienceYears(1);
+            shruti.setConsultationCount(10);
+            shruti.setPricePerMinute(25.0);
+            shruti.setBio("Dedicated legal professional providing consultation and representation across a wide range of legal matters.");
+            shruti.setLanguages("Hindi, English");
+            shruti.setVerificationStatus("VERIFIED");
+            lawyerProfileRepository.save(shruti);
+            System.out.println(">>> Initialized LawyerProfile: Adv. Shruti");
+        }
+    }
+
+    private void seedAdvocateDatabase() {
         System.out.println(">>> NyayaSetu DataInitializer: Checking Advocates Database...");
-        
+
         if (advocateRepository.count() > 0) {
             System.out.println(">>> Database already initialized with " + advocateRepository.count() + " advocate records.");
             return;

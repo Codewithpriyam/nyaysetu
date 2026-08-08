@@ -1,0 +1,12 @@
+# Dockerignore for NyayaSetu Spring Boot Backend
+target/
+.git/
+.gitignore
+.env
+.env.*
+*.log
+.mvn/
+.idea/
+.vscode/
+*.iml
+Dockerfile

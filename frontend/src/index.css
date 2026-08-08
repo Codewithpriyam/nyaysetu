@@ -228,3 +228,63 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================================
+   CLERK ACCESSIBILITY & CONTRAST OVERRIDES
+   Ensures bright white text on dark buttons for all auth components
+   ============================================================ */
+.cl-socialButtonsBlockButton,
+.cl-socialButtonsBlockButtonText,
+.cl-socialButtonsBlockButton__google,
+.cl-socialButtonsBlockButtonText__google,
+.cl-socialButtonsIconButton,
+.cl-formButtonPrimary,
+.cl-button,
+.cl-userButtonPopoverCard,
+.cl-userButtonPopoverActionButtonText {
+  color: #ffffff !important;
+}
+
+.cl-socialButtonsBlockButtonText {
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
+
+.cl-socialButtonsBlockButton {
+  background-color: #101628 !important;
+  border: 1px solid rgba(200, 155, 82, 0.35) !important;
+}
+
+.cl-socialButtonsBlockButton:hover {
+  background-color: #1a233a !important;
+  border-color: rgba(200, 155, 82, 0.6) !important;
+}
+
+.cl-headerTitle {
+  color: #f0e9d8 !important;
+}
+
+.cl-headerSubtitle,
+.cl-dividerText {
+  color: #a0aec0 !important;
+}
+
+.cl-formFieldLabel {
+  color: #f0e9d8 !important;
+}
+
+.cl-formFieldInput {
+  background-color: #08090c !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(200, 155, 82, 0.35) !important;
+}
+
+.cl-footerActionLink {
+  color: #c89b52 !important;
+}
+
+.cl-userButtonPopoverCard {
+  background-color: #0e1527 !important;
+  border: 1px solid rgba(200, 155, 82, 0.35) !important;
+}
+

@@ -38,25 +38,29 @@ createRoot(document.getElementById('root')).render(
       afterSignOutUrl="/"
       appearance={{
         variables: {
-          colorBackground:   '#0a0e1a',
-          colorInputBackground: '#101628',
-          colorText:         '#f0e9d8',
-          colorTextSecondary: '#9a9178',
+          colorBackground:   '#0e1527',
+          colorInputBackground: '#08090c',
+          colorText:         '#ffffff',
+          colorTextSecondary: '#a0aec0',
           colorPrimary:      '#C89B52',
           colorDanger:       '#ef4444',
+          colorTextOnPrimaryBackground: '#ffffff',
           fontFamily:        "'Inter', sans-serif",
           borderRadius:      '12px',
         },
         elements: {
           card:              'bg-[#0e1527] border border-[#C89B52]/30 shadow-2xl',
           headerTitle:       'font-cormorant text-2xl font-bold text-[#f0e9d8]',
-          headerSubtitle:    'text-[#9a9178] text-xs',
-          socialButtonsIconButton: 'border border-[#C89B52]/30 bg-[#0a0e1a] hover:bg-[#C89B52]/10',
+          headerSubtitle:    'text-[#a0aec0] text-xs',
+          socialButtonsBlockButton: 'bg-[#101628] border border-[#C89B52]/40 text-white hover:bg-[#1a233a]',
+          socialButtonsBlockButtonText: 'text-white font-semibold',
+          socialButtonsIconButton: 'border border-[#C89B52]/30 bg-[#101628] text-white hover:bg-[#C89B52]/10',
           formButtonPrimary: 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] hover:opacity-90 text-white font-bold',
-          formFieldInput:    'bg-[#0a0e1a] border border-[#C89B52]/30 text-[#f0e9d8] focus:border-[#C89B52]',
+          formFieldInput:    'bg-[#08090c] border border-[#C89B52]/30 text-[#ffffff] focus:border-[#C89B52]',
+          formFieldLabel:    'text-[#f0e9d8] font-medium',
           footerActionLink:  'text-[#C89B52] hover:text-[#D9A758]',
           dividerLine:       'bg-[#C89B52]/20',
-          dividerText:       'text-[#9a9178]',
+          dividerText:       'text-[#a0aec0]',
         },
       }}
     >

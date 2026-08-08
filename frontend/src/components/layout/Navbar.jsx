@@ -1,15 +1,13 @@
 /**
  * NyayaSetu — Navbar (Courtroom Theme)
- * Auth state-aware:
- *  - Signed Out: LOGIN | SIGN UP →
- *  - Signed In: UserButton avatar (Clerk) + Dashboard shortcut
+ * Full width header layout with Left-aligned Brand & Nav Links, Right-aligned Auth & User Controls.
  */
 
-import { useState, useEffect, useRef } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { useWindowScroll } from 'react-use';
 import { useAuth, useUser, UserButton } from '@clerk/clerk-react';
-import { HiOutlineUser, HiMenu, HiX, HiViewGrid, HiLogout, HiScale } from 'react-icons/hi';
+import { HiOutlineUser, HiMenu, HiX, HiScale } from 'react-icons/hi';
 import clsx from 'clsx';
 import { ROUTES } from '@/constants/routes';
 
@@ -17,8 +15,9 @@ const NAV_LINKS = [
   { label: 'Home',            to: ROUTES.HOME },
   { label: 'Categories',     to: ROUTES.CATEGORIES },
   { label: 'Know Your Rights', to: ROUTES.KNOW_YOUR_RIGHTS },
-  { label: 'Resources',      to: ROUTES.RESOURCES },
   { label: 'Find a Lawyer',  to: ROUTES.LAWYERS },
+  { label: 'My Cases',       to: ROUTES.CASES },
+  { label: 'AI Copilot & Resources', to: ROUTES.RESOURCES },
 ];
 
 const NavBar = () => {
@@ -37,60 +36,63 @@ const NavBar = () => {
       className={clsx(
         'fixed top-0 inset-x-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-ct-void/90 backdrop-blur-md border-b border-ct-gold/20 py-3 shadow-court-card'
-          : 'bg-transparent py-5'
+          ? 'bg-ct-void/95 backdrop-blur-md border-b border-ct-gold/20 py-3.5 shadow-court-card'
+          : 'bg-ct-void/60 backdrop-blur-sm py-4 border-b border-ct-gold/10'
       )}
     >
-      <nav className="section-container flex items-center justify-between">
+      <nav className="w-full px-4 sm:px-8 lg:px-12 flex items-center justify-between gap-6">
 
-        {/* ─── Logo ─────────────────────────────────────────────────────── */}
-        <Link to={ROUTES.HOME} className="flex items-center gap-3 group" aria-label="NyayaSetu Home">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-court-gold text-ct-void font-zentry text-base font-black shadow-gold-glow">
-            NS
-          </div>
-          <div className="flex flex-col">
-            <span className="font-cormorant text-xl font-bold tracking-wide text-ct-ivory group-hover:text-ct-gold transition-colors duration-200">
-              NyayaSetu
-            </span>
-            <span className="font-general text-[8px] uppercase tracking-[0.2em] text-ct-gold/80 -mt-1">
-              Justice. Simplified.
-            </span>
-          </div>
-        </Link>
+        {/* ─── LEFT: Logo & Nav Links ────────────────────────────────────── */}
+        <div className="flex items-center gap-8 xl:gap-12">
+          {/* Brand Logo */}
+          <Link to={ROUTES.HOME} className="flex items-center gap-3 group shrink-0" aria-label="NyayaSetu Home">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-court-gold text-ct-void font-zentry text-base font-black shadow-gold-glow">
+              NS
+            </div>
+            <div className="flex flex-col">
+              <span className="font-cormorant text-xl font-bold tracking-wide text-ct-ivory group-hover:text-ct-gold transition-colors duration-200">
+                NyayaSetu
+              </span>
+              <span className="font-general text-[8px] uppercase tracking-[0.2em] text-ct-gold/80 -mt-1">
+                Justice. Simplified.
+              </span>
+            </div>
+          </Link>
 
-        {/* ─── Desktop Nav Links ────────────────────────────────────────── */}
-        <div className="hidden md:flex items-center gap-7">
-          {NAV_LINKS.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.to === ROUTES.HOME}
-              className={({ isActive }) =>
-                clsx(
-                  'font-general text-xs uppercase tracking-[0.15em] transition-colors duration-200 whitespace-nowrap',
-                  isActive ? 'text-ct-gold font-bold' : 'text-ct-ivory/80 hover:text-ct-gold'
-                )
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
+            {NAV_LINKS.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.to === ROUTES.HOME}
+                className={({ isActive }) =>
+                  clsx(
+                    'font-general text-xs uppercase tracking-[0.12em] transition-colors duration-200 whitespace-nowrap',
+                    isActive ? 'text-ct-gold font-bold' : 'text-ct-ivory/80 hover:text-ct-gold'
+                  )
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
         </div>
 
-        {/* ─── Auth Controls ────────────────────────────────────────────── */}
-        <div className="flex items-center gap-3">
+        {/* ─── RIGHT: Auth Controls & User Avatar ───────────────────────── */}
+        <div className="flex items-center gap-4 shrink-0">
 
-          {/* While Clerk is loading — placeholder */}
+          {/* Loading state */}
           {!isLoaded && (
-            <div className="h-10 w-10 rounded-full bg-ct-gold/20 animate-pulse" />
+            <div className="h-9 w-9 rounded-full bg-ct-gold/20 animate-pulse" />
           )}
 
-          {/* Signed Out — show LOGIN + SIGN UP */}
+          {/* Signed Out — LOGIN & SIGN UP */}
           {isLoaded && !isSignedIn && (
-            <>
+            <div className="flex items-center gap-3">
               <Link
                 to={ROUTES.SIGN_IN}
-                className="hidden sm:flex items-center gap-1.5 font-general text-xs uppercase tracking-widest text-ct-ivory/80 hover:text-ct-gold transition-colors"
+                className="hidden sm:flex items-center gap-1.5 font-general text-xs uppercase tracking-widest text-ct-ivory/90 hover:text-ct-gold transition-colors px-3 py-1.5"
               >
                 <HiOutlineUser size={16} />
                 <span>Login</span>
@@ -98,35 +100,35 @@ const NavBar = () => {
 
               <Link
                 to={ROUTES.SIGN_UP}
-                className="flex items-center gap-1.5 rounded-xl border border-ct-gold/50 bg-ct-gold/10 px-4 py-2 font-general text-xs uppercase tracking-widest text-ct-gold font-bold hover:bg-ct-gold hover:text-ct-void transition-all shadow-gold-glow"
+                className="flex items-center gap-1.5 rounded-xl border border-ct-gold/60 bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-4 py-2 font-general text-xs uppercase tracking-widest text-ct-void font-bold hover:brightness-110 transition-all shadow-gold-glow"
               >
                 <span>Sign Up</span>
                 <span>→</span>
               </Link>
-            </>
+            </div>
           )}
 
-          {/* Signed In — show Clerk UserButton avatar */}
+          {/* Signed In — DASHBOARD Shortcut & User Avatar */}
           {isLoaded && isSignedIn && (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Link
                 to={ROUTES.DASHBOARD}
-                className="hidden sm:flex items-center gap-1.5 font-general text-[10px] uppercase tracking-widest text-ct-ivory/70 hover:text-ct-gold transition-colors"
-                title="My Dashboard"
+                className="hidden sm:flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-gold/10 px-3.5 py-1.5 font-general text-xs uppercase tracking-widest text-ct-gold font-bold hover:bg-ct-gold hover:text-ct-void transition-all shadow-sm"
+                title="Go to Dashboard"
               >
-                <HiScale size={15} />
+                <HiScale size={16} />
                 <span>Dashboard</span>
               </Link>
 
-              {/* Clerk Avatar with built-in dropdown (Sign out, profile, etc.) */}
+              {/* Clerk Avatar Dropdown */}
               <UserButton
                 afterSignOutUrl="/"
                 appearance={{
                   elements: {
-                    avatarBox:       'h-9 w-9 ring-2 ring-ct-gold/50 ring-offset-1 ring-offset-ct-void hover:ring-ct-gold transition-all',
-                    userButtonPopoverCard:  'bg-[#0e1527] border border-[#C89B52]/30',
+                    avatarBox:       'h-9 w-9 ring-2 ring-ct-gold/60 ring-offset-2 ring-offset-ct-void hover:ring-ct-gold transition-all',
+                    userButtonPopoverCard:  'bg-[#0e1527] border border-[#C89B52]/40 shadow-2xl',
                     userButtonPopoverActionButton: 'text-[#f0e9d8] hover:bg-[#C89B52]/10',
-                    userButtonPopoverActionButtonText: 'text-[#f0e9d8]',
+                    userButtonPopoverActionButtonText: 'text-[#ffffff] font-medium',
                     userButtonPopoverFooter: 'hidden',
                   },
                 }}
@@ -134,20 +136,21 @@ const NavBar = () => {
             </div>
           )}
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Menu Toggle */}
           <button
-            className="flex md:hidden text-ct-ivory hover:text-ct-gold transition-colors ml-1"
+            className="flex lg:hidden text-ct-ivory hover:text-ct-gold transition-colors p-1"
             onClick={() => setIsMobileOpen((p) => !p)}
             aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
           >
-            {isMobileOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+            {isMobileOpen ? <HiX size={26} /> : <HiMenu size={26} />}
           </button>
         </div>
+
       </nav>
 
       {/* ─── Mobile Dropdown ──────────────────────────────────────────────── */}
       {isMobileOpen && (
-        <div className="absolute top-full inset-x-4 mt-2 rounded-2xl border border-ct-gold/30 bg-ct-void/95 backdrop-blur-xl p-5 md:hidden shadow-court-hover">
+        <div className="absolute top-full inset-x-4 mt-2 rounded-2xl border border-ct-gold/30 bg-ct-void/98 backdrop-blur-xl p-5 lg:hidden shadow-court-hover">
           <div className="flex flex-col gap-2">
             {NAV_LINKS.map((item) => (
               <NavLink
@@ -167,7 +170,7 @@ const NavBar = () => {
             ))}
           </div>
 
-          {/* Mobile Auth Footer */}
+          {/* Mobile Auth Controls */}
           <div className="mt-4 pt-4 border-t border-ct-gold/15">
             {isLoaded && !isSignedIn && (
               <div className="flex gap-2">
@@ -182,7 +185,7 @@ const NavBar = () => {
                 <Link
                   to={ROUTES.SIGN_UP}
                   onClick={() => setIsMobileOpen(false)}
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] font-general text-xs uppercase tracking-widest text-white font-bold"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] font-general text-xs uppercase tracking-widest text-ct-void font-bold shadow-gold-glow"
                 >
                   <span>Sign Up →</span>
                 </Link>
@@ -190,27 +193,25 @@ const NavBar = () => {
             )}
 
             {isLoaded && isSignedIn && (
-              <div className="flex items-center gap-3 px-1">
-                <UserButton
-                  afterSignOutUrl="/"
-                  appearance={{
-                    elements: {
-                      avatarBox: 'h-9 w-9 ring-2 ring-ct-gold/50',
-                    },
-                  }}
-                />
-                <div>
-                  <p className="font-inter text-xs font-bold text-ct-ivory leading-tight">
-                    {user?.firstName || 'My Account'}
-                  </p>
-                  <Link
-                    to={ROUTES.DASHBOARD}
-                    onClick={() => setIsMobileOpen(false)}
-                    className="font-general text-[9px] uppercase tracking-widest text-ct-gold hover:underline"
-                  >
-                    Go to Dashboard →
-                  </Link>
+              <div className="flex items-center justify-between px-1">
+                <div className="flex items-center gap-3">
+                  <UserButton afterSignOutUrl="/" />
+                  <div>
+                    <p className="font-inter text-xs font-bold text-ct-ivory leading-tight">
+                      {user?.fullName || user?.firstName || 'My Account'}
+                    </p>
+                    <span className="font-general text-[9px] uppercase tracking-widest text-ct-gold/80">
+                      Authenticated Session
+                    </span>
+                  </div>
                 </div>
+                <Link
+                  to={ROUTES.DASHBOARD}
+                  onClick={() => setIsMobileOpen(false)}
+                  className="rounded-xl bg-ct-gold px-3.5 py-1.5 font-general text-[10px] uppercase tracking-widest text-ct-void font-bold shadow-sm"
+                >
+                  Dashboard →
+                </Link>
               </div>
             )}
           </div>

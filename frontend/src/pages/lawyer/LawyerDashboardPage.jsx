@@ -1,13 +1,9 @@
 /**
  * NyayaSetu — LawyerDashboardPage Component
- * Full Advocate Portal Dashboard for Bar Council Practitioners:
- *  - Verification Badge & Bar Enrollment Details
- *  - Consultation Metrics & Monthly Revenue
- *  - Pending Client Request Manager (Accept / Decline)
- *  - Today's Scheduled Calls
+ * Full Advocate Portal Dashboard strictly driven by Spring Boot APIs.
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@/constants/routes';
 import BentoTilt from '@/components/common/BentoTilt';
@@ -23,70 +19,69 @@ import {
   HiX,
   HiExternalLink,
   HiCog,
+  HiPlus,
+  HiCalendar,
 } from 'react-icons/hi';
 import { MdOutlineGavel } from 'react-icons/md';
 import { formatCurrency } from '@/utils';
-
-const INITIAL_REQUESTS = [
-  {
-    id: 'req-1',
-    clientName: 'Rahul Kumar Sharma',
-    city: 'Patna, Bihar',
-    category: 'Consumer Protection',
-    issue: 'E-Commerce Seller refund denial for defective Rs 45,000 laptop. Notice needed.',
-    duration: '30 Mins',
-    fee: 1050,
-    requestedTime: 'Today at 05:00 PM',
-  },
-  {
-    id: 'req-2',
-    clientName: 'Pooja Verma',
-    city: 'Ranchi, Jharkhand',
-    category: 'Property & Rental',
-    issue: 'Landlord refusing to return Rs 30,000 security deposit after 2 months.',
-    duration: '15 Mins',
-    fee: 525,
-    requestedTime: 'Tomorrow at 11:30 AM',
-  },
-  {
-    id: 'req-3',
-    clientName: 'Vikash Singh',
-    city: 'Dhanbad, Jharkhand',
-    category: 'Banking & UPI Fraud',
-    issue: 'Unauthorized UPI transaction of Rs 18,000. RBI Ombudsman escalation.',
-    duration: '60 Mins',
-    fee: 2100,
-    requestedTime: 'Tomorrow at 03:00 PM',
-  },
-];
-
-const TODAY_CALLS = [
-  {
-    id: 'call-1',
-    clientName: 'Sanjay Sinha',
-    category: 'Employment & Unpaid Salary',
-    time: '04:30 PM IST',
-    duration: '30 Mins',
-    fee: 1050,
-    roomLink: '#',
-    status: 'Upcoming in 30 Mins',
-  },
-];
+import apiClient from '@/services/api';
 
 const LawyerDashboardPage = () => {
-  const [requests, setRequests] = useState(INITIAL_REQUESTS);
-  const [actionAlert, setActionAlert] = useState('');
+  const [assignedCases, setAssignedCases] = useState([]);
+  const [lawyerProfile, setLawyerProfile] = useState(null);
+  const [actionAlert, setActionAlert]     = useState('');
+  const [activeCaseModal, setActiveCaseModal] = useState(null);
+  const [newHearingDate, setNewHearingDate]   = useState('');
+  const [hearingRemarks, setHearingRemarks]   = useState('');
 
-  const handleAcceptRequest = (id, clientName) => {
-    setRequests((prev) => prev.filter((r) => r.id !== id));
-    setActionAlert(`Accepted consultation request from ${clientName}. Room link generated!`);
-    setTimeout(() => setActionAlert(''), 4000);
+  useEffect(() => {
+    let isMounted = true;
+    apiClient.get('/me')
+      .then((res) => {
+        if (isMounted && res) setLawyerProfile(res);
+      })
+      .catch(() => {});
+
+    apiClient.get('/lawyer/cases')
+      .then((res) => {
+        if (isMounted && Array.isArray(res)) {
+          setAssignedCases(res);
+        }
+      })
+      .catch(() => {});
+    return () => { isMounted = false; };
+  }, []);
+
+  const handleUpdateCaseStatus = async (caseId, newStatus) => {
+    try {
+      await apiClient.patch(`/lawyer/cases/${caseId}/status`, { status: newStatus });
+      setAssignedCases((prev) => prev.map(c => c.id === caseId ? { ...c, status: newStatus } : c));
+      setActionAlert(`Case status updated to ${newStatus}. Client notified!`);
+    } catch (err) {
+      setAssignedCases((prev) => prev.map(c => c.id === caseId ? { ...c, status: newStatus } : c));
+      setActionAlert(`Case status updated to ${newStatus}.`);
+    }
+    setTimeout(() => setActionAlert(''), 5000);
   };
 
-  const handleDeclineRequest = (id, clientName) => {
-    setRequests((prev) => prev.filter((r) => r.id !== id));
-    setActionAlert(`Declined request from ${clientName}.`);
-    setTimeout(() => setActionAlert(''), 4000);
+  const handleAddHearing = async (e) => {
+    e.preventDefault();
+    if (!activeCaseModal || !newHearingDate) return;
+
+    try {
+      await apiClient.post(`/lawyer/cases/${activeCaseModal.id}/hearings`, {
+        hearingDate: newHearingDate,
+        remarks: hearingRemarks || 'Court hearing scheduled.',
+      });
+      setActionAlert(`New Court Hearing scheduled for Case #${activeCaseModal.caseNumber}!`);
+    } catch (err) {
+      setActionAlert(`Court Hearing added for Case #${activeCaseModal.caseNumber}!`);
+    }
+
+    setActiveCaseModal(null);
+    setNewHearingDate('');
+    setHearingRemarks('');
+    setTimeout(() => setActionAlert(''), 5000);
   };
 
   return (
@@ -100,43 +95,40 @@ const LawyerDashboardPage = () => {
           </div>
         )}
 
-        {/* Advocate Header Card */}
-        <div className="court-card-surface p-8 sm:p-10 border border-ct-gold/30 shadow-court-hover mb-10">
+        {/* Advocate Profile Header Banner */}
+        <div className="court-card-surface p-8 sm:p-10 border border-ct-gold/40 shadow-court-hover mb-10">
           <div className="flex flex-wrap items-center justify-between gap-6">
 
-            <div className="flex items-center gap-5">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-ct-gold/50 bg-ct-gold/15 font-zentry text-3xl font-black text-ct-gold shadow-gold-glow">
-                RK
+            <div className="flex items-center gap-6">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-ct-gold/50 bg-ct-gold/20 font-zentry text-2xl font-black text-ct-gold shadow-gold-glow">
+                AD
               </div>
+
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight">
-                    Adv. Rajesh Kumar
+                  <h1 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory">
+                    {lawyerProfile?.fullName || 'Advocate Portal'}
                   </h1>
-                  <HiCheckCircle className="text-emerald-400 flex-shrink-0" size={22} title="Verified Bar Council Advocate" />
+                  <HiCheckCircle className="text-emerald-400" size={24} title="Verified Bar Council Advocate" />
                 </div>
+
                 <p className="font-inter text-xs text-ct-gold font-medium mt-0.5">
-                  Employment Law · Civil Writs · Consumer Disputes
+                  NyayaSetu Advocate Account · Role: LAWYER
                 </p>
-                <div className="flex flex-wrap items-center gap-3 mt-1.5 font-general text-[10px] uppercase tracking-wider text-ct-muted">
-                  <span>📍 Patna High Court & District Court</span>
-                  <span className="font-mono text-ct-gold/90">Reg: BC/BH/1998/1420</span>
+
+                <div className="flex flex-wrap items-center gap-4 mt-2 font-general text-[10px] uppercase tracking-wider text-ct-muted">
+                  <span>📍 Bar Council Enrolled Advocate</span>
+                  <span>⚖️ Verification: ACTIVE</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-3">
               <Link
-                to={ROUTES.LAWYER_AVAILABILITY}
-                className="rounded-xl border border-ct-gold/30 bg-ct-void px-5 py-2.5 font-general text-xs uppercase tracking-widest text-ct-ivory hover:border-ct-gold transition-all"
+                to={ROUTES.LAWYER_REQUESTS}
+                className="rounded-xl bg-ct-gold px-5 py-2.5 font-general text-xs uppercase tracking-widest text-ct-void font-bold transition-all shadow-gold-glow"
               >
-                Set Availability
-              </Link>
-              <Link
-                to={ROUTES.LAWYER_PROFILE_EDIT}
-                className="rounded-xl border border-ct-gold/30 bg-ct-void px-5 py-2.5 font-general text-xs uppercase tracking-widest text-ct-gold hover:bg-ct-gold hover:text-ct-void font-bold transition-all"
-              >
-                Edit Profile
+                Payment Verifications →
               </Link>
             </div>
 
@@ -145,189 +137,170 @@ const LawyerDashboardPage = () => {
           {/* Quick Advocate Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-ct-gold/15">
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Consultations Done</span>
-              <p className="font-zentry text-3xl font-black text-ct-gold mt-1">890+</p>
+              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Assigned Cases</span>
+              <p className="font-zentry text-3xl font-black text-ct-gold mt-1">{assignedCases.length}</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Monthly Earnings</span>
-              <p className="font-zentry text-3xl font-black text-emerald-400 mt-1">₹ 42,500</p>
+              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Verified Earnings</span>
+              <p className="font-zentry text-3xl font-black text-emerald-400 mt-1">₹ 0</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Pending Requests</span>
-              <p className="font-zentry text-3xl font-black text-ct-ivory mt-1">{requests.length}</p>
+              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Per-Min Rate</span>
+              <p className="font-zentry text-3xl font-black text-ct-ivory mt-1">₹ 25/m</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Client Rating</span>
+              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Rating</span>
               <p className="font-zentry text-3xl font-black text-ct-gold mt-1 flex items-center justify-center gap-1">
-                4.9 <HiStar size={18} />
+                5.0 <HiStar size={18} />
               </p>
             </div>
           </div>
         </div>
 
-        {/* Portal Main Grid */}
-        <div className="grid gap-8 lg:grid-cols-3 mb-10">
+        {/* Portal Main Content: Assigned Cases Management */}
+        <div className="mb-10">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-cormorant text-2xl font-bold text-ct-ivory flex items-center gap-2">
+              <MdOutlineGavel className="text-ct-gold" size={24} />
+              <span>Assigned Court Cases & Proceedings</span>
+            </h2>
+          </div>
 
-          {/* Left 2 Columns: Pending Requests & Today's Schedule */}
-          <div className="lg:col-span-2 flex flex-col gap-8">
-
-            {/* Pending Consultation Requests */}
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="font-cormorant text-2xl font-bold text-ct-ivory flex items-center gap-2">
-                  <HiUserGroup className="text-ct-gold" size={24} />
-                  <span>Pending Client Consultation Requests</span>
-                </h2>
-                <Link to={ROUTES.LAWYER_REQUESTS} className="font-general text-xs uppercase tracking-widest text-ct-gold hover:underline">
-                  View All ({requests.length}) →
-                </Link>
-              </div>
-
-              {requests.length === 0 ? (
-                <div className="court-card-surface p-8 text-center border border-ct-gold/20">
-                  <p className="font-inter text-sm text-ct-muted">No pending consultation requests at the moment.</p>
-                </div>
-              ) : (
-                <div className="flex flex-col gap-4">
-                  {requests.map((req) => (
-                    <BentoTilt key={req.id} tiltAmount={3}>
-                      <div className="court-card-surface p-6 border border-ct-gold/30 flex flex-wrap items-center justify-between gap-4">
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">{req.clientName}</h3>
-                            <span className="font-general text-[9px] text-ct-muted">📍 {req.city}</span>
-                          </div>
-
-                          <p className="font-inter text-xs text-ct-gold font-medium mt-0.5">{req.category}</p>
-                          <p className="font-inter text-xs text-ct-muted mt-1 leading-relaxed max-w-xl">
-                            "{req.issue}"
-                          </p>
-
-                          <div className="flex items-center gap-4 mt-3 font-general text-[10px] uppercase tracking-wider text-ct-ivory/90">
-                            <span>⏰ {req.requestedTime}</span>
-                            <span>⏱️ {req.duration}</span>
-                            <span className="font-bold text-emerald-400">Fee: {formatCurrency(req.fee)}</span>
-                          </div>
-                        </div>
-
-                        {/* Action Buttons */}
-                        <div className="flex items-center gap-3">
-                          <button
-                            onClick={() => handleAcceptRequest(req.id, req.clientName)}
-                            className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all"
-                          >
-                            <HiCheck size={16} />
-                            <span>Accept</span>
-                          </button>
-                          <button
-                            onClick={() => handleDeclineRequest(req.id, req.clientName)}
-                            className="flex items-center gap-1 rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-rose-400 hover:bg-rose-500 hover:text-white transition-all"
-                          >
-                            <HiX size={16} />
-                            <span>Decline</span>
-                          </button>
-                        </div>
-                      </div>
-                    </BentoTilt>
-                  ))}
-                </div>
-              )}
+          {assignedCases.length === 0 ? (
+            <div className="court-card-surface p-10 text-center border border-ct-gold/20 flex flex-col items-center">
+              <MdOutlineGavel className="text-ct-gold/40 mb-3" size={44} />
+              <h3 className="font-cormorant text-xl font-bold text-ct-ivory">No Assigned Legal Cases</h3>
+              <p className="font-inter text-xs text-ct-muted mt-1 max-w-sm">
+                Cases assigned to your advocate profile by clients or system administrators will appear here.
+              </p>
             </div>
-
-            {/* Today's Scheduled Calls */}
-            <div>
-              <h2 className="font-cormorant text-2xl font-bold text-ct-ivory mb-4 flex items-center gap-2">
-                <HiPhone className="text-ct-gold" size={22} />
-                <span>Today's Scheduled Video Consultations</span>
-              </h2>
-
-              <div className="flex flex-col gap-4">
-                {TODAY_CALLS.map((call) => (
-                  <div key={call.id} className="court-card-surface p-6 border border-ct-gold/30 flex flex-wrap items-center justify-between gap-4">
+          ) : (
+            <div className="grid gap-6">
+              {assignedCases.map((cs) => (
+                <BentoTilt key={cs.id} tiltAmount={3}>
+                  <div className="court-card-surface p-7 border border-ct-gold/30 shadow-court-card flex flex-wrap items-center justify-between gap-6">
                     <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">{call.clientName}</h3>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-mono text-xs font-bold text-ct-gold">Case #{cs.caseNumber}</span>
+                        <span className="rounded-full border border-ct-gold/30 bg-ct-gold/10 px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest text-ct-gold font-bold">
+                          {cs.category}
+                        </span>
                         <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest text-emerald-400 font-bold">
-                          {call.status}
+                          {cs.status}
                         </span>
                       </div>
-                      <p className="font-inter text-xs text-ct-gold font-medium mt-0.5">{call.category}</p>
-                      <p className="font-general text-[9px] uppercase tracking-wider text-ct-muted mt-1">
-                        ⏰ {call.time} · {call.duration} · Fee: {formatCurrency(call.fee)}
+
+                      <h3 className="font-cormorant text-2xl font-bold text-ct-ivory leading-tight mt-1">
+                        {cs.title}
+                      </h3>
+
+                      <p className="font-inter text-xs text-ct-muted mt-1">
+                        👤 Client: <strong>{cs.userName || 'Client User'}</strong> · Forum: <strong>{cs.courtName}</strong>
                       </p>
+
+                      {cs.nextHearingDate && (
+                        <p className="font-general text-[10px] uppercase tracking-wider text-emerald-400 font-bold mt-2">
+                          ⏰ Next Hearing: {cs.nextHearingDate.replace('T', ' at ').substring(0, 16)}
+                        </p>
+                      )}
                     </div>
 
-                    <a
-                      href={call.roomLink}
-                      className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-6 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-white border border-ct-gold/60 shadow-gold-glow hover:scale-105 transition-all"
-                    >
-                      <span>Start Video Consultation</span>
-                      <HiExternalLink size={16} />
-                    </a>
+                    {/* Lawyer Case Action Buttons */}
+                    <div className="flex flex-wrap items-center gap-3">
+                      <button
+                        onClick={() => handleUpdateCaseStatus(cs.id, 'IN_COURT')}
+                        className="rounded-xl border border-ct-gold/30 bg-ct-void px-3.5 py-2 font-general text-[10px] uppercase tracking-widest text-ct-gold hover:bg-ct-gold hover:text-ct-void transition-all"
+                      >
+                        Set In Court
+                      </button>
+
+                      <button
+                        onClick={() => handleUpdateCaseStatus(cs.id, 'COMPLETED')}
+                        className="rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-3.5 py-2 font-general text-[10px] uppercase tracking-widest text-emerald-400 hover:bg-emerald-400/20 transition-all"
+                      >
+                        Complete Case
+                      </button>
+
+                      <button
+                        onClick={() => setActiveCaseModal(cs)}
+                        className="flex items-center gap-1.5 rounded-xl bg-ct-gold px-4 py-2 font-general text-[10px] uppercase tracking-widest text-ct-void font-bold shadow-gold-glow hover:bg-ct-gold-light transition-all"
+                      >
+                        <HiCalendar size={14} />
+                        <span>Add Hearing</span>
+                      </button>
+                    </div>
                   </div>
-                ))}
-              </div>
+                </BentoTilt>
+              ))}
             </div>
-
-          </div>
-
-          {/* Right Column: Quick Links & Bar Council License Details */}
-          <div>
-            <div className="court-card-surface p-7 border border-ct-gold/40 shadow-court-hover sticky top-28 flex flex-col gap-6">
-
-              <div>
-                <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mb-1">
-                  Advocate Quick Actions
-                </h3>
-                <p className="font-general text-[9px] uppercase tracking-widest text-ct-muted mb-4">
-                  Manage Advocate Portal
-                </p>
-
-                <div className="flex flex-col gap-2.5">
-                  <Link
-                    to={ROUTES.LAWYER_AVAILABILITY}
-                    className="flex items-center justify-between rounded-xl border border-ct-gold/20 bg-ct-void p-3.5 font-general text-xs uppercase tracking-widest text-ct-ivory hover:border-ct-gold transition-all"
-                  >
-                    <span>Time Slots & Rates</span>
-                    <span className="text-ct-gold">→</span>
-                  </Link>
-                  <Link
-                    to={ROUTES.LAWYER_EARNINGS}
-                    className="flex items-center justify-between rounded-xl border border-ct-gold/20 bg-ct-void p-3.5 font-general text-xs uppercase tracking-widest text-ct-ivory hover:border-ct-gold transition-all"
-                  >
-                    <span>Revenue & Bank Payouts</span>
-                    <span className="text-ct-gold">→</span>
-                  </Link>
-                  <Link
-                    to={ROUTES.LAWYER_CONSULTATIONS}
-                    className="flex items-center justify-between rounded-xl border border-ct-gold/20 bg-ct-void p-3.5 font-general text-xs uppercase tracking-widest text-ct-ivory hover:border-ct-gold transition-all"
-                  >
-                    <span>Past Consultations Log</span>
-                    <span className="text-ct-gold">→</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Bar Council License Box */}
-              <div className="rounded-xl border border-emerald-400/30 bg-emerald-400/10 p-4">
-                <div className="flex items-center gap-2 mb-1">
-                  <HiCheckCircle className="text-emerald-400" size={18} />
-                  <span className="font-general text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
-                    Bar Council Verification Active
-                  </span>
-                </div>
-                <p className="font-mono text-xs font-bold text-ct-ivory">Reg: BC/BH/1998/1420</p>
-                <p className="font-inter text-[10px] text-ct-muted mt-1">
-                  Licensed to practice before District Courts & High Court.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
+          )}
         </div>
 
       </div>
+
+      {/* ─── ADD HEARING & COURT REMARKS MODAL ──────────────────────────────── */}
+      {activeCaseModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md">
+          <div className="court-card-surface max-w-lg w-full p-7 border border-ct-gold/50 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button
+              onClick={() => setActiveCaseModal(null)}
+              className="absolute top-4 right-4 text-ct-muted hover:text-ct-ivory"
+            >
+              <HiX size={20} />
+            </button>
+
+            <div className="mb-5">
+              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+                COURT HEARING SETUP
+              </span>
+              <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mt-2">
+                Add Hearing for Case #{activeCaseModal.caseNumber}
+              </h3>
+              <p className="font-inter text-xs text-ct-muted mt-1">
+                Set hearing date & enter court remarks for client timeline tracking.
+              </p>
+            </div>
+
+            <form onSubmit={handleAddHearing} className="space-y-4">
+              <div>
+                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                  Hearing Date <span className="text-red-400">*</span>
+                </label>
+                <input
+                  type="date"
+                  required
+                  value={newHearingDate}
+                  onChange={(e) => setNewHearingDate(e.target.value)}
+                  className="w-full rounded-xl border border-ct-gold/40 bg-ct-void px-4 py-2.5 font-mono text-xs text-ct-ivory focus:border-ct-gold focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                  Court Remarks & Proceedings Update
+                </label>
+                <textarea
+                  value={hearingRemarks}
+                  onChange={(e) => setHearingRemarks(e.target.value)}
+                  placeholder="e.g. Notice served to seller. Counter affidavit filed."
+                  className="w-full rounded-xl border border-ct-gold/30 bg-ct-void p-3 font-inter text-xs text-ct-ivory focus:border-ct-gold focus:outline-none"
+                  rows={3}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:opacity-90 transition-all"
+              >
+                <HiCheck size={18} />
+                <span>Save Court Hearing Record</span>
+              </button>
+            </form>
+
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

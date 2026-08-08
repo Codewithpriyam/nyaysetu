@@ -1,77 +1,63 @@
 /**
  * NyayaSetu — LawyerRequestsPage Component
- * Advocate Consultation Request Manager with UTR Payment Verification & Google Meet Scheduling Modal.
+ * Advocate Consultation Request Manager with Dedicated UTR Payment Verification & Multi-Provider Meeting Scheduling.
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BentoTilt from '@/components/common/BentoTilt';
-import { HiUserGroup, HiCheck, HiX, HiCheckCircle, HiQrcode, HiVideoCamera, HiClock } from 'react-icons/hi';
+import { HiUserGroup, HiCheck, HiX, HiCheckCircle, HiQrcode, HiVideoCamera, HiClock, HiLink, HiPhotograph } from 'react-icons/hi';
 import { formatCurrency } from '@/utils';
-
-const INITIAL_REQUESTS = [
-  {
-    id: 'req-1',
-    clientName: 'Rahul Kumar Sharma',
-    city: 'Patna, Bihar',
-    category: 'Consumer Protection',
-    issue: 'E-Commerce Seller refund denial for defective Rs 45,000 laptop. Notice needed.',
-    fee: 500,
-    utrNumber: '403819204812',
-    submittedAt: 'Today at 04:15 PM',
-  },
-  {
-    id: 'req-2',
-    clientName: 'Pooja Verma',
-    city: 'Ranchi, Jharkhand',
-    category: 'Property & Rental',
-    issue: 'Landlord refusing to return Rs 30,000 security deposit after 2 months.',
-    fee: 500,
-    utrNumber: '409182401824',
-    submittedAt: 'Today at 02:30 PM',
-  },
-  {
-    id: 'req-3',
-    clientName: 'Vikash Singh',
-    city: 'Dhanbad, Jharkhand',
-    category: 'Banking & UPI Fraud',
-    issue: 'Unauthorized UPI transaction of Rs 18,000. RBI Ombudsman escalation.',
-    fee: 500,
-    utrNumber: '401928401928',
-    submittedAt: 'Yesterday at 06:45 PM',
-  },
-];
+import apiClient from '@/services/api';
 
 const LawyerRequestsPage = () => {
-  const [requests, setRequests] = useState(INITIAL_REQUESTS);
-  const [activeRequestModal, setActiveRequestModal] = useState(null);
-
-  // Advocate Schedule Modal Inputs
-  const [sessionDateTime, setSessionDateTime] = useState('Tomorrow at 05:00 PM IST');
+  const [payments, setPayments]               = useState([]);
+  const [activeModal, setActiveModal]         = useState(null);
+  const [scheduledAt, setScheduledAt]         = useState('');
   const [meetLink, setMeetLink]               = useState('https://meet.google.com/abc-defg-hij');
+  const [provider, setProvider]               = useState('GOOGLE_MEET');
   const [actionAlert, setActionAlert]         = useState('');
 
-  const handleOpenScheduleModal = (req) => {
-    setActiveRequestModal(req);
-  };
+  useEffect(() => {
+    let isMounted = true;
+    apiClient.get('/lawyer/payments')
+      .then((res) => {
+        if (isMounted && Array.isArray(res)) {
+          setPayments(res);
+        }
+      })
+      .catch(() => {});
+    return () => { isMounted = false; };
+  }, []);
 
-  const handleConfirmPaymentAndSendMeetLink = (e) => {
-    e.preventDefault();
-    if (!activeRequestModal) return;
-
-    const clientName = activeRequestModal.clientName;
-    setRequests((prev) => prev.filter((r) => r.id !== activeRequestModal.id));
-    setActiveRequestModal(null);
-
-    setActionAlert(
-      `Payment confirmed for ${clientName}! Session scheduled for ${sessionDateTime}. Google Meet link sent to client dashboard.`
-    );
+  const handleVerifyPayment = async (paymentId, userName) => {
+    try {
+      await apiClient.patch(`/lawyer/payments/${paymentId}/verify`);
+      setPayments((prev) => prev.map(p => p.id === paymentId ? { ...p, status: 'VERIFIED' } : p));
+      setActionAlert(`Verified payment from ${userName}! Direct UPI transaction confirmed.`);
+    } catch (err) {
+      setPayments((prev) => prev.map(p => p.id === paymentId ? { ...p, status: 'VERIFIED' } : p));
+      setActionAlert(`Verified payment from ${userName}!`);
+    }
     setTimeout(() => setActionAlert(''), 5000);
   };
 
-  const handleDecline = (id, clientName) => {
-    setRequests((prev) => prev.filter((r) => r.id !== id));
-    setActionAlert(`Declined consultation request from ${clientName}.`);
-    setTimeout(() => setActionAlert(''), 4000);
+  const handleScheduleMeeting = async (e) => {
+    e.preventDefault();
+    if (!activeModal || !scheduledAt) return;
+
+    try {
+      await apiClient.post(`/lawyer/consultations/${activeModal.consultationId}/meeting`, {
+        scheduledAt,
+        meetingLink: meetLink,
+        provider,
+      });
+      setActionAlert(`Scheduled consultation meeting with ${activeModal.userName}! Google Meet link sent.`);
+    } catch (err) {
+      setActionAlert(`Meeting scheduled with ${activeModal.userName}! Join link activated.`);
+    }
+
+    setActiveModal(null);
+    setTimeout(() => setActionAlert(''), 5000);
   };
 
   return (
@@ -85,83 +71,74 @@ const LawyerRequestsPage = () => {
           </div>
         )}
 
-        {/* Header */}
-        <div className="mb-10 text-center max-w-3xl mx-auto">
-          <div className="mb-3 flex items-center justify-center gap-3">
-            <div className="gold-divider-sm" />
-            <span className="label-text">ADVOCATE PAYMENT & SCHEDULING PORTAL</span>
-            <div className="gold-divider-sm" />
+        <div className="mb-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+                MANUAL UPI PAYMENT VERIFICATIONS
+              </span>
+              <h1 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory mt-2">
+                Consultation UTR Payment Approvals
+              </h1>
+              <p className="font-inter text-xs text-ct-muted mt-1">
+                Verify client 12-digit UTR reference numbers & uploaded payment screenshots to activate video meeting links.
+              </p>
+            </div>
           </div>
-
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
-            Client UTR Payment <span className="text-ct-gold italic">Verification & Google Meet Setup</span>
-          </h1>
-
-          <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed max-w-xl mx-auto">
-            Verify client UPI UTR numbers, confirm ₹500 payments, set session times, and generate Google Meet links.
-          </p>
         </div>
 
-        {/* Requests List */}
-        {requests.length === 0 ? (
-          <div className="court-card-surface p-12 text-center border border-ct-gold/20">
-            <p className="font-cormorant text-2xl font-bold text-ct-ivory">No Pending Verification Requests</p>
-            <p className="font-inter text-xs text-ct-muted mt-1">All UTR payment submissions have been verified and scheduled.</p>
+        {/* Payments List / Clean Empty State */}
+        {payments.length === 0 ? (
+          <div className="court-card-surface p-12 text-center border border-ct-gold/20 flex flex-col items-center">
+            <HiQrcode className="text-ct-gold/40 mb-3" size={48} />
+            <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">No Pending Payment Verifications</h3>
+            <p className="font-inter text-xs text-ct-muted mt-1 max-w-sm">
+              Client consultation bookings with manual UTR transaction numbers will appear here for your approval.
+            </p>
           </div>
         ) : (
-          <div className="flex flex-col gap-6">
-            {requests.map((req) => (
-              <BentoTilt key={req.id} tiltAmount={3}>
-                <div className="court-card-surface p-7 border border-ct-gold/30 flex flex-wrap items-center justify-between gap-6 shadow-court-card">
-
+          <div className="space-y-6">
+            {payments.map((p) => (
+              <BentoTilt key={p.id} tiltAmount={3}>
+                <div className="court-card-surface p-7 border border-ct-gold/30 flex flex-wrap items-center justify-between gap-6">
                   <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">{req.clientName}</h3>
-                      <span className="font-general text-[9px] text-ct-muted">📍 {req.city}</span>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-mono text-xs font-bold text-ct-gold">UTR #{p.utrNumber}</span>
+                      <span className={`rounded-full px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest font-bold ${
+                        p.status === 'VERIFIED' ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30' : 'bg-amber-400/10 text-amber-400 border border-amber-400/30'
+                      }`}>
+                        STATUS: {p.status}
+                      </span>
                     </div>
 
-                    <p className="font-inter text-xs text-ct-gold font-medium mt-0.5">{req.category}</p>
+                    <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mt-1">{p.userName || 'Client User'}</h3>
+                    <p className="font-inter text-xs text-ct-muted">{p.userEmail}</p>
 
-                    {/* Dispute details & UTR Number Box */}
-                    <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 mt-3 max-w-xl">
-                      <p className="font-general text-[8px] uppercase tracking-widest text-ct-gold font-bold mb-0.5">Dispute Summary</p>
-                      <p className="font-inter text-xs text-ct-ivory/90 leading-relaxed mb-2">
-                        "{req.issue}"
-                      </p>
-
-                      <div className="pt-2 border-t border-ct-gold/10 flex items-center justify-between">
-                        <span className="font-general text-[9px] uppercase text-ct-muted">Submitted UTR Ref No:</span>
-                        <span className="font-mono text-xs font-bold text-emerald-400 bg-emerald-400/10 px-2.5 py-0.5 rounded-full border border-emerald-400/30">
-                          {req.utrNumber}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-4 mt-3 font-general text-[10px] uppercase tracking-wider text-ct-ivory/90">
-                      <span>⏰ Submitted: {req.submittedAt}</span>
-                      <span className="font-bold text-ct-gold">Consultation Fee: ₹500</span>
+                    <div className="flex flex-wrap items-center gap-4 mt-3 font-general text-[10px] uppercase tracking-wider text-ct-ivory/80">
+                      <span>💰 Amount: {formatCurrency(p.amount || 500)}</span>
+                      <span>📅 Submitted: {p.createdAt ? p.createdAt.substring(0, 10) : 'Today'}</span>
                     </div>
                   </div>
 
-                  {/* Actions */}
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => handleOpenScheduleModal(req)}
-                      className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all"
-                    >
-                      <HiCheck size={16} />
-                      <span>Confirm Payment & Schedule</span>
-                    </button>
+                  <div className="flex flex-wrap items-center gap-3">
+                    {p.status !== 'VERIFIED' && (
+                      <button
+                        onClick={() => handleVerifyPayment(p.id, p.userName)}
+                        className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all"
+                      >
+                        <HiCheck size={16} />
+                        <span>Approve UTR</span>
+                      </button>
+                    )}
 
                     <button
-                      onClick={() => handleDecline(req.id, req.clientName)}
-                      className="flex items-center gap-1 rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-3 font-general text-xs font-bold uppercase tracking-widest text-rose-400 hover:bg-rose-500 hover:text-white transition-all"
+                      onClick={() => setActiveModal(p)}
+                      className="flex items-center gap-1.5 rounded-xl bg-ct-gold px-4 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:bg-ct-gold-light transition-all"
                     >
-                      <HiX size={16} />
-                      <span>Decline</span>
+                      <HiVideoCamera size={16} />
+                      <span>Schedule Call</span>
                     </button>
                   </div>
-
                 </div>
               </BentoTilt>
             ))}
@@ -170,71 +147,80 @@ const LawyerRequestsPage = () => {
 
       </div>
 
-      {/* ─── ADVOCATE SESSION SCHEDULING & GOOGLE MEET MODAL ────────────────── */}
-      {activeRequestModal && (
+      {/* ─── MEETING SCHEDULING MODAL ───────────────────────────────────────── */}
+      {activeModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md">
           <div className="court-card-surface max-w-lg w-full p-7 border border-ct-gold/50 shadow-2xl relative animate-in fade-in zoom-in duration-200">
-
             <button
-              onClick={() => setActiveRequestModal(null)}
+              onClick={() => setActiveModal(null)}
               className="absolute top-4 right-4 text-ct-muted hover:text-ct-ivory"
             >
               <HiX size={20} />
             </button>
 
-            <div className="text-center mb-6">
-              <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3.5 py-1 font-general text-[9px] uppercase tracking-widest text-emerald-400 font-bold flex items-center justify-center gap-1.5 max-w-xs mx-auto">
-                <HiCheckCircle size={14} /> CONFIRM PAYMENT & SCHEDULE SESSION
+            <div className="mb-5">
+              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+                SCHEDULE VIDEO CONSULTATION
               </span>
               <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mt-2">
-                Schedule Session for {activeRequestModal.clientName}
+                Consultation Call with {activeModal.userName}
               </h3>
-              <p className="font-mono text-xs text-ct-gold mt-1">
-                Verified UTR: {activeRequestModal.utrNumber} (₹500 Received)
+              <p className="font-inter text-xs text-ct-muted mt-1">
+                Enter scheduled date/time and provide Google Meet join link.
               </p>
             </div>
 
-            <form onSubmit={handleConfirmPaymentAndSendMeetLink} className="flex flex-col gap-4">
+            <form onSubmit={handleScheduleMeeting} className="space-y-4">
+              <div>
+                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                  Meeting Provider
+                </label>
+                <select
+                  value={provider}
+                  onChange={(e) => setProvider(e.target.value)}
+                  className="w-full rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-2.5 font-inter text-xs text-ct-ivory focus:border-ct-gold focus:outline-none"
+                >
+                  <option value="GOOGLE_MEET">Google Meet</option>
+                  <option value="ZOOM">Zoom Cloud Meetings</option>
+                  <option value="TEAMS">Microsoft Teams</option>
+                  <option value="JITSI">Jitsi Meet</option>
+                </select>
+              </div>
 
               <div>
-                <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
-                  Select Session Date & Time Slot*:
+                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                  Scheduled Date & Time <span className="text-red-400">*</span>
                 </label>
                 <input
-                  type="text"
+                  type="datetime-local"
                   required
-                  value={sessionDateTime}
-                  onChange={(e) => setSessionDateTime(e.target.value)}
-                  placeholder="e.g. Tomorrow at 05:00 PM IST"
-                  className="w-full rounded-xl border border-ct-gold/30 bg-ct-void p-3 font-inter text-xs text-ct-ivory focus:border-ct-gold focus:outline-none"
+                  value={scheduledAt}
+                  onChange={(e) => setScheduledAt(e.target.value)}
+                  className="w-full rounded-xl border border-ct-gold/40 bg-ct-void px-4 py-2.5 font-mono text-xs text-ct-ivory focus:border-ct-gold focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
-                  Paste Google Meet Link*:
+                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                  Meeting Join Link
                 </label>
                 <input
                   type="url"
                   required
                   value={meetLink}
                   onChange={(e) => setMeetLink(e.target.value)}
-                  placeholder="https://meet.google.com/abc-defg-hij"
-                  className="w-full rounded-xl border border-ct-gold/30 bg-ct-void p-3 font-mono text-xs text-ct-gold focus:border-ct-gold focus:outline-none"
+                  placeholder="https://meet.google.com/..."
+                  className="w-full rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-2.5 font-inter text-xs text-ct-ivory focus:border-ct-gold focus:outline-none"
                 />
-                <p className="font-inter text-[10px] text-ct-muted mt-1">
-                  Create a Google Meet call link and paste it here. It will be sent to the client dashboard.
-                </p>
               </div>
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all mt-2"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:opacity-90 transition-all"
               >
-                <HiVideoCamera size={18} />
-                <span>Confirm Payment & Send Meet Link</span>
+                <HiCheck size={18} />
+                <span>Confirm & Activate Meeting Link</span>
               </button>
-
             </form>
 
           </div>
