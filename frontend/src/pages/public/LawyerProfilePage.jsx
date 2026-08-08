@@ -3,7 +3,7 @@
  * Advocate Profile View & Direct UPI QR Code Payment with UTR Verification Workflow.
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@clerk/clerk-react';
 import { MOCK_LAWYERS } from '@/data/mockLawyers';
@@ -70,9 +70,31 @@ const LawyerProfilePage = () => {
   const [utrError, setUtrError]             = useState('');
   const [isSubmitting, setIsSubmitting]     = useState(false);
 
-  // Scalable Lawyer Specific UPI ID & QR Code Image Path (Database / Object Driven)
-  const upiId = lawyer.upiId || lawyer.name.toLowerCase().replace(/[^a-z]/g, '') + '@upi';
-  const qrImage = lawyer.qrCodeImage || lawyer.qr_image || '/img/qrcodes/priya_sharma_qr.png';
+  // Read custom advocate payment settings if saved by advocate in Advocate Panel
+  const savedPaymentSettings = (() => {
+    try {
+      const saved = localStorage.getItem('nyaysetu_advocate_payment_settings');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  })();
+
+  // Scalable Lawyer Specific UPI ID & QR Code Image Path (Custom Advocate QR or Default)
+  const upiId = savedPaymentSettings?.upiId || lawyer.upiId || lawyer.name.toLowerCase().replace(/[^a-z]/g, '') + '@upi';
+  const qrImage = savedPaymentSettings?.qrCodeImage || lawyer.qrCodeImage || lawyer.qr_image || '/img/qrcodes/priya_sharma_qr.png';
+
+  // Prevent background body scrolling while payment modal is open
+  useEffect(() => {
+    if (showQrModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showQrModal]);
 
   const handleCopyUpi = () => {
     navigator.clipboard.writeText(upiId);
@@ -316,62 +338,74 @@ const LawyerProfilePage = () => {
 
       {/* ─── DIRECT LAWYER SPECIFIC UPI QR PAYMENT MODAL ────────────────────── */}
       {showQrModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md">
-          <div className="court-card-surface max-w-md w-full p-7 border border-ct-gold/50 shadow-2xl relative animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-3 sm:p-4 backdrop-blur-md overflow-y-auto overscroll-contain"
+          data-lenis-prevent="true"
+          data-lenis-prevent-touch="true"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowQrModal(false);
+          }}
+        >
+          <div
+            className="court-card-surface max-w-md w-full p-5 sm:p-6 border border-ct-gold/50 shadow-2xl relative animate-in fade-in zoom-in duration-200 my-auto max-h-[85vh] sm:max-h-[90vh] overflow-y-auto overscroll-contain"
+            data-lenis-prevent="true"
+            data-lenis-prevent-touch="true"
+          >
 
             {/* Close Button */}
             <button
               onClick={() => setShowQrModal(false)}
-              className="absolute top-4 right-4 text-ct-muted hover:text-ct-ivory"
+              className="absolute top-4 right-4 text-ct-muted hover:text-ct-ivory p-1 rounded-full bg-ct-void/80 border border-ct-gold/20"
+              aria-label="Close modal"
             >
-              <HiX size={20} />
+              <HiX size={18} />
             </button>
 
-            <div className="text-center mb-5">
-              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+            <div className="text-center mb-3">
+              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-0.5 font-general text-[8px] uppercase tracking-widest text-ct-gold font-bold">
                 DIRECT LAWYER UPI PAYMENT
               </span>
-              <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mt-2">
+              <h3 className="font-cormorant text-xl sm:text-2xl font-bold text-ct-ivory mt-1">
                 Scan & Pay ₹{totalPayable} to {lawyer.name}
               </h3>
-              <p className="font-inter text-xs text-ct-muted mt-1">
+              <p className="font-inter text-[11px] text-ct-muted mt-0.5">
                 Scan using GPay, PhonePe, Paytm, or BHIM. Zero Platform Markup.
               </p>
             </div>
 
-            {/* Scalable Lawyer-Specific QR Code Display Box */}
-            <div className="rounded-2xl border-2 border-ct-gold/40 bg-white p-4 text-center mb-5 max-w-[240px] mx-auto shadow-gold-glow">
+            {/* Compact Lawyer QR Code Box */}
+            <div className="rounded-xl border-2 border-ct-gold/40 bg-white p-2.5 text-center mb-3 max-w-[170px] sm:max-w-[190px] mx-auto shadow-gold-glow">
               <img
                 src={qrImage}
                 alt={`${lawyer.name} UPI QR Code`}
-                className="w-full h-auto object-contain mx-auto rounded-lg"
+                className="w-full h-auto object-contain mx-auto rounded"
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.style.display = 'none';
                 }}
               />
-              <p className="font-mono text-xs text-navy-900 font-bold mt-2 select-all">
+              <p className="font-mono text-[11px] text-navy-900 font-bold mt-1 select-all truncate">
                 {upiId}
               </p>
             </div>
 
             {/* UPI ID Copy Action */}
-            <div className="flex items-center justify-between rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-2.5 mb-5">
+            <div className="flex items-center justify-between rounded-xl border border-ct-gold/30 bg-ct-void px-3.5 py-2 mb-3">
               <div>
-                <span className="font-general text-[8px] uppercase tracking-widest text-ct-muted block">Advocate Verified UPI ID</span>
+                <span className="font-general text-[7px] uppercase tracking-widest text-ct-muted block">Advocate Verified UPI ID</span>
                 <span className="font-mono text-xs font-bold text-ct-gold">{upiId}</span>
               </div>
               <button
                 onClick={handleCopyUpi}
-                className="flex items-center gap-1 font-general text-[10px] uppercase font-bold text-ct-ivory hover:text-ct-gold"
+                className="flex items-center gap-1 font-general text-[9px] uppercase font-bold text-ct-ivory hover:text-ct-gold border border-ct-gold/20 bg-ct-gold/10 px-2.5 py-1 rounded-lg"
               >
-                {copiedUpi ? <HiCheck className="text-emerald-400" size={16} /> : <HiClipboardCopy size={16} />}
+                {copiedUpi ? <HiCheck className="text-emerald-400" size={14} /> : <HiClipboardCopy size={14} />}
                 <span>{copiedUpi ? 'Copied' : 'Copy'}</span>
               </button>
             </div>
 
             {/* Payment Summary */}
-            <div className="rounded-xl border border-ct-gold/20 bg-ct-void/60 p-3 text-xs font-inter mb-5 space-y-1">
+            <div className="rounded-xl border border-ct-gold/20 bg-ct-void/60 p-2.5 text-xs font-inter mb-3 space-y-1">
               <div className="flex justify-between text-ct-muted">
                 <span>Duration</span>
                 <span>{selectedDuration} Mins</span>
@@ -383,9 +417,9 @@ const LawyerProfilePage = () => {
             </div>
 
             {/* UTR Form */}
-            <form onSubmit={handleConfirmUtrPayment} className="space-y-4">
+            <form onSubmit={handleConfirmUtrPayment} className="space-y-3">
               <div>
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                   12-Digit UPI UTR / Ref Number <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -394,7 +428,7 @@ const LawyerProfilePage = () => {
                   value={utrNumber}
                   onChange={(e) => setUtrNumber(e.target.value)}
                   placeholder="e.g. 403819204812"
-                  className="w-full rounded-xl border border-ct-gold/40 bg-ct-void px-4 py-2.5 font-mono text-sm text-ct-ivory focus:border-ct-gold focus:outline-none"
+                  className="w-full rounded-xl border border-ct-gold/40 bg-ct-void px-3.5 py-2 font-mono text-xs text-ct-ivory focus:border-ct-gold focus:outline-none"
                 />
               </div>
 
@@ -409,7 +443,7 @@ const LawyerProfilePage = () => {
                 disabled={isSubmitting}
                 className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 py-3 font-general text-xs font-bold uppercase tracking-widest text-white hover:opacity-90 transition-all shadow-lg"
               >
-                <HiCheck size={18} />
+                <HiCheck size={16} />
                 <span>{isSubmitting ? 'Submitting...' : 'Submit Payment for Verification'}</span>
               </button>
             </form>

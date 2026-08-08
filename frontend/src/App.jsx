@@ -8,6 +8,7 @@ import { useAuth, useUser } from '@clerk/clerk-react';
 import { ROUTES } from '@/constants/routes';
 import PageWrapper from '@/components/layout/PageWrapper';
 import apiClient, { setTokenProvider } from '@/services/api';
+import { syncRealUserToRegistry } from '@/utils/userRegistry';
 
 // Loading fallback
 const PageLoader = () => (
@@ -40,12 +41,28 @@ const RequireAuth = ({ children, requiredRole }) => {
 
     if (isLoaded && isSignedIn) {
       setTokenProvider(getToken);
+
+      // Strict role detection: ONLY priyamsingh504 is ADMIN, shruti & prince are LAWYER
+      const isAdminByEmail = userEmail && userEmail.toLowerCase().includes('priyamsingh504');
+      const isLawyerByEmail = userEmail && (
+        userEmail.toLowerCase().includes('shruti') ||
+        userEmail.toLowerCase().includes('prince') ||
+        userEmail.toLowerCase().includes('singhshruti11122002')
+      );
+
+      let defaultRole = 'USER';
+      if (isAdminByEmail) defaultRole = 'ADMIN';
+      else if (isLawyerByEmail) defaultRole = 'LAWYER';
+
       apiClient.get('/me', { params: { email: userEmail, name: userName } })
         .then((res) => {
-          if (isSubscribed) setAppUserRole(res?.role || 'USER');
+          const finalRole = res?.role || defaultRole;
+          if (isSubscribed) setAppUserRole(finalRole);
+          syncRealUserToRegistry(clerkUser, finalRole);
         })
         .catch(() => {
-          if (isSubscribed) setAppUserRole('USER');
+          if (isSubscribed) setAppUserRole(defaultRole);
+          syncRealUserToRegistry(clerkUser, defaultRole);
         })
         .finally(() => {
           if (isSubscribed) setCheckingRole(false);
@@ -62,8 +79,19 @@ const RequireAuth = ({ children, requiredRole }) => {
     return <Navigate to={ROUTES.SIGN_IN} state={{ returnTo: location.pathname + location.search }} replace />;
   }
 
+  // Smart routing when accessing general /dashboard
+  if (location.pathname === ROUTES.DASHBOARD) {
+    if (appUserRole === 'ADMIN') {
+      return <Navigate to={ROUTES.ADMIN_DASHBOARD} replace />;
+    }
+    if (appUserRole === 'LAWYER') {
+      return <Navigate to={ROUTES.LAWYER_DASHBOARD} replace />;
+    }
+  }
+
   if (requiredRole && appUserRole !== requiredRole && appUserRole !== 'ADMIN') {
     if (appUserRole === 'LAWYER') return <Navigate to={ROUTES.LAWYER_DASHBOARD} replace />;
+    if (appUserRole === 'ADMIN') return <Navigate to={ROUTES.ADMIN_DASHBOARD} replace />;
     return <Navigate to={ROUTES.DASHBOARD} replace />;
   }
 

@@ -125,6 +125,13 @@ const LawyerDashboardPage = () => {
 
             <div className="flex items-center gap-3">
               <Link
+                to={ROUTES.LAWYER_PROFILE_EDIT}
+                className="rounded-xl border border-ct-gold/40 bg-ct-gold/10 px-5 py-2.5 font-general text-xs uppercase tracking-widest text-ct-gold font-bold transition-all hover:bg-ct-gold hover:text-ct-void"
+              >
+                ⚙️ Edit Profile & Payment QR
+              </Link>
+
+              <Link
                 to={ROUTES.LAWYER_REQUESTS}
                 className="rounded-xl bg-ct-gold px-5 py-2.5 font-general text-xs uppercase tracking-widest text-ct-void font-bold transition-all shadow-gold-glow"
               >

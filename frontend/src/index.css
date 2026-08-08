@@ -273,10 +273,46 @@
   color: #f0e9d8 !important;
 }
 
-.cl-formFieldInput {
+.cl-formFieldInput,
+.cl-otpCodeFieldInput,
+.cl-otpCodeFieldInputs,
+.cl-otpInputBox,
+.cl-otpInput,
+.cl-otpCodeFieldInputBox,
+.cl-formFieldInput__code,
+input[autocomplete="one-time-code"],
+input[name^="code"],
+.cl-otpCodeFieldInput input,
+div[data-otp-input="true"] input {
   background-color: #08090c !important;
   color: #ffffff !important;
-  border: 1px solid rgba(200, 155, 82, 0.35) !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid rgba(200, 155, 82, 0.45) !important;
+  font-weight: 700 !important;
+  caret-color: #C89B52 !important;
+}
+
+.cl-otpCodeFieldInput:focus,
+.cl-otpCodeFieldInput:focus-within,
+.cl-otpInputBox:focus,
+.cl-otpInput:focus,
+.cl-otpCodeFieldInputBox[data-active="true"] {
+  border-color: #C89B52 !important;
+  box-shadow: 0 0 12px rgba(200, 155, 82, 0.4) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.cl-identityPreview,
+.cl-identityPreviewText,
+.cl-identityPreviewEditButton,
+.cl-resendCodeLink,
+.cl-formResendCodeLink {
+  color: #f0e9d8 !important;
+}
+
+.cl-identityPreviewAvatarBox {
+  border: 1px solid rgba(200, 155, 82, 0.5) !important;
 }
 
 .cl-footerActionLink {

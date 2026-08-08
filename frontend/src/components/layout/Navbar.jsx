@@ -111,14 +111,38 @@ const NavBar = () => {
           {/* Signed In — DASHBOARD Shortcut & User Avatar */}
           {isLoaded && isSignedIn && (
             <div className="flex items-center gap-4">
-              <Link
-                to={ROUTES.DASHBOARD}
-                className="hidden sm:flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-gold/10 px-3.5 py-1.5 font-general text-xs uppercase tracking-widest text-ct-gold font-bold hover:bg-ct-gold hover:text-ct-void transition-all shadow-sm"
-                title="Go to Dashboard"
-              >
-                <HiScale size={16} />
-                <span>Dashboard</span>
-              </Link>
+              {user?.primaryEmailAddress?.emailAddress?.toLowerCase().includes('priyamsingh504') ? (
+                <Link
+                  to={ROUTES.ADMIN_DASHBOARD}
+                  className="hidden sm:flex items-center gap-1.5 rounded-xl border border-red-500/40 bg-red-500/10 px-3.5 py-1.5 font-general text-xs uppercase tracking-widest text-red-400 font-bold hover:bg-red-500 hover:text-white transition-all shadow-sm"
+                  title="Go to Admin Panel"
+                >
+                  <HiScale size={16} />
+                  <span>Admin Panel</span>
+                </Link>
+              ) : (
+                user?.primaryEmailAddress?.emailAddress?.toLowerCase().includes('shruti') ||
+                user?.primaryEmailAddress?.emailAddress?.toLowerCase().includes('prince') ||
+                user?.primaryEmailAddress?.emailAddress?.toLowerCase().includes('singhshruti11122002')
+              ) ? (
+                <Link
+                  to={ROUTES.LAWYER_DASHBOARD}
+                  className="hidden sm:flex items-center gap-1.5 rounded-xl border border-ct-gold/40 bg-ct-gold/10 px-3.5 py-1.5 font-general text-xs uppercase tracking-widest text-ct-gold font-bold hover:bg-ct-gold hover:text-ct-void transition-all shadow-sm"
+                  title="Go to Advocate Portal"
+                >
+                  <HiScale size={16} />
+                  <span>Advocate Portal</span>
+                </Link>
+              ) : (
+                <Link
+                  to={ROUTES.DASHBOARD}
+                  className="hidden sm:flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-gold/10 px-3.5 py-1.5 font-general text-xs uppercase tracking-widest text-ct-gold font-bold hover:bg-ct-gold hover:text-ct-void transition-all shadow-sm"
+                  title="Go to Dashboard"
+                >
+                  <HiScale size={16} />
+                  <span>Dashboard</span>
+                </Link>
+              )}
 
               {/* Clerk Avatar Dropdown */}
               <UserButton

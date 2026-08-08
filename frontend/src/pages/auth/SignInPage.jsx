@@ -3,12 +3,29 @@
  * Clerk SignIn component wrapped in the NyayaSetu dark courtroom + gold theme.
  * After sign-in, redirects to the `returnTo` location saved before auth, or /dashboard.
  */
-import { SignIn } from '@clerk/clerk-react';
-import { useLocation } from 'react-router-dom';
+import { SignIn, useUser } from '@clerk/clerk-react';
+import { useLocation, Navigate } from 'react-router-dom';
+import { ROUTES } from '@/constants/routes';
 
 const SignInPage = () => {
   const location = useLocation();
-  const returnTo = location.state?.returnTo || '/dashboard';
+  const { isSignedIn, isLoaded, user } = useUser();
+
+  const userEmail = user?.primaryEmailAddress?.emailAddress;
+  const isAdmin = userEmail && userEmail.toLowerCase().includes('priyamsingh504');
+  const isLawyer = userEmail && (
+    userEmail.toLowerCase().includes('shruti') ||
+    userEmail.toLowerCase().includes('prince') ||
+    userEmail.toLowerCase().includes('singhshruti11122002')
+  );
+
+  if (isLoaded && isSignedIn) {
+    if (isAdmin) return <Navigate to={ROUTES.ADMIN_DASHBOARD} replace />;
+    if (isLawyer) return <Navigate to={ROUTES.LAWYER_DASHBOARD} replace />;
+    return <Navigate to={ROUTES.DASHBOARD} replace />;
+  }
+
+  const returnTo = location.state?.returnTo || (isAdmin ? ROUTES.ADMIN_DASHBOARD : isLawyer ? ROUTES.LAWYER_DASHBOARD : ROUTES.DASHBOARD);
 
   return (
     <div className="min-h-screen bg-ct-void flex items-center justify-center px-4 pt-28 pb-16">
@@ -29,8 +46,7 @@ const SignInPage = () => {
 
         <SignIn
           routing="hash"
-          redirectUrl={returnTo}
-          afterSignInUrl={returnTo}
+          fallbackRedirectUrl={returnTo}
           signUpUrl="/sign-up"
         />
       </div>

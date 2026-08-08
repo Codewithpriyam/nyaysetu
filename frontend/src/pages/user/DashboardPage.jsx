@@ -39,6 +39,21 @@ const DashboardPage = () => {
     const email = clerkUser?.primaryEmailAddress?.emailAddress;
     const name = clerkUser?.fullName;
 
+    // Client-side fallback checks for admin and lawyer emails
+    if (email && email.toLowerCase().includes('priyamsingh504')) {
+      navigate(ROUTES.ADMIN_DASHBOARD, { replace: true });
+      return;
+    }
+
+    if (email && (
+      email.toLowerCase().includes('shruti') ||
+      email.toLowerCase().includes('prince') ||
+      email.toLowerCase().includes('singhshruti11122002')
+    )) {
+      navigate(ROUTES.LAWYER_DASHBOARD, { replace: true });
+      return;
+    }
+
     // Check user role to ensure non-USER roles navigate to their designated portal
     apiClient.get('/me', { params: { email, name } })
       .then((res) => {

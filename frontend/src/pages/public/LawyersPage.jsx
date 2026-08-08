@@ -323,30 +323,21 @@ const LawyersPage = () => {
                       </div>
                     </div>
 
-                    {/* Card Footer with Rate & Direct Phone Numpad Dialer CTA */}
-                    <div className="pt-3 border-t border-ct-gold/15 flex flex-col gap-3">
-                      <div className="flex items-center justify-between">
-                        <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">
-                          PER-MINUTE RATE
-                        </span>
-                        <span className="font-zentry text-lg font-bold text-ct-gold">₹25/min</span>
-                      </div>
+                    {/* Card Footer with Direct Phone Numpad Dialer CTA */}
+                    <div className="pt-3 border-t border-ct-gold/15 flex items-center justify-between gap-2">
+                      <span className="font-mono text-xs font-bold text-ct-ivory flex items-center gap-1">
+                        <HiPhone size={14} className="text-ct-gold" />
+                        {rawPhone}
+                      </span>
 
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="font-mono text-xs font-bold text-ct-ivory flex items-center gap-1">
-                          <HiPhone size={14} className="text-ct-gold" />
-                          {rawPhone}
-                        </span>
-
-                        <a
-                          href={`tel:${dialableNumber}`}
-                          className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-4 py-2 font-general text-[10px] font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:scale-105 transition-all shrink-0"
-                          title={`Call ${adv.name} directly on mobile`}
-                        >
-                          <HiPhone size={14} />
-                          <span>Call Now</span>
-                        </a>
-                      </div>
+                      <a
+                        href={`tel:${dialableNumber}`}
+                        className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-4 py-2 font-general text-[10px] font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:scale-105 transition-all shrink-0"
+                        title={`Call ${adv.name} directly on mobile`}
+                      >
+                        <HiPhone size={14} />
+                        <span>Call Now</span>
+                      </a>
                     </div>
 
                   </div>
