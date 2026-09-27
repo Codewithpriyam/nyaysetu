@@ -19,7 +19,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAuth, useUser, UserButton } from '@clerk/clerk-react';
 import { HiOutlineUser, HiMenu, HiX, HiScale } from 'react-icons/hi';
 import clsx from 'clsx';
-import { gsap } from '@/animations/gsap-config';
+import { gsap, ScrollTrigger } from '@/animations/gsap-config';
 import { useReducedMotion } from '@/animations/useReducedMotion';
 import { ROUTES } from '@/constants/routes';
 
@@ -50,15 +50,68 @@ const NavBar = () => {
     setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
   }, []);
 
-  // Scroll Detection with GSAP
+  // ─── GSAP Scroll-Linked Ambient Shadow Transition ───────────────────────────
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
+    if (!navRef.current) return;
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (prefersReduced) {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 40);
+      };
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+
+    const navEl = navRef.current;
+
+    // Pure neutral, dense dark layered black shadows (zero gold/amber/colored glow)
+    // Focuses darkness & density immediately around the bottom edge of the navbar for strong text separation
+    const shadowTop =
+      '0 4px 12px rgba(0, 0, 0, 0.45), 0 10px 24px rgba(0, 0, 0, 0.40), 0 20px 45px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06)';
+    const shadowMid =
+      '0 4px 12px rgba(0, 0, 0, 0.50), 0 10px 26px rgba(0, 0, 0, 0.50), 0 20px 50px rgba(0, 0, 0, 0.35), 0 32px 75px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.06)';
+    const shadowScrolled =
+      '0 4px 12px rgba(0, 0, 0, 0.55), 0 10px 28px rgba(0, 0, 0, 0.58), 0 22px 55px rgba(0, 0, 0, 0.42), 0 35px 80px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06)';
+
+    let currentStage = 'top';
+
+    // Set initial subtle top shadow
+    gsap.set(navEl, { boxShadow: shadowTop });
+
+    const trigger = ScrollTrigger.create({
+      start: 'top top',
+      end: 'max',
+      onUpdate: () => {
+        const y = window.scrollY || document.documentElement.scrollTop;
+
+        let nextStage = 'top';
+        if (y >= 90) {
+          nextStage = 'deep';
+        } else if (y >= 35) {
+          nextStage = 'mid';
+        }
+
+        if (nextStage !== currentStage) {
+          currentStage = nextStage;
+          setIsScrolled(nextStage !== 'top');
+
+          const targetShadow =
+            nextStage === 'deep' ? shadowScrolled : nextStage === 'mid' ? shadowMid : shadowTop;
+
+          gsap.to(navEl, {
+            boxShadow: targetShadow,
+            duration: 0.5,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        }
+      },
+    });
+
+    return () => {
+      trigger.kill();
+    };
+  }, [prefersReduced]);
 
   // GSAP Navbar Entrance Animation
   useEffect(() => {
@@ -140,7 +193,7 @@ const NavBar = () => {
           ref={glowRef}
           className="absolute inset-0 rounded-2xl pointer-events-none z-0"
           style={{
-            background: 'radial-gradient(300px circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(200, 155, 82, 0.06) 0%, transparent 60%)',
+            background: 'radial-gradient(300px circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(255, 255, 255, 0.04) 0%, transparent 60%)',
             opacity: 0,
             '--glow-x': '50%',
             '--glow-y': '50%',

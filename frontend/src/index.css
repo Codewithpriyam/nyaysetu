@@ -361,6 +361,31 @@ div[data-otp-input="true"] input {
   --lg-shadow-btn-pressed:  inset 0 2px 4px rgba(0, 0, 0, 0.45),
                             0 2px 8px rgba(0, 0, 0, 0.30);
 
+  /* ── Floating Liquid Glass Navbar Shadows (Dense Neutral Black Separation) ── */
+  --lg-nav-border:          rgba(255, 255, 255, 0.10);
+  --lg-nav-border-scrolled: rgba(255, 255, 255, 0.14);
+  --lg-nav-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  /* Top state shadow: dense near-edge shadow to obscure underlying text */
+  --lg-nav-shadow-top:      0 4px 12px rgba(0, 0, 0, 0.45),
+                            0 10px 24px rgba(0, 0, 0, 0.40),
+                            0 20px 45px rgba(0, 0, 0, 0.25),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  /* Mid scroll (30-60px) shadow: increasing density directly below navbar */
+  --lg-nav-shadow-mid:      0 4px 12px rgba(0, 0, 0, 0.50),
+                            0 10px 26px rgba(0, 0, 0, 0.52),
+                            0 20px 50px rgba(0, 0, 0, 0.38),
+                            0 32px 75px rgba(0, 0, 0, 0.22),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  /* Scrolled state shadow (100px+): dark, dense separation zone + soft cinematic diffusion */
+  --lg-nav-shadow-scrolled: 0 4px 12px rgba(0, 0, 0, 0.55),
+                            0 10px 28px rgba(0, 0, 0, 0.60),
+                            0 22px 55px rgba(0, 0, 0, 0.45),
+                            0 35px 80px rgba(0, 0, 0, 0.28),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
   /* Button Mode: Primary (NyayaSetu Gold Glass) */
   --lg-btn-gold-bg:         linear-gradient(145deg, rgba(200, 155, 82, 0.24) 0%, rgba(200, 155, 82, 0.10) 100%);
   --lg-btn-gold-bg-hover:   linear-gradient(145deg, rgba(200, 155, 82, 0.34) 0%, rgba(200, 155, 82, 0.18) 100%);
@@ -403,11 +428,11 @@ div[data-otp-input="true"] input {
   background: var(--lg-bg);
   backdrop-filter: blur(var(--lg-blur)) saturate(var(--lg-saturation));
   -webkit-backdrop-filter: blur(var(--lg-blur)) saturate(var(--lg-saturation));
-  border: 1px solid var(--lg-border);
-  box-shadow: var(--lg-edge-rim), var(--lg-shadow);
+  border: 1px solid var(--lg-nav-border);
+  box-shadow: var(--lg-nav-shadow-top);
   transition: background 0.4s cubic-bezier(0.25, 1, 0.5, 1),
               border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.45s cubic-bezier(0.25, 1, 0.5, 1),
               backdrop-filter 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -421,13 +446,13 @@ div[data-otp-input="true"] input {
   z-index: 1;
 }
 
-/* Scrolled state: increased opacity & deeper blur for readability */
+/* Scrolled state: increased opacity & deep diffused cinematic black shadow */
 .glass-nav--scrolled {
   background: var(--lg-bg-scrolled);
   backdrop-filter: blur(var(--lg-blur-scrolled)) saturate(1.6);
   -webkit-backdrop-filter: blur(var(--lg-blur-scrolled)) saturate(1.6);
-  border-color: var(--lg-border-scrolled);
-  box-shadow: var(--lg-edge-rim), var(--lg-shadow-scrolled);
+  border-color: var(--lg-nav-border-scrolled);
+  box-shadow: var(--lg-nav-shadow-scrolled);
 }
 
 /* Active Nav Pill: smooth glass pill behind current page link */
@@ -582,8 +607,8 @@ div[data-otp-input="true"] input {
   background: rgba(10, 13, 20, 0.88);
   backdrop-filter: blur(28px) saturate(1.6);
   -webkit-backdrop-filter: blur(28px) saturate(1.6);
-  border: 1px solid var(--lg-border);
-  box-shadow: var(--lg-edge-rim), var(--lg-shadow-scrolled);
+  border: 1px solid var(--lg-nav-border);
+  box-shadow: var(--lg-nav-shadow-scrolled);
 }
 
 .glass-sheet::before {
