@@ -75,41 +75,45 @@ const NavBar = () => {
 
     let currentStage = 'top';
 
-    // Set initial subtle top shadow
-    gsap.set(navEl, { boxShadow: shadowTop });
+    const evaluateScroll = (immediate = false) => {
+      const y = window.scrollY || document.documentElement.scrollTop;
 
-    const trigger = ScrollTrigger.create({
-      start: 'top top',
-      end: 'max',
-      onUpdate: () => {
-        const y = window.scrollY || document.documentElement.scrollTop;
+      let nextStage = 'top';
+      if (y >= 90) {
+        nextStage = 'deep';
+      } else if (y >= 35) {
+        nextStage = 'mid';
+      }
 
-        let nextStage = 'top';
-        if (y >= 90) {
-          nextStage = 'deep';
-        } else if (y >= 35) {
-          nextStage = 'mid';
-        }
+      if (nextStage !== currentStage || immediate) {
+        currentStage = nextStage;
+        setIsScrolled(nextStage !== 'top');
 
-        if (nextStage !== currentStage) {
-          currentStage = nextStage;
-          setIsScrolled(nextStage !== 'top');
+        const targetShadow =
+          nextStage === 'deep' ? shadowScrolled : nextStage === 'mid' ? shadowMid : shadowTop;
 
-          const targetShadow =
-            nextStage === 'deep' ? shadowScrolled : nextStage === 'mid' ? shadowMid : shadowTop;
-
+        if (immediate) {
+          gsap.set(navEl, { boxShadow: targetShadow });
+        } else {
           gsap.to(navEl, {
             boxShadow: targetShadow,
-            duration: 0.5,
+            duration: 0.4,
             ease: 'power2.out',
             overwrite: 'auto',
           });
         }
-      },
-    });
+      }
+    };
+
+    // Synchronously set initial state matching scroll position
+    evaluateScroll(true);
+
+    window.addEventListener('scroll', evaluateScroll, { passive: true });
+    ScrollTrigger.addEventListener('refresh', evaluateScroll);
 
     return () => {
-      trigger.kill();
+      window.removeEventListener('scroll', evaluateScroll);
+      ScrollTrigger.removeEventListener('refresh', evaluateScroll);
     };
   }, [prefersReduced]);
 
