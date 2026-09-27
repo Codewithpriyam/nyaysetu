@@ -6,31 +6,23 @@ import clsx from 'clsx';
 /** clsx wrapper — use this everywhere instead of importing clsx directly */
 export const cn = (...args) => clsx(...args);
 
-/**
- * Format Indian Rupee currency
- * formatCurrency(500) → "₹500"
- * formatCurrency(1250.5) → "₹1,250.50"
- */
-export function formatCurrency(amount, { decimals = 0 } = {}) {
-  return new Intl.NumberFormat('en-IN', {
-    style:    'currency',
-    currency: 'INR',
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
-  }).format(amount);
-}
+export * from './pricing';
 
 /**
  * Format a date for display
  * formatDate(new Date()) → "7 Aug 2026"
  */
 export function formatDate(date, options = {}) {
-  return new Intl.DateTimeFormat('en-IN', {
-    day:   'numeric',
-    month: 'short',
-    year:  'numeric',
-    ...options,
-  }).format(new Date(date));
+  try {
+    return new Intl.DateTimeFormat('en-IN', {
+      day:   'numeric',
+      month: 'short',
+      year:  'numeric',
+      ...options,
+    }).format(new Date(date));
+  } catch {
+    return '';
+  }
 }
 
 /**
@@ -38,20 +30,17 @@ export function formatDate(date, options = {}) {
  * formatTime(new Date()) → "8:30 PM"
  */
 export function formatTime(date) {
-  return new Intl.DateTimeFormat('en-IN', {
-    hour:   'numeric',
-    minute: '2-digit',
-    hour12: true,
-  }).format(new Date(date));
+  try {
+    return new Intl.DateTimeFormat('en-IN', {
+      hour:   'numeric',
+      minute: '2-digit',
+      hour12: true,
+    }).format(new Date(date));
+  } catch {
+    return '';
+  }
 }
 
-/**
- * Calculate consultation cost
- * consultationCost(25, 20) → 500
- */
-export function consultationCost(ratePerMinute, durationMinutes) {
-  return ratePerMinute * durationMinutes;
-}
 
 /**
  * Truncate text to a given length with ellipsis

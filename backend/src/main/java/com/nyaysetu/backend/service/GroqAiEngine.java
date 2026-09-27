@@ -18,7 +18,12 @@ public class GroqAiEngine {
     private String groqApiKey;
 
     private static final String GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
-    private static final String MODEL_NAME = "llama-3.3-70b-versatile";
+    private static final List<String> CANDIDATE_MODELS = List.of(
+        "openai/gpt-oss-120b",
+        "qwen/qwen3.8-27b",
+        "llama-3.3-70b-versatile",
+        "llama3-70b-8192"
+    );
 
     public static final String MANDATORY_DISCLAIMER =
         "\n\n⚖️ *Disclaimer: This AI provides informational guidance based on Indian statutory law and is not a substitute for professional legal advice from a licensed advocate.*";
@@ -36,7 +41,6 @@ public class GroqAiEngine {
 
     /**
      * Core LLM completion method connecting strictly to Groq API.
-     * Throws RuntimeException on failure (No fallback text permitted).
      */
     public String generateCompletion(String systemPrompt, String userPrompt) {
         String cleanUserPrompt = sanitizePrompt(userPrompt);
@@ -48,53 +52,56 @@ public class GroqAiEngine {
             throw new IllegalStateException("Groq API Key is missing or not configured on the backend server.");
         }
 
-        log.info("[AI ENGINE] Request sent to Groq API (Model: {}, Endpoint: {})", MODEL_NAME, GROQ_API_URL);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(groqApiKey.trim());
 
-        try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.setBearerAuth(groqApiKey.trim());
+        Map<String, Object> systemMessage = Map.of("role", "system", "content", systemPrompt);
+        Map<String, Object> userMessage = Map.of("role", "user", "content", cleanUserPrompt);
 
-            Map<String, Object> systemMessage = Map.of("role", "system", "content", systemPrompt);
-            Map<String, Object> userMessage = Map.of("role", "user", "content", cleanUserPrompt);
+        Exception lastException = null;
 
-            Map<String, Object> requestBody = Map.of(
-                "model", MODEL_NAME,
-                "messages", List.of(systemMessage, userMessage),
-                "temperature", 0.3,
-                "max_tokens", 1500
-            );
+        for (String modelName : CANDIDATE_MODELS) {
+            try {
+                log.info("[AI ENGINE] Request sent to Groq API (Model: {}, Endpoint: {})", modelName, GROQ_API_URL);
 
-            HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
-            @SuppressWarnings("rawtypes")
-            ResponseEntity<Map> response = restTemplate.postForEntity(GROQ_API_URL, entity, Map.class);
+                Map<String, Object> requestBody = Map.of(
+                    "model", modelName,
+                    "messages", List.of(systemMessage, userMessage),
+                    "temperature", 0.3,
+                    "max_tokens", 1500
+                );
 
-            @SuppressWarnings("rawtypes")
-            Map responseBody = response.getBody();
-            if (response.getStatusCode().is2xxSuccessful() && responseBody != null) {
-                List<?> choices = (List<?>) responseBody.get("choices");
-                if (choices != null && !choices.isEmpty()) {
-                    Object firstChoiceObj = choices.get(0);
-                    if (firstChoiceObj instanceof Map<?, ?> firstChoice) {
-                        Object msgObj = firstChoice.get("message");
-                        if (msgObj instanceof Map<?, ?> message) {
-                            Object contentObj = message.get("content");
-                            if (contentObj != null) {
-                                String text = contentObj.toString() + MANDATORY_DISCLAIMER;
-                                log.info("[AI ENGINE] Groq response received successfully (Length: {} chars)", text.length());
-                                log.info("[AI ENGINE] Response returned to frontend.");
-                                return text;
+                HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
+                @SuppressWarnings("rawtypes")
+                ResponseEntity<Map> response = restTemplate.postForEntity(GROQ_API_URL, entity, Map.class);
+
+                @SuppressWarnings("rawtypes")
+                Map responseBody = response.getBody();
+                if (response.getStatusCode().is2xxSuccessful() && responseBody != null) {
+                    List<?> choices = (List<?>) responseBody.get("choices");
+                    if (choices != null && !choices.isEmpty()) {
+                        Object firstChoiceObj = choices.get(0);
+                        if (firstChoiceObj instanceof Map<?, ?> firstChoice) {
+                            Object msgObj = firstChoice.get("message");
+                            if (msgObj instanceof Map<?, ?> message) {
+                                Object contentObj = message.get("content");
+                                if (contentObj != null) {
+                                    String text = contentObj.toString() + MANDATORY_DISCLAIMER;
+                                    log.info("[AI ENGINE] Groq response received successfully via model {} (Length: {} chars)", modelName, text.length());
+                                    return text;
+                                }
                             }
                         }
                     }
                 }
+            } catch (Exception e) {
+                log.warn("[AI ENGINE] Failed with model {}: {}", modelName, e.getMessage());
+                lastException = e;
             }
-
-            log.error("[AI ENGINE] Groq API returned invalid response format");
-            throw new RuntimeException("Groq API response did not contain expected completion text");
-        } catch (Exception e) {
-            log.error("[AI ENGINE] Exception calling Groq API: {}", e.getMessage(), e);
-            throw new RuntimeException("Groq API Execution Failed: " + e.getMessage(), e);
         }
+
+        log.error("[AI ENGINE] All Groq candidate models failed.");
+        throw new RuntimeException("Groq API Execution Failed across all models: " + (lastException != null ? lastException.getMessage() : "Unknown error"), lastException);
     }
 }

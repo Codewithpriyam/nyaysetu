@@ -1,9 +1,14 @@
 /**
- * NyayaSetu — Button Component
- * Preserved skew-text hover animation from reference repo.
- * Updated:
- *  - Luminous bright gold background with crisp white text (per user request).
- *  - High visibility contrast across all dark courtroom surfaces.
+ * NyayaSetu — Button Component (Apple Liquid Glass)
+ *
+ * Premium capsule-shaped glass buttons with:
+ *  - Translucent glass material + backdrop blur
+ *  - Soft inner highlight + specular reflection
+ *  - Light sweep animation on hover
+ *  - Subtle scale ~1.02 on hover, ~0.97 on press
+ *  - Preserved text skew animation from original
+ *  - Multiple variants: gold (primary), outline, ghost, crimson
+ *  - All rendered as glass-button
  */
 
 import { Link } from 'react-router-dom';
@@ -30,20 +35,20 @@ const Button = ({
   'aria-label': ariaLabel,
 }) => {
   const baseClass = clsx(
-    'group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full',
-    'transition-all duration-300 select-none flex items-center justify-center',
+    'glass-button group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full',
+    'select-none',
     {
-      // Gold (primary CTA with bright gold background & crisp white text)
-      'bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] text-white font-bold shadow-gold-glow border border-ct-gold/60 hover:shadow-lg hover:scale-105':
+      // Gold (primary CTA — glass-button-primary)
+      'glass-button-primary px-6 py-2.5':
         variant === 'gold',
-      // Outline gold with white text on hover
-      'border-2 border-ct-gold text-ct-gold font-bold px-7 py-3 hover:bg-ct-gold hover:text-white shadow-gold-glow':
+      // Outline — glass with stronger border
+      'glass-button-secondary px-7 py-3 border-ct-gold/30 hover:border-ct-gold/50':
         variant === 'outline',
-      // Ghost
-      'text-ct-ivory px-7 py-3 hover:text-ct-gold':
+      // Ghost — minimal glass
+      'bg-transparent border-transparent backdrop-blur-none px-7 py-3 text-ct-ivory hover:text-ct-gold hover:bg-ct-gold/5':
         variant === 'ghost',
       // Crimson (danger/urgent)
-      'bg-crimson-600 text-white font-bold px-7 py-3 hover:bg-crimson-500 shadow-md':
+      'px-7 py-3 font-bold':
         variant === 'crimson',
       // Disabled state
       'opacity-50 cursor-not-allowed pointer-events-none': disabled,
@@ -51,28 +56,34 @@ const Button = ({
     containerClass
   );
 
+  // Crimson needs custom inline styles since it's a special variant
+  const crimsonStyle = variant === 'crimson' ? {
+    background: 'rgba(220, 38, 38, 0.15)',
+    borderColor: 'rgba(220, 38, 38, 0.30)',
+  } : undefined;
+
   const content = (
     <>
-      {leftIcon && <span className="mr-1.5 flex items-center text-white">{leftIcon}</span>}
+      {leftIcon && <span className="mr-1.5 flex items-center text-current">{leftIcon}</span>}
 
-      <span className="relative inline-flex overflow-hidden font-general text-xs font-bold uppercase tracking-widest text-white">
+      <span className="relative inline-flex overflow-hidden font-general text-xs font-bold uppercase tracking-widest text-current">
         {/* Text slides out on hover */}
-        <span className="translate-y-0 skew-y-0 transition duration-500 group-hover:translate-y-[-160%] group-hover:skew-y-12 text-white">
+        <span className="translate-y-0 skew-y-0 transition duration-500 group-hover:translate-y-[-160%] group-hover:skew-y-12">
           {title}
         </span>
         {/* Clone slides in from below */}
-        <span className="absolute translate-y-[164%] skew-y-12 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0 text-white">
+        <span className="absolute translate-y-[164%] skew-y-12 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0">
           {title}
         </span>
       </span>
 
-      {rightIcon && <span className="ml-1.5 flex items-center text-white">{rightIcon}</span>}
+      {rightIcon && <span className="ml-1.5 flex items-center text-current">{rightIcon}</span>}
     </>
   );
 
   if (asLink && to) {
     return (
-      <Link id={id} to={to} className={baseClass} aria-label={ariaLabel || title}>
+      <Link id={id} to={to} className={baseClass} style={crimsonStyle} aria-label={ariaLabel || title}>
         {content}
       </Link>
     );
@@ -86,6 +97,7 @@ const Button = ({
         target="_blank"
         rel="noopener noreferrer"
         className={baseClass}
+        style={crimsonStyle}
         aria-label={ariaLabel || title}
       >
         {content}
@@ -98,6 +110,7 @@ const Button = ({
       id={id}
       type={type}
       className={baseClass}
+      style={crimsonStyle}
       onClick={onClick}
       disabled={disabled}
       aria-label={ariaLabel || title}

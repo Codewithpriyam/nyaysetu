@@ -23,8 +23,15 @@ import {
   HiInformationCircle,
   HiClipboardCopy,
 } from 'react-icons/hi';
-import { MdOutlineGavel } from 'react-icons/md';
-import { formatCurrency, initials } from '@/utils';
+import {
+  formatCurrency,
+  formatPerMinuteRate,
+  formatConsultationPrice,
+  calculateConsultationCost,
+  parseNumeric,
+  formatDuration,
+  initials,
+} from '@/utils';
 import apiClient from '@/services/api';
 
 const LawyerAvatar = ({ lawyer }) => (
@@ -56,10 +63,10 @@ const LawyerProfilePage = () => {
     MOCK_LAWYERS.find((l) => l.slug === id || l.id === id) ||
     MOCK_LAWYERS[0];
 
-  // Pricing Model State
-  const pricePerMinute = lawyer.pricePerMinute || 25; // ₹25/min default
+  // Pricing Model State (defensive parsing)
+  const pricePerMinute = parseNumeric(lawyer?.pricePerMinute, 25);
   const [selectedDuration, setSelectedDuration] = useState(20);
-  const totalPayable = pricePerMinute * selectedDuration;
+  const totalPayable = calculateConsultationCost(pricePerMinute, selectedDuration, 500);
 
   // UPI Payment & UTR State
   const [showQrModal, setShowQrModal]       = useState(false);
@@ -191,7 +198,7 @@ const LawyerProfilePage = () => {
                     Per-Minute Consultation Rate
                   </span>
                   <div className="font-zentry text-3xl font-black text-ct-ivory mt-0.5">
-                    ₹{pricePerMinute}<span className="font-inter text-xs text-ct-muted font-normal"> / min</span>
+                    {formatPerMinuteRate(pricePerMinute)}
                   </div>
                 </div>
                 <div className="flex items-center gap-1 text-emerald-400 font-general text-[10px] font-bold uppercase tracking-wider mt-2 bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/30">
@@ -264,7 +271,7 @@ const LawyerProfilePage = () => {
                       }`}
                     >
                       <span>{opt.label}</span>
-                      <span className="font-bold">₹{pricePerMinute * opt.minutes}</span>
+                      <span className="font-bold">{formatConsultationPrice(pricePerMinute, opt.minutes)}</span>
                     </button>
                   ))}
                 </div>
@@ -288,19 +295,19 @@ const LawyerProfilePage = () => {
               <div className="rounded-xl border border-ct-gold/20 bg-ct-void/60 p-4 mb-6 space-y-2">
                 <div className="flex justify-between text-xs font-inter text-ct-muted">
                   <span>Rate Per Minute</span>
-                  <span>₹ {pricePerMinute} / min</span>
+                  <span>{formatPerMinuteRate(pricePerMinute)}</span>
                 </div>
                 <div className="flex justify-between text-xs font-inter text-ct-muted">
                   <span>Selected Duration</span>
-                  <span>{selectedDuration} Minutes</span>
+                  <span>{formatDuration(selectedDuration)}</span>
                 </div>
                 <div className="flex justify-between text-xs font-inter text-ct-muted">
                   <span>Platform Processing Fee</span>
-                  <span className="font-bold text-emerald-400">₹ 0 (100% Free)</span>
+                  <span className="font-bold text-emerald-400">₹0 (100% Free)</span>
                 </div>
                 <div className="pt-2 border-t border-ct-gold/10 flex justify-between items-center">
                   <span className="font-general text-xs font-bold uppercase text-ct-ivory">Total Amount</span>
-                  <span className="font-zentry text-2xl font-black text-ct-gold">₹ {totalPayable}</span>
+                  <span className="font-zentry text-2xl font-black text-ct-gold">{formatCurrency(totalPayable)}</span>
                 </div>
               </div>
 
@@ -325,7 +332,7 @@ const LawyerProfilePage = () => {
                   className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all"
                 >
                   <HiQrcode size={18} />
-                  <span>Pay ₹{totalPayable} via QR & Book</span>
+                  <span>Pay {formatCurrency(totalPayable)} via QR & Book</span>
                 </button>
               )}
 
@@ -366,7 +373,7 @@ const LawyerProfilePage = () => {
                 DIRECT LAWYER UPI PAYMENT
               </span>
               <h3 className="font-cormorant text-xl sm:text-2xl font-bold text-ct-ivory mt-1">
-                Scan & Pay ₹{totalPayable} to {lawyer.name}
+                Scan & Pay {formatCurrency(totalPayable)} to {lawyer.name}
               </h3>
               <p className="font-inter text-[11px] text-ct-muted mt-0.5">
                 Scan using GPay, PhonePe, Paytm, or BHIM. Zero Platform Markup.
@@ -412,7 +419,7 @@ const LawyerProfilePage = () => {
               </div>
               <div className="flex justify-between text-ct-gold font-bold">
                 <span>Total Amount</span>
-                <span>₹ {totalPayable}</span>
+                <span>{formatCurrency(totalPayable)}</span>
               </div>
             </div>
 

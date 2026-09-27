@@ -87,16 +87,30 @@ public class Consultation {
     public LocalDateTime getScheduledAt() { return scheduledAt; }
     public void setScheduledAt(LocalDateTime scheduledAt) { this.scheduledAt = scheduledAt; }
 
-    public Integer getDurationMinutes() { return durationMinutes; }
-    public void setDurationMinutes(Integer durationMinutes) { this.durationMinutes = durationMinutes; }
+    public Integer getDurationMinutes() { 
+        return (durationMinutes != null && durationMinutes > 0) ? durationMinutes : 20; 
+    }
+    public void setDurationMinutes(Integer durationMinutes) { 
+        this.durationMinutes = (durationMinutes != null && durationMinutes > 0) ? durationMinutes : 20; 
+    }
 
-    public Double getRatePerMinute() { return ratePerMinute; }
-    public void setRatePerMinute(Double ratePerMinute) { this.ratePerMinute = ratePerMinute; }
+    public Double getRatePerMinute() { 
+        return (ratePerMinute != null && ratePerMinute > 0) ? ratePerMinute : 25.0; 
+    }
+    public void setRatePerMinute(Double ratePerMinute) { 
+        this.ratePerMinute = (ratePerMinute != null && ratePerMinute > 0) ? ratePerMinute : 25.0; 
+    }
 
-    public Double getTotalAmount() { return totalAmount; }
+    public Double getTotalAmount() { 
+        if (totalAmount != null && totalAmount > 0) return totalAmount;
+        if (price != null && price > 0) return price;
+        return getRatePerMinute() * getDurationMinutes();
+    }
     public void setTotalAmount(Double totalAmount) { this.totalAmount = totalAmount; }
 
-    public Double getPrice() { return price; }
+    public Double getPrice() { 
+        return getTotalAmount();
+    }
     public void setPrice(Double price) { this.price = price; }
 
     public String getStatus() { return status; }

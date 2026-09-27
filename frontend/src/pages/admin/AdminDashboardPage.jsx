@@ -22,6 +22,7 @@ import {
 import { MdOutlineGavel, MdOutlineSecurity } from 'react-icons/md';
 import apiClient from '@/services/api';
 import { getRealRegisteredUsers, updateRealUserRoleInRegistry } from '@/utils/userRegistry';
+import { formatCurrency } from '@/utils';
 
 const AdminDashboardPage = () => {
   const [activeTab, setActiveTab]         = useState('ANALYTICS'); // ANALYTICS, ONBOARDING, USERS, SETTINGS
@@ -204,7 +205,7 @@ const AdminDashboardPage = () => {
             </div>
             <div className="court-card-surface p-6 text-center border border-ct-gold/20">
               <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Total Volume</span>
-              <span className="font-zentry text-4xl font-black text-ct-gold mt-2 block">₹{stats.totalRevenue}</span>
+              <span className="font-zentry text-4xl font-black text-ct-gold mt-2 block">{formatCurrency(stats.totalRevenue ?? 0)}</span>
             </div>
           </div>
         )}

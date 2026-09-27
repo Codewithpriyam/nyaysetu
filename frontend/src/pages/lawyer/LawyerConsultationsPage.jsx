@@ -125,7 +125,7 @@ const LawyerConsultationsPage = () => {
                   <div className="flex flex-wrap items-center gap-4 mt-3 font-general text-[10px] uppercase tracking-wider text-ct-ivory/90">
                     <span>🗓️ {c.date}</span>
                     <span className="font-mono text-emerald-400">UTR: {c.utrNumber}</span>
-                    <span className="font-bold text-ct-gold">Fee: ₹500</span>
+                    <span className="font-bold text-ct-gold">Fee: {formatCurrency(c.fee ?? c.totalAmount ?? 500)}</span>
                   </div>
                 </div>
 

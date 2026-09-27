@@ -99,10 +99,10 @@ const HeroSection = () => {
           <form onSubmit={handleSubmit} className="relative max-w-lg">
             <div
               className={`
-                relative overflow-hidden rounded-2xl border transition-all duration-300
+                glass relative overflow-hidden rounded-2xl transition-all duration-300
                 ${isTyping
-                  ? 'border-ct-gold shadow-gold-glow bg-ct-card/95'
-                  : 'border-ct-gold/40 bg-ct-card/85 backdrop-blur-md hover:border-ct-gold/70'
+                  ? 'border-ct-gold/50 shadow-gold-glow'
+                  : 'hover:border-ct-gold/30'
                 }
               `}
             >
@@ -135,7 +135,7 @@ const HeroSection = () => {
                 <button
                   type="submit"
                   id="hero-submit-btn"
-                  className="group flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-5 py-2.5 font-general text-xs uppercase tracking-widest text-ct-void font-bold transition-all duration-300 hover:shadow-gold-glow hover:scale-105 shrink-0"
+                  className="glass-button glass-button-primary group flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 font-general text-xs uppercase tracking-widest font-bold shrink-0"
                   aria-label="Ask AI Assistant"
                 >
                   <span>Ask AI Assistant ✨</span>
@@ -179,7 +179,7 @@ const HeroSection = () => {
               href="https://services.ecourts.gov.in/ecourtindia_v6/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-3 rounded-2xl border border-ct-gold/30 bg-ct-card/60 backdrop-blur-md px-5 py-2.5 transition-all duration-300 hover:border-ct-gold/60 hover:bg-ct-card/90"
+              className="glass group flex items-center gap-3 rounded-2xl px-5 py-2.5 transition-all duration-300 hover:border-ct-gold/30"
               aria-label="Track Court Case — eCourts Portal"
             >
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-ct-gold/10 text-ct-gold">

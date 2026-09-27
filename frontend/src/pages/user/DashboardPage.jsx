@@ -23,6 +23,7 @@ import {
   HiCalendar,
 } from 'react-icons/hi';
 import { MdOutlineGavel, MdOutlineSmartToy } from 'react-icons/md';
+import { formatCurrency, formatDuration } from '@/utils';
 
 const DashboardPage = () => {
   const navigate                          = useNavigate();
@@ -203,7 +204,7 @@ const DashboardPage = () => {
                         {con.status || 'PENDING'}
                       </span>
                     </div>
-                    <p className="font-inter text-xs text-ct-muted">⏱️ Duration: {con.durationMinutes || 20} Mins · Total Fee: ₹{con.totalAmount || 500}</p>
+                    <p className="font-inter text-xs text-ct-muted">⏱️ Duration: {formatDuration(con.durationMinutes)} · Total Fee: {formatCurrency(con.totalAmount ?? con.price ?? 500)}</p>
                     {con.meetingLink && (
                       <a
                         href={con.meetingLink}

@@ -76,8 +76,12 @@ public class LawyerProfile {
     public Integer getConsultationCount() { return consultationCount; }
     public void setConsultationCount(Integer consultationCount) { this.consultationCount = consultationCount; }
 
-    public Double getPricePerMinute() { return pricePerMinute; }
-    public void setPricePerMinute(Double pricePerMinute) { this.pricePerMinute = pricePerMinute; }
+    public Double getPricePerMinute() { 
+        return (pricePerMinute != null && pricePerMinute > 0) ? pricePerMinute : 25.0; 
+    }
+    public void setPricePerMinute(Double pricePerMinute) { 
+        this.pricePerMinute = (pricePerMinute != null && pricePerMinute > 0) ? pricePerMinute : 25.0; 
+    }
 
     public String getProfileImage() { return profileImage; }
     public void setProfileImage(String profileImage) { this.profileImage = profileImage; }

@@ -23,7 +23,7 @@ import {
   HiCalendar,
 } from 'react-icons/hi';
 import { MdOutlineGavel } from 'react-icons/md';
-import { formatCurrency } from '@/utils';
+import { formatCurrency, formatPerMinuteRate } from '@/utils';
 import apiClient from '@/services/api';
 
 const LawyerDashboardPage = () => {
@@ -149,11 +149,11 @@ const LawyerDashboardPage = () => {
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
               <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Verified Earnings</span>
-              <p className="font-zentry text-3xl font-black text-emerald-400 mt-1">₹ 0</p>
+              <p className="font-zentry text-3xl font-black text-emerald-400 mt-1">{formatCurrency(0)}</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
               <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Per-Min Rate</span>
-              <p className="font-zentry text-3xl font-black text-ct-ivory mt-1">₹ 25/m</p>
+              <p className="font-zentry text-3xl font-black text-ct-ivory mt-1">{formatPerMinuteRate(25)}</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
               <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Rating</span>

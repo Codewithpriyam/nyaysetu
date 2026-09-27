@@ -15,8 +15,7 @@ import { ROUTES, buildRoute } from '@/constants/routes';
 import BentoTilt from '@/components/common/BentoTilt';
 import { TiLocationArrow } from 'react-icons/ti';
 import { HiStar, HiCheckCircle, HiPhone, HiLocationMarker, HiSearch, HiRefresh, HiShieldCheck } from 'react-icons/hi';
-import { MdOutlineGavel } from 'react-icons/md';
-import { formatCurrency, initials } from '@/utils';
+import { formatCurrency, formatPerMinuteRate, initials } from '@/utils';
 
 // 24 Official Districts of Jharkhand State
 export const JHARKHAND_DISTRICTS = [
@@ -182,7 +181,7 @@ const LawyersPage = () => {
                 <div className="pt-4 border-t border-ct-gold/15 flex items-center justify-between gap-4">
                   <div>
                     <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Per-Minute Rate</span>
-                    <span className="font-zentry text-xl font-bold text-ct-gold">₹{lawyer.pricePerMinute || 25}/min</span>
+                    <span className="font-zentry text-xl font-bold text-ct-gold">{formatPerMinuteRate(lawyer.pricePerMinute || 25)}</span>
                   </div>
 
                   <Link

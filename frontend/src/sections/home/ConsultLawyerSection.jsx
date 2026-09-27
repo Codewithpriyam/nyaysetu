@@ -13,7 +13,7 @@ import { ROUTES, buildRoute } from '@/constants/routes';
 import { MOCK_LAWYERS } from '@/data/mockLawyers';
 import { TiLocationArrow } from 'react-icons/ti';
 import { HiStar, HiCheckCircle } from 'react-icons/hi';
-import { formatCurrency, initials } from '@/utils';
+import { formatCurrency, formatPerMinuteRate, initials } from '@/utils';
 import BentoTilt from '@/components/common/BentoTilt';
 
 const LawyerAvatar = ({ lawyer }) => (
@@ -148,8 +148,7 @@ const ConsultLawyerSection = () => {
                 <div className="border-t border-ct-gold/10 pt-4 flex items-center justify-between">
                   <div>
                     <p className="font-zentry text-xl font-black text-ct-gold">
-                      {formatCurrency(lawyer.ratePerMinute)}
-                      <span className="font-inter text-xs font-normal text-ct-muted">/min</span>
+                      {formatPerMinuteRate(lawyer.ratePerMinute || lawyer.pricePerMinute || (lawyer.ratePerSession ? Math.round(lawyer.ratePerSession / 20) : null))}
                     </p>
                     <div className="flex items-center gap-1.5 mt-0.5">
                       <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
