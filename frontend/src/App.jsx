@@ -7,6 +7,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useAuth, useUser } from '@clerk/clerk-react';
 import { ROUTES } from '@/constants/routes';
 import PageWrapper from '@/components/layout/PageWrapper';
+import ScrollToTop from '@/components/common/ScrollToTop';
 import apiClient, { setTokenProvider } from '@/services/api';
 import { syncRealUserToRegistry } from '@/utils/userRegistry';
 
@@ -146,6 +147,7 @@ const AppRouter = () => {
 
   return (
     <Suspense fallback={<PageLoader />}>
+      <ScrollToTop />
       <Routes>
 
         {/* ── PUBLIC (no auth required) ─────────────────────────────────────── */}
