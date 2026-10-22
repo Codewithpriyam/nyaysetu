@@ -135,6 +135,7 @@ const LawyerEarningsPage      = lazy(() => import('@/pages/lawyer/LawyerEarnings
 // Admin (protected — ADMIN role required)
 const AdminDashboardPage     = lazy(() => import('@/pages/admin/AdminDashboardPage'));
 const AdminConsultationsPage = lazy(() => import('@/pages/admin/AdminConsultationsPage'));
+const AdminPaymentsPage      = lazy(() => import('@/pages/admin/AdminPaymentsPage'));
 
 const AppRouter = () => {
   const { getToken, isLoaded, isSignedIn } = useAuth();
@@ -186,6 +187,7 @@ const AppRouter = () => {
         {/* ── ADMIN (role protected — ADMIN required) ───────────────────────── */}
         <Route path={ROUTES.ADMIN}               element={<RequireAuth requiredRole="ADMIN"><PageWrapper hideFooter><AdminDashboardPage /></PageWrapper></RequireAuth>} />
         <Route path={ROUTES.ADMIN_DASHBOARD}     element={<RequireAuth requiredRole="ADMIN"><PageWrapper hideFooter><AdminDashboardPage /></PageWrapper></RequireAuth>} />
+        <Route path={ROUTES.ADMIN_PAYMENTS}      element={<RequireAuth requiredRole="ADMIN"><PageWrapper hideFooter><AdminPaymentsPage /></PageWrapper></RequireAuth>} />
         <Route path={ROUTES.ADMIN_CONSULTATIONS} element={<RequireAuth requiredRole="ADMIN"><PageWrapper hideFooter><AdminConsultationsPage /></PageWrapper></RequireAuth>} />
 
         {/* ── FALLBACK ──────────────────────────────────────────────────────── */}

@@ -23,21 +23,22 @@ import { MdOutlineGavel, MdOutlineSecurity } from 'react-icons/md';
 import apiClient from '@/services/api';
 import { getRealRegisteredUsers, updateRealUserRoleInRegistry } from '@/utils/userRegistry';
 import { formatCurrency } from '@/utils';
+import AdminPaymentsPage from '@/pages/admin/AdminPaymentsPage';
 
 const AdminDashboardPage = () => {
-  const [activeTab, setActiveTab]         = useState('ANALYTICS'); // ANALYTICS, ONBOARDING, USERS, SETTINGS
+  const [activeTab, setActiveTab]         = useState('ANALYTICS'); // ANALYTICS, PAYMENTS, ONBOARDING, USERS, SETTINGS
   const [stats, setStats]                 = useState({
     registeredUsers: 0,
     registeredLawyers: 0,
-    totalConsultations: 12,
-    completedConsultations: 8,
-    totalCases: 6,
-    totalPayments: 12,
-    verifiedPayments: 10,
-    totalRevenue: 6000,
-    totalAiRequests: 48,
-    mostActiveLawyer: 'Adv. Prince Kumar',
-    topCategory: 'Police & Crime Rights',
+    totalConsultations: 0,
+    completedConsultations: 0,
+    totalCases: 0,
+    totalPayments: 0,
+    verifiedPayments: 0,
+    totalRevenue: 0,
+    totalAiRequests: 0,
+    mostActiveLawyer: '—',
+    topCategory: '—',
   });
   const [unlinkedLawyers, setUnlinkedLawyers] = useState([]);
   const [users, setUsers]                 = useState([]);
@@ -165,9 +166,10 @@ const AdminDashboardPage = () => {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar border-b border-ct-gold/20">
+        <div className="flex items-center gap-2 border-b border-ct-gold/20 pb-4 overflow-x-auto no-scrollbar mb-10">
           {[
             { id: 'ANALYTICS',  label: '📊 Platform Analytics' },
+            { id: 'PAYMENTS',   label: '💳 Payment Records' },
             { id: 'ONBOARDING', label: '👨‍⚖️ Lawyer Onboarding' },
             { id: 'USERS',      label: `👥 Real Registered Users (${users.length})` },
             { id: 'SETTINGS',   label: '⚙️ Settings' },
@@ -175,10 +177,10 @@ const AdminDashboardPage = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`rounded-xl px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${
+              className={`rounded-xl px-5 py-2.5 font-general text-[10px] uppercase font-bold tracking-widest transition-all whitespace-nowrap ${
                 activeTab === tab.id
                   ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-ct-void shadow-gold-glow'
-                  : 'bg-ct-card text-ct-ivory/80 border border-ct-gold/20 hover:text-ct-gold'
+                  : 'text-ct-muted hover:text-ct-gold border border-ct-gold/20 bg-ct-void/60'
               }`}
             >
               {tab.label}
@@ -188,31 +190,62 @@ const AdminDashboardPage = () => {
 
         {/* ─── TAB 1: ANALYTICS ─────────────────────────────────────────────── */}
         {activeTab === 'ANALYTICS' && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="court-card-surface p-6 text-center border border-ct-gold/20">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Real Registered Users</span>
-              <span className="font-zentry text-4xl font-black text-ct-gold mt-2 block">{users.length}</span>
+          <div className="space-y-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="court-card-surface p-6 text-center border border-ct-gold/30">
+                <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Real Registered Users</span>
+                <span className="font-zentry text-4xl font-black text-ct-gold mt-2 block">{users.length}</span>
+              </div>
+              <div className="court-card-surface p-6 text-center border border-ct-gold/30">
+                <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Registered Advocates</span>
+                <span className="font-zentry text-4xl font-black text-emerald-400 mt-2 block">
+                  {users.filter((u) => u.role === 'LAWYER').length}
+                </span>
+              </div>
+              <div className="court-card-surface p-6 text-center border border-ct-gold/30">
+                <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Total Consultations</span>
+                <span className="font-zentry text-4xl font-black text-ct-ivory mt-2 block">{stats.totalConsultations}</span>
+              </div>
+              <div className="court-card-surface p-6 text-center border border-ct-gold/30 cursor-pointer hover:border-ct-gold transition-all" onClick={() => setActiveTab('PAYMENTS')}>
+                <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Total Volume Processed</span>
+                <span className="font-zentry text-4xl font-black text-ct-gold mt-2 block">{formatCurrency(stats.totalRevenue ?? 0)}</span>
+                <span className="font-general text-[8px] uppercase tracking-widest text-emerald-400 mt-1 block">View Payment Records →</span>
+              </div>
             </div>
-            <div className="court-card-surface p-6 text-center border border-ct-gold/20">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Registered Advocates</span>
-              <span className="font-zentry text-4xl font-black text-emerald-400 mt-2 block">
-                {users.filter((u) => u.role === 'LAWYER').length}
-              </span>
-            </div>
-            <div className="court-card-surface p-6 text-center border border-ct-gold/20">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Total Consultations</span>
-              <span className="font-zentry text-4xl font-black text-ct-ivory mt-2 block">{stats.totalConsultations}</span>
-            </div>
-            <div className="court-card-surface p-6 text-center border border-ct-gold/20">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Total Volume</span>
-              <span className="font-zentry text-4xl font-black text-ct-gold mt-2 block">{formatCurrency(stats.totalRevenue ?? 0)}</span>
+
+            {/* Quick Banner to Payment Records */}
+            <div className="court-card-surface p-6 border border-emerald-400/40 bg-emerald-400/5 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-xl border border-emerald-400/40 bg-emerald-400/10 flex items-center justify-center text-emerald-400">
+                  <HiCurrencyRupee size={24} />
+                </div>
+                <div>
+                  <h4 className="font-cormorant text-xl font-bold text-ct-ivory">YouPI-PG Central Escrow Gateway (Method B)</h4>
+                  <p className="font-inter text-xs text-ct-muted">
+                    Central Admin UPI collection (8873932040@ptsbi) · Multi-Channel Observer Mesh · 10% Protocol Fee & 90% Advocate Escrow
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setActiveTab('PAYMENTS')}
+                className="rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 transition-all"
+              >
+                Inspect Escrow Ledger →
+              </button>
             </div>
           </div>
         )}
 
-        {/* ─── TAB 2: LAWYER ONBOARDING ─────────────────────────────────────── */}
+        {/* ─── TAB 2: PAYMENT RECORDS ───────────────────────────────────────── */}
+        {activeTab === 'PAYMENTS' && (
+          <div className="animate-in fade-in duration-200">
+            <AdminPaymentsPage embedded={true} />
+          </div>
+        )}
+
+        {/* ─── TAB 3: LAWYER ONBOARDING ─────────────────────────────────────── */}
         {activeTab === 'ONBOARDING' && (
-          <div className="court-card-surface p-8 border border-ct-gold/30">
+          <div className="court-card-surface p-8 border border-ct-gold/40">
             <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mb-2">Link Advocate Profile to Clerk User Account</h3>
             <p className="font-inter text-xs text-ct-muted mb-6">Map unlinked Bar Council advocate profiles to their authenticated Clerk user IDs.</p>
 
@@ -249,7 +282,7 @@ const AdminDashboardPage = () => {
               <button
                 type="submit"
                 disabled={isMapping}
-                className="rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-6 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow"
+                className="rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-6 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 transition-all"
               >
                 {isMapping ? 'Mapping Account...' : 'Link Advocate Account'}
               </button>
@@ -257,9 +290,9 @@ const AdminDashboardPage = () => {
           </div>
         )}
 
-        {/* ─── TAB 3: REAL REGISTERED USERS LIST ───────────────────────────── */}
+        {/* ─── TAB 4: REAL REGISTERED USERS LIST ───────────────────────────── */}
         {activeTab === 'USERS' && (
-          <div className="court-card-surface p-7 border border-ct-gold/30">
+          <div className="court-card-surface p-7 border border-ct-gold/40">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div>
                 <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">Real Registered User Accounts</h3>
@@ -271,7 +304,7 @@ const AdminDashboardPage = () => {
               <div className="flex items-center gap-3">
                 <button
                   onClick={handleRefreshUsers}
-                  className="flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-gold/10 px-3.5 py-1.5 font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold hover:bg-ct-gold hover:text-ct-void transition-all"
+                  className="flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-1.5 font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold hover:bg-ct-gold hover:text-ct-void transition-all"
                   title="Refresh registered accounts list"
                 >
                   <HiRefresh size={14} />
@@ -334,7 +367,7 @@ const AdminDashboardPage = () => {
           </div>
         )}
 
-        {/* ─── TAB 4: SETTINGS ──────────────────────────────────────────────── */}
+        {/* ─── TAB 5: SETTINGS ──────────────────────────────────────────────── */}
         {activeTab === 'SETTINGS' && (
           <div className="court-card-surface p-8 border border-ct-gold/40 max-w-2xl mx-auto space-y-4">
             <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">Platform Settings</h3>

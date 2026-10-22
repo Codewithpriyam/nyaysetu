@@ -45,6 +45,7 @@ export const ROUTES = {
   // Admin (protected)
   ADMIN:                '/admin',
   ADMIN_DASHBOARD:      '/admin/dashboard',
+  ADMIN_PAYMENTS:       '/admin/payments',
   ADMIN_USERS:          '/admin/users',
   ADMIN_LAWYERS:        '/admin/lawyers',
   ADMIN_CONSULTATIONS:  '/admin/consultations',

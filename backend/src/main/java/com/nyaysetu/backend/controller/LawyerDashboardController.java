@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/v1/lawyer")
 @PreAuthorize("hasRole('LAWYER')")
-@CrossOrigin(origins = "*")
 public class LawyerDashboardController {
 
     @Autowired

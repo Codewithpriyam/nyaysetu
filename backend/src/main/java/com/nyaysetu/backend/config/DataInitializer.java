@@ -2,10 +2,8 @@ package com.nyaysetu.backend.config;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nyaysetu.backend.model.Advocate;
-import com.nyaysetu.backend.model.LawyerProfile;
-import com.nyaysetu.backend.repository.AdvocateRepository;
-import com.nyaysetu.backend.repository.LawyerProfileRepository;
+import com.nyaysetu.backend.model.*;
+import com.nyaysetu.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,8 +11,11 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -25,10 +26,20 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     private LawyerProfileRepository lawyerProfileRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ConsultationRepository consultationRepository;
+
+    @Autowired
+    private PaymentRepository paymentRepository;
+
     @Override
     public void run(String... args) throws Exception {
         seedLawyerProfiles();
         seedAdvocateDatabase();
+        purgeFakeSeedPayments();
     }
 
     private void seedLawyerProfiles() {
@@ -120,6 +131,49 @@ public class DataInitializer implements CommandLineRunner {
             System.out.println("==========================================================================");
             System.out.println(" SUCCESS: Loaded " + allAdvocates.size() + " REAL Advocate Records into Spring Boot Database!");
             System.out.println("==========================================================================");
+        }
+    }
+
+    private void purgeFakeSeedPayments() {
+        try {
+            // Remove any sample/mock payments previously seeded for testing
+            List<String> mockEmails = List.of("rahul.sharma@gmail.com", "pooja.verma@gmail.com");
+            for (String email : mockEmails) {
+                userRepository.findByEmail(email).ifPresent(user -> {
+                    List<Payment> userPayments = paymentRepository.findByConsultationUserIdOrderByCreatedAtDesc(user.getId());
+                    if (!userPayments.isEmpty()) {
+                        paymentRepository.deleteAll(userPayments);
+                    }
+                    List<Consultation> userConsultations = consultationRepository.findByUserIdOrderByCreatedAtDesc(user.getId());
+                    if (!userConsultations.isEmpty()) {
+                        consultationRepository.deleteAll(userConsultations);
+                    }
+                    userRepository.delete(user);
+                });
+            }
+
+            // Remove any legacy mock payments by known dummy UTRs or mock session prefixes
+            List<Payment> allPayments = paymentRepository.findAll();
+            List<Payment> dummyPayments = allPayments.stream()
+                .filter(p -> (p.getUtrNumber() != null && (
+                    p.getUtrNumber().equals("528190342156") ||
+                    p.getUtrNumber().equals("528190891234") ||
+                    p.getUtrNumber().startsWith("PENDING-NYAYA-")
+                )) || (p.getGatewaySessionId() != null && (
+                    p.getGatewaySessionId().equals("youpi_sess_789f1a23bc") ||
+                    p.getGatewaySessionId().equals("youpi_sess_123b7c89de") ||
+                    p.getGatewaySessionId().equals("youpi_sess_456d2e34fa")
+                )))
+                .collect(Collectors.toList());
+
+            if (!dummyPayments.isEmpty()) {
+                paymentRepository.deleteAll(dummyPayments);
+                System.out.println(">>> NyayaSetu DataInitializer: Purged " + dummyPayments.size() + " dummy/fake payment records. Real payment records maintained.");
+            } else {
+                System.out.println(">>> NyayaSetu DataInitializer: Payment ledger is clean (0 fake records). Real payment records only.");
+            }
+        } catch (Exception e) {
+            System.err.println("Note on purgeFakeSeedPayments: " + e.getMessage());
         }
     }
 }

@@ -3,6 +3,7 @@ package com.nyaysetu.backend.controller;
 import com.nyaysetu.backend.model.Advocate;
 import com.nyaysetu.backend.repository.AdvocateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -11,7 +12,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/lawyers")
-@CrossOrigin(origins = "*")
 public class AdvocateController {
 
     @Autowired
@@ -39,6 +39,7 @@ public class AdvocateController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public Advocate createAdvocate(@RequestBody Advocate advocate) {
         return advocateRepository.save(advocate);
     }

@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/ai")
-@CrossOrigin(origins = "*")
 public class AiController {
 
     private static final Logger log = LoggerFactory.getLogger(AiController.class);
@@ -46,6 +45,9 @@ public class AiController {
         String prompt = body.get("prompt");
         if (prompt == null || prompt.isBlank()) {
             return ResponseEntity.badRequest().body(Map.of("error", "Prompt is required"));
+        }
+        if (prompt.length() > 4000) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Prompt exceeds maximum allowed length of 4000 characters"));
         }
 
         String systemPrompt = "You are NyayaSetu AI Copilot, an authoritative Indian legal assistant.\n" +
@@ -103,10 +105,16 @@ public class AiController {
             @RequestBody Map<String, String> body) {
 
         User user = (principal instanceof User u) ? u : null;
+        if (user == null) {
+            return ResponseEntity.status(401).body(Map.of("error", "Authentication required for document analysis"));
+        }
 
         String documentText = body.get("documentText");
         if (documentText == null || documentText.isBlank()) {
             return ResponseEntity.badRequest().body(Map.of("error", "documentText is required"));
+        }
+        if (documentText.length() > 20000) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Document exceeds maximum allowed length of 20,000 characters"));
         }
 
         String systemPrompt = "You are a Legal Document Analysis Engine. " +
@@ -115,14 +123,13 @@ public class AiController {
         try {
             String response = groqAiEngine.generateCompletion(systemPrompt, documentText);
 
-            if (user != null) {
-                AiConversation conversation = new AiConversation(user, null, "ANALYZER", "Document Analysis Request", response);
-                aiConversationRepository.save(conversation);
-            }
+            AiConversation conversation = new AiConversation(user, null, "ANALYZER", "Document Analysis Request", response);
+            aiConversationRepository.save(conversation);
 
             return ResponseEntity.ok(Map.of("response", response));
         } catch (Exception e) {
-            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+            log.error("Document analysis failed: {}", e.getMessage());
+            return ResponseEntity.status(500).body(Map.of("error", "Document analysis failed."));
         }
     }
 
@@ -133,9 +140,15 @@ public class AiController {
             @RequestBody Map<String, String> body) {
 
         User user = (principal instanceof User u) ? u : null;
+        if (user == null) {
+            return ResponseEntity.status(401).body(Map.of("error", "Authentication required for draft generation"));
+        }
 
         String draftType = body.getOrDefault("draftType", "Legal Notice");
         String details = body.get("details");
+        if (details != null && details.length() > 10000) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Details exceed maximum allowed length of 10,000 characters"));
+        }
 
         String systemPrompt = "You are a Legal Draft Generator for Indian courts and statutory authorities. " +
             "Draft a formal, professional " + draftType + " based on the user's details. " +
@@ -144,14 +157,13 @@ public class AiController {
         try {
             String response = groqAiEngine.generateCompletion(systemPrompt, details != null ? details : draftType + " template request");
 
-            if (user != null) {
-                AiConversation conversation = new AiConversation(user, null, "DRAFT_GENERATOR", "Draft: " + draftType, response);
-                aiConversationRepository.save(conversation);
-            }
+            AiConversation conversation = new AiConversation(user, null, "DRAFT_GENERATOR", "Draft: " + draftType, response);
+            aiConversationRepository.save(conversation);
 
             return ResponseEntity.ok(Map.of("draftType", draftType, "draftContent", response));
         } catch (Exception e) {
-            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+            log.error("Draft generation failed: {}", e.getMessage());
+            return ResponseEntity.status(500).body(Map.of("error", "Draft generation failed."));
         }
     }
 
@@ -162,8 +174,14 @@ public class AiController {
             @RequestBody Map<String, String> body) {
 
         User user = (principal instanceof User u) ? u : null;
+        if (user == null) {
+            return ResponseEntity.status(401).body(Map.of("error", "Authentication required for roadmap generation"));
+        }
 
         String issue = body.get("issue");
+        if (issue != null && issue.length() > 2000) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Issue exceeds maximum allowed length of 2000 characters"));
+        }
 
         String systemPrompt = "Generate a 5-step visual action plan roadmap for resolving the following legal issue under Indian law. " +
             "Format steps clearly (e.g., Step 1: Collect Evidence -> Step 2: Issue Legal Notice -> Step 3: File E-Daakhil Complaint).";
@@ -171,14 +189,13 @@ public class AiController {
         try {
             String response = groqAiEngine.generateCompletion(systemPrompt, issue != null ? issue : "General legal dispute roadmap");
 
-            if (user != null) {
-                AiConversation conversation = new AiConversation(user, null, "ROADMAP", "Roadmap: " + issue, response);
-                aiConversationRepository.save(conversation);
-            }
+            AiConversation conversation = new AiConversation(user, null, "ROADMAP", "Roadmap: " + issue, response);
+            aiConversationRepository.save(conversation);
 
             return ResponseEntity.ok(Map.of("roadmap", response));
         } catch (Exception e) {
-            return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+            log.error("Roadmap generation failed: {}", e.getMessage());
+            return ResponseEntity.status(500).body(Map.of("error", "Roadmap generation failed."));
         }
     }
 

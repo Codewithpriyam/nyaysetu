@@ -22,6 +22,7 @@ export default defineConfig({
     },
   },
   build: {
+    sourcemap: false,
     rollupOptions: {
       output: {
         // manualChunks as function — required in Vite 8 / rolldown

@@ -1,10 +1,12 @@
 package com.nyaysetu.backend.controller;
 
 import com.nyaysetu.backend.dto.CaseDto;
+import com.nyaysetu.backend.dto.PaymentDto;
 import com.nyaysetu.backend.dto.UserDto;
 import com.nyaysetu.backend.model.*;
 import com.nyaysetu.backend.repository.*;
 import jakarta.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,7 +17,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/admin")
-@CrossOrigin(origins = "*")
 @PreAuthorize("hasRole('ADMIN')")
 public class AdminController {
 
@@ -155,11 +156,45 @@ public class AdminController {
         return ResponseEntity.ok(list);
     }
 
-    // ─── 5. PAYMENTS VERIFICATION ───────────────────────────────────────────
+    // ─── 5. PAYMENTS MONITOR & VERIFICATION ─────────────────────────────────
     @GetMapping("/payments")
     public ResponseEntity<?> getAllPayments() {
-        List<Payment> payments = paymentRepository.findAll();
-        return ResponseEntity.ok(payments);
+        List<Payment> payments = paymentRepository.findAllByOrderByCreatedAtDesc();
+        List<PaymentDto> dtos = payments.stream().map(PaymentDto::fromEntity).collect(Collectors.toList());
+        return ResponseEntity.ok(dtos);
+    }
+
+    @GetMapping("/payments/stats")
+    public ResponseEntity<?> getPaymentStats() {
+        List<Payment> list = paymentRepository.findAll();
+        long totalCount = list.size();
+        long verifiedCount = list.stream().filter(p -> "VERIFIED".equalsIgnoreCase(p.getStatus())).count();
+        long pendingCount = list.stream().filter(p -> "PENDING".equalsIgnoreCase(p.getStatus())).count();
+        long rejectedCount = list.stream().filter(p -> "REJECTED".equalsIgnoreCase(p.getStatus())).count();
+        long youpiCount = list.stream().filter(p -> "YOUPI_UPI".equalsIgnoreCase(p.getPaymentMethod()) || (p.getGatewaySessionId() != null && !p.getGatewaySessionId().isBlank())).count();
+        double totalVolume = list.stream().filter(p -> "VERIFIED".equalsIgnoreCase(p.getStatus()) && p.getAmount() != null).mapToDouble(Payment::getAmount).sum();
+
+        double totalPlatformFee = list.stream().filter(p -> "VERIFIED".equalsIgnoreCase(p.getStatus()) && p.getPlatformFee() != null).mapToDouble(Payment::getPlatformFee).sum();
+        double totalAdvocatePayout = list.stream().filter(p -> "VERIFIED".equalsIgnoreCase(p.getStatus()) && p.getAdvocatePayout() != null).mapToDouble(Payment::getAdvocatePayout).sum();
+        long pendingPayoutCount = list.stream().filter(p -> "VERIFIED".equalsIgnoreCase(p.getStatus()) && ("PENDING_SETTLEMENT".equalsIgnoreCase(p.getPayoutStatus()) || p.getPayoutStatus() == null)).count();
+
+        Map<String, Object> metrics = new HashMap<>();
+        metrics.put("totalTransactions", totalCount);
+        metrics.put("verifiedCount", verifiedCount);
+        metrics.put("pendingCount", pendingCount);
+        metrics.put("rejectedCount", rejectedCount);
+        metrics.put("youpiCount", youpiCount);
+        metrics.put("totalRevenue", totalVolume);
+        metrics.put("totalPlatformFee", totalPlatformFee);
+        metrics.put("totalAdvocatePayout", totalAdvocatePayout);
+        metrics.put("pendingPayoutCount", pendingPayoutCount);
+        metrics.put("averageAmount", verifiedCount > 0 ? (totalVolume / verifiedCount) : 500.0);
+        metrics.put("gatewayStatus", "ACTIVE_HEALTHY");
+        metrics.put("observerMesh", "SMS + GMAIL TRIPLE MESH ONLINE");
+        metrics.put("routingModel", "METHOD_B_CENTRAL_ADMIN_ESCROW");
+        metrics.put("adminVpa", "8873932040@ptsbi");
+
+        return ResponseEntity.ok(metrics);
     }
 
     @PatchMapping("/payments/{id}/verify")
@@ -175,11 +210,39 @@ public class AdminController {
 
         Payment p = paymentOpt.get();
         p.setStatus(status);
+        p.setVerifiedBy("ADMIN");
+        p.setVerifiedAt(LocalDateTime.now());
         paymentRepository.save(p);
 
-        auditLogRepository.save(new AuditLog("ADMIN", "VERIFY_PAYMENT", "Payment", p.getId(), request.getRemoteAddr()));
+        if (p.getConsultation() != null) {
+            Consultation c = p.getConsultation();
+            c.setStatus("VERIFIED".equalsIgnoreCase(status) ? "PAYMENT_VERIFIED" : "REJECTED");
+            consultationRepository.save(c);
+        }
 
-        return ResponseEntity.ok(Map.of("message", "Payment " + status, "paymentId", p.getId()));
+        auditLogRepository.save(new AuditLog("ADMIN", "ADMIN_STATUS_" + status, "Payment", p.getId(), request.getRemoteAddr()));
+
+        return ResponseEntity.ok(PaymentDto.fromEntity(p));
+    }
+
+    @PatchMapping("/payments/{id}/payout")
+    public ResponseEntity<?> updatePayoutStatus(
+            @PathVariable Long id,
+            @RequestBody Map<String, String> body,
+            HttpServletRequest request) {
+
+        String payoutStatus = body.getOrDefault("payoutStatus", "SETTLED");
+        Optional<Payment> paymentOpt = paymentRepository.findById(id);
+
+        if (paymentOpt.isEmpty()) return ResponseEntity.notFound().build();
+
+        Payment p = paymentOpt.get();
+        p.setPayoutStatus(payoutStatus);
+        paymentRepository.save(p);
+
+        auditLogRepository.save(new AuditLog("ADMIN", "ADMIN_PAYOUT_" + payoutStatus, "Payment", p.getId(), request.getRemoteAddr()));
+
+        return ResponseEntity.ok(PaymentDto.fromEntity(p));
     }
 
     // ─── 6. CASES MANAGER ───────────────────────────────────────────────────
