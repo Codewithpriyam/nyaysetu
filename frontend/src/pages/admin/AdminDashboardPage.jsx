@@ -138,15 +138,15 @@ const AdminDashboardPage = () => {
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="rounded-full border border-red-500/40 bg-red-500/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-red-400 font-bold flex items-center gap-1">
+                <span className="rounded-full border border-red-500/40 bg-red-500/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-red-400 font-bold flex items-center gap-1">
                   <MdOutlineSecurity size={14} /> PLATFORM ADMINISTRATOR
                 </span>
-                <span className="font-general text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
+                <span className="font-inter text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
                   ● REAL USER OVERSIGHT
                 </span>
               </div>
 
-              <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory">
+              <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory">
                 NyayaSetu <span className="text-ct-gold italic">Admin Portal</span>
               </h1>
               <p className="font-inter text-xs text-ct-muted mt-1">
@@ -168,7 +168,7 @@ const AdminDashboardPage = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`rounded-xl px-5 py-2.5 font-general text-[10px] uppercase font-bold tracking-widest transition-all whitespace-nowrap ${
+              className={`rounded-xl px-5 py-2.5 font-inter text-[10px] uppercase font-bold tracking-widest transition-all whitespace-nowrap ${
                 activeTab === tab.id
                   ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-ct-void shadow-gold-glow'
                   : 'text-ct-muted hover:text-ct-gold border border-ct-gold/20 bg-ct-void/60'
@@ -184,23 +184,23 @@ const AdminDashboardPage = () => {
           <div className="space-y-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="court-card-surface p-6 text-center border border-ct-gold/30">
-                <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Real Registered Users</span>
+                <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Real Registered Users</span>
                 <span className="font-zentry text-4xl font-black text-ct-gold mt-2 block">{users.length}</span>
               </div>
               <div className="court-card-surface p-6 text-center border border-ct-gold/30">
-                <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Registered Advocates</span>
+                <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Registered Advocates</span>
                 <span className="font-zentry text-4xl font-black text-emerald-400 mt-2 block">
                   {users.filter((u) => u.role === 'LAWYER').length}
                 </span>
               </div>
               <div className="court-card-surface p-6 text-center border border-ct-gold/30">
-                <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Total Consultations</span>
+                <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Total Consultations</span>
                 <span className="font-zentry text-4xl font-black text-ct-ivory mt-2 block">{stats.totalConsultations}</span>
               </div>
               <div className="court-card-surface p-6 text-center border border-ct-gold/30 cursor-pointer hover:border-ct-gold transition-all" onClick={() => setActiveTab('PAYMENTS')}>
-                <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Total Volume Processed</span>
+                <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Total Volume Processed</span>
                 <span className="font-zentry text-4xl font-black text-ct-gold mt-2 block">{formatCurrency(stats.totalRevenue ?? 0)}</span>
-                <span className="font-general text-[8px] uppercase tracking-widest text-emerald-400 mt-1 block">View Payment Records →</span>
+                <span className="font-inter text-[8px] uppercase tracking-widest text-emerald-400 mt-1 block">View Payment Records →</span>
               </div>
             </div>
 
@@ -211,7 +211,7 @@ const AdminDashboardPage = () => {
                   <HiCurrencyRupee size={24} />
                 </div>
                 <div>
-                  <h4 className="font-cormorant text-xl font-bold text-ct-ivory">YouPI-PG Central Escrow Gateway (Method B)</h4>
+                  <h4 className="font-calluna text-xl font-bold text-ct-ivory">YouPI-PG Central Escrow Gateway (Method B)</h4>
                   <p className="font-inter text-xs text-ct-muted">
                     Central Admin UPI collection (8873932040@ptsbi) · Multi-Channel Observer Mesh · 10% Protocol Fee & 90% Advocate Escrow
                   </p>
@@ -219,7 +219,7 @@ const AdminDashboardPage = () => {
               </div>
               <button
                 onClick={() => setActiveTab('PAYMENTS')}
-                className="rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 transition-all"
+                className="rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 transition-all"
               >
                 Inspect Escrow Ledger →
               </button>
@@ -237,12 +237,12 @@ const AdminDashboardPage = () => {
         {/* ─── TAB 3: LAWYER ONBOARDING ─────────────────────────────────────── */}
         {activeTab === 'ONBOARDING' && (
           <div className="court-card-surface p-8 border border-ct-gold/40">
-            <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mb-2">Link Advocate Profile to Clerk User Account</h3>
+            <h3 className="font-calluna text-2xl font-bold text-ct-ivory mb-2">Link Advocate Profile to Clerk User Account</h3>
             <p className="font-inter text-xs text-ct-muted mb-6">Map unlinked Bar Council advocate profiles to their authenticated Clerk user IDs.</p>
 
             <form onSubmit={handleMapLawyer} className="space-y-4 max-w-xl">
               <div>
-                <label className="font-general text-[10px] uppercase text-ct-gold block mb-1">Select Advocate Profile:</label>
+                <label className="font-inter text-[10px] uppercase text-ct-gold block mb-1">Select Advocate Profile:</label>
                 <select
                   value={selectedLawyerId}
                   onChange={(e) => setSelectedLawyerId(e.target.value)}
@@ -260,7 +260,7 @@ const AdminDashboardPage = () => {
               </div>
 
               <div>
-                <label className="font-general text-[10px] uppercase text-ct-gold block mb-1">Target User Email / Clerk ID:</label>
+                <label className="font-inter text-[10px] uppercase text-ct-gold block mb-1">Target User Email / Clerk ID:</label>
                 <input
                   type="text"
                   placeholder="e.g. singhshruti11122002@gmail.com"
@@ -273,7 +273,7 @@ const AdminDashboardPage = () => {
               <button
                 type="submit"
                 disabled={isMapping}
-                className="rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 transition-all"
+                className="rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 transition-all"
               >
                 {isMapping ? 'Mapping Account...' : 'Link Advocate Account'}
               </button>
@@ -286,7 +286,7 @@ const AdminDashboardPage = () => {
           <div className="court-card-surface p-7 border border-ct-gold/40">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div>
-                <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">Real Registered User Accounts</h3>
+                <h3 className="font-calluna text-2xl font-bold text-ct-ivory">Real Registered User Accounts</h3>
                 <p className="font-inter text-xs text-ct-muted mt-0.5">
                   Live Clerk authenticated accounts. Manage role (USER, LAWYER, ADMIN) for registered accounts.
                 </p>
@@ -295,14 +295,14 @@ const AdminDashboardPage = () => {
               <div className="flex items-center gap-3">
                 <button
                   onClick={handleRefreshUsers}
-                  className="flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-1.5 font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold hover:bg-ct-gold hover:text-ct-void transition-all"
+                  className="flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-1.5 font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold hover:bg-ct-gold hover:text-ct-void transition-all"
                   title="Refresh registered accounts list"
                 >
                   <HiRefresh size={14} />
                   <span>Refresh List</span>
                 </button>
 
-                <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3.5 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+                <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3.5 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                   Total Real Accounts: {users.length}
                 </span>
               </div>
@@ -311,7 +311,7 @@ const AdminDashboardPage = () => {
             {users.length === 0 ? (
               <div className="rounded-2xl border border-ct-gold/20 bg-ct-void p-10 text-center">
                 <HiUserGroup className="mx-auto text-ct-gold/40 mb-3" size={44} />
-                <h4 className="font-cormorant text-xl font-bold text-ct-ivory">No Real User Registrations Captured Yet</h4>
+                <h4 className="font-calluna text-xl font-bold text-ct-ivory">No Real User Registrations Captured Yet</h4>
                 <p className="font-inter text-xs text-ct-muted mt-1 max-w-md mx-auto leading-relaxed">
                   As soon as users or lawyers sign up / log in via Clerk (Google Login or Email OTP), their real account details and role will automatically appear in this table!
                 </p>
@@ -323,7 +323,7 @@ const AdminDashboardPage = () => {
                     <div>
                       <div className="flex items-center gap-2">
                         <h4 className="font-inter text-xs font-bold text-ct-ivory">{u.fullName}</h4>
-                        <span className={`rounded-full px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest font-bold ${
+                        <span className={`rounded-full px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest font-bold ${
                           u.role === 'LAWYER' ? 'bg-ct-gold/20 text-ct-gold border border-ct-gold/40' : u.role === 'ADMIN' ? 'bg-red-500/20 text-red-400 border border-red-500/40' : 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30'
                         }`}>
                           ROLE: {u.role}
@@ -333,18 +333,18 @@ const AdminDashboardPage = () => {
                         📧 {u.email} · Clerk ID: <span className="font-mono text-[10px] text-ct-gold">{u.clerkUserId}</span>
                       </p>
                       {u.createdAt && (
-                        <span className="font-general text-[8px] text-ct-muted block mt-0.5">
+                        <span className="font-inter text-[8px] text-ct-muted block mt-0.5">
                           Registered: {u.createdAt}
                         </span>
                       )}
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="font-general text-[8px] uppercase text-ct-muted">Change Role:</span>
+                      <span className="font-inter text-[8px] uppercase text-ct-muted">Change Role:</span>
                       <select
                         value={u.role || 'USER'}
                         onChange={(e) => handleUserRoleChange(u.id, e.target.value)}
-                        className="rounded-lg border border-ct-gold/30 bg-ct-deep px-3 py-1.5 font-general text-[9px] uppercase font-bold text-ct-gold focus:outline-none"
+                        className="rounded-lg border border-ct-gold/30 bg-ct-deep px-3 py-1.5 font-inter text-[9px] uppercase font-bold text-ct-gold focus:outline-none"
                       >
                         <option value="USER">USER (Citizen)</option>
                         <option value="LAWYER">LAWYER (Advocate)</option>
@@ -361,17 +361,17 @@ const AdminDashboardPage = () => {
         {/* ─── TAB 5: SETTINGS ──────────────────────────────────────────────── */}
         {activeTab === 'SETTINGS' && (
           <div className="court-card-surface p-8 border border-ct-gold/40 max-w-2xl mx-auto space-y-4">
-            <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">Platform Settings</h3>
+            <h3 className="font-calluna text-2xl font-bold text-ct-ivory">Platform Settings</h3>
             <div>
-              <label className="font-general text-[10px] uppercase text-ct-gold block mb-1">Platform Name</label>
+              <label className="font-inter text-[10px] uppercase text-ct-gold block mb-1">Platform Name</label>
               <input type="text" defaultValue="NyayaSetu" className="w-full rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-2 font-inter text-xs text-ct-ivory" />
             </div>
             <div>
-              <label className="font-general text-[10px] uppercase text-ct-gold block mb-1">Support Email</label>
+              <label className="font-inter text-[10px] uppercase text-ct-gold block mb-1">Support Email</label>
               <input type="email" defaultValue="support@nyaysetu.in" className="w-full rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-2 font-inter text-xs text-ct-ivory" />
             </div>
             <div>
-              <label className="font-general text-[10px] uppercase text-ct-gold block mb-1">Toll-Free Legal Helpline</label>
+              <label className="font-inter text-[10px] uppercase text-ct-gold block mb-1">Toll-Free Legal Helpline</label>
               <input type="text" defaultValue="+91 1800 123 4900" className="w-full rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-2 font-inter text-xs text-ct-ivory" />
             </div>
           </div>

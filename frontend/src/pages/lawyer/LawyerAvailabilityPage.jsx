@@ -44,7 +44,7 @@ const LawyerAvailabilityPage = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
             Consultation Fee <span className="text-ct-gold italic">& Availability Settings</span>
           </h1>
 
@@ -58,7 +58,7 @@ const LawyerAvailabilityPage = () => {
 
           {/* Rate per Session */}
           <div>
-            <h2 className="font-cormorant text-2xl font-bold text-ct-ivory mb-1">
+            <h2 className="font-calluna text-2xl font-bold text-ct-ivory mb-1">
               Consultation Rate Per Session
             </h2>
             <p className="font-inter text-xs text-ct-muted mb-4">
@@ -81,7 +81,7 @@ const LawyerAvailabilityPage = () => {
 
           {/* Available Working Days */}
           <div className="pt-6 border-t border-ct-gold/15">
-            <h2 className="font-cormorant text-2xl font-bold text-ct-ivory mb-1">
+            <h2 className="font-calluna text-2xl font-bold text-ct-ivory mb-1">
               Available Working Days
             </h2>
             <p className="font-inter text-xs text-ct-muted mb-4">
@@ -96,7 +96,7 @@ const LawyerAvailabilityPage = () => {
                     key={day}
                     type="button"
                     onClick={() => toggleDay(day)}
-                    className={`rounded-xl px-5 py-2.5 font-general text-xs font-bold transition-all border ${isSelected ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold border-ct-gold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border-ct-gold/20'}`}
+                    className={`rounded-xl px-5 py-2.5 font-inter text-xs font-bold transition-all border ${isSelected ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold border-ct-gold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border-ct-gold/20'}`}
                   >
                     {day}
                   </button>
@@ -107,7 +107,7 @@ const LawyerAvailabilityPage = () => {
 
           {/* Time Slots */}
           <div className="pt-6 border-t border-ct-gold/15">
-            <h2 className="font-cormorant text-2xl font-bold text-ct-ivory mb-1">
+            <h2 className="font-calluna text-2xl font-bold text-ct-ivory mb-1">
               Active Time Slots
             </h2>
             <p className="font-inter text-xs text-ct-muted mb-4">
@@ -118,7 +118,7 @@ const LawyerAvailabilityPage = () => {
               {['10:00 AM - 01:00 PM (Morning Slot)', '04:00 PM - 07:00 PM (Evening Slot)'].map((slot, i) => (
                 <div key={i} className="rounded-xl border border-ct-gold/20 bg-ct-deep p-4 flex items-center justify-between">
                   <span className="font-inter text-xs font-bold text-ct-ivory">{slot}</span>
-                  <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 font-general text-[8px] uppercase tracking-widest text-emerald-400 font-bold">Active</span>
+                  <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 font-inter text-[8px] uppercase tracking-widest text-emerald-400 font-bold">Active</span>
                 </div>
               ))}
             </div>
@@ -128,7 +128,7 @@ const LawyerAvailabilityPage = () => {
           <div className="pt-6 border-t border-ct-gold/15 flex justify-end">
             <button
               type="submit"
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3.5 font-general text-xs font-bold uppercase tracking-widest text-black border border-ct-gold/60 shadow-gold-glow hover:scale-105 transition-all"
+              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3.5 font-inter text-xs font-bold uppercase tracking-widest text-black border border-ct-gold/60 shadow-gold-glow hover:scale-105 transition-all"
             >
               <HiSave size={18} />
               <span>Save Schedule Settings</span>

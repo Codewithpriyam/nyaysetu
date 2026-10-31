@@ -79,13 +79,13 @@ const HeroSection = () => {
           {/* Eyebrow */}
           <div className="mb-4 flex items-center gap-3">
             <div className="h-0.5 w-10 rounded-full bg-ct-gold" />
-            <span className="font-general text-xs font-semibold uppercase tracking-[0.2em] text-ct-gold">
+            <span className="font-inter text-xs font-semibold uppercase tracking-[0.2em] text-ct-gold">
               NYAYASETU AI LEGAL COPILOT
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="font-cormorant text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-ct-ivory leading-[0.95] mb-4">
+          <h1 className="font-calluna text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-ct-ivory leading-[0.95] mb-4">
             Justice. <br />
             <span className="text-ct-gold italic">Simplified.</span>
           </h1>
@@ -127,7 +127,7 @@ const HeroSection = () => {
 
               {/* Input Footer CTA */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-5 pb-4 border-t border-ct-gold/10 pt-3">
-                <span className="font-general text-[10px] uppercase tracking-widest text-ct-gold flex items-center gap-1.5 font-bold">
+                <span className="font-inter text-[10px] uppercase tracking-widest text-ct-gold flex items-center gap-1.5 font-bold">
                   <MdOutlineSmartToy size={16} className="text-ct-gold" />
                   <span>Powered by Groq Llama-3 AI Engine</span>
                 </span>
@@ -135,7 +135,7 @@ const HeroSection = () => {
                 <button
                   type="submit"
                   id="hero-submit-btn"
-                  className="glass-button glass-button-primary group flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 font-general text-xs uppercase tracking-widest font-bold shrink-0"
+                  className="glass-button glass-button-primary group flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 font-inter text-xs uppercase tracking-widest font-bold shrink-0"
                   aria-label="Ask AI Assistant"
                 >
                   <span>Ask AI Assistant ✨</span>
@@ -189,7 +189,7 @@ const HeroSection = () => {
                 <p className="font-inter text-xs font-semibold text-ct-ivory group-hover:text-ct-gold transition-colors">
                   Track Your Case
                 </p>
-                <p className="font-general text-[9px] uppercase tracking-wider text-ct-muted">
+                <p className="font-inter text-[9px] uppercase tracking-wider text-ct-muted">
                   Official eCourts Portal ↗
                 </p>
               </div>

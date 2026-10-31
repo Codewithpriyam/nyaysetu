@@ -91,7 +91,7 @@ const CasesPage = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
             Your Active Legal <span className="text-ct-gold italic">Cases & Court Proceedings</span>
           </h1>
 
@@ -101,7 +101,7 @@ const CasesPage = () => {
 
           <button
             onClick={() => setShowCreateModal(true)}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
           >
             <HiPlus size={18} />
             <span>Register New Legal Case</span>
@@ -112,7 +112,7 @@ const CasesPage = () => {
         <div className="court-card-surface p-4 mb-8 border border-ct-gold/30 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <HiFilter className="text-ct-gold" size={18} />
-            <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Filter by Status:</span>
+            <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Filter by Status:</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -120,7 +120,7 @@ const CasesPage = () => {
               <button
                 key={st}
                 onClick={() => setActiveFilter(st)}
-                className={`rounded-xl px-4 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${activeFilter === st ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
+                className={`rounded-xl px-4 py-1.5 font-inter text-[10px] uppercase tracking-widest transition-all ${activeFilter === st ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
               >
                 {st}
               </button>
@@ -132,13 +132,13 @@ const CasesPage = () => {
         {filteredCases.length === 0 ? (
           <div className="court-card-surface p-12 text-center border border-ct-gold/30 shadow-court-card max-w-2xl mx-auto flex flex-col items-center">
             <MdOutlineGavel className="text-ct-gold/40 mb-4" size={50} />
-            <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">No Registered Legal Cases</h3>
+            <h3 className="font-calluna text-2xl font-bold text-ct-ivory">No Registered Legal Cases</h3>
             <p className="font-inter text-xs text-ct-muted mt-2 max-w-md leading-relaxed">
               You do not have any registered legal cases yet. Create a case file to track court hearing schedules, evidence files, and advocate progression.
             </p>
             <button
               onClick={() => setShowCreateModal(true)}
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
             >
               <HiPlus size={18} />
               <span>Create First Legal Case File</span>
@@ -152,17 +152,17 @@ const CasesPage = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-mono text-xs font-bold text-ct-gold">Case #{cs.caseNumber}</span>
-                      <span className="rounded-full border border-ct-gold/30 bg-ct-gold/10 px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest text-ct-gold font-bold">
+                      <span className="rounded-full border border-ct-gold/30 bg-ct-gold/10 px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest text-ct-gold font-bold">
                         {cs.category}
                       </span>
-                      <span className={`rounded-full px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest font-bold ${
+                      <span className={`rounded-full px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest font-bold ${
                         cs.priority === 'HIGH' || cs.priority === 'URGENT' ? 'bg-red-500/20 text-red-400 border border-red-500/40' : 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30'
                       }`}>
                         {cs.priority} PRIORITY
                       </span>
                     </div>
 
-                    <h3 className="font-cormorant text-2xl font-bold text-ct-ivory leading-tight mt-1">
+                    <h3 className="font-calluna text-2xl font-bold text-ct-ivory leading-tight mt-1">
                       {cs.title}
                     </h3>
 
@@ -170,7 +170,7 @@ const CasesPage = () => {
                       🏛️ Court Forum: <strong>{cs.courtName}</strong> · Advocate: <strong>{cs.lawyerName || 'Assigned Counsel'}</strong>
                     </p>
 
-                    <div className="flex flex-wrap items-center gap-4 mt-3 font-general text-[10px] uppercase tracking-wider text-ct-ivory/80">
+                    <div className="flex flex-wrap items-center gap-4 mt-3 font-inter text-[10px] uppercase tracking-wider text-ct-ivory/80">
                       <span>📅 Filing Date: {cs.filingDate || '2026-01-15'}</span>
                       {cs.nextHearingDate && (
                         <span className="text-emerald-400 font-bold">⏰ Next Hearing: {cs.nextHearingDate.replace('T', ' at ').substring(0, 16)}</span>
@@ -181,7 +181,7 @@ const CasesPage = () => {
                   <div className="flex items-center gap-3">
                     <Link
                       to={`/cases/${cs.id}`}
-                      className="flex items-center gap-2 rounded-xl bg-ct-gold px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void hover:bg-ct-gold-light transition-all shadow-gold-glow"
+                      className="flex items-center gap-2 rounded-xl bg-ct-gold px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-ct-void hover:bg-ct-gold-light transition-all shadow-gold-glow"
                     >
                       <span>View Case & Timeline →</span>
                     </Link>
@@ -206,10 +206,10 @@ const CasesPage = () => {
             </button>
 
             <div className="mb-5">
-              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                 NEW CASE REGISTRATION
               </span>
-              <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mt-2">
+              <h3 className="font-calluna text-2xl font-bold text-ct-ivory mt-2">
                 File & Track New Legal Case
               </h3>
               <p className="font-inter text-xs text-ct-muted mt-1">
@@ -219,7 +219,7 @@ const CasesPage = () => {
 
             <form onSubmit={handleCreateCase} className="space-y-4">
               <div>
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                   Case Title <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -234,7 +234,7 @@ const CasesPage = () => {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                  <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                     Category
                   </label>
                   <select
@@ -252,7 +252,7 @@ const CasesPage = () => {
                 </div>
 
                 <div>
-                  <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                  <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                     Priority
                   </label>
                   <select
@@ -269,7 +269,7 @@ const CasesPage = () => {
               </div>
 
               <div>
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                   Court / Forum Name
                 </label>
                 <input
@@ -282,7 +282,7 @@ const CasesPage = () => {
               </div>
 
               <div>
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                   Case Description & Background
                 </label>
                 <textarea
@@ -297,7 +297,7 @@ const CasesPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 transition-all"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 transition-all"
               >
                 <HiCheck size={18} />
                 <span>{isSubmitting ? 'Registering...' : 'Register New Case File'}</span>

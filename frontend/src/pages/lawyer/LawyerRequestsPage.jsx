@@ -74,10 +74,10 @@ const LawyerRequestsPage = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                 MANUAL UPI PAYMENT VERIFICATIONS
               </span>
-              <h1 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory mt-2">
+              <h1 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory mt-2">
                 Consultation UTR Payment Approvals
               </h1>
               <p className="font-inter text-xs text-ct-muted mt-1">
@@ -91,7 +91,7 @@ const LawyerRequestsPage = () => {
         {payments.length === 0 ? (
           <div className="court-card-surface p-12 text-center border border-ct-gold/20 flex flex-col items-center">
             <HiQrcode className="text-ct-gold/40 mb-3" size={48} />
-            <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">No Pending Payment Verifications</h3>
+            <h3 className="font-calluna text-2xl font-bold text-ct-ivory">No Pending Payment Verifications</h3>
             <p className="font-inter text-xs text-ct-muted mt-1 max-w-sm">
               Client consultation bookings with manual UTR transaction numbers will appear here for your approval.
             </p>
@@ -104,17 +104,17 @@ const LawyerRequestsPage = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-mono text-xs font-bold text-ct-gold">UTR #{p.utrNumber}</span>
-                      <span className={`rounded-full px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest font-bold ${
+                      <span className={`rounded-full px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest font-bold ${
                         p.status === 'VERIFIED' ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30' : 'bg-amber-400/10 text-amber-400 border border-amber-400/30'
                       }`}>
                         STATUS: {p.status}
                       </span>
                     </div>
 
-                    <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mt-1">{p.userName || 'Client User'}</h3>
+                    <h3 className="font-calluna text-2xl font-bold text-ct-ivory mt-1">{p.userName || 'Client User'}</h3>
                     <p className="font-inter text-xs text-ct-muted">{p.userEmail}</p>
 
-                    <div className="flex flex-wrap items-center gap-4 mt-3 font-general text-[10px] uppercase tracking-wider text-ct-ivory/80">
+                    <div className="flex flex-wrap items-center gap-4 mt-3 font-inter text-[10px] uppercase tracking-wider text-ct-ivory/80">
                       <span>💰 Amount: {formatCurrency(p.amount || 500)}</span>
                       <span>📅 Submitted: {p.createdAt ? p.createdAt.substring(0, 10) : 'Today'}</span>
                     </div>
@@ -124,7 +124,7 @@ const LawyerRequestsPage = () => {
                     {p.status !== 'VERIFIED' && (
                       <button
                         onClick={() => handleVerifyPayment(p.id, p.userName)}
-                        className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
+                        className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
                       >
                         <HiCheck size={16} />
                         <span>Approve UTR</span>
@@ -133,7 +133,7 @@ const LawyerRequestsPage = () => {
 
                     <button
                       onClick={() => setActiveModal(p)}
-                      className="flex items-center gap-1.5 rounded-xl bg-ct-gold px-4 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:bg-ct-gold-light transition-all"
+                      className="flex items-center gap-1.5 rounded-xl bg-ct-gold px-4 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:bg-ct-gold-light transition-all"
                     >
                       <HiVideoCamera size={16} />
                       <span>Schedule Call</span>
@@ -159,10 +159,10 @@ const LawyerRequestsPage = () => {
             </button>
 
             <div className="mb-5">
-              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                 SCHEDULE VIDEO CONSULTATION
               </span>
-              <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mt-2">
+              <h3 className="font-calluna text-2xl font-bold text-ct-ivory mt-2">
                 Consultation Call with {activeModal.userName}
               </h3>
               <p className="font-inter text-xs text-ct-muted mt-1">
@@ -172,7 +172,7 @@ const LawyerRequestsPage = () => {
 
             <form onSubmit={handleScheduleMeeting} className="space-y-4">
               <div>
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                   Meeting Provider
                 </label>
                 <select
@@ -188,7 +188,7 @@ const LawyerRequestsPage = () => {
               </div>
 
               <div>
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                   Scheduled Date & Time <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -201,7 +201,7 @@ const LawyerRequestsPage = () => {
               </div>
 
               <div>
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                   Meeting Join Link
                 </label>
                 <input
@@ -216,7 +216,7 @@ const LawyerRequestsPage = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 transition-all"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 transition-all"
               >
                 <HiCheck size={18} />
                 <span>Confirm & Activate Meeting Link</span>

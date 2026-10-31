@@ -119,7 +119,7 @@ const TrustSection = () => {
         <div className="mb-14 rounded-2xl border border-ct-gold/30 bg-ct-gold/5 p-6 flex items-start gap-4 shadow-court-card">
           <HiShieldCheck className="flex-shrink-0 text-ct-gold mt-0.5" size={26} />
           <div>
-            <p className="font-cormorant text-xl font-bold text-ct-ivory mb-1">
+            <p className="font-calluna text-xl font-bold text-ct-ivory mb-1">
               NyayaSetu provides Legal Information — not Legal Advice
             </p>
             <p className="font-inter text-xs sm:text-sm text-ct-muted leading-relaxed">
@@ -138,7 +138,7 @@ const TrustSection = () => {
                 <div className="gold-divider-sm" />
                 <span className="label-text">Content Transparency</span>
               </div>
-              <h2 className="mb-6 font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight">
+              <h2 className="mb-6 font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight">
                 We Always Tell You Where Information Comes From
               </h2>
 
@@ -155,7 +155,7 @@ const TrustSection = () => {
                       {type.icon}
                     </div>
                     <div>
-                      <span className="inline-block mb-1 font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold">
+                      <span className="inline-block mb-1 font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold">
                         {type.label}
                       </span>
                       <p className="font-inter text-xs text-ct-muted leading-relaxed">{type.desc}</p>
@@ -194,7 +194,7 @@ const TrustSection = () => {
               <div className="gold-divider-sm" />
               <span className="label-text">Our Commitments</span>
             </div>
-            <h2 className="mb-6 font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight">
+            <h2 className="mb-6 font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight">
               Built on Trust, Designed for Every Indian
             </h2>
 
@@ -212,7 +212,7 @@ const TrustSection = () => {
               <p className="mb-3 label-text text-ct-gold">Authoritative Sources Used</p>
               <div className="flex flex-wrap gap-2">
                 {['IndiaCode.gov.in', 'eCourts.gov.in', 'MCA.gov.in', 'RBI.org.in', 'SEBI.gov.in', 'Consumer Forum', 'Bar Council'].map((src) => (
-                  <span key={src} className="rounded-full border border-ct-gold/20 bg-ct-deep px-3.5 py-1.5 font-general text-[9px] uppercase tracking-widest text-ct-ivory/90">
+                  <span key={src} className="rounded-full border border-ct-gold/20 bg-ct-deep px-3.5 py-1.5 font-inter text-[9px] uppercase tracking-widest text-ct-ivory/90">
                     {src}
                   </span>
                 ))}

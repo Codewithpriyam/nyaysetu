@@ -227,15 +227,15 @@ const AdminPaymentsPage = ({ embedded = false }) => {
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-ct-gold/20">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1">
+              <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
                 YOUPI PG V2 SOVEREIGN GATEWAY
               </span>
-              <span className="font-general text-[8px] uppercase tracking-widest text-ct-gold font-bold">
+              <span className="font-inter text-[8px] uppercase tracking-widest text-ct-gold font-bold">
                 ● 0% PLATFORM FEES
               </span>
             </div>
-            <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">
+            <h3 className="font-calluna text-2xl font-bold text-ct-ivory">
               Sovereign Payment Ledger & Banking Observer Mesh
             </h3>
             <p className="font-inter text-xs text-ct-muted mt-0.5">
@@ -247,14 +247,14 @@ const AdminPaymentsPage = ({ embedded = false }) => {
             <button
               onClick={fetchPaymentData}
               disabled={isLoading}
-              className="flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-gold/10 px-3.5 py-2 font-general text-[10px] uppercase font-bold text-ct-gold hover:bg-ct-gold hover:text-ct-void transition-all"
+              className="flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-gold/10 px-3.5 py-2 font-inter text-[10px] uppercase font-bold text-ct-gold hover:bg-ct-gold hover:text-ct-void transition-all"
             >
               <HiRefresh size={14} className={isLoading ? 'animate-spin' : ''} />
               <span>Refresh</span>
             </button>
             <button
               onClick={handleExportCsv}
-              className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-3.5 py-2 font-general text-[10px] uppercase font-bold text-ct-void shadow-gold-glow"
+              className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-3.5 py-2 font-inter text-[10px] uppercase font-bold text-ct-void shadow-gold-glow"
             >
               <HiDownload size={14} />
               <span>Export CSV</span>
@@ -267,16 +267,16 @@ const AdminPaymentsPage = ({ embedded = false }) => {
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="rounded-full border border-red-500/40 bg-red-500/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-red-400 font-bold flex items-center gap-1.5">
+                <span className="rounded-full border border-red-500/40 bg-red-500/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-red-400 font-bold flex items-center gap-1.5">
                   <MdOutlineSecurity size={14} /> PLATFORM FINANCIAL CONTROLLER
                 </span>
-                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1.5">
+                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
                   YOUPI PG V2 INTEGRATION ACTIVE
                 </span>
               </div>
 
-              <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory">
+              <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory">
                 Payment Records & <span className="text-ct-gold italic">Sovereign Ledger</span>
               </h1>
               <p className="font-inter text-xs text-ct-muted mt-1 max-w-2xl leading-relaxed">
@@ -288,7 +288,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
               <button
                 onClick={fetchPaymentData}
                 disabled={isLoading}
-                className="flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-gold/10 px-4 py-2 font-general text-xs font-bold uppercase tracking-widest text-ct-gold hover:bg-ct-gold hover:text-ct-void transition-all"
+                className="flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-gold/10 px-4 py-2 font-inter text-xs font-bold uppercase tracking-widest text-ct-gold hover:bg-ct-gold hover:text-ct-void transition-all"
                 title="Refresh payment records"
               >
                 <HiRefresh size={16} className={isLoading ? 'animate-spin' : ''} />
@@ -297,7 +297,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
 
               <button
                 onClick={handleExportCsv}
-                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all"
+                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all"
                 title="Export filtered records to CSV"
               >
                 <HiDownload size={16} />
@@ -312,7 +312,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
           <BentoTilt tiltAmount={2}>
             <div className="court-card-surface p-6 border border-ct-gold/30 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">
                 Total Escrow Inflow
               </span>
               <span className="font-zentry text-3xl sm:text-4xl font-black text-ct-gold mt-2 block">
@@ -326,13 +326,13 @@ const AdminPaymentsPage = ({ embedded = false }) => {
 
           <BentoTilt tiltAmount={2}>
             <div className="court-card-surface p-6 border border-ct-gold/30 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">
                 Platform Commission (10%)
               </span>
               <span className="font-zentry text-3xl sm:text-4xl font-black text-emerald-400 mt-2 block">
                 {formatCurrency(totalPlatformRevenue)}
               </span>
-              <span className="font-general text-[8px] uppercase tracking-widest text-emerald-400 mt-1 block">
+              <span className="font-inter text-[8px] uppercase tracking-widest text-emerald-400 mt-1 block">
                 Retained Protocol Revenue
               </span>
             </div>
@@ -340,13 +340,13 @@ const AdminPaymentsPage = ({ embedded = false }) => {
 
           <BentoTilt tiltAmount={2}>
             <div className="court-card-surface p-6 border border-ct-gold/30 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">
                 Advocate Escrow (90%)
               </span>
               <span className="font-zentry text-3xl sm:text-4xl font-black text-ct-ivory mt-2 block">
                 {formatCurrency(totalAdvocateEscrow)}
               </span>
-              <span className="font-general text-[8px] uppercase tracking-widest text-amber-400/90 mt-1 block">
+              <span className="font-inter text-[8px] uppercase tracking-widest text-amber-400/90 mt-1 block">
                 {pendingPayoutsCount} Pending Disbursements
               </span>
             </div>
@@ -354,14 +354,14 @@ const AdminPaymentsPage = ({ embedded = false }) => {
 
           <BentoTilt tiltAmount={2}>
             <div className="court-card-surface p-6 border border-ct-gold/30 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">
                 YouPI Central Gateway
               </span>
-              <span className="font-general text-xs font-bold text-emerald-400 mt-3 block flex items-center justify-center gap-1.5">
+              <span className="font-inter text-xs font-bold text-emerald-400 mt-3 block flex items-center justify-center gap-1.5">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
                 METHOD B ESCROW ACTIVE
               </span>
-              <span className="font-general text-[8px] uppercase tracking-widest text-ct-muted mt-2 block">
+              <span className="font-inter text-[8px] uppercase tracking-widest text-ct-muted mt-2 block">
                 Tri-Channel SMS + Gmail Observer
               </span>
             </div>
@@ -395,7 +395,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                 <button
                   key={tab.id}
                   onClick={() => setStatusFilter(tab.id)}
-                  className={`rounded-lg px-3.5 py-1.5 font-general text-[9px] uppercase font-bold tracking-wider transition-all ${
+                  className={`rounded-lg px-3.5 py-1.5 font-inter text-[9px] uppercase font-bold tracking-wider transition-all ${
                     statusFilter === tab.id
                       ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-ct-void shadow-gold-glow'
                       : 'text-ct-muted hover:text-ct-gold'
@@ -410,7 +410,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-2 font-general text-[10px] uppercase font-bold text-ct-gold focus:outline-none"
+              className="rounded-xl border border-ct-gold/30 bg-ct-void px-4 py-2 font-inter text-[10px] uppercase font-bold text-ct-gold focus:outline-none"
             >
               <option value="NEWEST" className="bg-ct-void">Sort: Newest First</option>
               <option value="OLDEST" className="bg-ct-void">Sort: Oldest First</option>
@@ -423,7 +423,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
         <div className="court-card-surface rounded-2xl border border-ct-gold/30 overflow-hidden shadow-2xl mb-10">
           <div className="overflow-x-auto">
             <table className="w-full text-left font-inter text-xs text-ct-ivory">
-              <thead className="border-b border-ct-gold/20 bg-ct-void/80 font-general text-[9px] uppercase tracking-widest text-ct-muted">
+              <thead className="border-b border-ct-gold/20 bg-ct-void/80 font-inter text-[9px] uppercase tracking-widest text-ct-muted">
                 <tr>
                   <th className="py-4 px-5">ID & Session</th>
                   <th className="py-4 px-5">Citizen / Client</th>
@@ -441,7 +441,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                   <tr>
                     <td colSpan={9} className="py-12 text-center text-ct-muted">
                       <MdOutlineReceiptLong size={40} className="mx-auto text-ct-gold/30 mb-2" />
-                      <p className="font-cormorant text-xl font-bold text-ct-ivory">No Payment Records Match Criteria</p>
+                      <p className="font-calluna text-xl font-bold text-ct-ivory">No Payment Records Match Criteria</p>
                       <p className="font-inter text-xs mt-1">Try adjusting your search query or status filter.</p>
                     </td>
                   </tr>
@@ -464,7 +464,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                           <span className="font-mono text-[9px] text-ct-muted block truncate max-w-[110px]" title={p.gatewaySessionId}>
                             {p.gatewaySessionId || 'DIRECT_UPI'}
                           </span>
-                          <span className="font-general text-[8px] text-ct-muted block mt-0.5">
+                          <span className="font-inter text-[8px] text-ct-muted block mt-0.5">
                             {p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Recent'}
                           </span>
                         </td>
@@ -485,7 +485,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                           <div className="font-bold text-ct-ivory">{p.lawyerName || 'Bar Council Advocate'}</div>
                           <div className="text-[11px] text-ct-gold/80">{p.lawyerCourt || 'District Court'}</div>
                           {p.consultationCategory && (
-                            <span className="font-general text-[8px] uppercase tracking-wider text-ct-muted block mt-0.5 truncate max-w-[140px]">
+                            <span className="font-inter text-[8px] uppercase tracking-wider text-ct-muted block mt-0.5 truncate max-w-[140px]">
                               {p.consultationCategory}
                             </span>
                           )}
@@ -496,7 +496,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                           <span className="font-zentry text-lg font-black text-ct-gold">
                             {formatCurrency(p.amount || 0)}
                           </span>
-                          <span className="font-general text-[7px] uppercase tracking-widest text-ct-muted block">
+                          <span className="font-inter text-[7px] uppercase tracking-widest text-ct-muted block">
                             Gross Inflow
                           </span>
                         </td>
@@ -505,13 +505,13 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                         <td className="py-4 px-5">
                           <div className="text-[11px] font-mono">
                             <span className="text-emerald-400 font-bold">{formatCurrency(platformAmt)}</span>
-                            <span className="text-ct-muted text-[8px] ml-1 uppercase font-general">(10% Fee)</span>
+                            <span className="text-ct-muted text-[8px] ml-1 uppercase font-inter">(10% Fee)</span>
                           </div>
                           <div className="text-[11px] font-mono mt-0.5">
                             <span className="text-ct-ivory font-bold">{formatCurrency(advocateAmt)}</span>
-                            <span className="text-ct-muted text-[8px] ml-1 uppercase font-general">(90% Lawyer)</span>
+                            <span className="text-ct-muted text-[8px] ml-1 uppercase font-inter">(90% Lawyer)</span>
                           </div>
-                          <span className={`inline-block mt-1 font-general text-[7px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full ${
+                          <span className={`inline-block mt-1 font-inter text-[7px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-full ${
                             isPayoutSettled ? 'text-emerald-400 bg-emerald-400/10 border border-emerald-400/30' : 'text-amber-400 bg-amber-400/10 border border-amber-400/30'
                           }`}>
                             {isPayoutSettled ? '● Disbursed' : '○ Payout Pending'}
@@ -523,7 +523,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                           <span className="inline-block font-mono text-[9px] text-ct-gold bg-ct-void px-2 py-1 rounded-lg border border-ct-gold/30 select-all">
                             {p.receivingVpa || '8873932040@ptsbi'}
                           </span>
-                          <span className="font-general text-[7px] uppercase tracking-widest text-emerald-400 block mt-0.5">
+                          <span className="font-inter text-[7px] uppercase tracking-widest text-emerald-400 block mt-0.5">
                             Admin Central Escrow
                           </span>
                         </td>
@@ -549,7 +549,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                             )}
                           </div>
                           {p.verifiedBy && (
-                            <span className="font-general text-[7px] uppercase tracking-widest text-ct-muted block mt-0.5 truncate max-w-[130px]">
+                            <span className="font-inter text-[7px] uppercase tracking-widest text-ct-muted block mt-0.5 truncate max-w-[130px]">
                               Verified by: {p.verifiedBy}
                             </span>
                           )}
@@ -558,7 +558,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                         {/* Status */}
                         <td className="py-4 px-5">
                           <span
-                            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-general text-[8px] uppercase font-bold tracking-widest ${
+                            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-inter text-[8px] uppercase font-bold tracking-widest ${
                               isVerified
                                 ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/40'
                                 : isPending
@@ -644,17 +644,17 @@ const AdminPaymentsPage = ({ embedded = false }) => {
               </button>
 
               <div className="flex items-center gap-2 mb-2">
-                <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[8px] uppercase tracking-widest text-ct-gold font-bold">
+                <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-inter text-[8px] uppercase tracking-widest text-ct-gold font-bold">
                   YOUPI PG V2 SOVEREIGN AUDIT TRAIL
                 </span>
-                <span className={`rounded-full px-2.5 py-0.5 font-general text-[8px] uppercase font-bold tracking-wider ${
+                <span className={`rounded-full px-2.5 py-0.5 font-inter text-[8px] uppercase font-bold tracking-wider ${
                   selectedPayment.status === 'VERIFIED' ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/40' : 'bg-amber-400/10 text-amber-400 border border-amber-400/40'
                 }`}>
                   STATUS: {selectedPayment.status}
                 </span>
               </div>
 
-              <h3 className="font-cormorant text-3xl font-bold text-ct-ivory mb-1">
+              <h3 className="font-calluna text-3xl font-bold text-ct-ivory mb-1">
                 Transaction Inspector #{selectedPayment.id}
               </h3>
               <p className="font-inter text-xs text-ct-muted mb-6">
@@ -664,75 +664,75 @@ const AdminPaymentsPage = ({ embedded = false }) => {
               {/* Printable Receipt Card */}
               <div id="printable-receipt" className="rounded-xl border border-ct-gold/30 bg-ct-void/80 p-6 font-mono text-xs space-y-3">
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Sovereign Session ID:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Sovereign Session ID:</span>
                   <span className="font-bold text-ct-gold text-right select-all">{selectedPayment.gatewaySessionId || 'OFFLINE_RECONCILIATION'}</span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Merchant Order ID:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Merchant Order ID:</span>
                   <span className="font-bold text-ct-ivory">{selectedPayment.gatewayOrderId || `NYAYA-${selectedPayment.id}`}</span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Citizen Client:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Citizen Client:</span>
                   <span className="font-bold text-ct-ivory text-right">
                     {selectedPayment.userName} ({selectedPayment.userEmail})
                   </span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Advocate Recipient:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Advocate Recipient:</span>
                   <span className="font-bold text-ct-ivory">{selectedPayment.lawyerName} ({selectedPayment.lawyerCourt})</span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Consultation Topic:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Consultation Topic:</span>
                   <span className="font-bold text-ct-ivory text-right truncate max-w-xs">{selectedPayment.consultationProblem || 'Legal Consultation'}</span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Total Escrow Inflow:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Total Escrow Inflow:</span>
                   <span className="font-bold text-ct-gold text-base">{formatCurrency(selectedPayment.amount)}</span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Platform Commission (10%):</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Platform Commission (10%):</span>
                   <span className="font-bold text-emerald-400">
                     {formatCurrency(selectedPayment.platformFee || ((selectedPayment.amount || 0) * 0.10))}
                   </span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Advocate Net Payout (90%):</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Advocate Net Payout (90%):</span>
                   <span className="font-bold text-ct-ivory">
                     {formatCurrency(selectedPayment.advocatePayout || ((selectedPayment.amount || 0) * 0.90))}
                   </span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Receiving Central VPA:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Receiving Central VPA:</span>
                   <span className="font-bold text-ct-gold select-all">{selectedPayment.receivingVpa || '8873932040@ptsbi'}</span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Advocate Payout Status:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Advocate Payout Status:</span>
                   <span className={`font-bold ${selectedPayment.payoutStatus === 'SETTLED' ? 'text-emerald-400' : 'text-amber-400'}`}>
                     {selectedPayment.payoutStatus === 'SETTLED' ? '● DISBURSED (SETTLED)' : '○ PENDING DISBURSEMENT'}
                   </span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Bank UTR / Reference:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Bank UTR / Reference:</span>
                   <span className="font-bold text-emerald-400 select-all">{selectedPayment.utrNumber || 'PENDING'}</span>
                 </div>
 
                 <div className="flex justify-between items-center border-b border-ct-gold/15 pb-3">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Verification Channel:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Verification Channel:</span>
                   <span className="text-ct-muted text-right">{selectedPayment.verifiedBy || 'Awaiting Channel Observation'}</span>
                 </div>
 
                 <div className="flex justify-between items-center">
-                  <span className="text-ct-muted font-general uppercase text-[9px]">Initiated At:</span>
+                  <span className="text-ct-muted font-inter uppercase text-[9px]">Initiated At:</span>
                   <span className="text-ct-muted text-right">{selectedPayment.createdAt || 'N/A'}</span>
                 </div>
               </div>
@@ -741,7 +741,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
               <div className="flex flex-wrap items-center justify-between gap-3 mt-6">
                 <button
                   onClick={() => window.print()}
-                  className="flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-void px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-gold hover:bg-ct-gold hover:text-ct-void active:scale-95 transition-all"
+                  className="flex items-center gap-1.5 rounded-xl border border-ct-gold/30 bg-ct-void px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-ct-gold hover:bg-ct-gold hover:text-ct-void active:scale-95 transition-all"
                 >
                   <HiPrinter size={16} />
                   <span>Print Receipt</span>
@@ -752,7 +752,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                     <button
                       onClick={() => handleDisbursePayout(selectedPayment.id)}
                       disabled={isUpdating}
-                      className="rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-lg hover:opacity-90 active:scale-95 transition-all flex items-center gap-1.5"
+                      className="rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-white shadow-lg hover:opacity-90 active:scale-95 transition-all flex items-center gap-1.5"
                     >
                       <HiLightningBolt size={16} />
                       <span>Disburse 90% Advocate Payout</span>
@@ -763,7 +763,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                     <button
                       onClick={() => handleUpdateStatus(selectedPayment.id, 'VERIFIED')}
                       disabled={isUpdating}
-                      className="rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-lg hover:opacity-90 active:scale-95 transition-all flex items-center gap-1.5"
+                      className="rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-white shadow-lg hover:opacity-90 active:scale-95 transition-all flex items-center gap-1.5"
                     >
                       <HiCheckCircle size={16} />
                       <span>Approve Payment</span>
@@ -774,7 +774,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                     <button
                       onClick={() => handleUpdateStatus(selectedPayment.id, 'REJECTED')}
                       disabled={isUpdating}
-                      className="rounded-xl border border-red-500/40 bg-red-500/10 px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-red-400 hover:bg-red-500 hover:text-white active:scale-95 transition-all flex items-center gap-1.5"
+                      className="rounded-xl border border-red-500/40 bg-red-500/10 px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-red-400 hover:bg-red-500 hover:text-white active:scale-95 transition-all flex items-center gap-1.5"
                     >
                       <HiXCircle size={16} />
                       <span>Reject</span>

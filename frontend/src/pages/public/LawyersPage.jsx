@@ -130,7 +130,7 @@ const LawyersPage = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
             Consult Verified <span className="text-ct-gold italic">Jharkhand Advocates</span>
           </h1>
 
@@ -152,7 +152,7 @@ const LawyersPage = () => {
                       <LawyerAvatar lawyer={lawyer} />
                       <div>
                         <div className="flex items-center gap-2">
-                          <h3 className="font-cormorant text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-gold transition-colors">
+                          <h3 className="font-calluna text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-gold transition-colors">
                             {lawyer.name}
                           </h3>
                           <HiCheckCircle className="text-emerald-400 flex-shrink-0" size={18} title="Verified Bar Council Member" />
@@ -160,7 +160,7 @@ const LawyersPage = () => {
                         <p className="font-inter text-xs text-ct-gold font-medium mt-0.5">
                           {lawyer.specializations?.join(' · ') || 'Legal Consultation'}
                         </p>
-                        <p className="font-general text-[9px] uppercase tracking-wider text-ct-muted mt-1">
+                        <p className="font-inter text-[9px] uppercase tracking-wider text-ct-muted mt-1">
                           {lawyer.location} · {lawyer.experience} Years Exp.
                         </p>
                       </div>
@@ -180,13 +180,13 @@ const LawyersPage = () => {
                 {/* Footer Pricing & CTA Button */}
                 <div className="pt-4 border-t border-ct-gold/15 flex items-center justify-between gap-4">
                   <div>
-                    <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Per-Minute Rate</span>
+                    <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Per-Minute Rate</span>
                     <span className="font-zentry text-xl font-bold text-ct-gold">{formatPerMinuteRate(lawyer.pricePerMinute || 25)}</span>
                   </div>
 
                   <Link
                     to={buildRoute(ROUTES.LAWYER_PROFILE, { id: lawyer.slug })}
-                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all shrink-0"
+                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all shrink-0"
                   >
                     <span>Book Consultation</span>
                     <TiLocationArrow size={16} />
@@ -203,11 +203,11 @@ const LawyersPage = () => {
           <div className="text-center max-w-2xl mx-auto mb-8">
             <div className="flex items-center justify-center gap-2 mb-2">
               <HiLocationMarker className="text-ct-gold" size={20} />
-              <span className="font-general text-[10px] uppercase tracking-[0.2em] text-ct-gold font-bold">
+              <span className="font-inter text-[10px] uppercase tracking-[0.2em] text-ct-gold font-bold">
                 JHARKHAND STATE BAR COUNCIL DIRECTORY
               </span>
             </div>
-            <h2 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory">
+            <h2 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory">
               Find Real Advocates in <span className="text-ct-gold italic">Your District</span>
             </h2>
             <p className="font-inter text-xs text-ct-muted mt-1">
@@ -220,7 +220,7 @@ const LawyersPage = () => {
             <div className="flex flex-col sm:flex-row items-stretch gap-4 p-3 rounded-2xl bg-ct-void border border-ct-gold/30 shadow-inner">
 
               {/* Fixed State Badge: Jharkhand */}
-              <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-ct-gold/10 border border-ct-gold/30 text-ct-gold font-general text-xs uppercase tracking-widest font-bold shrink-0">
+              <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-ct-gold/10 border border-ct-gold/30 text-ct-gold font-inter text-xs uppercase tracking-widest font-bold shrink-0">
                 <HiShieldCheck size={18} />
                 <span>STATE: JHARKHAND</span>
               </div>
@@ -244,7 +244,7 @@ const LawyersPage = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all shrink-0"
+                className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all shrink-0"
               >
                 <HiSearch size={16} />
                 <span>{isLoading ? 'Searching...' : 'Search Advocates'}</span>
@@ -257,19 +257,19 @@ const LawyersPage = () => {
           <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-ct-gold/15">
             <div className="flex items-center gap-2">
               <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold">
+              <span className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold">
                 ADVOCATES IN {activeDistrict.toUpperCase()}, JHARKHAND ({districtAdvocates.length} FOUND)
               </span>
             </div>
 
-            <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted rounded-full bg-ct-void px-3 py-1 border border-ct-gold/20">
+            <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted rounded-full bg-ct-void px-3 py-1 border border-ct-gold/20">
               SOURCE: {apiSource}
             </span>
           </div>
 
           {/* Advocates Cards Grid */}
           {isLoading ? (
-            <div className="py-12 text-center text-ct-gold font-general text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+            <div className="py-12 text-center text-ct-gold font-inter text-xs uppercase tracking-widest flex items-center justify-center gap-2">
               <HiRefresh size={18} className="animate-spin" />
               <span>Querying Real Advocates Database...</span>
             </div>
@@ -292,11 +292,11 @@ const LawyersPage = () => {
                       <div className="flex items-start justify-between gap-2 mb-3">
                         <div>
                           <div className="flex items-center gap-1.5">
-                            <span className="font-general text-[8px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1">
+                            <span className="font-inter text-[8px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1">
                               <HiCheckCircle size={12} /> BAR ENROLLED
                             </span>
                           </div>
-                          <h4 className="font-cormorant text-xl font-bold text-ct-ivory mt-0.5 leading-snug">
+                          <h4 className="font-calluna text-xl font-bold text-ct-ivory mt-0.5 leading-snug">
                             {adv.name}
                           </h4>
                         </div>
@@ -331,7 +331,7 @@ const LawyersPage = () => {
 
                       <a
                         href={`tel:${dialableNumber}`}
-                        className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-4 py-2 font-general text-[10px] font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all shrink-0"
+                        className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-4 py-2 font-inter text-[10px] font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all shrink-0"
                         title={`Call ${adv.name} directly on mobile`}
                       >
                         <HiPhone size={14} />

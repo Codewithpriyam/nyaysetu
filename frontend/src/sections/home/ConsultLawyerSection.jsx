@@ -84,7 +84,7 @@ const ConsultLawyerSection = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h2 className="lawyer-header-item font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight max-w-2xl">
+          <h2 className="lawyer-header-item font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight max-w-2xl">
             Talk To A <span className="text-ct-gold italic">Verified Lawyer</span>
           </h2>
 
@@ -105,7 +105,7 @@ const ConsultLawyerSection = () => {
                       <LawyerAvatar lawyer={lawyer} />
                       <div>
                         <div className="flex items-center gap-2">
-                          <h3 className="font-cormorant text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-soft transition-colors">
+                          <h3 className="font-calluna text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-soft transition-colors">
                             {lawyer.name}
                           </h3>
                           <HiCheckCircle className="text-emerald-400 flex-shrink-0" size={16} title="Verified Bar Council" />
@@ -113,7 +113,7 @@ const ConsultLawyerSection = () => {
                         <p className="font-inter text-xs text-ct-gold font-medium mt-0.5">
                           {lawyer.specializations.join(' · ')}
                         </p>
-                        <p className="font-general text-[9px] uppercase tracking-wider text-ct-muted mt-1">
+                        <p className="font-inter text-[9px] uppercase tracking-wider text-ct-muted mt-1">
                           {lawyer.location} · {lawyer.experience} Years Exp.
                         </p>
                       </div>
@@ -131,15 +131,15 @@ const ConsultLawyerSection = () => {
                   <div className="grid grid-cols-3 gap-3 rounded-xl border border-ct-gold/15 bg-ct-deep p-3 mb-5">
                     <div className="text-center">
                       <p className="font-inter text-xs font-bold text-ct-ivory">{lawyer.consultationCount}+</p>
-                      <p className="font-general text-[8px] uppercase tracking-widest text-ct-muted mt-0.5">Consultations</p>
+                      <p className="font-inter text-[8px] uppercase tracking-widest text-ct-muted mt-0.5">Consultations</p>
                     </div>
                     <div className="text-center border-x border-ct-gold/15">
                       <p className="font-inter text-xs font-bold text-ct-ivory">{lawyer.experience} Yrs</p>
-                      <p className="font-general text-[8px] uppercase tracking-widest text-ct-muted mt-0.5">Experience</p>
+                      <p className="font-inter text-[8px] uppercase tracking-widest text-ct-muted mt-0.5">Experience</p>
                     </div>
                     <div className="text-center">
                       <p className="font-inter text-xs font-bold text-ct-ivory">{lawyer.languages.slice(0, 2).join(', ')}</p>
-                      <p className="font-general text-[8px] uppercase tracking-widest text-ct-muted mt-0.5">Languages</p>
+                      <p className="font-inter text-[8px] uppercase tracking-widest text-ct-muted mt-0.5">Languages</p>
                     </div>
                   </div>
                 </div>
@@ -152,7 +152,7 @@ const ConsultLawyerSection = () => {
                     </p>
                     <div className="flex items-center gap-1.5 mt-0.5">
                       <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span className="font-general text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
+                      <span className="font-inter text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
                         Available for Instant Call
                       </span>
                     </div>

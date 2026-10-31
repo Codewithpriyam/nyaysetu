@@ -76,11 +76,11 @@ const LawyerEarningsPage = () => {
 
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1">
+                <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1">
                   <HiCheckCircle size={14} /> Weekly Automatic Bank Payouts Active
                 </span>
               </div>
-              <h1 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight">
+              <h1 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight">
                 Advocate Revenue <span className="text-ct-gold italic">& Bank Payouts</span>
               </h1>
               <p className="font-inter text-xs sm:text-sm text-ct-muted mt-1">
@@ -89,7 +89,7 @@ const LawyerEarningsPage = () => {
             </div>
 
             <div className="rounded-2xl border border-ct-gold/30 bg-ct-deep p-4 text-right">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Next Payout Date</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Next Payout Date</span>
               <p className="font-inter text-sm font-bold text-ct-gold mt-0.5">Monday, 12 Feb 2026</p>
             </div>
 
@@ -98,19 +98,19 @@ const LawyerEarningsPage = () => {
           {/* Revenue KPI Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-ct-gold/15">
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Lifetime Revenue</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Lifetime Revenue</span>
               <p className="font-zentry text-3xl font-black text-ct-gold mt-1">₹ 1,48,500</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">This Month's Earnings</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">This Month's Earnings</span>
               <p className="font-zentry text-3xl font-black text-emerald-400 mt-1">₹ 42,500</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Pending Settlement</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Pending Settlement</span>
               <p className="font-zentry text-3xl font-black text-ct-ivory mt-1">₹ 4,500</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Total Sessions</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Total Sessions</span>
               <p className="font-zentry text-3xl font-black text-ct-gold mt-1">297</p>
             </div>
           </div>
@@ -123,7 +123,7 @@ const LawyerEarningsPage = () => {
           <div className="lg:col-span-2 flex flex-col gap-8">
 
             <div>
-              <h2 className="font-cormorant text-2xl font-bold text-ct-ivory mb-4 flex items-center gap-2">
+              <h2 className="font-calluna text-2xl font-bold text-ct-ivory mb-4 flex items-center gap-2">
                 <HiBanknotes className="text-ct-gold" size={24} />
                 <span>Recent Bank Settlement Transactions</span>
               </h2>
@@ -135,8 +135,8 @@ const LawyerEarningsPage = () => {
 
                       <div>
                         <div className="flex items-center gap-3">
-                          <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">{tx.date}</h3>
-                          <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-0.5 font-general text-[8px] uppercase tracking-widest text-emerald-400 font-bold">
+                          <h3 className="font-calluna text-2xl font-bold text-ct-ivory">{tx.date}</h3>
+                          <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-0.5 font-inter text-[8px] uppercase tracking-widest text-emerald-400 font-bold">
                             {tx.status}
                           </span>
                         </div>
@@ -147,7 +147,7 @@ const LawyerEarningsPage = () => {
 
                       <div className="text-right">
                         <p className="font-zentry text-2xl font-black text-emerald-400">{formatCurrency(tx.netSettled)}</p>
-                        <p className="font-general text-[9px] uppercase tracking-widest text-ct-muted mt-0.5">
+                        <p className="font-inter text-[9px] uppercase tracking-widest text-ct-muted mt-0.5">
                           Gross: {formatCurrency(tx.gross)} · Platform Fee: {formatCurrency(tx.platformFee)}
                         </p>
                       </div>
@@ -163,16 +163,16 @@ const LawyerEarningsPage = () => {
           {/* Right Column: Bank Account Settings Form */}
           <div>
             <div className="court-card-surface p-7 border border-ct-gold/40 shadow-court-hover sticky top-28">
-              <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mb-1">
+              <h3 className="font-calluna text-2xl font-bold text-ct-ivory mb-1">
                 Bank Payout Account
               </h3>
-              <p className="font-general text-[9px] uppercase tracking-widest text-ct-muted mb-5">
+              <p className="font-inter text-[9px] uppercase tracking-widest text-ct-muted mb-5">
                 Direct NEFT / RTGS Settlement
               </p>
 
               <form onSubmit={handleSaveBankDetails} className="flex flex-col gap-4">
                 <div>
-                  <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
+                  <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
                     Account Holder Name:
                   </label>
                   <input
@@ -184,7 +184,7 @@ const LawyerEarningsPage = () => {
                 </div>
 
                 <div>
-                  <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
+                  <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
                     Bank Name:
                   </label>
                   <input
@@ -196,7 +196,7 @@ const LawyerEarningsPage = () => {
                 </div>
 
                 <div>
-                  <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
+                  <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
                     Account Number:
                   </label>
                   <input
@@ -208,7 +208,7 @@ const LawyerEarningsPage = () => {
                 </div>
 
                 <div>
-                  <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
+                  <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
                     IFSC Code:
                   </label>
                   <input
@@ -221,7 +221,7 @@ const LawyerEarningsPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all mt-2"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all mt-2"
                 >
                   <HiSave size={16} />
                   <span>Update Bank Details</span>

@@ -101,7 +101,7 @@ const HowItWorksSection = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h2 className="hiw-header-item font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
+          <h2 className="hiw-header-item font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
             Your Legal Journey, <span className="text-ct-gold italic">Simplified in 3 Steps</span>
           </h2>
 
@@ -130,7 +130,7 @@ const HowItWorksSection = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="mb-2 font-cormorant text-xl sm:text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-soft transition-colors">
+                  <h3 className="mb-2 font-calluna text-xl sm:text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-soft transition-colors">
                     {step.title}
                   </h3>
 
@@ -143,7 +143,7 @@ const HowItWorksSection = () => {
                 <div>
                   {/* Detail tags */}
                   <div className="gold-divider mb-3" />
-                  <p className="font-general text-[9px] uppercase tracking-widest text-ct-gold/80">
+                  <p className="font-inter text-[9px] uppercase tracking-widest text-ct-gold/80">
                     {step.detail}
                   </p>
                 </div>

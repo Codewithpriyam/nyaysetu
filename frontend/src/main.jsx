@@ -51,7 +51,7 @@ createRoot(document.getElementById('root')).render(
         },
         elements: {
           card:              'bg-[#233D4D] border border-[#EAECF0]/20 shadow-2xl',
-          headerTitle:       'font-cormorant text-2xl font-bold text-[#EAECF0]',
+          headerTitle:       'font-calluna text-2xl font-bold text-[#EAECF0]',
           headerSubtitle:    'text-[#98A2B3] text-xs',
           socialButtonsBlockButton: 'bg-[#233D4D] border border-[#EAECF0]/20 text-[#EAECF0] hover:bg-[#172832]',
           socialButtonsBlockButtonText: 'text-[#EAECF0] font-semibold',

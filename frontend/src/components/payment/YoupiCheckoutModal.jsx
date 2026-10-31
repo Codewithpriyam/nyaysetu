@@ -266,11 +266,11 @@ const YoupiCheckoutModal = ({
               <HiCheckCircle className="text-emerald-400" size={48} />
             </div>
 
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3.5 py-1 mb-2 font-general text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3.5 py-1 mb-2 font-inter text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
               <HiShieldCheck size={14} /> YOUPI PG SOVEREIGN VERIFICATION COMPLETE
             </div>
 
-            <h3 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory">
+            <h3 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory">
               Payment Confirmed
             </h3>
             <p className="font-inter text-xs text-ct-muted mt-1 max-w-md mx-auto">
@@ -280,34 +280,34 @@ const YoupiCheckoutModal = ({
             {/* Official Sovereign Receipt Card */}
             <div className="mt-6 rounded-xl border border-ct-gold/30 bg-ct-void/80 p-5 text-left space-y-3 font-mono text-xs">
               <div className="flex justify-between items-center border-b border-ct-gold/15 pb-2.5">
-                <span className="text-ct-muted font-general uppercase text-[9px] tracking-wider">Settlement Routing:</span>
+                <span className="text-ct-muted font-inter uppercase text-[9px] tracking-wider">Settlement Routing:</span>
                 <span className="font-bold text-emerald-400 flex items-center gap-1">
                   ● CENTRAL PLATFORM ESCROW (METHOD B)
                 </span>
               </div>
 
               <div className="flex justify-between items-center border-b border-ct-gold/15 pb-2.5">
-                <span className="text-ct-muted font-general uppercase text-[9px] tracking-wider">Escrow Account:</span>
+                <span className="text-ct-muted font-inter uppercase text-[9px] tracking-wider">Escrow Account:</span>
                 <span className="font-bold text-ct-gold select-all">{receivingVpa} ({payeeDisplayName})</span>
               </div>
 
               <div className="flex justify-between items-center border-b border-ct-gold/15 pb-2.5">
-                <span className="text-ct-muted font-general uppercase text-[9px] tracking-wider">Advocate Beneficiary:</span>
+                <span className="text-ct-muted font-inter uppercase text-[9px] tracking-wider">Advocate Beneficiary:</span>
                 <span className="font-bold text-ct-ivory">{advocateName} ({advocateCourt})</span>
               </div>
 
               <div className="flex justify-between items-center border-b border-ct-gold/15 pb-2.5">
-                <span className="text-ct-muted font-general uppercase text-[9px] tracking-wider">Total Amount Settled:</span>
+                <span className="text-ct-muted font-inter uppercase text-[9px] tracking-wider">Total Amount Settled:</span>
                 <span className="font-bold text-ct-gold text-sm">{formatCurrency(amount)}</span>
               </div>
 
               <div className="flex justify-between items-center border-b border-ct-gold/15 pb-2.5">
-                <span className="text-ct-muted font-general uppercase text-[9px] tracking-wider">Advocate Escrow Payout:</span>
+                <span className="text-ct-muted font-inter uppercase text-[9px] tracking-wider">Advocate Escrow Payout:</span>
                 <span className="font-bold text-emerald-400">{formatCurrency(amount * 0.90)} (90% Disbursed post-session)</span>
               </div>
 
               <div className="flex justify-between items-center border-b border-ct-gold/15 pb-2.5">
-                <span className="text-ct-muted font-general uppercase text-[9px] tracking-wider">Bank UTR / Ref:</span>
+                <span className="text-ct-muted font-inter uppercase text-[9px] tracking-wider">Bank UTR / Ref:</span>
                 <div className="flex items-center gap-2">
                   <span className="font-bold text-emerald-400">{verifiedUtr || '528190342156'}</span>
                   <button
@@ -321,14 +321,14 @@ const YoupiCheckoutModal = ({
               </div>
 
               <div className="flex justify-between items-center">
-                <span className="text-ct-muted font-general uppercase text-[9px] tracking-wider">Gateway Protocol:</span>
+                <span className="text-ct-muted font-inter uppercase text-[9px] tracking-wider">Gateway Protocol:</span>
                 <span className="text-emerald-400 text-[10px]">YOUPI PG V2 • Autonomous Bank Observer Reconciled</span>
               </div>
             </div>
 
             <button
               onClick={onClose}
-              className="mt-6 w-full rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
+              className="mt-6 w-full rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3.5 font-inter text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
             >
               <span>Return to Consultation Schedule</span>
               <HiArrowRight size={16} />
@@ -340,17 +340,17 @@ const YoupiCheckoutModal = ({
           <div>
             {/* Header / Brand Badge */}
             <div className="flex items-center gap-2 mb-3">
-              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold flex items-center gap-1.5">
+              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold flex items-center gap-1.5">
                 <MdOutlineSecurity size={14} /> CENTRAL ESCROW GATEWAY
               </span>
-              <span className="font-general text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
+              <span className="font-inter text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
                 ● 100% ESCROW PROTECTION
               </span>
             </div>
 
             <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-ct-gold/20 pb-4 mb-4">
               <div>
-                <h2 className="font-cormorant text-2xl sm:text-3xl font-bold text-ct-ivory">
+                <h2 className="font-calluna text-2xl sm:text-3xl font-bold text-ct-ivory">
                   Consultation <span className="text-ct-gold italic">Payment</span>
                 </h2>
                 <p className="font-inter text-xs text-ct-muted mt-0.5">
@@ -359,7 +359,7 @@ const YoupiCheckoutModal = ({
               </div>
 
               <div className="text-right">
-                <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Fee Due</span>
+                <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Fee Due</span>
                 <span className="font-zentry text-3xl font-black text-ct-gold">{formatCurrency(amount)}</span>
               </div>
             </div>
@@ -368,7 +368,7 @@ const YoupiCheckoutModal = ({
             <div className="rounded-xl border border-ct-gold/20 bg-ct-void/60 p-3.5 flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
                 <HiClock className="text-ct-gold animate-pulse" size={18} />
-                <span className="font-general text-[10px] uppercase tracking-wider text-ct-muted">
+                <span className="font-inter text-[10px] uppercase tracking-wider text-ct-muted">
                   Session Pay Window:
                 </span>
               </div>
@@ -376,7 +376,7 @@ const YoupiCheckoutModal = ({
                 <span className={`font-mono text-sm font-bold ${paySecondsLeft < 60 ? 'text-red-400 animate-pulse' : 'text-ct-gold'}`}>
                   {timerDisplay}
                 </span>
-                <span className="font-general text-[8px] uppercase tracking-widest text-emerald-400 bg-emerald-400/10 px-2.5 py-0.5 rounded-full border border-emerald-400/30">
+                <span className="font-inter text-[8px] uppercase tracking-widest text-emerald-400 bg-emerald-400/10 px-2.5 py-0.5 rounded-full border border-emerald-400/30">
                   OBSERVERS LISTENING
                 </span>
               </div>
@@ -387,7 +387,7 @@ const YoupiCheckoutModal = ({
               <button
                 type="button"
                 onClick={() => setActiveTab('QR')}
-                className={`flex-1 py-2 px-3 rounded-lg font-general text-[10px] uppercase font-bold tracking-wider transition-all flex items-center justify-center gap-1.5 ${
+                className={`flex-1 py-2 px-3 rounded-lg font-inter text-[10px] uppercase font-bold tracking-wider transition-all flex items-center justify-center gap-1.5 ${
                   activeTab === 'QR'
                     ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-ct-void shadow-gold-glow'
                     : 'text-ct-muted hover:text-ct-gold'
@@ -400,7 +400,7 @@ const YoupiCheckoutModal = ({
               <button
                 type="button"
                 onClick={() => setActiveTab('MANUAL_UTR')}
-                className={`flex-1 py-2 px-3 rounded-lg font-general text-[10px] uppercase font-bold tracking-wider transition-all flex items-center justify-center gap-1.5 ${
+                className={`flex-1 py-2 px-3 rounded-lg font-inter text-[10px] uppercase font-bold tracking-wider transition-all flex items-center justify-center gap-1.5 ${
                   activeTab === 'MANUAL_UTR'
                     ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-ct-void shadow-gold-glow'
                     : 'text-ct-muted hover:text-ct-gold'
@@ -414,7 +414,7 @@ const YoupiCheckoutModal = ({
                 <button
                   type="button"
                   onClick={() => setActiveTab('SIMULATE')}
-                  className={`flex-1 py-2 px-3 rounded-lg font-general text-[10px] uppercase font-bold tracking-wider transition-all flex items-center justify-center gap-1.5 ${
+                  className={`flex-1 py-2 px-3 rounded-lg font-inter text-[10px] uppercase font-bold tracking-wider transition-all flex items-center justify-center gap-1.5 ${
                     activeTab === 'SIMULATE'
                       ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-ct-void shadow-gold-glow'
                       : 'text-ct-muted hover:text-ct-gold'
@@ -438,7 +438,7 @@ const YoupiCheckoutModal = ({
                       className="w-36 h-36 sm:w-40 sm:h-40 object-contain rounded-lg"
                     />
                     <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center pointer-events-none">
-                      <span className="font-general text-[9px] uppercase font-bold tracking-wider text-black bg-white px-2 py-1 rounded shadow">
+                      <span className="font-inter text-[9px] uppercase font-bold tracking-wider text-black bg-white px-2 py-1 rounded shadow">
                         Scan & Pay
                       </span>
                     </div>
@@ -447,7 +447,7 @@ const YoupiCheckoutModal = ({
                   {/* QR Scan Instructions & VPA */}
                   <div className="flex-1 text-center sm:text-left space-y-2.5">
                     <div>
-                      <span className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                      <span className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                         Deposit to NyayaSetu Central Escrow
                       </span>
                       <p className="font-inter text-xs text-ct-muted leading-relaxed">
@@ -458,12 +458,12 @@ const YoupiCheckoutModal = ({
                     {/* VPA Copier */}
                     <div className="rounded-xl border border-ct-gold/30 bg-ct-void p-2.5 flex items-center justify-between gap-2">
                       <div className="truncate text-left">
-                        <span className="text-[8px] font-general uppercase tracking-widest text-ct-muted block">Central Escrow UPI VPA:</span>
+                        <span className="text-[8px] font-inter uppercase tracking-widest text-ct-muted block">Central Escrow UPI VPA:</span>
                         <span className="font-mono text-xs font-bold text-ct-gold truncate block">{receivingVpa}</span>
                       </div>
                       <button
                         onClick={handleCopyUpi}
-                        className="rounded-lg border border-ct-gold/30 bg-ct-gold/10 px-3 py-1 text-[10px] font-general font-bold uppercase tracking-wider text-ct-ivory hover:text-ct-gold active:scale-95 transition-all flex items-center gap-1"
+                        className="rounded-lg border border-ct-gold/30 bg-ct-gold/10 px-3 py-1 text-[10px] font-inter font-bold uppercase tracking-wider text-ct-ivory hover:text-ct-gold active:scale-95 transition-all flex items-center gap-1"
                         title="Copy VPA ID"
                       >
                         {copiedUpi ? <HiCheck size={12} className="text-emerald-400" /> : <HiDuplicate size={12} />}
@@ -475,7 +475,7 @@ const YoupiCheckoutModal = ({
 
                 {/* 1-Tap Mobile App Switchers */}
                 <div>
-                  <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block mb-2 text-center">
+                  <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block mb-2 text-center">
                     📱 Or Tap to Pay Directly on Mobile:
                   </span>
                   <div className="grid grid-cols-4 gap-2">
@@ -491,7 +491,7 @@ const YoupiCheckoutModal = ({
                         className="rounded-xl border border-ct-gold/20 bg-ct-void/60 p-2.5 text-center hover:border-ct-gold/40 hover:bg-ct-void active:scale-95 transition-all flex flex-col items-center justify-center gap-1"
                       >
                         <span className="text-base">{app.icon}</span>
-                        <span className="font-general text-[9px] uppercase font-bold text-ct-ivory">{app.name}</span>
+                        <span className="font-inter text-[9px] uppercase font-bold text-ct-ivory">{app.name}</span>
                       </a>
                     ))}
                   </div>
@@ -499,7 +499,7 @@ const YoupiCheckoutModal = ({
 
                 {/* Live Observer Status Indicator */}
                 <div className="flex items-center justify-between text-[10px] text-ct-muted border-t border-ct-gold/15 pt-3">
-                  <span className="flex items-center gap-1.5 font-general uppercase tracking-wider text-emerald-400">
+                  <span className="flex items-center gap-1.5 font-inter uppercase tracking-wider text-emerald-400">
                     <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
                     Automated Bank Observer Active
                   </span>
@@ -514,7 +514,7 @@ const YoupiCheckoutModal = ({
             {activeTab === 'MANUAL_UTR' && (
               <form onSubmit={handleSubmitManualUtr} className="space-y-4">
                 <div className="rounded-xl border border-ct-gold/25 bg-ct-void/60 p-5 text-center">
-                  <h4 className="font-cormorant text-xl font-bold text-ct-ivory mb-1">
+                  <h4 className="font-calluna text-xl font-bold text-ct-ivory mb-1">
                     Already Paid via UPI?
                   </h4>
                   <p className="font-inter text-xs text-ct-muted max-w-md mx-auto leading-relaxed mb-4">
@@ -538,7 +538,7 @@ const YoupiCheckoutModal = ({
                     <button
                       type="submit"
                       disabled={isSubmittingUtr}
-                      className="w-full rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
+                      className="w-full rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3.5 font-inter text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
                     >
                       {isSubmittingUtr ? (
                         <>
@@ -565,7 +565,7 @@ const YoupiCheckoutModal = ({
                 </div>
 
                 <div>
-                  <h4 className="font-cormorant text-2xl font-bold text-ct-ivory">
+                  <h4 className="font-calluna text-2xl font-bold text-ct-ivory">
                     YouPI-PG Observer Mesh Simulator
                   </h4>
                   <p className="font-inter text-xs text-ct-muted max-w-md mx-auto mt-1 leading-relaxed">
@@ -583,7 +583,7 @@ const YoupiCheckoutModal = ({
                   type="button"
                   onClick={handleSimulateObserver}
                   disabled={isSimulating}
-                  className="rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-6 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-emerald-400 hover:bg-emerald-400 hover:text-ct-void active:scale-95 transition-all flex items-center justify-center gap-2 mx-auto"
+                  className="rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-6 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-emerald-400 hover:bg-emerald-400 hover:text-ct-void active:scale-95 transition-all flex items-center justify-center gap-2 mx-auto"
                 >
                   {isSimulating ? (
                     <>

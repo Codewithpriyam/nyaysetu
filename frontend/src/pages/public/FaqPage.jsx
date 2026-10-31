@@ -26,10 +26,10 @@ const FaqPage = () => {
     <div className="min-h-screen bg-ct-void text-ct-ivory pt-28 pb-20">
       <div className="section-container max-w-4xl mx-auto">
         <div className="text-center mb-10">
-          <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+          <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
             QUESTIONS & ANSWERS
           </span>
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight mt-2">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight mt-2">
             Frequently Asked <span className="text-ct-gold italic">Questions</span>
           </h1>
         </div>
@@ -37,7 +37,7 @@ const FaqPage = () => {
         <div className="space-y-4">
           {FAQ_ITEMS.map((faq, i) => (
             <div key={i} className="court-card-surface p-6 border border-ct-gold/30">
-              <h3 className="font-cormorant text-xl font-bold text-ct-gold mb-2">Q: {faq.q}</h3>
+              <h3 className="font-calluna text-xl font-bold text-ct-gold mb-2">Q: {faq.q}</h3>
               <p className="font-inter text-xs sm:text-sm text-ct-ivory/80 leading-relaxed">A: {faq.a}</p>
             </div>
           ))}

@@ -80,7 +80,7 @@ const PopularGuidesSection = () => {
                       </p>
                       <div className="mt-2 flex items-center gap-3">
                         <span className="info-tag-legal">{item.categoryLabel}</span>
-                        <span className="font-general text-[10px] uppercase tracking-widest text-ct-muted">
+                        <span className="font-inter text-[10px] uppercase tracking-widest text-ct-muted">
                           {item.searches} searches
                         </span>
                       </div>
@@ -104,7 +104,7 @@ const PopularGuidesSection = () => {
 
           {/* Categories sidebar — right 1 col */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-cormorant text-xl font-bold text-ct-ivory">
+            <h3 className="font-calluna text-xl font-bold text-ct-ivory">
               Browse by Category
             </h3>
 

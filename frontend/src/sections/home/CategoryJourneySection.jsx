@@ -142,7 +142,7 @@ const CategoryJourneySection = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h2 className="cat-heading font-cormorant text-3xl sm:text-4xl lg:text-5xl font-bold text-ct-ivory leading-tight">
+          <h2 className="cat-heading font-calluna text-3xl sm:text-4xl lg:text-5xl font-bold text-ct-ivory leading-tight">
             Find Guidance For <span className="text-ct-gold italic">What You're Facing</span>
           </h2>
 

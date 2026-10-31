@@ -191,7 +191,7 @@ const JusticeJourneySection = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-bold text-ct-ivory leading-tight">
+          <h2 className="font-calluna text-3xl sm:text-4xl lg:text-5xl font-bold text-ct-ivory leading-tight">
             The Justice Journey: <span className="text-ct-gold italic">8 Legal Environments</span>
           </h2>
 
@@ -209,7 +209,7 @@ const JusticeJourneySection = () => {
                 key={scene.id}
                 onClick={() => setActiveSceneIdx(idx)}
                 className={`
-                  flex items-center gap-2 rounded-full px-4 py-2 text-xs font-general uppercase tracking-wider transition-all duration-300 flex-shrink-0 border
+                  flex items-center gap-2 rounded-full px-4 py-2 text-xs font-inter uppercase tracking-wider transition-all duration-300 flex-shrink-0 border
                   ${isActive
                     ? 'bg-ct-gold text-ct-void border-ct-gold shadow-gold-glow font-bold scale-105'
                     : 'bg-ct-card border-ct-gold/30 text-ct-ivory hover:border-ct-gold/60 hover:bg-ct-gold/10'
@@ -238,11 +238,11 @@ const JusticeJourneySection = () => {
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold">
+                      <span className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold">
                         Scene 0{activeScene.id} of 08
                       </span>
                     </div>
-                    <h3 className="font-cormorant text-2xl sm:text-3xl font-bold text-ct-ivory leading-tight mt-0.5">
+                    <h3 className="font-calluna text-2xl sm:text-3xl font-bold text-ct-ivory leading-tight mt-0.5">
                       {activeScene.title}
                     </h3>
                     <p className="font-inter text-xs text-ct-muted mt-0.5">{activeScene.subtitle}</p>
@@ -250,7 +250,7 @@ const JusticeJourneySection = () => {
                 </div>
 
                 {/* Applicable Act Badge */}
-                <div className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-4 py-1.5 font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold">
+                <div className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-4 py-1.5 font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold">
                   {activeScene.act}
                 </div>
               </div>
@@ -260,7 +260,7 @@ const JusticeJourneySection = () => {
 
                 {/* Key Rights */}
                 <div>
-                  <h4 className="mb-3 font-general text-xs uppercase tracking-widest text-ct-gold font-bold flex items-center gap-2">
+                  <h4 className="mb-3 font-inter text-xs uppercase tracking-widest text-ct-gold font-bold flex items-center gap-2">
                     <HiShieldCheck size={16} />
                     <span>Your Statutory Rights</span>
                   </h4>
@@ -277,7 +277,7 @@ const JusticeJourneySection = () => {
                 {/* Standard Procedure & Helpline */}
                 <div className="flex flex-col justify-between rounded-xl border border-ct-gold/15 bg-ct-deep p-5">
                   <div>
-                    <h4 className="mb-2 font-general text-xs uppercase tracking-widest text-ct-gold font-bold flex items-center gap-2">
+                    <h4 className="mb-2 font-inter text-xs uppercase tracking-widest text-ct-gold font-bold flex items-center gap-2">
                       <MdOutlineGavel size={16} />
                       <span>Standard Legal Recourse</span>
                     </h4>
@@ -288,7 +288,7 @@ const JusticeJourneySection = () => {
 
                   <div className="pt-3 border-t border-ct-gold/10 flex items-center justify-between">
                     <div>
-                      <p className="font-general text-[8px] uppercase tracking-widest text-ct-muted">Official Helpline</p>
+                      <p className="font-inter text-[8px] uppercase tracking-widest text-ct-muted">Official Helpline</p>
                       <p className="font-inter text-xs font-bold text-ct-ivory mt-0.5">{activeScene.helpline}</p>
                     </div>
                   </div>
@@ -301,21 +301,21 @@ const JusticeJourneySection = () => {
 
                 <button
                   onClick={handlePrev}
-                  className="flex items-center gap-2 font-general text-xs uppercase tracking-widest text-ct-ivory/80 hover:text-ct-gold transition-colors py-2 px-4 rounded-xl border border-ct-gold/20 hover:border-ct-gold/50"
+                  className="flex items-center gap-2 font-inter text-xs uppercase tracking-widest text-ct-ivory/80 hover:text-ct-gold transition-colors py-2 px-4 rounded-xl border border-ct-gold/20 hover:border-ct-gold/50"
                   aria-label="Previous Scene"
                 >
                   <HiArrowLeft size={16} />
                   <span>Previous Scene</span>
                 </button>
 
-                <div className="hidden sm:flex items-center gap-1.5 font-general text-[10px] uppercase tracking-widest text-ct-muted">
+                <div className="hidden sm:flex items-center gap-1.5 font-inter text-[10px] uppercase tracking-widest text-ct-muted">
                   <span>Scene {activeScene.id} / 8</span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <button
                     onClick={handleNext}
-                    className="flex items-center gap-2 font-general text-xs uppercase tracking-widest text-ct-ivory/90 hover:text-ct-gold transition-colors py-2 px-4 rounded-xl border border-ct-gold/30 hover:border-ct-gold"
+                    className="flex items-center gap-2 font-inter text-xs uppercase tracking-widest text-ct-ivory/90 hover:text-ct-gold transition-colors py-2 px-4 rounded-xl border border-ct-gold/30 hover:border-ct-gold"
                     aria-label="Next Scene"
                   >
                     <span>Next Scene</span>
@@ -325,7 +325,7 @@ const JusticeJourneySection = () => {
                   {/* PROCEED → Button (Direct Category Detail Link) */}
                   <Link
                     to={categoryDetailUrl}
-                    className="group flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2 font-general text-xs font-bold uppercase tracking-widest text-black border border-ct-gold/60 shadow-gold-glow transition-all hover:shadow-lg hover:scale-105"
+                    className="group flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2 font-inter text-xs font-bold uppercase tracking-widest text-black border border-ct-gold/60 shadow-gold-glow transition-all hover:shadow-lg hover:scale-105"
                     aria-label={`Proceed to ${activeScene.title} details`}
                   >
                     <span>Proceed</span>

@@ -62,7 +62,7 @@ const AdminConsultationsPage = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
             Platform Consultation <span className="text-ct-gold italic">Monitor & Analytics</span>
           </h1>
 
@@ -79,9 +79,9 @@ const AdminConsultationsPage = () => {
 
                 <div>
                   <div className="flex items-center gap-3">
-                    <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">{c.clientName}</h3>
-                    <span className="font-general text-[9px] text-ct-muted">📍 {c.city}</span>
-                    <span className={`rounded-full border px-3 py-0.5 font-general text-[8px] uppercase tracking-widest font-bold ${c.status === 'Completed' ? 'border-emerald-400/40 bg-emerald-400/10 text-emerald-400' : 'border-ct-gold/40 bg-ct-gold/10 text-ct-gold'}`}>
+                    <h3 className="font-calluna text-2xl font-bold text-ct-ivory">{c.clientName}</h3>
+                    <span className="font-inter text-[9px] text-ct-muted">📍 {c.city}</span>
+                    <span className={`rounded-full border px-3 py-0.5 font-inter text-[8px] uppercase tracking-widest font-bold ${c.status === 'Completed' ? 'border-emerald-400/40 bg-emerald-400/10 text-emerald-400' : 'border-ct-gold/40 bg-ct-gold/10 text-ct-gold'}`}>
                       {c.status}
                     </span>
                   </div>
@@ -90,7 +90,7 @@ const AdminConsultationsPage = () => {
                     Advocate: <strong className="text-ct-ivory">{c.advocateName}</strong> · Category: {c.category}
                   </p>
 
-                  <div className="flex flex-wrap items-center gap-4 mt-3 font-general text-[10px] uppercase tracking-wider text-ct-muted">
+                  <div className="flex flex-wrap items-center gap-4 mt-3 font-inter text-[10px] uppercase tracking-wider text-ct-muted">
                     <span>🗓️ Date: {c.date}</span>
                     <span>⏱️ Duration: {c.duration}</span>
                     <span className="font-bold text-ct-ivory">Fee: {formatCurrency(c.fee)}</span>

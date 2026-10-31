@@ -59,7 +59,7 @@ const CategoryDetailPage = () => {
         <div className="mb-6">
           <Link
             to={ROUTES.HOME}
-            className="inline-flex items-center gap-2 font-general text-xs uppercase tracking-widest text-ct-gold hover:text-ct-ivory transition-colors"
+            className="inline-flex items-center gap-2 font-inter text-xs uppercase tracking-widest text-ct-gold hover:text-ct-ivory transition-colors"
           >
             <HiArrowLeft size={16} />
             <span>Back to Home</span>
@@ -76,11 +76,11 @@ const CategoryDetailPage = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold">
+                    <span className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold">
                       Legal Category Deep Dive
                     </span>
                   </div>
-                  <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight mt-1">
+                  <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight mt-1">
                     {category.title || category.label}
                   </h1>
                   <p className="font-inter text-sm sm:text-base text-ct-muted max-w-2xl mt-2 leading-relaxed">
@@ -89,7 +89,7 @@ const CategoryDetailPage = () => {
                 </div>
               </div>
 
-              <div className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-4 py-2 font-general text-xs uppercase tracking-widest text-ct-gold font-bold">
+              <div className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-4 py-2 font-inter text-xs uppercase tracking-widest text-ct-gold font-bold">
                 {category.rightsCount || 15} Protected Rights
               </div>
             </div>
@@ -97,13 +97,13 @@ const CategoryDetailPage = () => {
             {/* Authoritative Authorities Pill Bar */}
             {category.authorities && (
               <div className="mt-8 pt-6 border-t border-ct-gold/15 flex flex-wrap items-center gap-3">
-                <span className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+                <span className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                   Official Statutory Forums:
                 </span>
                 {category.authorities.map((auth, i) => (
                   <span
                     key={i}
-                    className="rounded-full border border-ct-gold/20 bg-ct-deep px-3.5 py-1 font-general text-[9px] uppercase tracking-wider text-ct-ivory/90"
+                    className="rounded-full border border-ct-gold/20 bg-ct-deep px-3.5 py-1 font-inter text-[9px] uppercase tracking-wider text-ct-ivory/90"
                   >
                     {auth}
                   </span>
@@ -118,7 +118,7 @@ const CategoryDetailPage = () => {
 
           {/* Common Everyday Situations Covered */}
           <div className="court-card-surface p-7 border border-ct-gold/20">
-            <h2 className="font-cormorant text-2xl font-bold text-ct-ivory mb-4 flex items-center gap-2">
+            <h2 className="font-calluna text-2xl font-bold text-ct-ivory mb-4 flex items-center gap-2">
               <HiShieldCheck className="text-ct-gold" size={24} />
               <span>Everyday Situations Covered</span>
             </h2>
@@ -139,22 +139,22 @@ const CategoryDetailPage = () => {
           {/* Applicable Indian Acts & Statutory Laws */}
           <div className="court-card-surface p-7 border border-ct-gold/20 flex flex-col justify-between">
             <div>
-              <h2 className="font-cormorant text-2xl font-bold text-ct-ivory mb-4 flex items-center gap-2">
+              <h2 className="font-calluna text-2xl font-bold text-ct-ivory mb-4 flex items-center gap-2">
                 <MdOutlineGavel className="text-ct-gold" size={24} />
                 <span>Applicable Indian Legislation</span>
               </h2>
               <div className="flex flex-col gap-3">
                 <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4">
-                  <p className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold">Primary Act</p>
-                  <p className="font-cormorant text-xl font-bold text-ct-ivory mt-1">Constitution of India & Statutory Acts</p>
+                  <p className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold">Primary Act</p>
+                  <p className="font-calluna text-xl font-bold text-ct-ivory mt-1">Constitution of India & Statutory Acts</p>
                   <p className="font-inter text-xs text-ct-muted mt-1 leading-relaxed">
                     Guarantees fundamental rights, statutory dispute resolution deadlines, and mandatory regulatory compliance.
                   </p>
                 </div>
 
                 <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4">
-                  <p className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold">Enforcement Forum</p>
-                  <p className="font-cormorant text-xl font-bold text-ct-ivory mt-1">{category.authorities?.[0] || 'District Tribunal'}</p>
+                  <p className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold">Enforcement Forum</p>
+                  <p className="font-calluna text-xl font-bold text-ct-ivory mt-1">{category.authorities?.[0] || 'District Tribunal'}</p>
                   <p className="font-inter text-xs text-ct-muted mt-1 leading-relaxed">
                     Jurisdiction-aware appellate body empowered to grant compensation, injunctions, and penalties.
                   </p>
@@ -163,7 +163,7 @@ const CategoryDetailPage = () => {
             </div>
 
             <div className="mt-6 pt-4 border-t border-ct-gold/15 flex items-center justify-between">
-              <span className="font-general text-[10px] uppercase tracking-widest text-ct-muted">Need Lawyer Assistance?</span>
+              <span className="font-inter text-[10px] uppercase tracking-widest text-ct-muted">Need Lawyer Assistance?</span>
               <Button
                 title="Consult Lawyer"
                 rightIcon={<TiLocationArrow />}
@@ -183,14 +183,14 @@ const CategoryDetailPage = () => {
             <div className="flex items-center gap-3">
               <HiOutlineDocumentText className="text-ct-gold" size={28} />
               <div>
-                <span className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">Draft Template</span>
-                <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">{sampleNotice.title}</h3>
+                <span className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">Draft Template</span>
+                <h3 className="font-calluna text-2xl font-bold text-ct-ivory">{sampleNotice.title}</h3>
               </div>
             </div>
 
             <button
               onClick={handleCopyNotice}
-              className="flex items-center gap-2 rounded-xl border border-ct-gold/40 bg-ct-gold/10 px-4 py-2 font-general text-xs uppercase tracking-widest text-ct-gold hover:bg-ct-gold hover:text-ct-void transition-all font-bold shadow-gold-glow"
+              className="flex items-center gap-2 rounded-xl border border-ct-gold/40 bg-ct-gold/10 px-4 py-2 font-inter text-xs uppercase tracking-widest text-ct-gold hover:bg-ct-gold hover:text-ct-void transition-all font-bold shadow-gold-glow"
             >
               {copied ? <HiCheck size={16} /> : <HiOutlineClipboardCopy size={16} />}
               <span>{copied ? 'Copied to Clipboard!' : 'Copy Notice Text'}</span>
@@ -205,7 +205,7 @@ const CategoryDetailPage = () => {
         {/* Bottom Consult Lawyer CTA Banner */}
         <div className="rounded-2xl border border-ct-gold/40 bg-gradient-to-r from-ct-card via-ct-wood/40 to-ct-card p-8 flex flex-wrap items-center justify-between gap-6 shadow-court-hover">
           <div>
-            <h3 className="font-cormorant text-3xl font-bold text-ct-ivory">
+            <h3 className="font-calluna text-3xl font-bold text-ct-ivory">
               Need Personal Legal Guidance for {category.title || category.label}?
             </h3>
             <p className="font-inter text-xs sm:text-sm text-ct-muted mt-1 max-w-xl">

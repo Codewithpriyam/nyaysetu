@@ -151,11 +151,11 @@ const OfficialSourcesCard = ({ sources = [], query = '' }) => {
       <div className="flex flex-wrap items-center justify-between gap-3 mb-3 border-b border-ct-gold/15 pb-2.5">
         <div className="flex items-center gap-2">
           <HiShieldCheck className="text-emerald-400" size={18} />
-          <h5 className="font-cormorant text-lg font-bold text-ct-ivory">
+          <h5 className="font-calluna text-lg font-bold text-ct-ivory">
             Official Legal Sources & Dated Citations
           </h5>
         </div>
-        <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest text-emerald-400 font-bold">
+        <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest text-emerald-400 font-bold">
           GOVERNMENT VERIFIED
         </span>
       </div>
@@ -169,7 +169,7 @@ const OfficialSourcesCard = ({ sources = [], query = '' }) => {
             >
               <div className="space-y-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-general text-[9px] uppercase tracking-widest font-bold text-ct-gold">
+                  <span className="font-inter text-[9px] uppercase tracking-widest font-bold text-ct-gold">
                     {src.officialSource}
                   </span>
                   <span className="font-mono text-[9px] text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded border border-emerald-400/20">
@@ -177,7 +177,7 @@ const OfficialSourcesCard = ({ sources = [], query = '' }) => {
                   </span>
                 </div>
 
-                <p className="font-cormorant text-base font-bold text-ct-ivory">
+                <p className="font-calluna text-base font-bold text-ct-ivory">
                   {src.actName}
                 </p>
 
@@ -187,7 +187,7 @@ const OfficialSourcesCard = ({ sources = [], query = '' }) => {
                   </p>
                 )}
 
-                <p className="font-general text-[9px] uppercase tracking-wider text-ct-gold/80">
+                <p className="font-inter text-[9px] uppercase tracking-wider text-ct-gold/80">
                   Verified against official source on {src.lastVerified || '27 September 2026'}
                 </p>
               </div>
@@ -197,14 +197,14 @@ const OfficialSourcesCard = ({ sources = [], query = '' }) => {
                   href={src.officialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 self-start sm:self-center shrink-0 rounded-lg border border-ct-gold/30 bg-ct-gold/10 px-3 py-1.5 font-general text-[10px] uppercase tracking-wider text-ct-gold hover:bg-ct-gold/20 hover:text-white transition-all shadow-sm"
+                  className="flex items-center gap-1.5 self-start sm:self-center shrink-0 rounded-lg border border-ct-gold/30 bg-ct-gold/10 px-3 py-1.5 font-inter text-[10px] uppercase tracking-wider text-ct-gold hover:bg-ct-gold/20 hover:text-white transition-all shadow-sm"
                   title="Open Official Repository / India Code"
                 >
                   <span>Official Source</span>
                   <HiExternalLink size={14} />
                 </a>
               ) : (
-                <span className="text-[10px] text-ct-muted font-general uppercase">
+                <span className="text-[10px] text-ct-muted font-inter uppercase">
                   Source verification unavailable
                 </span>
               )}
@@ -224,7 +224,7 @@ const OfficialSourcesCard = ({ sources = [], query = '' }) => {
               href="https://www.indiacode.nic.in/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[10px] font-general uppercase tracking-wider text-ct-gold hover:underline"
+              className="inline-flex items-center gap-1 text-[10px] font-inter uppercase tracking-wider text-ct-gold hover:underline"
             >
               <span>India Code Central Repository</span>
               <HiExternalLink size={12} />
@@ -234,7 +234,7 @@ const OfficialSourcesCard = ({ sources = [], query = '' }) => {
               href="https://legislative.gov.in/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-[10px] font-general uppercase tracking-wider text-ct-gold hover:underline"
+              className="inline-flex items-center gap-1 text-[10px] font-inter uppercase tracking-wider text-ct-gold hover:underline"
             >
               <span>Legislative Department (Law Ministry)</span>
               <HiExternalLink size={12} />
@@ -428,7 +428,7 @@ const ResourcesPage = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
             NyayaSetu <span className="text-ct-gold italic">AI Intelligence Engine</span>
           </h1>
 
@@ -450,7 +450,7 @@ const ResourcesPage = () => {
             <button
               key={tab.id}
               onClick={() => { setActiveTab(tab.id); setAiOutput(''); setIsError(false); }}
-              className={`rounded-xl px-4 py-2 font-general text-xs font-bold uppercase tracking-widest transition-all ${
+              className={`rounded-xl px-4 py-2 font-inter text-xs font-bold uppercase tracking-widest transition-all ${
                 activeTab === tab.id
                   ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black shadow-gold-glow'
                   : 'bg-ct-void text-ct-ivory/80 hover:text-ct-gold'
@@ -476,7 +476,7 @@ const ResourcesPage = () => {
           {activeTab === 'ASSISTANT' && (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="court-card-surface p-7 border border-ct-gold/40 lg:col-span-1">
-                <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mb-2">Ask Legal Assistant</h3>
+                <h3 className="font-calluna text-2xl font-bold text-ct-ivory mb-2">Ask Legal Assistant</h3>
                 <p className="font-inter text-xs text-ct-muted mb-4">Explain your situation in plain English, Hindi, or Hinglish.</p>
 
                 <form onSubmit={handleAskAssistant} className="space-y-4">
@@ -491,7 +491,7 @@ const ResourcesPage = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90"
                   >
                     <HiSparkles size={18} />
                     <span>{isLoading ? 'Analyzing via Groq AI...' : 'Analyze Legal Options'}</span>
@@ -502,12 +502,12 @@ const ResourcesPage = () => {
               {/* Output Display */}
               <div className="court-card-surface p-7 border border-ct-gold/40 lg:col-span-2">
                 <div className="flex items-center justify-between mb-4 border-b border-ct-gold/15 pb-3">
-                  <h3 className="font-cormorant text-2xl font-bold text-ct-ivory flex items-center gap-2">
+                  <h3 className="font-calluna text-2xl font-bold text-ct-ivory flex items-center gap-2">
                     <MdOutlineSmartToy className="text-ct-gold" size={24} />
                     <span>AI Copilot Analysis (Live Groq LLM)</span>
                   </h3>
                   {aiOutput && (
-                    <button onClick={handleCopyOutput} className="flex items-center gap-1 font-general text-[10px] uppercase text-ct-gold">
+                    <button onClick={handleCopyOutput} className="flex items-center gap-1 font-inter text-[10px] uppercase text-ct-gold">
                       {copied ? <HiCheck className="text-emerald-400" /> : <HiClipboardCopy />}
                       <span>{copied ? 'Copied' : 'Copy Response'}</span>
                     </button>
@@ -515,13 +515,13 @@ const ResourcesPage = () => {
                 </div>
 
                 {categoryEstimate && !isError && (
-                  <div className="mb-4 inline-block rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold">
+                  <div className="mb-4 inline-block rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold">
                     Engine: {categoryEstimate}
                   </div>
                 )}
 
                 {isLoading ? (
-                  <div className="py-16 text-center text-ct-gold font-general text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+                  <div className="py-16 text-center text-ct-gold font-inter text-xs uppercase tracking-widest flex items-center justify-center gap-2">
                     <HiSparkles size={20} className="animate-spin" />
                     <span>Querying Groq Llama-3.3 70B Engine...</span>
                   </div>
@@ -554,7 +554,7 @@ const ResourcesPage = () => {
           {/* TAB 2: DOCUMENT ANALYZER */}
           {activeTab === 'ANALYZER' && (
             <div className="court-card-surface p-8 border border-ct-gold/40 max-w-4xl mx-auto w-full">
-              <h3 className="font-cormorant text-3xl font-bold text-ct-ivory mb-2">Legal Document Analyzer</h3>
+              <h3 className="font-calluna text-3xl font-bold text-ct-ivory mb-2">Legal Document Analyzer</h3>
               <p className="font-inter text-xs text-ct-muted mb-6">Paste agreement, notice, or contract text to extract key clauses, missing terms, and risk flags via Groq Llama-3.</p>
 
               <form onSubmit={handleAnalyzeDocument} className="space-y-4">
@@ -569,7 +569,7 @@ const ResourcesPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90"
                 >
                   <HiDocumentText size={18} />
                   <span>{isLoading ? 'Analyzing Document via Groq...' : 'Analyze Document Risks'}</span>
@@ -584,7 +584,7 @@ const ResourcesPage = () => {
 
               {aiOutput && !isError && (
                 <div className="mt-8 pt-6 border-t border-ct-gold/15">
-                  <h4 className="font-cormorant text-xl font-bold text-ct-gold mb-3">Analysis Findings (Groq AI):</h4>
+                  <h4 className="font-calluna text-xl font-bold text-ct-gold mb-3">Analysis Findings (Groq AI):</h4>
                   <div className="bg-ct-void p-6 rounded-xl border border-ct-gold/20">
                     <FormattedAiOutput text={aiOutput} />
                   </div>
@@ -596,13 +596,13 @@ const ResourcesPage = () => {
           {/* TAB 3: DRAFT GENERATOR */}
           {activeTab === 'DRAFT' && (
             <div className="court-card-surface p-8 border border-ct-gold/40 max-w-4xl mx-auto w-full">
-              <h3 className="font-cormorant text-3xl font-bold text-ct-ivory mb-2">Legal Notice & Draft Generator</h3>
+              <h3 className="font-calluna text-3xl font-bold text-ct-ivory mb-2">Legal Notice & Draft Generator</h3>
               <p className="font-inter text-xs text-ct-muted mb-6">Generate ready-to-send statutory notices, demand letters, and legal applications using Groq Llama-3.</p>
 
               <form onSubmit={handleGenerateDraft} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="font-general text-[10px] uppercase text-ct-gold block mb-1">Select Notice / Draft Type</label>
+                    <label className="font-inter text-[10px] uppercase text-ct-gold block mb-1">Select Notice / Draft Type</label>
                     <select
                       value={draftType}
                       onChange={(e) => setDraftType(e.target.value)}
@@ -616,7 +616,7 @@ const ResourcesPage = () => {
                   </div>
 
                   <div>
-                    <label className="font-general text-[10px] uppercase text-ct-gold block mb-1">Key Parties & Claim Details</label>
+                    <label className="font-inter text-[10px] uppercase text-ct-gold block mb-1">Key Parties & Claim Details</label>
                     <input
                       type="text"
                       value={draftDetails}
@@ -630,7 +630,7 @@ const ResourcesPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90"
                 >
                   <HiSparkles size={18} />
                   <span>{isLoading ? 'Generating Draft via Groq...' : 'Generate Formal Legal Draft'}</span>
@@ -646,8 +646,8 @@ const ResourcesPage = () => {
               {aiOutput && !isError && (
                 <div className="mt-8 pt-6 border-t border-ct-gold/15">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="font-cormorant text-xl font-bold text-ct-gold">Generated Legal Draft (Groq AI):</h4>
-                    <button onClick={handleCopyOutput} className="flex items-center gap-1 font-general text-[10px] uppercase text-ct-gold">
+                    <h4 className="font-calluna text-xl font-bold text-ct-gold">Generated Legal Draft (Groq AI):</h4>
+                    <button onClick={handleCopyOutput} className="flex items-center gap-1 font-inter text-[10px] uppercase text-ct-gold">
                       {copied ? <HiCheck className="text-emerald-400" /> : <HiClipboardCopy />}
                       <span>{copied ? 'Copied' : 'Copy Draft'}</span>
                     </button>
@@ -663,7 +663,7 @@ const ResourcesPage = () => {
           {/* TAB 4: ACTION ROADMAP */}
           {activeTab === 'ROADMAP' && (
             <div className="court-card-surface p-8 border border-ct-gold/40 max-w-4xl mx-auto w-full">
-              <h3 className="font-cormorant text-3xl font-bold text-ct-ivory mb-2">Legal Action Roadmap Generator</h3>
+              <h3 className="font-calluna text-3xl font-bold text-ct-ivory mb-2">Legal Action Roadmap Generator</h3>
               <p className="font-inter text-xs text-ct-muted mb-6">Get a clear 5-step visual roadmap for resolving your legal dispute via Groq Llama-3.</p>
 
               <form onSubmit={handleGenerateRoadmap} className="flex items-center gap-4 mb-6">
@@ -678,7 +678,7 @@ const ResourcesPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 shrink-0"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 shrink-0"
                 >
                   <HiSparkles size={18} />
                   <span>Generate Roadmap</span>
@@ -703,7 +703,7 @@ const ResourcesPage = () => {
           {/* TAB 5: AI HISTORY */}
           {activeTab === 'HISTORY' && (
             <div className="court-card-surface p-8 border border-ct-gold/40 max-w-4xl mx-auto w-full">
-              <h3 className="font-cormorant text-3xl font-bold text-ct-ivory mb-2">My AI Consultation History</h3>
+              <h3 className="font-calluna text-3xl font-bold text-ct-ivory mb-2">My AI Consultation History</h3>
               <p className="font-inter text-xs text-ct-muted mb-6">View your past AI assistant queries and generated legal drafts.</p>
 
               {aiHistory.length === 0 ? (
@@ -715,7 +715,7 @@ const ResourcesPage = () => {
                   {aiHistory.map((item) => (
                     <div key={item.id} className="p-4 rounded-xl bg-ct-void border border-ct-gold/20">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+                        <span className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                           {item.queryType} · {item.createdAt ? new Date(item.createdAt).toLocaleDateString() : 'Recent'}
                         </span>
                       </div>
@@ -735,7 +735,7 @@ const ResourcesPage = () => {
                 <div key={item.id} className="court-card-surface p-6 border border-ct-gold/30 hover:border-ct-gold flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+                      <span className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                         {item.category}
                       </span>
                       <span className="font-mono text-[9px] text-ct-muted px-2 py-0.5 rounded bg-ct-void border border-ct-gold/20">
@@ -743,7 +743,7 @@ const ResourcesPage = () => {
                       </span>
                     </div>
 
-                    <h4 className="font-cormorant text-xl font-bold text-ct-ivory mb-2 leading-snug">
+                    <h4 className="font-calluna text-xl font-bold text-ct-ivory mb-2 leading-snug">
                       {item.title}
                     </h4>
 
@@ -753,11 +753,11 @@ const ResourcesPage = () => {
                   </div>
 
                   <div className="pt-3 border-t border-ct-gold/15 flex items-center justify-between">
-                    <span className="font-general text-[9px] uppercase text-ct-muted">
+                    <span className="font-inter text-[9px] uppercase text-ct-muted">
                       {item.downloadCount}
                     </span>
 
-                    <button className="flex items-center gap-1.5 rounded-xl bg-ct-gold/10 px-3 py-1.5 font-general text-[10px] font-bold uppercase text-ct-gold border border-ct-gold/30 hover:bg-ct-gold hover:text-ct-void transition-all">
+                    <button className="flex items-center gap-1.5 rounded-xl bg-ct-gold/10 px-3 py-1.5 font-inter text-[10px] font-bold uppercase text-ct-gold border border-ct-gold/30 hover:bg-ct-gold hover:text-ct-void transition-all">
                       <HiDownload size={14} />
                       <span>Download</span>
                     </button>

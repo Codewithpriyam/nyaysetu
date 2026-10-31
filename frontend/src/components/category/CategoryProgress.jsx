@@ -30,7 +30,7 @@ const CategoryProgress = ({ activeSet = 1, totalSets = 3, onSelectSet }) => {
               <span className={`font-zentry text-xs font-black ${isActive ? 'text-ct-void' : 'text-ct-gold'}`}>
                 0{setNum}
               </span>
-              <span className={`font-general text-[11px] uppercase tracking-widest font-bold ${isActive ? 'text-ct-void' : 'text-ct-ivory'}`}>
+              <span className={`font-inter text-[11px] uppercase tracking-widest font-bold ${isActive ? 'text-ct-void' : 'text-ct-ivory'}`}>
                 SET {setNum}
               </span>
             </button>

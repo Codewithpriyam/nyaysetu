@@ -98,7 +98,7 @@ const LawyerDashboardPage = () => {
 
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory">
+                  <h1 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory">
                     {lawyerProfile?.fullName || 'Advocate Portal'}
                   </h1>
                   <HiCheckCircle className="text-emerald-400" size={24} title="Verified Bar Council Advocate" />
@@ -108,7 +108,7 @@ const LawyerDashboardPage = () => {
                   NyayaSetu Advocate Account · Role: LAWYER
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4 mt-2 font-general text-[10px] uppercase tracking-wider text-ct-muted">
+                <div className="flex flex-wrap items-center gap-4 mt-2 font-inter text-[10px] uppercase tracking-wider text-ct-muted">
                   <span>📍 Bar Council Enrolled Advocate</span>
                   <span>⚖️ Verification: ACTIVE</span>
                 </div>
@@ -118,14 +118,14 @@ const LawyerDashboardPage = () => {
             <div className="flex items-center gap-3">
               <Link
                 to={ROUTES.LAWYER_PROFILE_EDIT}
-                className="rounded-xl border border-ct-gold/40 bg-ct-gold/10 px-5 py-2.5 font-general text-xs uppercase tracking-widest text-ct-gold font-bold transition-all hover:bg-ct-gold hover:text-ct-void"
+                className="rounded-xl border border-ct-gold/40 bg-ct-gold/10 px-5 py-2.5 font-inter text-xs uppercase tracking-widest text-ct-gold font-bold transition-all hover:bg-ct-gold hover:text-ct-void"
               >
                 ⚙️ Edit Profile & Payment QR
               </Link>
 
               <Link
                 to={ROUTES.LAWYER_REQUESTS}
-                className="rounded-xl bg-ct-gold px-5 py-2.5 font-general text-xs uppercase tracking-widest text-ct-void font-bold transition-all shadow-gold-glow"
+                className="rounded-xl bg-ct-gold px-5 py-2.5 font-inter text-xs uppercase tracking-widest text-ct-void font-bold transition-all shadow-gold-glow"
               >
                 Payment Verifications →
               </Link>
@@ -136,19 +136,19 @@ const LawyerDashboardPage = () => {
           {/* Quick Advocate Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-ct-gold/15">
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Assigned Cases</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Assigned Cases</span>
               <p className="font-zentry text-3xl font-black text-ct-gold mt-1">{assignedCases.length}</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Verified Earnings</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Verified Earnings</span>
               <p className="font-zentry text-3xl font-black text-emerald-400 mt-1">{formatCurrency(0)}</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Per-Min Rate</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Per-Min Rate</span>
               <p className="font-zentry text-3xl font-black text-ct-ivory mt-1">{formatPerMinuteRate(25)}</p>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Rating</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Rating</span>
               <p className="font-zentry text-3xl font-black text-ct-gold mt-1 flex items-center justify-center gap-1">
                 5.0 <HiStar size={18} />
               </p>
@@ -159,7 +159,7 @@ const LawyerDashboardPage = () => {
         {/* Portal Main Content: Assigned Cases Management */}
         <div className="mb-10">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-cormorant text-2xl font-bold text-ct-ivory flex items-center gap-2">
+            <h2 className="font-calluna text-2xl font-bold text-ct-ivory flex items-center gap-2">
               <MdOutlineGavel className="text-ct-gold" size={24} />
               <span>Assigned Court Cases & Proceedings</span>
             </h2>
@@ -168,7 +168,7 @@ const LawyerDashboardPage = () => {
           {assignedCases.length === 0 ? (
             <div className="court-card-surface p-10 text-center border border-ct-gold/20 flex flex-col items-center">
               <MdOutlineGavel className="text-ct-gold/40 mb-3" size={44} />
-              <h3 className="font-cormorant text-xl font-bold text-ct-ivory">No Assigned Legal Cases</h3>
+              <h3 className="font-calluna text-xl font-bold text-ct-ivory">No Assigned Legal Cases</h3>
               <p className="font-inter text-xs text-ct-muted mt-1 max-w-sm">
                 Cases assigned to your advocate profile by clients or system administrators will appear here.
               </p>
@@ -181,15 +181,15 @@ const LawyerDashboardPage = () => {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span className="font-mono text-xs font-bold text-ct-gold">Case #{cs.caseNumber}</span>
-                        <span className="rounded-full border border-ct-gold/30 bg-ct-gold/10 px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest text-ct-gold font-bold">
+                        <span className="rounded-full border border-ct-gold/30 bg-ct-gold/10 px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest text-ct-gold font-bold">
                           {cs.category}
                         </span>
-                        <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest text-emerald-400 font-bold">
+                        <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest text-emerald-400 font-bold">
                           {cs.status}
                         </span>
                       </div>
 
-                      <h3 className="font-cormorant text-2xl font-bold text-ct-ivory leading-tight mt-1">
+                      <h3 className="font-calluna text-2xl font-bold text-ct-ivory leading-tight mt-1">
                         {cs.title}
                       </h3>
 
@@ -198,7 +198,7 @@ const LawyerDashboardPage = () => {
                       </p>
 
                       {cs.nextHearingDate && (
-                        <p className="font-general text-[10px] uppercase tracking-wider text-emerald-400 font-bold mt-2">
+                        <p className="font-inter text-[10px] uppercase tracking-wider text-emerald-400 font-bold mt-2">
                           ⏰ Next Hearing: {cs.nextHearingDate.replace('T', ' at ').substring(0, 16)}
                         </p>
                       )}
@@ -208,21 +208,21 @@ const LawyerDashboardPage = () => {
                     <div className="flex flex-wrap items-center gap-3">
                       <button
                         onClick={() => handleUpdateCaseStatus(cs.id, 'IN_COURT')}
-                        className="rounded-xl border border-ct-gold/30 bg-ct-void px-3.5 py-2 font-general text-[10px] uppercase tracking-widest text-ct-gold hover:bg-ct-gold hover:text-ct-void transition-all"
+                        className="rounded-xl border border-ct-gold/30 bg-ct-void px-3.5 py-2 font-inter text-[10px] uppercase tracking-widest text-ct-gold hover:bg-ct-gold hover:text-ct-void transition-all"
                       >
                         Set In Court
                       </button>
 
                       <button
                         onClick={() => handleUpdateCaseStatus(cs.id, 'COMPLETED')}
-                        className="rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-3.5 py-2 font-general text-[10px] uppercase tracking-widest text-emerald-400 hover:bg-emerald-400/20 transition-all"
+                        className="rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-3.5 py-2 font-inter text-[10px] uppercase tracking-widest text-emerald-400 hover:bg-emerald-400/20 transition-all"
                       >
                         Complete Case
                       </button>
 
                       <button
                         onClick={() => setActiveCaseModal(cs)}
-                        className="flex items-center gap-1.5 rounded-xl bg-ct-gold px-4 py-2 font-general text-[10px] uppercase tracking-widest text-ct-void font-bold shadow-gold-glow hover:bg-ct-gold-light transition-all"
+                        className="flex items-center gap-1.5 rounded-xl bg-ct-gold px-4 py-2 font-inter text-[10px] uppercase tracking-widest text-ct-void font-bold shadow-gold-glow hover:bg-ct-gold-light transition-all"
                       >
                         <HiCalendar size={14} />
                         <span>Add Hearing</span>
@@ -249,10 +249,10 @@ const LawyerDashboardPage = () => {
             </button>
 
             <div className="mb-5">
-              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+              <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                 COURT HEARING SETUP
               </span>
-              <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mt-2">
+              <h3 className="font-calluna text-2xl font-bold text-ct-ivory mt-2">
                 Add Hearing for Case #{activeCaseModal.caseNumber}
               </h3>
               <p className="font-inter text-xs text-ct-muted mt-1">
@@ -262,7 +262,7 @@ const LawyerDashboardPage = () => {
 
             <form onSubmit={handleAddHearing} className="space-y-4">
               <div>
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                   Hearing Date <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -275,7 +275,7 @@ const LawyerDashboardPage = () => {
               </div>
 
               <div>
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                   Court Remarks & Proceedings Update
                 </label>
                 <textarea
@@ -289,7 +289,7 @@ const LawyerDashboardPage = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 transition-all"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 transition-all"
               >
                 <HiCheck size={18} />
                 <span>Save Court Hearing Record</span>

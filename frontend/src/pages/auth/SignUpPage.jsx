@@ -14,10 +14,10 @@ const SignUpPage = () => (
             NS
           </div>
         </div>
-        <h1 className="font-cormorant text-3xl font-bold text-ct-ivory">
+        <h1 className="font-calluna text-3xl font-bold text-ct-ivory">
           Create Your Account
         </h1>
-        <p className="font-general text-[10px] uppercase tracking-widest text-ct-gold/80 mt-1">
+        <p className="font-inter text-[10px] uppercase tracking-widest text-ct-gold/80 mt-1">
           NyayaSetu · Your Legal Rights, Simplified.
         </p>
       </div>

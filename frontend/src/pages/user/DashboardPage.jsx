@@ -106,15 +106,15 @@ const DashboardPage = () => {
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+                <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                   CITIZEN LEGAL PORTAL
                 </span>
-                <span className="font-general text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
+                <span className="font-inter text-[9px] uppercase tracking-widest text-emerald-400 font-bold">
                   ● Clerk Verified Session
                 </span>
               </div>
 
-              <h1 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory">
+              <h1 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory">
                 Welcome, <span className="text-ct-gold italic">{userProfile?.fullName || 'Citizen User'}</span>
               </h1>
               <p className="font-inter text-xs text-ct-muted mt-1">
@@ -125,7 +125,7 @@ const DashboardPage = () => {
             <div className="flex items-center gap-3">
               <Link
                 to={ROUTES.LAWYERS}
-                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
+                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
               >
                 <HiPlus size={16} />
                 <span>Book Consultation</span>
@@ -136,21 +136,21 @@ const DashboardPage = () => {
           {/* User Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-ct-gold/15">
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Active Cases</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Active Cases</span>
               <span className="font-zentry text-3xl font-black text-ct-gold mt-1 block">{userCases.length}</span>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Consultations</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Consultations</span>
               <span className="font-zentry text-3xl font-black text-emerald-400 mt-1 block">{consultations.length}</span>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Verified Payments</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Verified Payments</span>
               <span className="font-zentry text-3xl font-black text-ct-ivory mt-1 block">
                 {consultations.filter(c => c.paymentStatus === 'VERIFIED').length}
               </span>
             </div>
             <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-4 text-center">
-              <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Vault Documents</span>
+              <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Vault Documents</span>
               <span className="font-zentry text-3xl font-black text-ct-gold mt-1 block">0 Files</span>
             </div>
           </div>
@@ -162,11 +162,11 @@ const DashboardPage = () => {
           {/* Left Column: Scheduled Video Consultations */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="font-cormorant text-2xl font-bold text-ct-ivory flex items-center gap-2">
+              <h2 className="font-calluna text-2xl font-bold text-ct-ivory flex items-center gap-2">
                 <HiVideoCamera className="text-ct-gold" size={24} />
                 <span>Consultation Bookings</span>
               </h2>
-              <Link to={ROUTES.LAWYERS} className="font-general text-xs uppercase tracking-widest text-ct-gold hover:underline">
+              <Link to={ROUTES.LAWYERS} className="font-inter text-xs uppercase tracking-widest text-ct-gold hover:underline">
                 Find Advocate →
               </Link>
             </div>
@@ -174,13 +174,13 @@ const DashboardPage = () => {
             {consultations.length === 0 ? (
               <div className="court-card-surface p-8 text-center border border-ct-gold/20 flex flex-col items-center">
                 <HiCalendar className="text-ct-gold/40 mb-3" size={40} />
-                <h3 className="font-cormorant text-xl font-bold text-ct-ivory">No Active Consultations</h3>
+                <h3 className="font-calluna text-xl font-bold text-ct-ivory">No Active Consultations</h3>
                 <p className="font-inter text-xs text-ct-muted mt-1 max-w-sm">
                   You haven't scheduled any advocate video consultation calls yet. Connect directly with Bar Council practitioners.
                 </p>
                 <Link
                   to={ROUTES.LAWYERS}
-                  className="mt-5 rounded-xl bg-ct-gold px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:bg-ct-gold-light transition-all"
+                  className="mt-5 rounded-xl bg-ct-gold px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:bg-ct-gold-light transition-all"
                 >
                   Book First Consultation
                 </Link>
@@ -190,8 +190,8 @@ const DashboardPage = () => {
                 {consultations.map((con) => (
                   <div key={con.id} className="court-card-surface p-6 border border-ct-gold/30">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-cormorant text-xl font-bold text-ct-ivory">{con.lawyerName || 'Advocate Consultation'}</h4>
-                      <span className={`rounded-full px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest font-bold ${
+                      <h4 className="font-calluna text-xl font-bold text-ct-ivory">{con.lawyerName || 'Advocate Consultation'}</h4>
+                      <span className={`rounded-full px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest font-bold ${
                         con.status === 'MEETING_READY' ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30' : 'bg-sky-400/10 text-sky-400 border border-sky-400/30'
                       }`}>
                         {con.status || 'PENDING'}
@@ -203,7 +203,7 @@ const DashboardPage = () => {
                         href={con.meetingLink}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-3 inline-flex items-center gap-2 rounded-xl bg-emerald-400 px-4 py-2 font-general text-xs font-bold uppercase text-ct-void shadow-gold-glow"
+                        className="mt-3 inline-flex items-center gap-2 rounded-xl bg-emerald-400 px-4 py-2 font-inter text-xs font-bold uppercase text-ct-void shadow-gold-glow"
                       >
                         <HiVideoCamera size={16} />
                         <span>Join Video Call →</span>
@@ -218,11 +218,11 @@ const DashboardPage = () => {
           {/* Right Column: Registered Legal Cases */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="font-cormorant text-2xl font-bold text-ct-ivory flex items-center gap-2">
+              <h2 className="font-calluna text-2xl font-bold text-ct-ivory flex items-center gap-2">
                 <MdOutlineGavel className="text-ct-gold" size={24} />
                 <span>Active Legal Cases</span>
               </h2>
-              <Link to={ROUTES.CASES} className="font-general text-xs uppercase tracking-widest text-ct-gold hover:underline">
+              <Link to={ROUTES.CASES} className="font-inter text-xs uppercase tracking-widest text-ct-gold hover:underline">
                 View All ({userCases.length}) →
               </Link>
             </div>
@@ -230,13 +230,13 @@ const DashboardPage = () => {
             {userCases.length === 0 ? (
               <div className="court-card-surface p-8 text-center border border-ct-gold/20 flex flex-col items-center">
                 <MdOutlineGavel className="text-ct-gold/40 mb-3" size={40} />
-                <h3 className="font-cormorant text-xl font-bold text-ct-ivory">No Registered Legal Cases</h3>
+                <h3 className="font-calluna text-xl font-bold text-ct-ivory">No Registered Legal Cases</h3>
                 <p className="font-inter text-xs text-ct-muted mt-1 max-w-sm">
                   Track court proceedings, hearing dates, and legal evidence files stage-by-stage.
                 </p>
                 <Link
                   to={ROUTES.CASES}
-                  className="mt-5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow transition-all"
+                  className="mt-5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow transition-all"
                 >
                   File & Track New Case
                 </Link>
@@ -246,9 +246,9 @@ const DashboardPage = () => {
                 {userCases.map((cs) => (
                   <div key={cs.id} className="court-card-surface p-6 border border-ct-gold/30">
                     <span className="font-mono text-xs font-bold text-ct-gold">Case #{cs.caseNumber}</span>
-                    <h4 className="font-cormorant text-xl font-bold text-ct-ivory mt-1">{cs.title}</h4>
+                    <h4 className="font-calluna text-xl font-bold text-ct-ivory mt-1">{cs.title}</h4>
                     <p className="font-inter text-xs text-ct-muted mt-1">🏛️ {cs.courtName}</p>
-                    <Link to={`/cases/${cs.id}`} className="mt-3 inline-block font-general text-[10px] uppercase text-ct-gold font-bold">
+                    <Link to={`/cases/${cs.id}`} className="mt-3 inline-block font-inter text-[10px] uppercase text-ct-gold font-bold">
                       View Progression Timeline →
                     </Link>
                   </div>
@@ -264,7 +264,7 @@ const DashboardPage = () => {
           <div className="flex items-center gap-3 mb-4">
             <MdOutlineSmartToy className="text-ct-gold" size={28} />
             <div>
-              <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">NyayaSetu AI Legal Copilot</h3>
+              <h3 className="font-calluna text-2xl font-bold text-ct-ivory">NyayaSetu AI Legal Copilot</h3>
               <p className="font-inter text-xs text-ct-muted">Ask questions about statutory legal rights under Indian Acts.</p>
             </div>
           </div>
@@ -280,7 +280,7 @@ const DashboardPage = () => {
             <button
               type="submit"
               disabled={isAiLoading}
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow"
+              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow"
             >
               <HiSparkles size={16} />
               <span>{isAiLoading ? 'Analyzing Law...' : 'Get Instant AI Guidance'}</span>

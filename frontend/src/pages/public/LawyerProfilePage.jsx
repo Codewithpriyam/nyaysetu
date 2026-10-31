@@ -114,7 +114,7 @@ const LawyerProfilePage = () => {
 
                 <div>
                   <div className="flex items-center gap-2">
-                    <h1 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight">
+                    <h1 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight">
                       {lawyer.name}
                     </h1>
                     <HiCheckCircle className="text-emerald-400 flex-shrink-0" size={22} title="Verified Bar Council Advocate" />
@@ -124,7 +124,7 @@ const LawyerProfilePage = () => {
                     {lawyer.specializations ? lawyer.specializations.join(' · ') : lawyer.specialization}
                   </p>
 
-                  <div className="flex flex-wrap items-center gap-4 mt-2 font-general text-[10px] uppercase tracking-wider text-ct-muted">
+                  <div className="flex flex-wrap items-center gap-4 mt-2 font-inter text-[10px] uppercase tracking-wider text-ct-muted">
                     <span>📍 {lawyer.location || lawyer.district || 'India'}</span>
                     <span>⚖️ {lawyer.experience} Years Experience</span>
                     <span>🗣️ {lawyer.languages ? lawyer.languages.join(', ') : 'Hindi, English'}</span>
@@ -135,14 +135,14 @@ const LawyerProfilePage = () => {
               {/* Consultation Pricing Badge */}
               <div className="text-right flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto border-t sm:border-t-0 pt-4 sm:pt-0 border-ct-gold/15">
                 <div>
-                  <span className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold block">
+                  <span className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold block">
                     Per-Minute Consultation Rate
                   </span>
                   <div className="font-zentry text-3xl font-black text-ct-ivory mt-0.5">
                     {formatPerMinuteRate(pricePerMinute)}
                   </div>
                 </div>
-                <div className="flex items-center gap-1 text-emerald-400 font-general text-[10px] font-bold uppercase tracking-wider mt-2 bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/30">
+                <div className="flex items-center gap-1 text-emerald-400 font-inter text-[10px] font-bold uppercase tracking-wider mt-2 bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/30">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   <span>Available Now</span>
                 </div>
@@ -159,7 +159,7 @@ const LawyerProfilePage = () => {
           <div className="lg:col-span-2 space-y-8">
             {/* Bio Box */}
             <div className="court-card-surface p-7 border border-ct-gold/30">
-              <h2 className="font-cormorant text-2xl font-bold text-ct-ivory mb-3">
+              <h2 className="font-calluna text-2xl font-bold text-ct-ivory mb-3">
                 About Advocate
               </h2>
               <p className="font-inter text-sm text-ct-ivory/80 leading-relaxed">
@@ -169,14 +169,14 @@ const LawyerProfilePage = () => {
 
             {/* Practice Areas */}
             <div className="court-card-surface p-7 border border-ct-gold/30">
-              <h2 className="font-cormorant text-2xl font-bold text-ct-ivory mb-4">
+              <h2 className="font-calluna text-2xl font-bold text-ct-ivory mb-4">
                 Primary Practice Areas
               </h2>
               <div className="flex flex-wrap gap-2.5">
                 {(lawyer.specializations || [lawyer.specialization]).map((spec, i) => (
                   <span
                     key={i}
-                    className="rounded-xl border border-ct-gold/30 bg-ct-gold/10 px-4 py-2 font-general text-xs text-ct-gold font-medium"
+                    className="rounded-xl border border-ct-gold/30 bg-ct-gold/10 px-4 py-2 font-inter text-xs text-ct-gold font-medium"
                   >
                     ⚖️ {spec}
                   </span>
@@ -188,7 +188,7 @@ const LawyerProfilePage = () => {
           {/* Right Column: Booking Calculator & Action */}
           <div>
             <div className="court-card-surface p-7 border border-ct-gold/40 shadow-court-hover sticky top-28">
-              <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mb-1">
+              <h3 className="font-calluna text-2xl font-bold text-ct-ivory mb-1">
                 Book Video Consultation
               </h3>
               <p className="font-inter text-xs text-ct-muted mb-6">
@@ -197,7 +197,7 @@ const LawyerProfilePage = () => {
 
               {/* Duration Selector */}
               <div className="mb-5">
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-2">
+                <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-2">
                   Select Consultation Duration
                 </label>
                 <div className="grid grid-cols-1 gap-2">
@@ -219,7 +219,7 @@ const LawyerProfilePage = () => {
 
               {/* Issue Description */}
               <div className="mb-5">
-                <label className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
+                <label className="font-inter text-[10px] uppercase tracking-widest text-ct-gold font-bold block mb-1">
                   Brief Legal Problem (Optional)
                 </label>
                 <textarea
@@ -246,7 +246,7 @@ const LawyerProfilePage = () => {
                   <span className="font-bold text-emerald-400">₹0 (100% Free)</span>
                 </div>
                 <div className="pt-2 border-t border-ct-gold/10 flex justify-between items-center">
-                  <span className="font-general text-xs font-bold uppercase text-ct-ivory">Total Amount</span>
+                  <span className="font-inter text-xs font-bold uppercase text-ct-ivory">Total Amount</span>
                   <span className="font-zentry text-2xl font-black text-ct-gold">{formatCurrency(totalPayable)}</span>
                 </div>
               </div>
@@ -255,13 +255,13 @@ const LawyerProfilePage = () => {
               {bookingStatus === 'submitted' ? (
                 <div className="rounded-xl border border-emerald-400/40 bg-emerald-400/10 p-5 text-center">
                   <HiCheckCircle className="mx-auto text-emerald-400 mb-2" size={36} />
-                  <p className="font-general text-xs font-bold uppercase text-emerald-400">Payment UTR Submitted!</p>
+                  <p className="font-inter text-xs font-bold uppercase text-emerald-400">Payment UTR Submitted!</p>
                   <p className="font-inter text-xs text-ct-ivory/90 mt-1 leading-relaxed">
                     Advocate {lawyer.name} is verifying your UTR payment. Once confirmed, you will receive the Google Meet consultation link in your Dashboard!
                   </p>
                   <Link
                     to={ROUTES.DASHBOARD}
-                    className="inline-block mt-4 rounded-xl bg-ct-gold px-5 py-2 font-general text-[10px] uppercase tracking-widest text-ct-void font-bold"
+                    className="inline-block mt-4 rounded-xl bg-ct-gold px-5 py-2 font-inter text-[10px] uppercase tracking-widest text-ct-void font-bold"
                   >
                     Go to Citizen Dashboard →
                   </Link>
@@ -269,7 +269,7 @@ const LawyerProfilePage = () => {
               ) : (
                 <button
                   onClick={handleOpenPayment}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3.5 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
                 >
                   <HiQrcode size={18} />
                   <span>Pay {formatCurrency(totalPayable)} via QR & Book</span>

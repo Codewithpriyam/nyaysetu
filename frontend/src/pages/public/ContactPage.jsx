@@ -18,10 +18,10 @@ const ContactPage = () => {
     <div className="min-h-screen bg-ct-void text-ct-ivory pt-28 pb-20">
       <div className="section-container max-w-5xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+          <span className="rounded-full border border-ct-gold/40 bg-ct-gold/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
             SUPPORT & ENQUIRIES
           </span>
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight mt-2">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight mt-2">
             Get in Touch with <span className="text-ct-gold italic">NyayaSetu</span>
           </h1>
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted">
@@ -37,7 +37,7 @@ const ContactPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="court-card-surface p-8 border border-ct-gold/30">
-            <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mb-6">Contact Information</h3>
+            <h3 className="font-calluna text-2xl font-bold text-ct-ivory mb-6">Contact Information</h3>
             <div className="space-y-4 font-inter text-xs text-ct-ivory/80">
               <div className="flex items-center gap-3">
                 <HiMail className="text-ct-gold" size={20} />
@@ -55,7 +55,7 @@ const ContactPage = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="court-card-surface p-8 border border-ct-gold/30 space-y-4">
-            <h3 className="font-cormorant text-2xl font-bold text-ct-ivory mb-4">Send Us a Message</h3>
+            <h3 className="font-calluna text-2xl font-bold text-ct-ivory mb-4">Send Us a Message</h3>
             <input
               type="text"
               required
@@ -76,7 +76,7 @@ const ContactPage = () => {
             />
             <button
               type="submit"
-              className="w-full rounded-xl bg-ct-gold py-3 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:bg-ct-gold-light"
+              className="w-full rounded-xl bg-ct-gold py-3 font-inter text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:bg-ct-gold-light"
             >
               Send Message
             </button>

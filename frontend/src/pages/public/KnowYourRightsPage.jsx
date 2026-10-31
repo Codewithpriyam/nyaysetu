@@ -143,7 +143,7 @@ const KnowYourRightsPage = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
             Know Your <span className="text-ct-gold italic">Statutory Rights</span> Under Indian Law
           </h1>
 
@@ -173,7 +173,7 @@ const KnowYourRightsPage = () => {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`rounded-lg px-3 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${selectedCategory === cat ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
+                className={`rounded-lg px-3 py-1.5 font-inter text-[10px] uppercase tracking-widest transition-all ${selectedCategory === cat ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
               >
                 {cat}
               </button>
@@ -191,21 +191,21 @@ const KnowYourRightsPage = () => {
                 <div>
                   {/* Category Pill */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className="rounded-full border border-ct-gold/30 bg-ct-gold/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+                    <span className="rounded-full border border-ct-gold/30 bg-ct-gold/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                       {r.category}
                     </span>
                     <span className="text-2xl" role="img" aria-hidden>{r.icon}</span>
                   </div>
 
                   {/* Right Title */}
-                  <h3 className="font-cormorant text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-gold transition-colors mb-2">
+                  <h3 className="font-calluna text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-gold transition-colors mb-2">
                     {r.title}
                   </h3>
 
                   {/* Act & Section */}
                   <div className="rounded-xl border border-ct-gold/20 bg-ct-deep p-3 mb-4">
-                    <p className="font-general text-[8px] uppercase tracking-widest text-ct-gold font-bold">Statutory Act & Section</p>
-                    <p className="font-cormorant text-lg font-bold text-ct-ivory mt-0.5">{r.act}</p>
+                    <p className="font-inter text-[8px] uppercase tracking-widest text-ct-gold font-bold">Statutory Act & Section</p>
+                    <p className="font-calluna text-lg font-bold text-ct-ivory mt-0.5">{r.act}</p>
                   </div>
 
                   {/* Citizen Guarantee Description */}
@@ -217,11 +217,11 @@ const KnowYourRightsPage = () => {
                 {/* Footer Details */}
                 <div className="border-t border-ct-gold/15 pt-4 flex flex-col gap-2 font-inter text-xs">
                   <div className="flex items-center justify-between">
-                    <span className="font-general text-[9px] uppercase text-ct-muted">Mandatory Deadline</span>
+                    <span className="font-inter text-[9px] uppercase text-ct-muted">Mandatory Deadline</span>
                     <span className="font-bold text-ct-gold">{r.deadline}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-general text-[9px] uppercase text-ct-muted">Official Helpline</span>
+                    <span className="font-inter text-[9px] uppercase text-ct-muted">Official Helpline</span>
                     <span className="font-mono font-bold text-emerald-400">📞 {r.helpline}</span>
                   </div>
                 </div>

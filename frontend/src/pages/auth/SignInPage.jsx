@@ -36,10 +36,10 @@ const SignInPage = () => {
               NS
             </div>
           </div>
-          <h1 className="font-cormorant text-3xl font-bold text-ct-ivory">
+          <h1 className="font-calluna text-3xl font-bold text-ct-ivory">
             Welcome Back
           </h1>
-          <p className="font-general text-[10px] uppercase tracking-widest text-ct-gold/80 mt-1">
+          <p className="font-inter text-[10px] uppercase tracking-widest text-ct-gold/80 mt-1">
             NyayaSetu · Justice. Simplified.
           </p>
         </div>

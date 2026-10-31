@@ -73,7 +73,7 @@ const LawyerConsultationsPage = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
             Consultation History <span className="text-ct-gold italic">& Google Meet Logs</span>
           </h1>
 
@@ -86,7 +86,7 @@ const LawyerConsultationsPage = () => {
         <div className="court-card-surface p-4 mb-8 border border-ct-gold/30 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <HiFilter className="text-ct-gold" size={18} />
-            <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Filter by Status:</span>
+            <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Filter by Status:</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -94,7 +94,7 @@ const LawyerConsultationsPage = () => {
               <button
                 key={st}
                 onClick={() => setActiveFilter(st)}
-                className={`rounded-xl px-4 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${activeFilter === st ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
+                className={`rounded-xl px-4 py-1.5 font-inter text-[10px] uppercase tracking-widest transition-all ${activeFilter === st ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
               >
                 {st}
               </button>
@@ -110,9 +110,9 @@ const LawyerConsultationsPage = () => {
 
                 <div>
                   <div className="flex items-center gap-3">
-                    <h3 className="font-cormorant text-2xl font-bold text-ct-ivory">{c.clientName}</h3>
-                    <span className="font-general text-[9px] text-ct-muted">📍 {c.city}</span>
-                    <span className={`rounded-full border px-3 py-0.5 font-general text-[8px] uppercase tracking-widest font-bold ${c.status === 'Completed' ? 'border-emerald-400/40 bg-emerald-400/10 text-emerald-400' : 'border-ct-gold/40 bg-ct-gold/10 text-ct-gold'}`}>
+                    <h3 className="font-calluna text-2xl font-bold text-ct-ivory">{c.clientName}</h3>
+                    <span className="font-inter text-[9px] text-ct-muted">📍 {c.city}</span>
+                    <span className={`rounded-full border px-3 py-0.5 font-inter text-[8px] uppercase tracking-widest font-bold ${c.status === 'Completed' ? 'border-emerald-400/40 bg-emerald-400/10 text-emerald-400' : 'border-ct-gold/40 bg-ct-gold/10 text-ct-gold'}`}>
                       {c.status}
                     </span>
                   </div>
@@ -122,7 +122,7 @@ const LawyerConsultationsPage = () => {
                     "{c.issue}"
                   </p>
 
-                  <div className="flex flex-wrap items-center gap-4 mt-3 font-general text-[10px] uppercase tracking-wider text-ct-ivory/90">
+                  <div className="flex flex-wrap items-center gap-4 mt-3 font-inter text-[10px] uppercase tracking-wider text-ct-ivory/90">
                     <span>🗓️ {c.date}</span>
                     <span className="font-mono text-emerald-400">UTR: {c.utrNumber}</span>
                     <span className="font-bold text-ct-gold">Fee: {formatCurrency(c.fee ?? c.totalAmount ?? 500)}</span>
@@ -141,7 +141,7 @@ const LawyerConsultationsPage = () => {
                     href={c.meetLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
+                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
                   >
                     <HiVideoCamera size={16} />
                     <span>Open Google Meet</span>

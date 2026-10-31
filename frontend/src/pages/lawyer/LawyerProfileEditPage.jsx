@@ -115,7 +115,7 @@ const LawyerProfileEditPage = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
             Advocate Profile & <span className="text-ct-gold italic">Payment QR Settings</span>
           </h1>
 
@@ -131,12 +131,12 @@ const LawyerProfileEditPage = () => {
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-2 pb-3 border-b border-ct-gold/20">
               <MdOutlineGavel className="text-ct-gold" size={22} />
-              <h2 className="font-cormorant text-2xl font-bold text-ct-ivory">1. Professional Practitioner Info</h2>
+              <h2 className="font-calluna text-2xl font-bold text-ct-ivory">1. Professional Practitioner Info</h2>
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
-                <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
+                <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
                   Advocate Display Name*:
                 </label>
                 <input
@@ -149,7 +149,7 @@ const LawyerProfileEditPage = () => {
               </div>
 
               <div>
-                <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
+                <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
                   Bar Council Enrollment Number*:
                 </label>
                 <input
@@ -164,7 +164,7 @@ const LawyerProfileEditPage = () => {
 
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
-                <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
+                <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
                   Primary Practice Courts*:
                 </label>
                 <input
@@ -178,7 +178,7 @@ const LawyerProfileEditPage = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
+                  <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
                     Years of Exp*:
                   </label>
                   <input
@@ -193,7 +193,7 @@ const LawyerProfileEditPage = () => {
                 </div>
 
                 <div>
-                  <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
+                  <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
                     Languages*:
                   </label>
                   <input
@@ -208,7 +208,7 @@ const LawyerProfileEditPage = () => {
             </div>
 
             <div>
-              <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
+              <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1 block">
                 Professional Bio & Practice Summary*:
               </label>
               <textarea
@@ -227,14 +227,14 @@ const LawyerProfileEditPage = () => {
               <div>
                 <div className="flex items-center gap-2">
                   <HiQrcode className="text-ct-gold" size={26} />
-                  <h2 className="font-cormorant text-2xl font-bold text-ct-ivory">2. Payment UPI ID & Custom QR Code</h2>
+                  <h2 className="font-calluna text-2xl font-bold text-ct-ivory">2. Payment UPI ID & Custom QR Code</h2>
                 </div>
                 <p className="font-inter text-xs text-ct-muted mt-0.5">
                   Set your custom UPI ID and upload your personal payment QR Code image so clients can pay directly to your account.
                 </p>
               </div>
 
-              <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1">
+              <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1">
                 <HiCheckCircle size={14} /> Direct Account Settlement
               </span>
             </div>
@@ -244,7 +244,7 @@ const LawyerProfileEditPage = () => {
               {/* Left Column: Custom UPI ID Input */}
               <div className="flex flex-col gap-4">
                 <div>
-                  <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1.5 flex items-center justify-between">
+                  <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold mb-1.5 flex items-center justify-between">
                     <span>Advocate Custom UPI ID*:</span>
                     <span className="text-emerald-400 font-mono text-[9px]">GPay / PhonePe / Paytm</span>
                   </label>
@@ -267,16 +267,16 @@ const LawyerProfileEditPage = () => {
 
                 {/* Live Preview Card */}
                 <div className="rounded-xl border border-ct-gold/20 bg-ct-deep/90 p-4">
-                  <span className="font-general text-[8px] uppercase tracking-widest text-ct-muted block mb-1.5">
+                  <span className="font-inter text-[8px] uppercase tracking-widest text-ct-muted block mb-1.5">
                     Live Client Payment Badge Preview
                   </span>
 
                   <div className="flex items-center justify-between rounded-lg border border-ct-gold/30 bg-ct-void px-3.5 py-2.5">
                     <div>
-                      <span className="font-general text-[7px] uppercase tracking-widest text-ct-muted block">Advocate Verified UPI</span>
+                      <span className="font-inter text-[7px] uppercase tracking-widest text-ct-muted block">Advocate Verified UPI</span>
                       <span className="font-mono text-xs font-bold text-ct-gold">{upiId || 'advocate@upi'}</span>
                     </div>
-                    <span className="rounded bg-emerald-400/20 px-2 py-0.5 font-general text-[8px] uppercase text-emerald-400 font-bold border border-emerald-400/30">
+                    <span className="rounded bg-emerald-400/20 px-2 py-0.5 font-inter text-[8px] uppercase text-emerald-400 font-bold border border-emerald-400/30">
                       Active
                     </span>
                   </div>
@@ -285,9 +285,9 @@ const LawyerProfileEditPage = () => {
 
               {/* Right Column: Custom QR Code Image Upload */}
               <div className="flex flex-col gap-3">
-                <label className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold flex items-center justify-between">
+                <label className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold flex items-center justify-between">
                   <span>Upload Personal QR Code Image*:</span>
-                  <span className="text-ct-gold font-general text-[9px]">PNG / JPG / WEBP</span>
+                  <span className="text-ct-gold font-inter text-[9px]">PNG / JPG / WEBP</span>
                 </label>
 
                 {/* QR Code Upload Box */}
@@ -318,7 +318,7 @@ const LawyerProfileEditPage = () => {
 
                   {/* Upload Controls */}
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                    <label className="cursor-pointer flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-4 py-2 font-general text-[10px] uppercase font-bold text-black shadow-gold-glow hover:scale-105 transition-all">
+                    <label className="cursor-pointer flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-4 py-2 font-inter text-[10px] uppercase font-bold text-black shadow-gold-glow hover:scale-105 transition-all">
                       <HiPhotograph size={15} />
                       <span>{qrCodeImage ? 'Change QR Image' : 'Upload QR Image'}</span>
                       <input
@@ -333,7 +333,7 @@ const LawyerProfileEditPage = () => {
                       <button
                         type="button"
                         onClick={handleResetQrImage}
-                        className="rounded-xl border border-red-500/40 bg-red-500/10 px-3 py-2 font-general text-[10px] uppercase font-bold text-red-400 hover:bg-red-500 hover:text-white transition-all"
+                        className="rounded-xl border border-red-500/40 bg-red-500/10 px-3 py-2 font-inter text-[10px] uppercase font-bold text-red-400 hover:bg-red-500 hover:text-white transition-all"
                         title="Reset QR code to platform default"
                       >
                         Reset
@@ -348,13 +348,13 @@ const LawyerProfileEditPage = () => {
 
           {/* Submit Action */}
           <div className="pt-4 border-t border-ct-gold/15 flex items-center justify-between">
-            <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">
+            <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">
               All payment changes update instantly across client booking modals
             </span>
 
             <button
               type="submit"
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3.5 font-general text-xs font-bold uppercase tracking-widest text-black border border-ct-gold/60 shadow-gold-glow hover:scale-105 transition-all"
+              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3.5 font-inter text-xs font-bold uppercase tracking-widest text-black border border-ct-gold/60 shadow-gold-glow hover:scale-105 transition-all"
             >
               <HiSave size={18} />
               <span>Save Profile & QR Settings</span>

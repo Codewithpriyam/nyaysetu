@@ -46,7 +46,7 @@ const CategoriesPage = () => {
             <div className="gold-divider-sm" />
           </div>
 
-          <h1 className="font-cormorant text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
+          <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
             Know Your Statutory Rights Across <span className="text-ct-gold italic">9 Legal Categories</span>
           </h1>
 
@@ -72,12 +72,12 @@ const CategoriesPage = () => {
 
           {/* Set Filter Tabs */}
           <div className="flex items-center gap-2">
-            <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Category Set:</span>
+            <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Category Set:</span>
             {['All', '1', '2', '3'].map((setNum) => (
               <button
                 key={setNum}
                 onClick={() => setSelectedSet(setNum === 'All' ? 'All' : Number(setNum))}
-                className={`rounded-lg px-3.5 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${selectedSet === (setNum === 'All' ? 'All' : Number(setNum)) ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
+                className={`rounded-lg px-3.5 py-1.5 font-inter text-[10px] uppercase tracking-widest transition-all ${selectedSet === (setNum === 'All' ? 'All' : Number(setNum)) ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
               >
                 {setNum === 'All' ? 'All (9)' : `Set 0${setNum}`}
               </button>
@@ -102,7 +102,7 @@ const CategoriesPage = () => {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-ct-card via-transparent to-transparent" />
-                      <span className="absolute top-3 left-3 rounded-full border border-ct-gold/40 bg-ct-void/90 px-3 py-1 font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold backdrop-blur-md">
+                      <span className="absolute top-3 left-3 rounded-full border border-ct-gold/40 bg-ct-void/90 px-3 py-1 font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold backdrop-blur-md">
                         {cat.rightsCount} Protected Rights
                       </span>
                     </div>
@@ -112,10 +112,10 @@ const CategoriesPage = () => {
                   <div className="flex items-start gap-3 mb-2">
                     <span className="text-3xl" role="img" aria-hidden>{cat.icon}</span>
                     <div>
-                      <h3 className="font-cormorant text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-gold transition-colors">
+                      <h3 className="font-calluna text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-gold transition-colors">
                         {cat.title}
                       </h3>
-                      <span className="font-general text-[9px] uppercase tracking-widest text-ct-gold font-bold">
+                      <span className="font-inter text-[9px] uppercase tracking-widest text-ct-gold font-bold">
                         Statutory Rights Guide
                       </span>
                     </div>
@@ -128,7 +128,7 @@ const CategoriesPage = () => {
 
                   {/* Examples List */}
                   <div className="rounded-xl border border-ct-gold/15 bg-ct-deep p-3.5 mb-5">
-                    <p className="font-general text-[8px] uppercase tracking-widest text-ct-gold font-bold mb-1.5">Common Situations Covered</p>
+                    <p className="font-inter text-[8px] uppercase tracking-widest text-ct-gold font-bold mb-1.5">Common Situations Covered</p>
                     <ul className="flex flex-col gap-1.5 font-inter text-[11px] text-ct-ivory/90">
                       {cat.examples.slice(0, 3).map((ex, i) => (
                         <li key={i} className="flex items-start gap-1.5 leading-snug">
@@ -142,10 +142,10 @@ const CategoriesPage = () => {
 
                 {/* Footer Link */}
                 <div className="border-t border-ct-gold/15 pt-4 flex items-center justify-between">
-                  <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Explore Acts & Templates</span>
+                  <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted">Explore Acts & Templates</span>
                   <Link
                     to={buildRoute(ROUTES.CATEGORY, { slug: cat.slug })}
-                    className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-4 py-2 font-general text-[10px] uppercase font-bold tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
+                    className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-4 py-2 font-inter text-[10px] uppercase font-bold tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
                   >
                     <span>Deep Dive</span>
                     <HiArrowRight size={14} />

@@ -4,16 +4,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        // NyayaSetu Typography Design System: Calluna (Headings) + Inter (Interface/Body)
+        calluna: ["Calluna", "Georgia", "Times New Roman", "serif"],
+        heading: ["Calluna", "Georgia", "Times New Roman", "serif"],
+        cormorant: ["Calluna", "Georgia", "Times New Roman", "serif"],
+        playfair: ["Calluna", "Georgia", "Times New Roman", "serif"],
+        inter: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        body: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        general: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+
         // Preserved display fonts
         zentry: ["zentry", "sans-serif"],
-        general: ["general", "sans-serif"],
         "circular-web": ["circular-web", "sans-serif"],
         "robert-medium": ["robert-medium", "sans-serif"],
         "robert-regular": ["robert-regular", "sans-serif"],
-        // NyayaSetu Editorial & Legal fonts
-        cormorant: ["Cormorant Garamond", "Georgia", "serif"],
-        playfair: ["Playfair Display", "Georgia", "serif"],
-        inter: ["Inter", "sans-serif"],
       },
       colors: {
         // ─── 4-COLOUR PALETTE (BLACK, DEEP BLUE, ORANGE, LIGHT GRAY) ──────

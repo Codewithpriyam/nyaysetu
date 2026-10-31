@@ -66,7 +66,7 @@ const Button = ({
     <>
       {leftIcon && <span className="mr-1.5 flex items-center text-current">{leftIcon}</span>}
 
-      <span className="relative inline-flex overflow-hidden font-general text-xs font-bold uppercase tracking-widest text-current">
+      <span className="relative inline-flex overflow-hidden font-inter text-xs font-bold uppercase tracking-widest text-current">
         {/* Text slides out on hover */}
         <span className="translate-y-0 skew-y-0 transition duration-500 group-hover:translate-y-[-160%] group-hover:skew-y-12">
           {title}

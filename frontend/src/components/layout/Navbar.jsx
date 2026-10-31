@@ -214,10 +214,10 @@ const NavBar = () => {
                 NS
               </div>
               <div className="flex flex-col">
-                <span className="font-cormorant text-lg font-bold tracking-wide text-ct-ivory group-hover:text-ct-gold transition-colors duration-200">
+                <span className="font-calluna text-lg font-bold tracking-wide text-ct-ivory group-hover:text-ct-gold transition-colors duration-200">
                   NyayaSetu
                 </span>
-                <span className="font-general text-[7px] uppercase tracking-[0.2em] text-ct-gold/70 -mt-0.5">
+                <span className="font-inter text-[7px] uppercase tracking-[0.2em] text-ct-gold/70 -mt-0.5">
                   Justice. Simplified.
                 </span>
               </div>
@@ -232,7 +232,7 @@ const NavBar = () => {
                   end={item.to === ROUTES.HOME}
                   className={({ isActive }) =>
                     clsx(
-                      'font-general text-[10px] uppercase tracking-[0.12em] transition-all duration-200 whitespace-nowrap',
+                      'font-inter text-[10px] uppercase tracking-[0.12em] transition-all duration-200 whitespace-nowrap',
                       'px-3 py-1.5 rounded-xl',
                       isActive
                         ? 'text-ct-gold font-bold'
@@ -259,7 +259,7 @@ const NavBar = () => {
               <div className="flex items-center gap-2">
                 <Link
                   to={ROUTES.SIGN_IN}
-                  className="hidden sm:flex items-center gap-1.5 glass-button glass-button-secondary px-3.5 py-1.5 font-general text-[10px] uppercase tracking-widest"
+                  className="hidden sm:flex items-center gap-1.5 glass-button glass-button-secondary px-3.5 py-1.5 font-inter text-[10px] uppercase tracking-widest"
                 >
                   <HiOutlineUser size={14} />
                   <span>Login</span>
@@ -267,7 +267,7 @@ const NavBar = () => {
 
                 <Link
                   to={ROUTES.SIGN_UP}
-                  className="flex items-center gap-1.5 glass-button glass-button-primary px-4 py-2 font-general text-[10px] uppercase tracking-widest font-bold text-black"
+                  className="flex items-center gap-1.5 glass-button glass-button-primary px-4 py-2 font-inter text-[10px] uppercase tracking-widest font-bold text-black"
                 >
                   <span>Sign Up</span>
                   <span className="text-black">→</span>
@@ -281,7 +281,7 @@ const NavBar = () => {
                 {user?.primaryEmailAddress?.emailAddress?.toLowerCase().includes('priyamsingh504') ? (
                   <Link
                     to={ROUTES.ADMIN_DASHBOARD}
-                    className="hidden sm:flex items-center gap-1.5 glass-button px-3.5 py-1.5 font-general text-[10px] uppercase tracking-widest font-bold"
+                    className="hidden sm:flex items-center gap-1.5 glass-button px-3.5 py-1.5 font-inter text-[10px] uppercase tracking-widest font-bold"
                     style={{ borderColor: 'rgba(239, 68, 68, 0.25)', background: 'rgba(239, 68, 68, 0.08)' }}
                     title="Go to Admin Panel"
                   >
@@ -295,7 +295,7 @@ const NavBar = () => {
                 ) ? (
                   <Link
                     to={ROUTES.LAWYER_DASHBOARD}
-                    className="hidden sm:flex items-center gap-1.5 glass-button glass-button-primary px-3.5 py-1.5 font-general text-[10px] uppercase tracking-widest font-bold"
+                    className="hidden sm:flex items-center gap-1.5 glass-button glass-button-primary px-3.5 py-1.5 font-inter text-[10px] uppercase tracking-widest font-bold"
                     title="Go to Advocate Portal"
                   >
                     <HiScale size={14} />
@@ -304,7 +304,7 @@ const NavBar = () => {
                 ) : (
                   <Link
                     to={ROUTES.DASHBOARD}
-                    className="hidden sm:flex items-center gap-1.5 glass-button glass-button-primary px-3.5 py-1.5 font-general text-[10px] uppercase tracking-widest font-bold"
+                    className="hidden sm:flex items-center gap-1.5 glass-button glass-button-primary px-3.5 py-1.5 font-inter text-[10px] uppercase tracking-widest font-bold"
                     title="Go to Dashboard"
                   >
                     <HiScale size={14} />
@@ -356,7 +356,7 @@ const NavBar = () => {
                 onClick={() => setIsMobileOpen(false)}
                 className={({ isActive }) =>
                   clsx(
-                    'font-general text-xs uppercase tracking-[0.15em] p-3 rounded-xl transition-all duration-200',
+                    'font-inter text-xs uppercase tracking-[0.15em] p-3 rounded-xl transition-all duration-200',
                     isActive
                       ? 'text-ct-gold font-bold bg-ct-gold/8'
                       : 'text-ct-ivory/80 hover:text-ct-gold hover:bg-ct-gold/5'
@@ -375,7 +375,7 @@ const NavBar = () => {
                 <Link
                   to={ROUTES.SIGN_IN}
                   onClick={() => setIsMobileOpen(false)}
-                  className="flex-1 glass-button glass-button-secondary justify-center py-2.5 font-general text-xs uppercase tracking-widest"
+                  className="flex-1 glass-button glass-button-secondary justify-center py-2.5 font-inter text-xs uppercase tracking-widest"
                 >
                   <HiOutlineUser size={16} />
                   <span>Login</span>
@@ -383,7 +383,7 @@ const NavBar = () => {
                 <Link
                   to={ROUTES.SIGN_UP}
                   onClick={() => setIsMobileOpen(false)}
-                  className="flex-1 glass-button glass-button-primary justify-center py-2.5 font-general text-xs uppercase tracking-widest font-bold"
+                  className="flex-1 glass-button glass-button-primary justify-center py-2.5 font-inter text-xs uppercase tracking-widest font-bold"
                 >
                   <span>Sign Up →</span>
                 </Link>
@@ -398,7 +398,7 @@ const NavBar = () => {
                     <p className="font-inter text-xs font-bold text-ct-ivory leading-tight">
                       {user?.fullName || user?.firstName || 'My Account'}
                     </p>
-                    <span className="font-general text-[9px] uppercase tracking-widest text-ct-gold/80">
+                    <span className="font-inter text-[9px] uppercase tracking-widest text-ct-gold/80">
                       Authenticated Session
                     </span>
                   </div>
@@ -406,7 +406,7 @@ const NavBar = () => {
                 <Link
                   to={ROUTES.DASHBOARD}
                   onClick={() => setIsMobileOpen(false)}
-                  className="glass-button glass-button-primary px-3.5 py-1.5 font-general text-[10px] uppercase tracking-widest font-bold"
+                  className="glass-button glass-button-primary px-3.5 py-1.5 font-inter text-[10px] uppercase tracking-widest font-bold"
                 >
                   Dashboard →
                 </Link>

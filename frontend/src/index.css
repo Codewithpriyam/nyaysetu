@@ -3,6 +3,7 @@
    Black: #000000 | Deep Blue: #233D4D | Orange: #FE7F2D | Light Gray: #EAECF0
    ============================================================ */
 
+@import url("https://fonts.cdnfonts.com/css/calluna");
 @import url("https://fonts.cdnfonts.com/css/general-sans");
 
 @tailwind base;
@@ -10,9 +11,14 @@
 @tailwind utilities;
 
 /* ============================================================
-   CENTRALIZED THEME PALETTE VARIABLES
+   CENTRALIZED THEME PALETTE & TYPOGRAPHY VARIABLES
    ============================================================ */
 :root {
+  /* ── Typography Tokens (Calluna Editorial Serif + Inter Clean Modern UI) ── */
+  --font-heading:           "Calluna", Georgia, "Times New Roman", serif;
+  --font-body:              "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* ── 4-Colour Palette Tokens ─────────────────────────────── */
   --color-black:            #000000;
   --color-deep-blue:        #233D4D;
   --color-orange:           #FE7F2D;
@@ -95,6 +101,22 @@
    ============================================================ */
 @layer base {
   @font-face {
+    font-family: "Calluna";
+    src: url("/fonts/calluna-regular.woff") format("woff"),
+         url("/fonts/Calluna-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Calluna";
+    src: url("/fonts/Calluna-Bold.otf") format("opentype"),
+         url("/fonts/Calluna-Regular.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
     font-family: "zentry";
     src: url("/fonts/zentry-regular.woff2") format("woff2");
     font-display: swap;
@@ -139,9 +161,17 @@
     overflow-x: hidden;
     background-color: #000000;
     color: #EAECF0;
-    font-family: "Inter", "General Sans", sans-serif;
+    font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  button, input, textarea, select {
+    font-family: var(--font-body);
   }
 
   :focus-visible {
@@ -185,22 +215,27 @@
 
   /* Typography */
   .hero-display {
-    @apply font-zentry font-black uppercase leading-[0.85] tracking-tight;
+    @apply font-bold uppercase leading-[0.85] tracking-tight;
+    font-family: var(--font-heading);
     font-feature-settings: "ss01" on;
   }
   .section-title {
-    @apply font-cormorant font-bold leading-tight text-ct-ivory;
+    @apply font-bold leading-tight text-ct-ivory;
+    font-family: var(--font-heading);
   }
   .label-text {
-    @apply font-general text-xs uppercase tracking-[0.18em] text-ct-gold;
+    @apply text-xs uppercase tracking-[0.18em] text-ct-gold;
+    font-family: var(--font-body);
   }
 
   /* Animated title */
   .animated-title {
     @apply flex flex-col gap-1 text-5xl uppercase leading-[.85] text-ct-ivory sm:px-16 md:text-[5.5rem];
+    font-family: var(--font-heading);
   }
   .animated-word {
-    @apply font-zentry font-black opacity-0;
+    @apply font-bold opacity-0;
+    font-family: var(--font-heading);
     transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
     transform-origin: 50% 50% -150px !important;
     will-change: opacity, transform;
@@ -208,7 +243,7 @@
 
   /* Buttons */
   .nav-hover-btn {
-    @apply relative ms-8 font-general text-xs uppercase text-ct-ivory/90
+    @apply relative ms-8 font-inter text-xs uppercase text-ct-ivory/90
            after:absolute after:-bottom-0.5 after:left-0 after:h-[1px] after:w-full
            after:origin-bottom-right after:scale-x-0 after:bg-ct-gold
            after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)]

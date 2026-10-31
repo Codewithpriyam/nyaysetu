@@ -53,7 +53,7 @@ const CaseDetailPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-ct-void flex items-center justify-center text-ct-gold">
-        <p className="font-general text-xs uppercase tracking-widest">Loading Case File...</p>
+        <p className="font-inter text-xs uppercase tracking-widest">Loading Case File...</p>
       </div>
     );
   }
@@ -63,13 +63,13 @@ const CaseDetailPage = () => {
       <div className="min-h-screen bg-ct-void text-ct-ivory pt-28 pb-20 flex flex-col items-center justify-center">
         <div className="court-card-surface p-10 border border-ct-gold/30 text-center max-w-md">
           <MdOutlineGavel className="text-ct-gold/40 mx-auto mb-3" size={48} />
-          <h2 className="font-cormorant text-2xl font-bold text-ct-ivory">Case Record Not Found</h2>
+          <h2 className="font-calluna text-2xl font-bold text-ct-ivory">Case Record Not Found</h2>
           <p className="font-inter text-xs text-ct-muted mt-2">
             The requested case file does not exist or you do not have permission to view it.
           </p>
           <Link
             to={ROUTES.CASES}
-            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-ct-gold px-5 py-2.5 font-general text-xs font-bold uppercase text-ct-void shadow-gold-glow"
+            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-ct-gold px-5 py-2.5 font-inter text-xs font-bold uppercase text-ct-void shadow-gold-glow"
           >
             <HiArrowLeft size={16} />
             <span>Return to My Cases</span>
@@ -86,7 +86,7 @@ const CaseDetailPage = () => {
       <div className="section-container max-w-5xl mx-auto">
 
         {/* Back Link */}
-        <Link to={ROUTES.CASES} className="inline-flex items-center gap-2 text-ct-muted hover:text-ct-gold text-xs font-general uppercase tracking-widest mb-6">
+        <Link to={ROUTES.CASES} className="inline-flex items-center gap-2 text-ct-muted hover:text-ct-gold text-xs font-inter uppercase tracking-widest mb-6">
           <HiArrowLeft size={16} />
           <span>Back to My Cases</span>
         </Link>
@@ -98,15 +98,15 @@ const CaseDetailPage = () => {
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span className="font-mono text-xs font-bold text-ct-gold">Case #{caseData?.caseNumber}</span>
-                  <span className="rounded-full border border-ct-gold/30 bg-ct-gold/10 px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest text-ct-gold font-bold">
+                  <span className="rounded-full border border-ct-gold/30 bg-ct-gold/10 px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest text-ct-gold font-bold">
                     {caseData?.category}
                   </span>
-                  <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-0.5 font-general text-[8px] uppercase tracking-widest text-emerald-400 font-bold">
+                  <span className="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-2.5 py-0.5 font-inter text-[8px] uppercase tracking-widest text-emerald-400 font-bold">
                     {caseData?.status}
                   </span>
                 </div>
 
-                <h1 className="font-cormorant text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight mt-1">
+                <h1 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight mt-1">
                   {caseData?.title}
                 </h1>
 
@@ -116,7 +116,7 @@ const CaseDetailPage = () => {
               </div>
 
               <div className="text-right">
-                <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted block">Filing Date</span>
+                <span className="font-inter text-[9px] uppercase tracking-widest text-ct-muted block">Filing Date</span>
                 <span className="font-mono text-sm font-bold text-ct-ivory">{caseData?.filingDate || 'Pending'}</span>
               </div>
             </div>
@@ -125,7 +125,7 @@ const CaseDetailPage = () => {
 
         {/* ─── STAGE-BY-STAGE CASE TIMELINE VISUALIZATION ─────────────────────── */}
         <div className="court-card-surface p-8 border border-ct-gold/30 mb-10">
-          <h2 className="font-cormorant text-2xl font-bold text-ct-ivory mb-6 flex items-center gap-2">
+          <h2 className="font-calluna text-2xl font-bold text-ct-ivory mb-6 flex items-center gap-2">
             <MdOutlineGavel className="text-ct-gold" size={24} />
             <span>Case Progression Timeline</span>
           </h2>
@@ -144,7 +144,7 @@ const CaseDetailPage = () => {
                   }`}>
                     {stage.icon}
                   </div>
-                  <span className={`font-general text-[9px] uppercase tracking-wider font-bold leading-snug ${
+                  <span className={`font-inter text-[9px] uppercase tracking-wider font-bold leading-snug ${
                     isCurrent ? 'text-ct-gold' : isCompleted ? 'text-ct-ivory' : 'text-ct-muted'
                   }`}>
                     {stage.label}
@@ -164,7 +164,7 @@ const CaseDetailPage = () => {
           {/* Court Hearings Table */}
           <div className="court-card-surface p-7 border border-ct-gold/30">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-cormorant text-2xl font-bold text-ct-ivory flex items-center gap-2">
+              <h3 className="font-calluna text-2xl font-bold text-ct-ivory flex items-center gap-2">
                 <HiCalendar className="text-ct-gold" size={22} />
                 <span>Court Hearings</span>
               </h3>
@@ -180,7 +180,7 @@ const CaseDetailPage = () => {
                   <div key={h.id} className="rounded-xl border border-ct-gold/20 bg-ct-void/60 p-4">
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-mono text-xs font-bold text-ct-gold">📅 {h.hearingDate} at {h.hearingTime || '10:30 AM'}</span>
-                      <span className={`rounded-full px-2 py-0.5 font-general text-[8px] uppercase tracking-widest font-bold ${
+                      <span className={`rounded-full px-2 py-0.5 font-inter text-[8px] uppercase tracking-widest font-bold ${
                         h.status === 'COMPLETED' ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30' : 'bg-sky-400/10 text-sky-400 border border-sky-400/30'
                       }`}>
                         {h.status}
@@ -199,7 +199,7 @@ const CaseDetailPage = () => {
           {/* Case Document Vault */}
           <div className="court-card-surface p-7 border border-ct-gold/30">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-cormorant text-2xl font-bold text-ct-ivory flex items-center gap-2">
+              <h3 className="font-calluna text-2xl font-bold text-ct-ivory flex items-center gap-2">
                 <HiFolder className="text-ct-gold" size={22} />
                 <span>Case Document Vault</span>
               </h3>
@@ -217,7 +217,7 @@ const CaseDetailPage = () => {
                       <HiDocumentText className="text-ct-gold flex-shrink-0" size={24} />
                       <div>
                         <h4 className="font-inter text-xs font-bold text-ct-ivory">{doc.fileName}</h4>
-                        <span className="font-general text-[8px] uppercase tracking-widest text-ct-muted">{doc.documentType}</span>
+                        <span className="font-inter text-[8px] uppercase tracking-widest text-ct-muted">{doc.documentType}</span>
                       </div>
                     </div>
                     <button className="text-ct-gold hover:text-ct-ivory p-1.5 rounded-lg border border-ct-gold/20">

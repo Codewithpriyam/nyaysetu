@@ -38,7 +38,7 @@ const CategoryCard = ({ category }) => {
           </div>
 
           {/* Rights Count Badge */}
-          <div className="absolute bottom-3 right-3 rounded-full border border-ct-gold/40 bg-ct-void/90 px-3 py-1 text-[10px] font-general uppercase tracking-widest text-ct-gold font-bold backdrop-blur-md">
+          <div className="absolute bottom-3 right-3 rounded-full border border-ct-gold/40 bg-ct-void/90 px-3 py-1 text-[10px] font-inter uppercase tracking-widest text-ct-gold font-bold backdrop-blur-md">
             {category.rightsCount || 15} Rights
           </div>
         </div>
@@ -46,7 +46,7 @@ const CategoryCard = ({ category }) => {
         {/* Text Content Area */}
         <div className="flex flex-col flex-1 justify-between">
           <div>
-            <h3 className="font-cormorant text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-gold transition-colors duration-300">
+            <h3 className="font-calluna text-2xl font-bold text-ct-ivory leading-tight group-hover:text-ct-gold transition-colors duration-300">
               {categoryTitle}
             </h3>
 
@@ -57,7 +57,7 @@ const CategoryCard = ({ category }) => {
 
           {/* Card Footer */}
           <div className="mt-4 border-t border-ct-gold/15 pt-3 flex items-center justify-between">
-            <span className="font-general text-[10px] uppercase tracking-widest text-ct-gold/80 font-bold group-hover:text-ct-gold transition-colors">
+            <span className="font-inter text-[10px] uppercase tracking-widest text-ct-gold/80 font-bold group-hover:text-ct-gold transition-colors">
               Explore Rights
             </span>
 
