@@ -5,7 +5,7 @@
  *  - Automatically triggers Llama-3 70B AI legal assessment for the user's prompt.
  */
 
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TiLocationArrow } from 'react-icons/ti';
 import { MdBalance, MdOutlinePersonSearch, MdOutlineSmartToy } from 'react-icons/md';
@@ -25,6 +25,8 @@ const PLACEHOLDER_PROBLEMS = [
 const HeroSection = () => {
   const [problemText, setProblemText]       = useState('');
   const [placeholderIdx, setPlaceholderIdx] = useState(0);
+  const [isTyping, setIsTyping]             = useState(false);
+  const inputRef                            = useRef(null);
   const prefersReduced                      = useReducedMotion();
   const navigate                            = useNavigate();
 

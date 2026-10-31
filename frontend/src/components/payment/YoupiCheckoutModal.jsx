@@ -38,6 +38,8 @@ const YoupiCheckoutModal = ({
 
   const [activeTab, setActiveTab] = useState('QR'); // 'QR', 'MANUAL_UTR', 'SIMULATE'
   const [session, setSession] = useState(null);
+  const [_isLoadingSession, setIsLoadingSession] = useState(true);
+  const [_sessionError, setSessionError] = useState('');
   const [copiedUpi, setCopiedUpi] = useState(false);
   const [copiedUtr, setCopiedUtr] = useState(false);
 
