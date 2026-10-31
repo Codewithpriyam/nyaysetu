@@ -15,7 +15,7 @@ export const ROUTES = {
   LAWYER_DETAIL:    '/lawyers/:id',
   RESOURCES:        '/resources',
   ABOUT:            '/about',
-  ARCHITECTURE:     '/architecture',
+
   PRIVACY:          '/privacy',
   TERMS:            '/terms',
   CONTACT:          '/contact',

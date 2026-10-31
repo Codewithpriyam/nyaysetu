@@ -15,7 +15,6 @@ const FOOTER_LINKS = {
   'Lawyers': [
     { label: 'Find a Lawyer',     to: ROUTES.LAWYERS },
     { label: 'Request Consultation', to: ROUTES.LAWYERS },
-    { label: 'System Architecture', to: ROUTES.ARCHITECTURE },
   ],
   'Platform & Legal': [
     { label: 'About Developer',  to: ROUTES.ABOUT },

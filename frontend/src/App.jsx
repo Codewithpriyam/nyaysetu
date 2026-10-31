@@ -109,7 +109,7 @@ const LawyersPage         = lazy(() => import('@/pages/public/LawyersPage'));
 const LawyerProfilePage   = lazy(() => import('@/pages/public/LawyerProfilePage'));
 const ResourcesPage       = lazy(() => import('@/pages/public/ResourcesPage'));
 const AboutPage           = lazy(() => import('@/pages/public/AboutPage'));
-const ArchitecturePage    = lazy(() => import('@/pages/public/ArchitecturePage'));
+
 const PrivacyPage         = lazy(() => import('@/pages/public/PrivacyPage'));
 const TermsPage           = lazy(() => import('@/pages/public/TermsPage'));
 const ContactPage         = lazy(() => import('@/pages/public/ContactPage'));
@@ -161,7 +161,7 @@ const AppRouter = () => {
         <Route path={ROUTES.LAWYER_PROFILE}  element={<PageWrapper><LawyerProfilePage /></PageWrapper>} />
         <Route path={ROUTES.RESOURCES}       element={<PageWrapper><ResourcesPage /></PageWrapper>} />
         <Route path={ROUTES.ABOUT}           element={<PageWrapper><AboutPage /></PageWrapper>} />
-        <Route path={ROUTES.ARCHITECTURE}    element={<PageWrapper><ArchitecturePage /></PageWrapper>} />
+
         <Route path={ROUTES.PRIVACY}         element={<PageWrapper><PrivacyPage /></PageWrapper>} />
         <Route path={ROUTES.TERMS}           element={<PageWrapper><TermsPage /></PageWrapper>} />
         <Route path={ROUTES.CONTACT}         element={<PageWrapper><ContactPage /></PageWrapper>} />
