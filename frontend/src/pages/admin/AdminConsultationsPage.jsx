@@ -63,7 +63,7 @@ const AdminConsultationsPage = () => {
           </div>
 
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
-            Platform Consultation <span className="text-ct-gold italic">Monitor & Analytics</span>
+            Platform Consultation <span className="text-ct-gold">Monitor & Analytics</span>
           </h1>
 
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed max-w-xl mx-auto">

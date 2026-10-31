@@ -143,7 +143,7 @@ const CategoryJourneySection = () => {
           </div>
 
           <h2 className="cat-heading font-calluna text-3xl sm:text-4xl lg:text-5xl font-bold text-ct-ivory leading-tight">
-            Find Guidance For <span className="text-ct-gold italic">What You're Facing</span>
+            Find Guidance For <span className="text-ct-gold">What You're Facing</span>
           </h2>
 
           <p className="cat-subtitle mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed max-w-lg mx-auto">

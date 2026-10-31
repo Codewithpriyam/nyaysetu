@@ -351,7 +351,7 @@ const YoupiCheckoutModal = ({
             <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-ct-gold/20 pb-4 mb-4">
               <div>
                 <h2 className="font-calluna text-2xl sm:text-3xl font-bold text-ct-ivory">
-                  Consultation <span className="text-ct-gold italic">Payment</span>
+                  Consultation <span className="text-ct-gold">Payment</span>
                 </h2>
                 <p className="font-inter text-xs text-ct-muted mt-0.5">
                   Holding Escrow for consultation with <strong className="text-ct-ivory">{advocateName}</strong> ({advocateCourt})

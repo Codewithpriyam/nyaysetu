@@ -87,7 +87,7 @@ const HeroSection = () => {
           {/* Headline */}
           <h1 className="font-calluna text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-ct-ivory leading-[0.95] mb-4">
             Justice. <br />
-            <span className="text-ct-gold italic">Simplified.</span>
+            <span className="text-ct-gold">Simplified.</span>
           </h1>
 
           {/* Description */}

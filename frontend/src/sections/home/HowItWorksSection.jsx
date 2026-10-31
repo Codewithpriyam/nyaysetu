@@ -102,7 +102,7 @@ const HowItWorksSection = () => {
           </div>
 
           <h2 className="hiw-header-item font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
-            Your Legal Journey, <span className="text-ct-gold italic">Simplified in 3 Steps</span>
+            Your Legal Journey, <span className="text-ct-gold">Simplified in 3 Steps</span>
           </h2>
 
           <p className="hiw-header-item mt-3 max-w-xl font-inter text-sm sm:text-base text-ct-muted leading-relaxed">

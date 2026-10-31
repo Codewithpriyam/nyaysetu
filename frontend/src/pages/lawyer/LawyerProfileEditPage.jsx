@@ -116,7 +116,7 @@ const LawyerProfileEditPage = () => {
           </div>
 
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
-            Advocate Profile & <span className="text-ct-gold italic">Payment QR Settings</span>
+            Advocate Profile & <span className="text-ct-gold">Payment QR Settings</span>
           </h1>
 
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed">

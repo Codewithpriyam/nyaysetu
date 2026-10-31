@@ -96,7 +96,7 @@ const FormattedAiOutput = ({ text }) => {
         if (trimmed.toLowerCase().includes('disclaimer:')) {
           const cleanDisclaimer = trimmed.replace(/\*/g, '');
           return (
-            <div key={idx} className="mt-4 pt-3 border-t border-ct-gold/20 text-[11px] text-ct-gold/80 italic">
+            <div key={idx} className="mt-4 pt-3 border-t border-ct-gold/20 text-[11px] text-ct-gold/80 ">
               {cleanDisclaimer}
             </div>
           );
@@ -429,7 +429,7 @@ const ResourcesPage = () => {
           </div>
 
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
-            NyayaSetu <span className="text-ct-gold italic">AI Intelligence Engine</span>
+            NyayaSetu <span className="text-ct-gold">AI Intelligence Engine</span>
           </h1>
 
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed max-w-xl mx-auto">
@@ -541,7 +541,7 @@ const ResourcesPage = () => {
                         <OfficialSourcesCard sources={activeCitations} query={prompt} />
                       </>
                     ) : (
-                      <p className="font-inter text-xs text-ct-muted italic">
+                      <p className="font-inter text-xs text-ct-muted ">
                         Your AI Legal Copilot response from Groq API will appear here...
                       </p>
                     )}

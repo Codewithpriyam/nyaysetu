@@ -74,7 +74,7 @@ const LawyerConsultationsPage = () => {
           </div>
 
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
-            Consultation History <span className="text-ct-gold italic">& Google Meet Logs</span>
+            Consultation History <span className="text-ct-gold">& Google Meet Logs</span>
           </h1>
 
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed max-w-xl mx-auto">

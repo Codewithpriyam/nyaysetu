@@ -115,7 +115,7 @@ const DashboardPage = () => {
               </div>
 
               <h1 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory">
-                Welcome, <span className="text-ct-gold italic">{userProfile?.fullName || 'Citizen User'}</span>
+                Welcome, <span className="text-ct-gold">{userProfile?.fullName || 'Citizen User'}</span>
               </h1>
               <p className="font-inter text-xs text-ct-muted mt-1">
                 Account ID: <strong>{userProfile?.clerkUserId || 'Authenticated'}</strong> · Role: <strong>{userProfile?.role || 'USER'}</strong>

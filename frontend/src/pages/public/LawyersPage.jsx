@@ -131,7 +131,7 @@ const LawyersPage = () => {
           </div>
 
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
-            Consult Verified <span className="text-ct-gold italic">Jharkhand Advocates</span>
+            Consult Verified <span className="text-ct-gold">Jharkhand Advocates</span>
           </h1>
 
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed max-w-xl mx-auto">
@@ -208,7 +208,7 @@ const LawyersPage = () => {
               </span>
             </div>
             <h2 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory">
-              Find Real Advocates in <span className="text-ct-gold italic">Your District</span>
+              Find Real Advocates in <span className="text-ct-gold">Your District</span>
             </h2>
             <p className="font-inter text-xs text-ct-muted mt-1">
               Select your Jharkhand District to view real Bar Council enrolled practitioners & call them directly.

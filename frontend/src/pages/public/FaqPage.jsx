@@ -30,7 +30,7 @@ const FaqPage = () => {
             QUESTIONS & ANSWERS
           </span>
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight mt-2">
-            Frequently Asked <span className="text-ct-gold italic">Questions</span>
+            Frequently Asked <span className="text-ct-gold">Questions</span>
           </h1>
         </div>
 

@@ -81,7 +81,7 @@ const LawyerEarningsPage = () => {
                 </span>
               </div>
               <h1 className="font-calluna text-3xl sm:text-4xl font-bold text-ct-ivory leading-tight">
-                Advocate Revenue <span className="text-ct-gold italic">& Bank Payouts</span>
+                Advocate Revenue <span className="text-ct-gold">& Bank Payouts</span>
               </h1>
               <p className="font-inter text-xs sm:text-sm text-ct-muted mt-1">
                 Flat ₹500 per consultation session · Net payout after 10% platform fee.

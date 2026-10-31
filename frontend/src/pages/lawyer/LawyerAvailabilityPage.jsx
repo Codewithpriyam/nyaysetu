@@ -45,7 +45,7 @@ const LawyerAvailabilityPage = () => {
           </div>
 
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
-            Consultation Fee <span className="text-ct-gold italic">& Availability Settings</span>
+            Consultation Fee <span className="text-ct-gold">& Availability Settings</span>
           </h1>
 
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed">

@@ -147,7 +147,7 @@ const AdminDashboardPage = () => {
               </div>
 
               <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory">
-                NyayaSetu <span className="text-ct-gold italic">Admin Portal</span>
+                NyayaSetu <span className="text-ct-gold">Admin Portal</span>
               </h1>
               <p className="font-inter text-xs text-ct-muted mt-1">
                 Full platform control: Real Registered User Oversight, Role Management (USER/LAWYER/ADMIN), & Advocate Onboarding.

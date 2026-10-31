@@ -15,7 +15,7 @@ const AboutPage = () => {
             ABOUT THE DEVELOPER & PLATFORM
           </span>
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight mt-2">
-            Engineering Legal Empowerment <span className="text-ct-gold italic">For 1.4 Billion Indians</span>
+            Engineering Legal Empowerment <span className="text-ct-gold">For 1.4 Billion Indians</span>
           </h1>
           <p className="mt-3 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed">
             NyayaSetu was designed and engineered to bridge the gap between Indian citizens and statutory legal remedies using modern WebTech, Spring Boot enterprise microservices, and AI intelligence.

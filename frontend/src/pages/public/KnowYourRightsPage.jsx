@@ -144,7 +144,7 @@ const KnowYourRightsPage = () => {
           </div>
 
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
-            Know Your <span className="text-ct-gold italic">Statutory Rights</span> Under Indian Law
+            Know Your <span className="text-ct-gold">Statutory Rights</span> Under Indian Law
           </h1>
 
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed max-w-xl mx-auto">

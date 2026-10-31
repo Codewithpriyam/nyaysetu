@@ -85,7 +85,7 @@ const ConsultLawyerSection = () => {
           </div>
 
           <h2 className="lawyer-header-item font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight max-w-2xl">
-            Talk To A <span className="text-ct-gold italic">Verified Lawyer</span>
+            Talk To A <span className="text-ct-gold">Verified Lawyer</span>
           </h2>
 
           <p className="lawyer-header-item mt-3 max-w-xl font-inter text-sm sm:text-base text-ct-muted leading-relaxed">

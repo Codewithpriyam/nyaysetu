@@ -192,7 +192,7 @@ const JusticeJourneySection = () => {
           </div>
 
           <h2 className="font-calluna text-3xl sm:text-4xl lg:text-5xl font-bold text-ct-ivory leading-tight">
-            The Justice Journey: <span className="text-ct-gold italic">8 Legal Environments</span>
+            The Justice Journey: <span className="text-ct-gold">8 Legal Environments</span>
           </h2>
 
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed max-w-xl mx-auto">

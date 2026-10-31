@@ -149,6 +149,11 @@
 @layer base {
   *, *::before, *::after {
     box-sizing: border-box;
+    font-style: normal;
+  }
+
+  em, i, cite, address {
+    font-style: normal;
   }
 
   html {

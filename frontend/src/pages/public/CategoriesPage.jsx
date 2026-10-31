@@ -47,7 +47,7 @@ const CategoriesPage = () => {
           </div>
 
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight">
-            Know Your Statutory Rights Across <span className="text-ct-gold italic">9 Legal Categories</span>
+            Know Your Statutory Rights Across <span className="text-ct-gold">9 Legal Categories</span>
           </h1>
 
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted leading-relaxed max-w-xl mx-auto">

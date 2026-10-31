@@ -277,7 +277,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
               </div>
 
               <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory">
-                Payment Records & <span className="text-ct-gold italic">Sovereign Ledger</span>
+                Payment Records & <span className="text-ct-gold">Sovereign Ledger</span>
               </h1>
               <p className="font-inter text-xs text-ct-muted mt-1 max-w-2xl leading-relaxed">
                 Official YouPI-PG sovereign transaction repository. View automated bank observer verifications, customer UTR numbers, advocate direct settlements, and audit trails.

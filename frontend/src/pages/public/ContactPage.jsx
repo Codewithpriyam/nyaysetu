@@ -22,7 +22,7 @@ const ContactPage = () => {
             SUPPORT & ENQUIRIES
           </span>
           <h1 className="font-calluna text-4xl sm:text-5xl font-bold text-ct-ivory leading-tight mt-2">
-            Get in Touch with <span className="text-ct-gold italic">NyayaSetu</span>
+            Get in Touch with <span className="text-ct-gold">NyayaSetu</span>
           </h1>
           <p className="mt-2 font-inter text-xs sm:text-sm text-ct-muted">
             Have questions about advocate enrollment, consultation bookings, or legal notices? Our team is here to assist.
