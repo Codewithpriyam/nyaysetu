@@ -221,7 +221,7 @@ const LawyerEarningsPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all mt-2"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all mt-2"
                 >
                   <HiSave size={16} />
                   <span>Update Bank Details</span>

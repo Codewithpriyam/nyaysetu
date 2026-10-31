@@ -19,7 +19,7 @@ const INFO_TYPES = [
   {
     icon:    <HiInformationCircle size={22} />,
     label:   'Verified Legal Information',
-    color:   '#C89B52',
+    color:   '#FE7F2D',
     desc:    'Sourced from official Acts of Parliament, Government notifications, and legal databases with source dates.',
   },
   {
@@ -31,7 +31,7 @@ const INFO_TYPES = [
   {
     icon:    <MdOutlineGavel size={22} />,
     label:   'Lawyer Advice',
-    color:   '#E0BD78',
+    color:   '#FE7F2D',
     desc:    'Professional legal advice from a verified, licensed lawyer during a 1-on-1 consultation.',
   },
 ];
@@ -170,7 +170,7 @@ const TrustSection = () => {
               <img
                 src="/img/lawyer/lawyer-mascot.png"
                 alt="NyayaSetu Sticker Lawyer Character"
-                className="h-64 sm:h-72 w-auto object-contain filter drop-shadow-[0_12px_25px_rgba(200,155,82,0.3)] transition-transform duration-300 hover:scale-105 pointer-events-none"
+                className="h-64 sm:h-72 w-auto object-contain filter drop-shadow-[0_12px_25px_rgba(35,61,77,0.4)] transition-transform duration-300 hover:scale-105 pointer-events-none"
               />
 
               {/* Consult a Lawyer Button Right Below Sticker */}

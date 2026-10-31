@@ -267,10 +267,10 @@ const NavBar = () => {
 
                 <Link
                   to={ROUTES.SIGN_UP}
-                  className="flex items-center gap-1.5 glass-button glass-button-primary px-4 py-2 font-general text-[10px] uppercase tracking-widest font-bold"
+                  className="flex items-center gap-1.5 glass-button glass-button-primary px-4 py-2 font-general text-[10px] uppercase tracking-widest font-bold text-black"
                 >
                   <span>Sign Up</span>
-                  <span className="text-ct-gold">→</span>
+                  <span className="text-black">→</span>
                 </Link>
               </div>
             )}
@@ -318,9 +318,9 @@ const NavBar = () => {
                   appearance={{
                     elements: {
                       avatarBox:       'h-8 w-8 ring-2 ring-ct-gold/50 ring-offset-2 ring-offset-transparent hover:ring-ct-gold transition-all',
-                      userButtonPopoverCard:  'bg-[#0e1527] border border-[#C89B52]/40 shadow-2xl',
-                      userButtonPopoverActionButton: 'text-[#f0e9d8] hover:bg-[#C89B52]/10',
-                      userButtonPopoverActionButtonText: 'text-[#ffffff] font-medium',
+                      userButtonPopoverCard:  'bg-[#233D4D] border border-[#EAECF0]/20 shadow-2xl',
+                      userButtonPopoverActionButton: 'text-[#EAECF0] hover:bg-[#FE7F2D]/10',
+                      userButtonPopoverActionButtonText: 'text-[#EAECF0] font-medium',
                       userButtonPopoverFooter: 'hidden',
                     },
                   }}

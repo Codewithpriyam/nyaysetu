@@ -77,7 +77,7 @@ const CategoriesPage = () => {
               <button
                 key={setNum}
                 onClick={() => setSelectedSet(setNum === 'All' ? 'All' : Number(setNum))}
-                className={`rounded-lg px-3.5 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${selectedSet === (setNum === 'All' ? 'All' : Number(setNum)) ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-white font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
+                className={`rounded-lg px-3.5 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${selectedSet === (setNum === 'All' ? 'All' : Number(setNum)) ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
               >
                 {setNum === 'All' ? 'All (9)' : `Set 0${setNum}`}
               </button>
@@ -145,7 +145,7 @@ const CategoriesPage = () => {
                   <span className="font-general text-[9px] uppercase tracking-widest text-ct-muted">Explore Acts & Templates</span>
                   <Link
                     to={buildRoute(ROUTES.CATEGORY, { slug: cat.slug })}
-                    className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-4 py-2 font-general text-[10px] uppercase font-bold tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all"
+                    className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-4 py-2 font-general text-[10px] uppercase font-bold tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
                   >
                     <span>Deep Dive</span>
                     <HiArrowRight size={14} />

@@ -16,44 +16,51 @@ export default {
         inter: ["Inter", "sans-serif"],
       },
       colors: {
-        // ─── NYAYSETU COURTROOM PALETTE (ct-*) ──────────────────────────────
+        // ─── 4-COLOUR PALETTE (BLACK, DEEP BLUE, ORANGE, LIGHT GRAY) ──────
+        black: "#000000",
+        "deep-blue": "#233D4D",
+        orange: "#FE7F2D",
+        "light-gray": "#EAECF0",
+
+        // ─── NYAYSETU CENTRALIZED THEME TOKENS (ct-*) ────────────────────
         ct: {
-          void:   "#08090C",  // Primary deep courtroom near-black bg
-          deep:   "#10131A",  // Secondary background layer
-          card:   "#131722",  // Card surface background
-          wood:   "#24170F",  // Deep mahogany courtroom wood accent
-          warm:   "#4A2D18",  // Warm wood accent border/glow
-          gold:   "#C89B52",  // Primary courtroom gold
-          soft:   "#E0BD78",  // Soft warm gold hover accent
-          ivory:  "#F4EBDD",  // Warm parchment ivory for headings
-          muted:  "#9B9B9B",  // Muted legal text
-          white:  "#F8F8F6",  // Pure warm white
+          void:   "#000000",  // Black (#000000): Main dark backgrounds, text and dark surfaces
+          deep:   "#233D4D",  // Deep Blue (#233D4D): Secondary backgrounds, dark sections
+          card:   "#233D4D",  // Deep Blue (#233D4D): Card backgrounds and panels
+          wood:   "#233D4D",  // Deep Blue (#233D4D): Section backgrounds
+          warm:   "#172832",  // Deep Blue darker tone
+          gold:   "#FE7F2D",  // Orange (#FE7F2D): Primary accent, CTA buttons, active states, highlights, icons
+          soft:   "#FF9750",  // Orange accent hover/highlight
+          ivory:  "#EAECF0",  // Light Gray (#EAECF0): Main text on dark backgrounds, readable text
+          muted:  "#98A2B3",  // Light Gray secondary/muted readable text
+          white:  "#EAECF0",  // Light Gray (#EAECF0): Primary light readable text
         },
-        // Existing Supreme Court Navy & Gold tokens (preserved)
+
+        // Legacy Token Scales (Mapped to 4-Colour Palette)
         navy: {
-          50:  "#E8EAF2",
-          100: "#C5CAE0",
-          200: "#9FA7CB",
-          300: "#7884B6",
-          400: "#5969A6",
-          500: "#3A4F96",
-          600: "#2D3E7A",
-          700: "#1F2D5F",
-          800: "#121D44",
-          900: "#08090C",  // Updated to match ct-void
-          950: "#040508",
+          50:  "#EAECF0",
+          100: "#EAECF0",
+          200: "#98A2B3",
+          300: "#5A7382",
+          400: "#365568",
+          500: "#233D4D",
+          600: "#1C313E",
+          700: "#233D4D",
+          800: "#172832",
+          900: "#000000",
+          950: "#000000",
         },
         gold: {
-          50:  "#FDF8EC",
-          100: "#F9EEC8",
-          200: "#F3D98A",
-          300: "#ECC34C",
-          400: "#E0BD78",
-          500: "#C89B52",   // Updated to match ct-gold
-          600: "#A87A38",
-          700: "#885D20",
-          800: "#6B4410",
-          900: "#4F2E08",
+          50:  "#FFF3EB",
+          100: "#FFE4D1",
+          200: "#FFC5A3",
+          300: "#FFA46E",
+          400: "#FE7F2D",
+          500: "#FE7F2D",
+          600: "#E86B1A",
+          700: "#C2530C",
+          800: "#9C3F08",
+          900: "#752E04",
         },
         crimson: {
           50:  "#FCE8E8",
@@ -68,25 +75,25 @@ export default {
           900: "#340505",
         },
         parchment: {
-          50:  "#FDFBF7",
-          100: "#F4EBDD",
-          200: "#E6D7C3",
-          300: "#D4C2AA",
-          400: "#BFA98F",
-          500: "#C89B52",
+          50:  "#EAECF0",
+          100: "#EAECF0",
+          200: "#EAECF0",
+          300: "#98A2B3",
+          400: "#7D8998",
+          500: "#FE7F2D",
         },
       },
       boxShadow: {
-        "gold-glow":     "0 0 30px rgba(200, 155, 82, 0.25)",
-        "gold-glow-lg":  "0 0 60px rgba(200, 155, 82, 0.35)",
-        "court-card":    "0 12px 40px rgba(4, 5, 8, 0.7)",
-        "court-hover":   "0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(200, 155, 82, 0.15)",
+        "gold-glow":     "0 0 25px rgba(254, 127, 45, 0.25)",
+        "gold-glow-lg":  "0 0 50px rgba(254, 127, 45, 0.35)",
+        "court-card":    "0 12px 40px rgba(0, 0, 0, 0.7)",
+        "court-hover":   "0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(35, 61, 77, 0.35)",
       },
       backgroundImage: {
-        "court-gold":    "linear-gradient(135deg, #C89B52 0%, #E0BD78 50%, #C89B52 100%)",
-        "court-dark":    "linear-gradient(180deg, #08090C 0%, #10131A 100%)",
-        "court-card-bg": "linear-gradient(180deg, #131722 0%, #0D1018 100%)",
-        "hero-fade":     "linear-gradient(180deg, rgba(8,9,12,0.3) 0%, rgba(8,9,12,0.75) 60%, #08090C 100%)",
+        "court-gold":    "linear-gradient(135deg, #FE7F2D 0%, #FF9750 50%, #FE7F2D 100%)",
+        "court-dark":    "linear-gradient(180deg, #000000 0%, #233D4D 100%)",
+        "court-card-bg": "linear-gradient(180deg, #233D4D 0%, #172832 100%)",
+        "hero-fade":     "linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 60%, #000000 100%)",
       },
     },
   },

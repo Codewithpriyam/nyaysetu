@@ -57,7 +57,7 @@ const HeroSection = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `linear-gradient(90deg, #08090C 0%, #08090C 35%, rgba(8,9,12,0.85) 55%, rgba(8,9,12,0.4) 75%, rgba(8,9,12,0.1) 100%)`,
+          background: `linear-gradient(90deg, #000000 0%, #000000 35%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.1) 100%)`,
         }}
       />
 
@@ -67,7 +67,7 @@ const HeroSection = () => {
       {/* Top Navbar Gradient */}
       <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-ct-void/80 via-ct-void/40 to-transparent pointer-events-none z-10" />
 
-      {/* Bottom Gradient Blend into #08090C */}
+      {/* Bottom Gradient Blend into #000000 */}
       <div className="absolute bottom-0 inset-x-0 h-36 md:h-52 bg-gradient-to-t from-ct-void via-ct-void/80 to-transparent pointer-events-none z-10" />
 
       {/* Hero Content */}

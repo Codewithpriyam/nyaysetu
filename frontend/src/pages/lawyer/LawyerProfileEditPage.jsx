@@ -318,7 +318,7 @@ const LawyerProfileEditPage = () => {
 
                   {/* Upload Controls */}
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                    <label className="cursor-pointer flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-4 py-2 font-general text-[10px] uppercase font-bold text-ct-void shadow-gold-glow hover:scale-105 transition-all">
+                    <label className="cursor-pointer flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-4 py-2 font-general text-[10px] uppercase font-bold text-black shadow-gold-glow hover:scale-105 transition-all">
                       <HiPhotograph size={15} />
                       <span>{qrCodeImage ? 'Change QR Image' : 'Upload QR Image'}</span>
                       <input
@@ -354,7 +354,7 @@ const LawyerProfileEditPage = () => {
 
             <button
               type="submit"
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-8 py-3.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void border border-ct-gold/60 shadow-gold-glow hover:scale-105 transition-all"
+              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3.5 font-general text-xs font-bold uppercase tracking-widest text-black border border-ct-gold/60 shadow-gold-glow hover:scale-105 transition-all"
             >
               <HiSave size={18} />
               <span>Save Profile & QR Settings</span>

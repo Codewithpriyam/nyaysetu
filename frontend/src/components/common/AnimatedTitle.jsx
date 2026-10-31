@@ -56,7 +56,7 @@ const AnimatedTitle = ({ title, containerClass, light = false }) => {
       ref={containerRef}
       className={clsx(
         'animated-title',
-        light ? '!text-parchment-100' : '!text-parchment-100',
+        light ? '!text-ct-ivory' : '!text-ct-ivory',
         containerClass
       )}
     >

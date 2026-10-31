@@ -48,7 +48,7 @@ const JHARKHAND_DISTRICTS = [
 const LawyerAvatar = ({ lawyer }) => (
   <div
     className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-ct-gold/40 font-zentry text-xl font-black text-ct-gold shadow-gold-glow"
-    style={{ background: `linear-gradient(135deg, ${lawyer?.accentColor || '#C89B52'}22, ${lawyer?.accentColor || '#C89B52'}44)` }}
+    style={{ background: `linear-gradient(135deg, ${lawyer?.accentColor || '#FE7F2D'}22, ${lawyer?.accentColor || '#FE7F2D'}44)` }}
     aria-hidden
   >
     {initials((lawyer?.name || 'Advocate').replace('Adv. ', ''))}
@@ -186,7 +186,7 @@ const LawyersPage = () => {
 
                   <Link
                     to={buildRoute(ROUTES.LAWYER_PROFILE, { id: lawyer.slug })}
-                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:scale-105 transition-all shrink-0"
+                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all shrink-0"
                   >
                     <span>Book Consultation</span>
                     <TiLocationArrow size={16} />
@@ -244,7 +244,7 @@ const LawyersPage = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all shrink-0"
+                className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all shrink-0"
               >
                 <HiSearch size={16} />
                 <span>{isLoading ? 'Searching...' : 'Search Advocates'}</span>
@@ -331,7 +331,7 @@ const LawyersPage = () => {
 
                       <a
                         href={`tel:${dialableNumber}`}
-                        className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-4 py-2 font-general text-[10px] font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:scale-105 transition-all shrink-0"
+                        className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-4 py-2 font-general text-[10px] font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all shrink-0"
                         title={`Call ${adv.name} directly on mobile`}
                       >
                         <HiPhone size={14} />

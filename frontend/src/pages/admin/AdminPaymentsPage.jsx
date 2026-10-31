@@ -254,7 +254,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
             </button>
             <button
               onClick={handleExportCsv}
-              className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-3.5 py-2 font-general text-[10px] uppercase font-bold text-ct-void shadow-gold-glow"
+              className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-3.5 py-2 font-general text-[10px] uppercase font-bold text-ct-void shadow-gold-glow"
             >
               <HiDownload size={14} />
               <span>Export CSV</span>
@@ -297,7 +297,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
 
               <button
                 onClick={handleExportCsv}
-                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all"
+                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all"
                 title="Export filtered records to CSV"
               >
                 <HiDownload size={16} />
@@ -397,7 +397,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                   onClick={() => setStatusFilter(tab.id)}
                   className={`rounded-lg px-3.5 py-1.5 font-general text-[9px] uppercase font-bold tracking-wider transition-all ${
                     statusFilter === tab.id
-                      ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-ct-void shadow-gold-glow'
+                      ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-ct-void shadow-gold-glow'
                       : 'text-ct-muted hover:text-ct-gold'
                   }`}
                 >

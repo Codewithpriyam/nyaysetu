@@ -26,29 +26,29 @@ const FOOTER_LINKS = {
 };
 
 const Footer = () => (
-  <footer className="bg-navy-950 border-t border-gold-500/10">
+  <footer className="bg-ct-void border-t border-[#EAECF0]/10">
     <div className="section-container py-16">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
         {/* Brand */}
         <div className="md:col-span-1">
           <div className="flex items-center gap-3 mb-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gold-gradient text-navy-900 font-zentry text-sm font-black">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-court-gold text-ct-void font-zentry text-sm font-black shadow-gold-glow">
               NS
             </div>
-            <span className="font-cormorant text-xl font-bold text-parchment-100">
+            <span className="font-cormorant text-xl font-bold text-ct-ivory">
               NyayaSetu
             </span>
           </div>
-          <p className="font-inter text-sm text-parchment-300 leading-relaxed max-w-xs">
+          <p className="font-inter text-sm text-ct-ivory/80 leading-relaxed max-w-xs">
             Know your rights. Understand your options. Take the right action.
           </p>
 
           {/* Disclaimer */}
-          <div className="mt-6 rounded-lg border border-gold-500/20 bg-navy-800/50 p-3">
-            <p className="font-general text-[10px] uppercase tracking-widest text-gold-500 mb-1">
+          <div className="mt-6 rounded-lg border border-[#EAECF0]/15 bg-ct-card/50 p-3">
+            <p className="font-general text-[10px] uppercase tracking-widest text-ct-gold font-bold mb-1">
               Important Disclaimer
             </p>
-            <p className="font-inter text-xs text-parchment-400 leading-relaxed">
+            <p className="font-inter text-xs text-ct-muted leading-relaxed">
               NyayaSetu provides legal information, not legal advice.
               For specific legal matters, consult a qualified lawyer.
             </p>
@@ -58,7 +58,7 @@ const Footer = () => (
         {/* Link columns */}
         {Object.entries(FOOTER_LINKS).map(([heading, links]) => (
           <div key={heading}>
-            <h3 className="mb-4 font-general text-xs uppercase tracking-widest text-gold-400">
+            <h3 className="mb-4 font-general text-xs uppercase tracking-widest text-ct-gold font-bold">
               {heading}
             </h3>
             <ul className="space-y-2.5">
@@ -66,7 +66,7 @@ const Footer = () => (
                 <li key={link.label}>
                   <Link
                     to={link.to}
-                    className="font-inter text-sm text-parchment-300 hover:text-gold-400 transition-colors duration-200"
+                    className="font-inter text-sm text-ct-ivory/80 hover:text-ct-gold transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -80,10 +80,10 @@ const Footer = () => (
       <div className="mt-12 gold-divider" />
 
       <div className="mt-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
-        <p className="font-inter text-xs text-parchment-400">
+        <p className="font-inter text-xs text-ct-muted">
           © {new Date().getFullYear()} NyayaSetu. All rights reserved.
         </p>
-        <p className="font-inter text-xs text-parchment-400">
+        <p className="font-inter text-xs text-ct-muted">
           Legal information platform for India 🇮🇳
         </p>
       </div>

@@ -28,7 +28,7 @@ export const MOCK_LAWYERS = [
     available: true,
     verified: true,
     badge: 'Verified Advocate',
-    accentColor: '#C8941A',
+    accentColor: '#FE7F2D',
   },
   {
     id: 'lw-002',

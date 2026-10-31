@@ -101,7 +101,7 @@ const CasesPage = () => {
 
           <button
             onClick={() => setShowCreateModal(true)}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
           >
             <HiPlus size={18} />
             <span>Register New Legal Case</span>
@@ -120,7 +120,7 @@ const CasesPage = () => {
               <button
                 key={st}
                 onClick={() => setActiveFilter(st)}
-                className={`rounded-xl px-4 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${activeFilter === st ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-white font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
+                className={`rounded-xl px-4 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${activeFilter === st ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
               >
                 {st}
               </button>
@@ -138,7 +138,7 @@ const CasesPage = () => {
             </p>
             <button
               onClick={() => setShowCreateModal(true)}
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
             >
               <HiPlus size={18} />
               <span>Create First Legal Case File</span>
@@ -297,7 +297,7 @@ const CasesPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:opacity-90 transition-all"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 transition-all"
               >
                 <HiCheck size={18} />
                 <span>{isSubmitting ? 'Registering...' : 'Register New Case File'}</span>

@@ -1,6 +1,6 @@
 /* ============================================================
-   NYAYSETU — GLOBAL STYLES (COURTROOM THEME)
-   Primary bg: #08090C | Card: #131722 | Gold: #C89B52 | Ivory: #F4EBDD
+   NYAYSETU — GLOBAL STYLES (BLACK + DEEP BLUE + ORANGE + LIGHT GRAY)
+   Black: #000000 | Deep Blue: #233D4D | Orange: #FE7F2D | Light Gray: #EAECF0
    ============================================================ */
 
 @import url("https://fonts.cdnfonts.com/css/general-sans");
@@ -8,6 +8,87 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================================
+   CENTRALIZED THEME PALETTE VARIABLES
+   ============================================================ */
+:root {
+  --color-black:            #000000;
+  --color-deep-blue:        #233D4D;
+  --color-orange:           #FE7F2D;
+  --color-light-gray:       #EAECF0;
+
+  /* ── Apple Liquid Glass Tokens ───────────────────────────── */
+  /* Dark glass surface using subtle deep-blue tinting, retaining blur and transparency */
+  --lg-bg:                  rgba(35, 61, 77, 0.35);
+  --lg-bg-hover:            rgba(35, 61, 77, 0.50);
+  --lg-bg-scrolled:         rgba(0, 0, 0, 0.85);
+  --lg-blur:                18px;
+  --lg-blur-scrolled:       28px;
+  --lg-saturation:          1.45;
+
+  /* Edge highlight & Fresnel rim (Light Gray specular reflection) */
+  --lg-border:              rgba(234, 236, 240, 0.12);
+  --lg-border-scrolled:     rgba(234, 236, 240, 0.18);
+  --lg-edge-rim:            inset 0 1.5px 1px 0 rgba(234, 236, 240, 0.20),
+                            inset 0 -1.5px 1.5px 0 rgba(0, 0, 0, 0.45);
+
+  /* Specular reflection & Blinn-Phong curvature highlight */
+  --lg-specular:            linear-gradient(
+                              135deg,
+                              rgba(234, 236, 240, 0.10) 0%,
+                              rgba(234, 236, 240, 0.02) 28%,
+                              transparent 60%
+                            );
+
+  /* Realistic Glass Drop Shadow - Neutral Black and Deep Blue (Orange NEVER used as glass shadow) */
+  --lg-shadow:              0 10px 30px -5px rgba(0, 0, 0, 0.50),
+                            0 4px 12px rgba(35, 61, 77, 0.25);
+  --lg-shadow-scrolled:     0 16px 40px -5px rgba(0, 0, 0, 0.65),
+                            0 6px 16px rgba(35, 61, 77, 0.35);
+  --lg-shadow-btn-pressed:  inset 0 2px 4px rgba(0, 0, 0, 0.50),
+                            0 2px 8px rgba(0, 0, 0, 0.35);
+
+  /* ── Floating Liquid Glass Navbar Shadows (Dense Neutral Black Separation) ── */
+  --lg-nav-border:          rgba(234, 236, 240, 0.12);
+  --lg-nav-border-scrolled: rgba(234, 236, 240, 0.18);
+  --lg-nav-inner-highlight: inset 0 1px 0 rgba(234, 236, 240, 0.08);
+
+  /* Top state shadow: dense near-edge shadow to obscure underlying text */
+  --lg-nav-shadow-top:      0 4px 12px rgba(0, 0, 0, 0.45),
+                            0 10px 24px rgba(0, 0, 0, 0.40),
+                            0 20px 45px rgba(0, 0, 0, 0.25),
+                            inset 0 1px 0 rgba(234, 236, 240, 0.08);
+
+  /* Mid scroll (30-60px) shadow: increasing density directly below navbar */
+  --lg-nav-shadow-mid:      0 4px 12px rgba(0, 0, 0, 0.50),
+                            0 10px 26px rgba(0, 0, 0, 0.50),
+                            0 20px 50px rgba(0, 0, 0, 0.35),
+                            0 32px 75px rgba(0, 0, 0, 0.20),
+                            inset 0 1px 0 rgba(234, 236, 240, 0.08);
+
+  /* Scrolled state shadow (100px+): dark, dense separation zone + soft cinematic diffusion */
+  --lg-nav-shadow-scrolled: 0 4px 12px rgba(0, 0, 0, 0.55),
+                            0 10px 28px rgba(0, 0, 0, 0.58),
+                            0 22px 55px rgba(0, 0, 0, 0.42),
+                            0 35px 80px rgba(0, 0, 0, 0.25),
+                            inset 0 1px 0 rgba(234, 236, 240, 0.08);
+
+  /* Button Mode: Primary (Orange CTA) */
+  --lg-btn-gold-bg:         linear-gradient(145deg, #FE7F2D 0%, #E86B1A 100%);
+  --lg-btn-gold-bg-hover:   linear-gradient(145deg, #FF9750 0%, #FE7F2D 100%);
+  --lg-btn-gold-border:     #FE7F2D;
+  --lg-btn-gold-rim:        inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.45),
+                            inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35);
+  --lg-btn-gold-glow:       0 4px 22px rgba(254, 127, 45, 0.25);
+
+  /* Button Mode: Secondary (Deep Blue Frosted Glass) */
+  --lg-btn-sec-bg:          linear-gradient(145deg, rgba(35, 61, 77, 0.60) 0%, rgba(35, 61, 77, 0.35) 100%);
+  --lg-btn-sec-bg-hover:    linear-gradient(145deg, rgba(35, 61, 77, 0.80) 0%, rgba(35, 61, 77, 0.50) 100%);
+  --lg-btn-sec-border:      rgba(234, 236, 240, 0.20);
+  --lg-btn-sec-rim:         inset 0 1.5px 1px 0 rgba(234, 236, 240, 0.18),
+                            inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35);
+}
 
 /* ============================================================
    CUSTOM FONT FACES
@@ -50,21 +131,21 @@
 
   html {
     scroll-behavior: smooth;
-    background-color: #08090C;
+    background-color: #000000;
   }
 
   body {
     width: 100dvw;
     overflow-x: hidden;
-    background-color: #08090C;
-    color: #F4EBDD;
+    background-color: #000000;
+    color: #EAECF0;
     font-family: "Inter", "General Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   :focus-visible {
-    outline: 2px solid #C89B52;
+    outline: 2px solid #FE7F2D;
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -77,19 +158,19 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #08090C;
+    background: #000000;
   }
   ::-webkit-scrollbar-thumb {
-    background: #C89B52;
+    background: #FE7F2D;
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #E0BD78;
+    background: #FF9750;
   }
 
   ::selection {
-    background: rgba(200, 155, 82, 0.3);
-    color: #F8F8F6;
+    background: rgba(254, 127, 45, 0.3);
+    color: #EAECF0;
   }
 }
 
@@ -134,18 +215,18 @@
            hover:after:origin-bottom-left hover:after:scale-x-100 hover:text-ct-gold cursor-pointer;
   }
 
-  /* Diagonal Cut Card Image Container (Reference 2 Inspiration) */
+  /* Diagonal Cut Card Image Container */
   .diagonal-card-image {
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
   }
 
-  /* Courtroom Card Surface */
+  /* Card Surface (Deep Blue with Light Gray subtle border & Orange on hover) */
   .court-card-surface {
-    @apply bg-ct-card border border-ct-gold/20 rounded-2xl overflow-hidden shadow-court-card
+    @apply bg-ct-card border border-[#EAECF0]/20 rounded-2xl overflow-hidden shadow-court-card
            transition-all duration-300 hover:border-ct-gold/50 hover:shadow-court-hover;
   }
 
-  /* Gold Divider Line */
+  /* Orange Divider Line */
   .gold-divider {
     @apply h-px w-full bg-gradient-to-r from-transparent via-ct-gold/50 to-transparent;
   }
@@ -157,7 +238,7 @@
   .three-body {
     --uib-size: 40px;
     --uib-speed: 0.8s;
-    --uib-color: #C89B52;
+    --uib-color: #FE7F2D;
     position: relative;
     display: inline-block;
     height: var(--uib-size);
@@ -231,7 +312,7 @@
 
 /* ============================================================
    CLERK ACCESSIBILITY & CONTRAST OVERRIDES
-   Ensures bright white text on dark buttons for all auth components
+   Deep Blue / Black background, Orange highlights, Light Gray text
    ============================================================ */
 .cl-socialButtonsBlockButton,
 .cl-socialButtonsBlockButtonText,
@@ -242,35 +323,35 @@
 .cl-button,
 .cl-userButtonPopoverCard,
 .cl-userButtonPopoverActionButtonText {
-  color: #ffffff !important;
+  color: #EAECF0 !important;
 }
 
 .cl-socialButtonsBlockButtonText {
   font-weight: 600 !important;
-  color: #ffffff !important;
+  color: #EAECF0 !important;
 }
 
 .cl-socialButtonsBlockButton {
-  background-color: #101628 !important;
-  border: 1px solid rgba(200, 155, 82, 0.35) !important;
+  background-color: #233D4D !important;
+  border: 1px solid rgba(234, 236, 240, 0.20) !important;
 }
 
 .cl-socialButtonsBlockButton:hover {
-  background-color: #1a233a !important;
-  border-color: rgba(200, 155, 82, 0.6) !important;
+  background-color: #172832 !important;
+  border-color: #FE7F2D !important;
 }
 
 .cl-headerTitle {
-  color: #f0e9d8 !important;
+  color: #EAECF0 !important;
 }
 
 .cl-headerSubtitle,
 .cl-dividerText {
-  color: #a0aec0 !important;
+  color: #98A2B3 !important;
 }
 
 .cl-formFieldLabel {
-  color: #f0e9d8 !important;
+  color: #EAECF0 !important;
 }
 
 .cl-formFieldInput,
@@ -284,12 +365,12 @@ input[autocomplete="one-time-code"],
 input[name^="code"],
 .cl-otpCodeFieldInput input,
 div[data-otp-input="true"] input {
-  background-color: #08090c !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  border: 1px solid rgba(200, 155, 82, 0.45) !important;
+  background-color: #000000 !important;
+  color: #EAECF0 !important;
+  -webkit-text-fill-color: #EAECF0 !important;
+  border: 1px solid rgba(234, 236, 240, 0.25) !important;
   font-weight: 700 !important;
-  caret-color: #C89B52 !important;
+  caret-color: #FE7F2D !important;
 }
 
 .cl-otpCodeFieldInput:focus,
@@ -297,10 +378,10 @@ div[data-otp-input="true"] input {
 .cl-otpInputBox:focus,
 .cl-otpInput:focus,
 .cl-otpCodeFieldInputBox[data-active="true"] {
-  border-color: #C89B52 !important;
-  box-shadow: 0 0 12px rgba(200, 155, 82, 0.4) !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  border-color: #FE7F2D !important;
+  box-shadow: 0 0 12px rgba(254, 127, 45, 0.4) !important;
+  color: #EAECF0 !important;
+  -webkit-text-fill-color: #EAECF0 !important;
 }
 
 .cl-identityPreview,
@@ -308,99 +389,27 @@ div[data-otp-input="true"] input {
 .cl-identityPreviewEditButton,
 .cl-resendCodeLink,
 .cl-formResendCodeLink {
-  color: #f0e9d8 !important;
+  color: #EAECF0 !important;
 }
 
 .cl-identityPreviewAvatarBox {
-  border: 1px solid rgba(200, 155, 82, 0.5) !important;
+  border: 1px solid rgba(254, 127, 45, 0.5) !important;
 }
 
 .cl-footerActionLink {
-  color: #c89b52 !important;
+  color: #FE7F2D !important;
 }
 
 .cl-userButtonPopoverCard {
-  background-color: #0e1527 !important;
-  border: 1px solid rgba(200, 155, 82, 0.35) !important;
+  background-color: #233D4D !important;
+  border: 1px solid rgba(234, 236, 240, 0.25) !important;
 }
 
 
 /* ============================================================
-   APPLE LIQUID GLASS — DESIGN SYSTEM
-   Premium translucent material system for NyayaSetu
+   APPLE LIQUID GLASS — DESIGN SYSTEM (ADAPTED TO NEW PALETTE)
+   Dark glass: Black and Deep Blue. Orange as accent only.
    ============================================================ */
-/* ── CSS Custom Properties (Liquid Glass Tokens) ─────────────── */
-:root {
-  /* Glass surface — blurAmount ~0.40-0.45, refraction ~0.69 */
-  --lg-bg:                  rgba(14, 18, 27, 0.44);
-  --lg-bg-hover:            rgba(18, 23, 35, 0.54);
-  --lg-bg-scrolled:         rgba(10, 13, 20, 0.80);
-  --lg-blur:                18px;
-  --lg-blur-scrolled:       28px;
-  --lg-saturation:          1.45;
-
-  /* Edge highlight & Fresnel rim (edgeHighlight ~0.10, fresnel ~1.1) */
-  --lg-border:              rgba(255, 255, 255, 0.12);
-  --lg-border-scrolled:     rgba(200, 155, 82, 0.22);
-  --lg-edge-rim:            inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.20),
-                            inset 0 -1.5px 1.5px 0 rgba(0, 0, 0, 0.35);
-
-  /* Specular reflection & Blinn-Phong curvature highlight */
-  --lg-specular:            linear-gradient(
-                              135deg,
-                              rgba(255, 255, 255, 0.10) 0%,
-                              rgba(255, 255, 255, 0.02) 28%,
-                              transparent 60%
-                            );
-
-  /* Realistic Glass Drop Shadow (shadowOpacity ~0.30) */
-  --lg-shadow:              0 10px 30px -5px rgba(0, 0, 0, 0.45),
-                            0 4px 12px rgba(0, 0, 0, 0.25);
-  --lg-shadow-scrolled:     0 16px 40px -5px rgba(0, 0, 0, 0.55),
-                            0 6px 16px rgba(0, 0, 0, 0.35);
-  --lg-shadow-btn-pressed:  inset 0 2px 4px rgba(0, 0, 0, 0.45),
-                            0 2px 8px rgba(0, 0, 0, 0.30);
-
-  /* ── Floating Liquid Glass Navbar Shadows (Dense Neutral Black Separation) ── */
-  --lg-nav-border:          rgba(255, 255, 255, 0.10);
-  --lg-nav-border-scrolled: rgba(255, 255, 255, 0.14);
-  --lg-nav-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-
-  /* Top state shadow: dense near-edge shadow to obscure underlying text */
-  --lg-nav-shadow-top:      0 4px 12px rgba(0, 0, 0, 0.45),
-                            0 10px 24px rgba(0, 0, 0, 0.40),
-                            0 20px 45px rgba(0, 0, 0, 0.25),
-                            inset 0 1px 0 rgba(255, 255, 255, 0.06);
-
-  /* Mid scroll (30-60px) shadow: increasing density directly below navbar */
-  --lg-nav-shadow-mid:      0 4px 12px rgba(0, 0, 0, 0.50),
-                            0 10px 26px rgba(0, 0, 0, 0.52),
-                            0 20px 50px rgba(0, 0, 0, 0.38),
-                            0 32px 75px rgba(0, 0, 0, 0.22),
-                            inset 0 1px 0 rgba(255, 255, 255, 0.06);
-
-  /* Scrolled state shadow (100px+): dark, dense separation zone + soft cinematic diffusion */
-  --lg-nav-shadow-scrolled: 0 4px 12px rgba(0, 0, 0, 0.55),
-                            0 10px 28px rgba(0, 0, 0, 0.60),
-                            0 22px 55px rgba(0, 0, 0, 0.45),
-                            0 35px 80px rgba(0, 0, 0, 0.28),
-                            inset 0 1px 0 rgba(255, 255, 255, 0.06);
-
-  /* Button Mode: Primary (NyayaSetu Gold Glass) */
-  --lg-btn-gold-bg:         linear-gradient(145deg, rgba(200, 155, 82, 0.24) 0%, rgba(200, 155, 82, 0.10) 100%);
-  --lg-btn-gold-bg-hover:   linear-gradient(145deg, rgba(200, 155, 82, 0.34) 0%, rgba(200, 155, 82, 0.18) 100%);
-  --lg-btn-gold-border:     rgba(200, 155, 82, 0.38);
-  --lg-btn-gold-rim:        inset 0 1.5px 1px 0 rgba(255, 245, 220, 0.38),
-                            inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35);
-  --lg-btn-gold-glow:       0 4px 22px rgba(200, 155, 82, 0.22);
-
-  /* Button Mode: Secondary (Neutral Frosted Glass) */
-  --lg-btn-sec-bg:          linear-gradient(145deg, rgba(244, 235, 221, 0.07) 0%, rgba(244, 235, 221, 0.02) 100%);
-  --lg-btn-sec-bg-hover:    linear-gradient(145deg, rgba(244, 235, 221, 0.12) 0%, rgba(244, 235, 221, 0.05) 100%);
-  --lg-btn-sec-border:      rgba(244, 235, 221, 0.16);
-  --lg-btn-sec-rim:         inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.18),
-                            inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
-}
 
 /* ── Generic Glass Container ─────────────────────────────────── */
 .glass {
@@ -450,7 +459,7 @@ div[data-otp-input="true"] input {
 /* Fallback for environments lacking backdrop-filter support */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass-nav {
-    background: rgba(10, 13, 20, 0.90);
+    background: rgba(35, 61, 77, 0.90);
   }
 }
 
@@ -467,9 +476,9 @@ div[data-otp-input="true"] input {
 .glass-nav-pill {
   position: absolute;
   border-radius: 9999px;
-  background: rgba(200, 155, 82, 0.12);
-  border: 1px solid rgba(200, 155, 82, 0.22);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+  background: rgba(254, 127, 45, 0.16);
+  border: 1px solid rgba(254, 127, 45, 0.30);
+  box-shadow: inset 0 1px 1px 0 rgba(234, 236, 240, 0.12);
   pointer-events: none;
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   opacity: 0;
@@ -488,8 +497,8 @@ div[data-otp-input="true"] input {
   -webkit-backdrop-filter: blur(14px) saturate(1.35);
   backdrop-filter: blur(14px) saturate(1.35);
   border: 1px solid var(--lg-btn-sec-border);
-  box-shadow: var(--lg-btn-sec-rim), 0 4px 14px rgba(0, 0, 0, 0.25);
-  color: #F4EBDD;
+  box-shadow: var(--lg-btn-sec-rim), 0 4px 14px rgba(0, 0, 0, 0.35);
+  color: #EAECF0;
   cursor: pointer;
   overflow: hidden;
   transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
@@ -508,8 +517,8 @@ div[data-otp-input="true"] input {
   border-radius: inherit;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.10) 0%,
-    rgba(255, 255, 255, 0.02) 40%,
+    rgba(234, 236, 240, 0.12) 0%,
+    rgba(234, 236, 240, 0.02) 40%,
     transparent 70%
   );
   pointer-events: none;
@@ -528,7 +537,7 @@ div[data-otp-input="true"] input {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.12) 50%,
+    rgba(234, 236, 240, 0.14) 50%,
     transparent 100%
   );
   pointer-events: none;
@@ -553,66 +562,69 @@ div[data-otp-input="true"] input {
               box-shadow 0.1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* ── Primary Button: Gold Glass (CTA) ─────────────────────────── */
+/* ── Primary Button: Orange Glass (CTA) ───────────────────────── */
 .glass-button-primary {
   background: var(--lg-btn-gold-bg);
   border-color: var(--lg-btn-gold-border);
   box-shadow: var(--lg-btn-gold-rim), var(--lg-btn-gold-glow);
-  color: #F4EBDD;
+  color: #000000;
   font-weight: 700;
 }
 
 .glass-button-primary:hover {
   background: var(--lg-btn-gold-bg-hover);
-  border-color: rgba(200, 155, 82, 0.60);
-  box-shadow: var(--lg-btn-gold-rim), 0 6px 28px rgba(200, 155, 82, 0.32);
+  border-color: #FE7F2D;
+  box-shadow: var(--lg-btn-gold-rim), 0 6px 28px rgba(254, 127, 45, 0.35);
+  color: #000000;
 }
 
 .glass-button-primary:active {
   transform: scale(0.975);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.45), 0 2px 10px rgba(200, 155, 82, 0.20);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.45), 0 2px 10px rgba(254, 127, 45, 0.20);
+  color: #000000;
 }
 
-/* ── Secondary Button: Frosted Glass ─────────────────────────── */
+/* ── Secondary Button: Frosted Deep Blue Glass ────────────────── */
 .glass-button-secondary {
   background: var(--lg-btn-sec-bg);
   border-color: var(--lg-btn-sec-border);
-  box-shadow: var(--lg-btn-sec-rim), 0 4px 14px rgba(0, 0, 0, 0.25);
-  color: rgba(244, 235, 221, 0.90);
+  box-shadow: var(--lg-btn-sec-rim), 0 4px 14px rgba(0, 0, 0, 0.30);
+  color: #EAECF0;
 }
 
 .glass-button-secondary:hover {
   background: var(--lg-btn-sec-bg-hover);
-  border-color: rgba(244, 235, 221, 0.30);
-  box-shadow: var(--lg-btn-sec-rim), 0 4px 20px rgba(0, 0, 0, 0.35);
+  border-color: rgba(234, 236, 240, 0.35);
+  box-shadow: var(--lg-btn-sec-rim), 0 4px 20px rgba(35, 61, 77, 0.50);
+  color: #EAECF0;
 }
 
-/* ── Glass Pill (small nav-like pill) ────────────────────────── */
+/* ── Glass Pill ──────────────────────────────────────────────── */
 .glass-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
   border-radius: 9999px;
-  background: rgba(200, 155, 82, 0.08);
+  background: rgba(254, 127, 45, 0.12);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(200, 155, 82, 0.15);
+  border: 1px solid rgba(254, 127, 45, 0.25);
   padding: 0.375rem 0.875rem;
   font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #C89B52;
+  color: #FE7F2D;
   transition: all 0.3s ease;
 }
 
 .glass-pill:hover {
-  background: rgba(200, 155, 82, 0.14);
-  border-color: rgba(200, 155, 82, 0.30);
+  background: rgba(254, 127, 45, 0.20);
+  border-color: rgba(254, 127, 45, 0.45);
 }
 
 /* ── Mobile Glass Sheet Menu ─────────────────────────────────── */
 .glass-sheet {
-  background: rgba(10, 13, 20, 0.88);
+  background: rgba(0, 0, 0, 0.90);
   -webkit-backdrop-filter: blur(28px) saturate(1.6);
   backdrop-filter: blur(28px) saturate(1.6);
   border: 1px solid var(--lg-nav-border);
@@ -637,19 +649,19 @@ div[data-otp-input="true"] input {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 0.75rem;
-  background: rgba(200, 155, 82, 0.08);
+  background: rgba(35, 61, 77, 0.45);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(200, 155, 82, 0.20);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
-  color: #F4EBDD;
+  border: 1px solid rgba(234, 236, 240, 0.20);
+  box-shadow: inset 0 1px 1px 0 rgba(234, 236, 240, 0.15);
+  color: #EAECF0;
   transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
 }
 
 .glass-menu-btn:hover {
-  background: rgba(200, 155, 82, 0.16);
-  border-color: rgba(200, 155, 82, 0.40);
+  background: rgba(35, 61, 77, 0.75);
+  border-color: #FE7F2D;
   transform: scale(1.05);
 }
 
@@ -657,7 +669,7 @@ div[data-otp-input="true"] input {
   transform: scale(0.95);
 }
 
-/* ── Grain Texture (for premium surfaces) ────────────────────── */
+/* ── Grain Texture ───────────────────────────────────────────── */
 .grain-overlay {
   position: absolute;
   inset: 0;
@@ -687,4 +699,3 @@ div[data-otp-input="true"] input {
 /* ── No Scrollbar Utility ────────────────────────────────────── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-

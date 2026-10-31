@@ -173,7 +173,7 @@ const KnowYourRightsPage = () => {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`rounded-lg px-3 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${selectedCategory === cat ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-white font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
+                className={`rounded-lg px-3 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${selectedCategory === cat ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
               >
                 {cat}
               </button>

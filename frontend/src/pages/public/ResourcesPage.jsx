@@ -452,7 +452,7 @@ const ResourcesPage = () => {
               onClick={() => { setActiveTab(tab.id); setAiOutput(''); setIsError(false); }}
               className={`rounded-xl px-4 py-2 font-general text-xs font-bold uppercase tracking-widest transition-all ${
                 activeTab === tab.id
-                  ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-white shadow-gold-glow'
+                  ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black shadow-gold-glow'
                   : 'bg-ct-void text-ct-ivory/80 hover:text-ct-gold'
               }`}
             >
@@ -462,8 +462,8 @@ const ResourcesPage = () => {
         </div>
 
         {/* Mandatory Legal Disclaimer Banner */}
-        <div className="rounded-xl border border-amber-400/30 bg-amber-400/10 p-3.5 mb-8 flex items-center gap-3 text-xs font-inter text-amber-200">
-          <HiInformationCircle className="text-amber-400 flex-shrink-0" size={20} />
+        <div className="rounded-xl border border-ct-gold/30 bg-ct-gold/10 p-3.5 mb-8 flex items-center gap-3 text-xs font-inter text-ct-ivory">
+          <HiInformationCircle className="text-ct-gold flex-shrink-0" size={20} />
           <span>
             <strong>Legal Disclaimer:</strong> NyayaSetu AI Copilot provides informational guidance based on Indian statutory law. It is not a substitute for professional legal advice from a licensed advocate.
           </span>
@@ -491,7 +491,7 @@ const ResourcesPage = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:opacity-90"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90"
                   >
                     <HiSparkles size={18} />
                     <span>{isLoading ? 'Analyzing via Groq AI...' : 'Analyze Legal Options'}</span>
@@ -569,7 +569,7 @@ const ResourcesPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-8 py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:opacity-90"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90"
                 >
                   <HiDocumentText size={18} />
                   <span>{isLoading ? 'Analyzing Document via Groq...' : 'Analyze Document Risks'}</span>
@@ -630,7 +630,7 @@ const ResourcesPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-8 py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:opacity-90"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90"
                 >
                   <HiSparkles size={18} />
                   <span>{isLoading ? 'Generating Draft via Groq...' : 'Generate Formal Legal Draft'}</span>
@@ -678,7 +678,7 @@ const ResourcesPage = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:opacity-90 shrink-0"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 shrink-0"
                 >
                   <HiSparkles size={18} />
                   <span>Generate Roadmap</span>

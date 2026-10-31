@@ -94,7 +94,7 @@ const LawyerConsultationsPage = () => {
               <button
                 key={st}
                 onClick={() => setActiveFilter(st)}
-                className={`rounded-xl px-4 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${activeFilter === st ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-white font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
+                className={`rounded-xl px-4 py-1.5 font-general text-[10px] uppercase tracking-widest transition-all ${activeFilter === st ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border border-ct-gold/20'}`}
               >
                 {st}
               </button>
@@ -141,7 +141,7 @@ const LawyerConsultationsPage = () => {
                     href={c.meetLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all"
+                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
                   >
                     <HiVideoCamera size={16} />
                     <span>Open Google Meet</span>

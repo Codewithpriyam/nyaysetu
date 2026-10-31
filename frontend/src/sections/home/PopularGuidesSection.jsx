@@ -38,20 +38,20 @@ const PopularGuidesSection = () => {
   };
 
   return (
-    <section ref={sectionRef} id="guides" className="bg-navy-950 section-padding">
+    <section ref={sectionRef} id="guides" className="bg-ct-void section-padding">
       <div className="section-container">
 
         {/* Header */}
         <div className="mb-16 flex flex-col items-start">
           <div className="mb-4 flex items-center gap-3">
             <div className="gold-divider-sm" />
-            <span className="label-text text-gold-400">Popular Legal Questions</span>
+            <span className="label-text text-ct-gold font-bold">Popular Legal Questions</span>
           </div>
           <AnimatedTitle
             title="What Others Are<br />Asking <b>Today</b>"
-            containerClass="!text-parchment-100 !text-left !items-start !px-0 !text-5xl md:!text-6xl"
+            containerClass="!text-ct-ivory !text-left !items-start !px-0 !text-5xl md:!text-6xl"
           />
-          <p className="mt-6 max-w-lg font-inter text-base text-parchment-300 leading-relaxed">
+          <p className="mt-6 max-w-lg font-inter text-base text-ct-ivory/80 leading-relaxed">
             Real legal questions from across India — click any to see your rights and options instantly.
           </p>
         </div>
@@ -67,7 +67,7 @@ const PopularGuidesSection = () => {
               >
                 <button
                   onClick={() => handleProblemClick(item.problem)}
-                  className="w-full text-left glass-card p-5 hover:border-gold-500/40 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card-hover group"
+                  className="w-full text-left glass-card p-5 hover:border-ct-gold/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-court-hover group"
                   aria-label={`Know my rights: ${item.problem}`}
                 >
                   <div className="flex items-start gap-4">
@@ -75,17 +75,17 @@ const PopularGuidesSection = () => {
                       {item.icon}
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className="font-inter text-sm text-parchment-100 leading-relaxed group-hover:text-parchment-50 transition-colors">
+                      <p className="font-inter text-sm text-ct-ivory leading-relaxed group-hover:text-ct-gold transition-colors">
                         {item.problem}
                       </p>
                       <div className="mt-2 flex items-center gap-3">
                         <span className="info-tag-legal">{item.categoryLabel}</span>
-                        <span className="font-general text-[10px] uppercase tracking-widest text-parchment-400">
+                        <span className="font-general text-[10px] uppercase tracking-widest text-ct-muted">
                           {item.searches} searches
                         </span>
                       </div>
                     </div>
-                    <HiArrowRight className="flex-shrink-0 text-gold-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 mt-1" />
+                    <HiArrowRight className="flex-shrink-0 text-ct-gold opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 mt-1" />
                   </div>
                 </button>
               </BentoTilt>
@@ -104,7 +104,7 @@ const PopularGuidesSection = () => {
 
           {/* Categories sidebar — right 1 col */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-cormorant text-xl font-bold text-parchment-100">
+            <h3 className="font-cormorant text-xl font-bold text-ct-ivory">
               Browse by Category
             </h3>
 
@@ -113,11 +113,11 @@ const PopularGuidesSection = () => {
                 <BentoTilt key={cat.id} className="guide-card">
                   <button
                     onClick={() => navigate(buildRoute(ROUTES.CATEGORY, { slug: cat.slug }))}
-                    className="w-full text-left flex items-center gap-3 rounded-xl border border-navy-700/50 bg-navy-800/40 px-4 py-3 hover:border-gold-500/40 hover:bg-navy-700/40 transition-all duration-200 group"
+                    className="w-full text-left flex items-center gap-3 rounded-xl border border-[#EAECF0]/15 bg-ct-card/60 px-4 py-3 hover:border-ct-gold/50 hover:bg-ct-card transition-all duration-200 group"
                     aria-label={`Explore ${cat.label}`}
                   >
                     <span className="text-lg flex-shrink-0" role="img" aria-hidden>{cat.icon}</span>
-                    <span className="flex-1 font-inter text-sm text-parchment-200 group-hover:text-parchment-100 transition-colors">
+                    <span className="flex-1 font-inter text-sm text-ct-ivory/80 group-hover:text-ct-ivory transition-colors">
                       {cat.label}
                     </span>
                     <div

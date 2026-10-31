@@ -30,7 +30,7 @@ const SCENES = [
     ],
     procedure: 'Approach Station House Officer (SHO) → Submit Written Complaint → Demand FIR Copy (Free) → Escalate to SP/DCP if refused.',
     helpline: 'Dial 112 / State Police Helpline',
-    accent: '#C89B52',
+    accent: '#FE7F2D',
   },
   {
     id: 2,
@@ -47,7 +47,7 @@ const SCENES = [
     ],
     procedure: 'Notify Bank immediately via Customer Care/App → Block Card/UPI → File Cyber Complaint → Submit Ombudsman Grievance after 30 days.',
     helpline: 'RBI Ombudsman: 14448',
-    accent: '#E0BD78',
+    accent: '#FE7F2D',
   },
   {
     id: 3,
@@ -64,7 +64,7 @@ const SCENES = [
     ],
     procedure: 'Serve Legal Notice to Seller/Company → Wait 15 Days → File Online via NCDRC e-Daakhil Portal → Attend District Forum Hearing.',
     helpline: 'National Consumer Helpline: 1915',
-    accent: '#C89B52',
+    accent: '#FE7F2D',
   },
   {
     id: 4,
@@ -81,7 +81,7 @@ const SCENES = [
     ],
     procedure: 'Send Written Deposit Demand Notice → File Application before Rent Controller → Dispute Settlement before Rent Tribunal.',
     helpline: 'State Rent Authority Portal',
-    accent: '#E0BD78',
+    accent: '#FE7F2D',
   },
   {
     id: 5,
@@ -98,7 +98,7 @@ const SCENES = [
     ],
     procedure: 'Send Formal Demand Letter to HR/Management → Serve Legal Notice → File Complaint with Assistant Labour Commissioner (ALC).',
     helpline: 'EPFO Toll-Free: 1800-118-005',
-    accent: '#C89B52',
+    accent: '#FE7F2D',
   },
   {
     id: 6,
@@ -132,7 +132,7 @@ const SCENES = [
     ],
     procedure: 'Register on MSME Samadhaan Portal → Submit Unpaid Invoice → Council issues Notice to Buyer → Conciliation & Award.',
     helpline: 'MSME Samadhaan Portal (samadhaan.msme.gov.in)',
-    accent: '#C89B52',
+    accent: '#FE7F2D',
   },
   {
     id: 8,
@@ -149,7 +149,7 @@ const SCENES = [
     ],
     procedure: 'Examine Legal Notice with Advocate → Draft Formal Written Reply → Appear before Court on Summons Date → File Written Statement.',
     helpline: 'NALSA Legal Aid Helpline: 15100',
-    accent: '#E0BD78',
+    accent: '#FE7F2D',
   },
 ];
 
@@ -325,7 +325,7 @@ const JusticeJourneySection = () => {
                   {/* PROCEED → Button (Direct Category Detail Link) */}
                   <Link
                     to={categoryDetailUrl}
-                    className="group flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-5 py-2 font-general text-xs font-bold uppercase tracking-widest text-white border border-ct-gold/60 shadow-gold-glow transition-all hover:shadow-lg hover:scale-105"
+                    className="group flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2 font-general text-xs font-bold uppercase tracking-widest text-black border border-ct-gold/60 shadow-gold-glow transition-all hover:shadow-lg hover:scale-105"
                     aria-label={`Proceed to ${activeScene.title} details`}
                   >
                     <span>Proceed</span>

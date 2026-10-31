@@ -1,7 +1,7 @@
 /**
  * NyayaSetu — CategoryProgress Component
  * Fix for visibility issue:
- *  - Non-active buttons now have bright, legible Ivory & Gold text (#F4EBDD / #C89B52).
+ *  - Non-active buttons now have bright, legible Light Gray & Orange text (#EAECF0 / #FE7F2D).
  *  - Clearly visible at all times without needing mouse hover.
  *  - Active button highlighted with gold background & dark text.
  */

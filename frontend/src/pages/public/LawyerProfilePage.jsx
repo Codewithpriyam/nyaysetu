@@ -25,7 +25,7 @@ import YoupiCheckoutModal from '@/components/payment/YoupiCheckoutModal';
 const LawyerAvatar = ({ lawyer }) => (
   <div
     className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full border-2 border-ct-gold/50 font-zentry text-2xl font-black text-ct-gold shadow-gold-glow"
-    style={{ background: `linear-gradient(135deg, ${lawyer.accentColor || '#C89B52'}22, ${lawyer.accentColor || '#C89B52'}44)` }}
+    style={{ background: `linear-gradient(135deg, ${lawyer.accentColor || '#FE7F2D'}22, ${lawyer.accentColor || '#FE7F2D'}44)` }}
     aria-hidden
   >
     {initials(lawyer.name.replace('Adv. ', ''))}
@@ -269,7 +269,7 @@ const LawyerProfilePage = () => {
               ) : (
                 <button
                   onClick={handleOpenPayment}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
                 >
                   <HiQrcode size={18} />
                   <span>Pay {formatCurrency(totalPayable)} via QR & Book</span>

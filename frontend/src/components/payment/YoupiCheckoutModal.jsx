@@ -326,7 +326,7 @@ const YoupiCheckoutModal = ({
 
             <button
               onClick={onClose}
-              className="mt-6 w-full rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
+              className="mt-6 w-full rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
             >
               <span>Return to Consultation Schedule</span>
               <HiArrowRight size={16} />
@@ -387,7 +387,7 @@ const YoupiCheckoutModal = ({
                 onClick={() => setActiveTab('QR')}
                 className={`flex-1 py-2 px-3 rounded-lg font-general text-[10px] uppercase font-bold tracking-wider transition-all flex items-center justify-center gap-1.5 ${
                   activeTab === 'QR'
-                    ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-ct-void shadow-gold-glow'
+                    ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-ct-void shadow-gold-glow'
                     : 'text-ct-muted hover:text-ct-gold'
                 }`}
               >
@@ -400,7 +400,7 @@ const YoupiCheckoutModal = ({
                 onClick={() => setActiveTab('MANUAL_UTR')}
                 className={`flex-1 py-2 px-3 rounded-lg font-general text-[10px] uppercase font-bold tracking-wider transition-all flex items-center justify-center gap-1.5 ${
                   activeTab === 'MANUAL_UTR'
-                    ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-ct-void shadow-gold-glow'
+                    ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-ct-void shadow-gold-glow'
                     : 'text-ct-muted hover:text-ct-gold'
                 }`}
               >
@@ -414,7 +414,7 @@ const YoupiCheckoutModal = ({
                   onClick={() => setActiveTab('SIMULATE')}
                   className={`flex-1 py-2 px-3 rounded-lg font-general text-[10px] uppercase font-bold tracking-wider transition-all flex items-center justify-center gap-1.5 ${
                     activeTab === 'SIMULATE'
-                      ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-ct-void shadow-gold-glow'
+                      ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-ct-void shadow-gold-glow'
                       : 'text-ct-muted hover:text-ct-gold'
                   }`}
                 >
@@ -536,7 +536,7 @@ const YoupiCheckoutModal = ({
                     <button
                       type="submit"
                       disabled={isSubmittingUtr}
-                      className="w-full rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
+                      className="w-full rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2"
                     >
                       {isSubmittingUtr ? (
                         <>

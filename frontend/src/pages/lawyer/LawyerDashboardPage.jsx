@@ -289,7 +289,7 @@ const LawyerDashboardPage = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] py-3 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:opacity-90 transition-all"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] py-3 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:opacity-90 transition-all"
               >
                 <HiCheck size={18} />
                 <span>Save Court Hearing Record</span>

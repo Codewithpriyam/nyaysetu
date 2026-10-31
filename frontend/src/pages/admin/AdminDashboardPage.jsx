@@ -170,7 +170,7 @@ const AdminDashboardPage = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`rounded-xl px-5 py-2.5 font-general text-[10px] uppercase font-bold tracking-widest transition-all whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-ct-void shadow-gold-glow'
+                  ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-ct-void shadow-gold-glow'
                   : 'text-ct-muted hover:text-ct-gold border border-ct-gold/20 bg-ct-void/60'
               }`}
             >
@@ -219,7 +219,7 @@ const AdminDashboardPage = () => {
               </div>
               <button
                 onClick={() => setActiveTab('PAYMENTS')}
-                className="rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 transition-all"
+                className="rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 transition-all"
               >
                 Inspect Escrow Ledger →
               </button>
@@ -273,7 +273,7 @@ const AdminDashboardPage = () => {
               <button
                 type="submit"
                 disabled={isMapping}
-                className="rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-6 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 transition-all"
+                className="rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-ct-void shadow-gold-glow hover:opacity-90 transition-all"
               >
                 {isMapping ? 'Mapping Account...' : 'Link Advocate Account'}
               </button>

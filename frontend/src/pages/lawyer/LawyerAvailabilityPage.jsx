@@ -96,7 +96,7 @@ const LawyerAvailabilityPage = () => {
                     key={day}
                     type="button"
                     onClick={() => toggleDay(day)}
-                    className={`rounded-xl px-5 py-2.5 font-general text-xs font-bold transition-all border ${isSelected ? 'bg-gradient-to-r from-[#D9A758] to-[#C89B52] text-white border-ct-gold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border-ct-gold/20'}`}
+                    className={`rounded-xl px-5 py-2.5 font-general text-xs font-bold transition-all border ${isSelected ? 'bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] text-black font-bold border-ct-gold shadow-gold-glow' : 'bg-ct-void text-ct-ivory border-ct-gold/20'}`}
                   >
                     {day}
                   </button>
@@ -128,7 +128,7 @@ const LawyerAvailabilityPage = () => {
           <div className="pt-6 border-t border-ct-gold/15 flex justify-end">
             <button
               type="submit"
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] via-[#E8C07A] to-[#C89B52] px-8 py-3.5 font-general text-xs font-bold uppercase tracking-widest text-white border border-ct-gold/60 shadow-gold-glow hover:scale-105 transition-all"
+              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-8 py-3.5 font-general text-xs font-bold uppercase tracking-widest text-black border border-ct-gold/60 shadow-gold-glow hover:scale-105 transition-all"
             >
               <HiSave size={18} />
               <span>Save Schedule Settings</span>

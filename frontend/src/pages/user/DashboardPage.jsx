@@ -125,7 +125,7 @@ const DashboardPage = () => {
             <div className="flex items-center gap-3">
               <Link
                 to={ROUTES.LAWYERS}
-                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow hover:scale-105 transition-all"
+                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow hover:scale-105 transition-all"
               >
                 <HiPlus size={16} />
                 <span>Book Consultation</span>
@@ -236,7 +236,7 @@ const DashboardPage = () => {
                 </p>
                 <Link
                   to={ROUTES.CASES}
-                  className="mt-5 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow transition-all"
+                  className="mt-5 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-5 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow transition-all"
                 >
                   File & Track New Case
                 </Link>
@@ -280,7 +280,7 @@ const DashboardPage = () => {
             <button
               type="submit"
               disabled={isAiLoading}
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#D9A758] to-[#C89B52] px-6 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-white shadow-gold-glow"
+              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#FE7F2D] to-[#E86B1A] px-6 py-2.5 font-general text-xs font-bold uppercase tracking-widest text-black shadow-gold-glow"
             >
               <HiSparkles size={16} />
               <span>{isAiLoading ? 'Analyzing Law...' : 'Get Instant AI Guidance'}</span>
