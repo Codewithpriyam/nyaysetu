@@ -4,17 +4,13 @@
  */
 
 import { useState } from 'react';
-import BentoTilt from '@/components/common/BentoTilt';
-import Button from '@/components/common/Button';
-import { HiClock, HiCheckCircle, HiSave, HiCheck } from 'react-icons/hi';
-import { formatCurrency } from '@/utils';
+import { HiSave } from 'react-icons/hi';
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 const LawyerAvailabilityPage = () => {
   const [ratePerSession, setRatePerSession] = useState(500);
   const [selectedDays, setSelectedDays] = useState(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']);
-  const [activeSlots, setActiveSlots] = useState(['10:00 AM - 01:00 PM', '04:00 PM - 07:00 PM']);
   const [savedAlert, setSavedAlert] = useState('');
 
   const toggleDay = (day) => {

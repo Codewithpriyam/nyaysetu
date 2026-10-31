@@ -4,8 +4,6 @@
  */
 
 import BentoTilt from '@/components/common/BentoTilt';
-import { HiCode, HiShieldCheck, HiSparkles, HiHeart, HiAcademicCap } from 'react-icons/hi';
-import { MdOutlineGavel } from 'react-icons/md';
 
 const AboutPage = () => {
   return (

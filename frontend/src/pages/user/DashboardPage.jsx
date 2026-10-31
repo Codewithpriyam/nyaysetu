@@ -7,20 +7,12 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
 import { ROUTES } from '@/constants/routes';
-import BentoTilt from '@/components/common/BentoTilt';
-import Button from '@/components/common/Button';
 import apiClient from '@/services/api';
 import {
-  HiShieldCheck,
-  HiClock,
-  HiOutlineDocumentText,
-  HiPhone,
-  HiCheckCircle,
-  HiFolder,
-  HiSparkles,
   HiPlus,
   HiVideoCamera,
   HiCalendar,
+  HiSparkles,
 } from 'react-icons/hi';
 import { MdOutlineGavel, MdOutlineSmartToy } from 'react-icons/md';
 import { formatCurrency, formatDuration } from '@/utils';
@@ -85,6 +77,7 @@ const DashboardPage = () => {
       .catch(() => {});
 
     return () => { isMounted = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAskAiCopilot = async (e) => {
@@ -97,7 +90,7 @@ const DashboardPage = () => {
     try {
       const res = await apiClient.post('/ai/chat', { prompt: aiPrompt });
       setAiResponse(res?.response || 'Analysis completed.');
-    } catch (err) {
+    } catch {
       setAiResponse('### 🏛️ NyayaSetu AI Guidance\n\n**Category Match:** Consumer & Civil Rights (88% Confidence)\n\n**Statutory Rights:** Under Consumer Protection Act 2019 Section 35, service deficiency or non-refund permits filing online before District Consumer Disputes Redressal Commission.\n\n⚖️ *Disclaimer: Informational guidance based on Indian law. Consult a qualified advocate for legal advice.*');
     } finally {
       setIsAiLoading(false);

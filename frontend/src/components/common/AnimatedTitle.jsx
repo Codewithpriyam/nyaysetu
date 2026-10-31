@@ -11,7 +11,6 @@
  */
 import { useEffect, useRef } from 'react';
 import { gsap }              from '@/animations/gsap-config';
-import { ScrollTrigger }     from '@/animations/gsap-config';
 import { useReducedMotion }  from '@/animations/useReducedMotion';
 import clsx from 'clsx';
 

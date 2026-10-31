@@ -73,6 +73,7 @@ const RequireAuth = ({ children, requiredRole }) => {
     }
 
     return () => { isSubscribed = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoaded, isSignedIn, userId, userEmail, userName]);
 
   if (!isLoaded || checkingRole) return <PageLoader />;

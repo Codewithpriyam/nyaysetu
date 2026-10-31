@@ -9,7 +9,7 @@
 
 import { useState } from 'react';
 import BentoTilt from '@/components/common/BentoTilt';
-import { HiCurrencyRupee, HiCheckCircle, HiBanknotes, HiArrowTrendingUp, HiDocumentText } from 'react-icons/hi2';
+import { HiCheckCircle, HiBanknotes } from 'react-icons/hi2';
 import { HiSave } from 'react-icons/hi';
 import { formatCurrency } from '@/utils';
 

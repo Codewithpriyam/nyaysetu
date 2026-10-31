@@ -46,7 +46,7 @@ export async function searchRealDistrictAdvocates(state, district) {
         }));
       }
     }
-  } catch (_) {
+  } catch {
     // backend not reachable — fall through to local data
     console.info('Spring Boot backend not reachable. Using local JSON data.');
   }
@@ -92,7 +92,7 @@ export async function searchRealDistrictAdvocates(state, district) {
         });
       }
     }
-  } catch (_) {
+  } catch {
     console.error('OpenStreetMap API error.');
   }
 

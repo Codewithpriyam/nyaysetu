@@ -65,12 +65,9 @@ public class AdminController {
             .filter(p -> "VERIFIED".equalsIgnoreCase(p.getStatus()))
             .collect(Collectors.toList());
 
-        double totalRevenue = 0.0;
-        for (Payment p : verifiedPayments) {
-            if (p.getAmount() != null) {
-                totalRevenue += p.getAmount();
-            }
-        }
+        double totalRevenue = verifiedPayments.stream()
+            .mapToDouble(p -> p.getAmount() != null ? p.getAmount() : 0.0)
+            .sum();
 
         Map<String, Object> stats = new HashMap<>();
         stats.put("registeredUsers", totalUsers);

@@ -1,16 +1,16 @@
-# React + Vite
+# NyayaSetu — Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React 19 + Vite client application for the NyayaSetu legal intelligence and consultation platform.
 
-Currently, two official plugins are available:
+## Features
+- **Design System**: Courtroom aesthetic with dark parchment hues, gold accents, and fluid 3D BentoTilt motion.
+- **Animations**: GSAP 3 word cascade animations, smooth scroll interactions via Lenis, and reduced-motion accessibility.
+- **Search & Roster**: Over 25,000 real advocate records searchable across 28 Indian States and Districts with OpenStreetMap integration.
+- **AI Legal Assistant**: Conversational statutory legal guidance powered by Groq Llama-3 70B with citation tracking.
+- **Payment Modal**: YouPI PG sovereign UPI payment modal with dynamic vector QR generation and bank observer reconciliation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Scripts
+- `npm run dev`: Start Vite development server
+- `npm run build`: Build production assets with Rolldown/Vite
+- `npm run lint`: Run Oxlint across the source codebase
+- `npm run preview`: Locally preview production build

@@ -15,10 +15,10 @@ import { ROUTES, buildRoute } from '@/constants/routes';
 import BentoTilt from '@/components/common/BentoTilt';
 import { TiLocationArrow } from 'react-icons/ti';
 import { HiStar, HiCheckCircle, HiPhone, HiLocationMarker, HiSearch, HiRefresh, HiShieldCheck } from 'react-icons/hi';
-import { formatCurrency, formatPerMinuteRate, initials } from '@/utils';
+import { formatPerMinuteRate, initials } from '@/utils';
 
 // 24 Official Districts of Jharkhand State
-export const JHARKHAND_DISTRICTS = [
+const JHARKHAND_DISTRICTS = [
   'Ranchi',
   'Deoghar',
   'Dhanbad',

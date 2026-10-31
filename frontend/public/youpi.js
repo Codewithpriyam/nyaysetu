@@ -36,7 +36,7 @@
     let scriptUrl = '';
     try {
       scriptUrl = new URL(script.src, window.location.href);
-    } catch (e) { }
+    } catch { }
 
     const origin = scriptUrl ? scriptUrl.origin : (window.location.protocol + '//' + window.location.hostname + ':7000');
 
@@ -74,7 +74,7 @@
       const parsed = new URL(raw, base);
       if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return undefined;
       return parsed.href;
-    } catch (e) {
+    } catch {
       return undefined;
     }
   }
@@ -361,7 +361,7 @@
             }
             return;
           }
-        } catch (err) { }
+        } catch { }
         this._dispatchCancelled();
         this.close();
       };
@@ -424,7 +424,7 @@ _isSafeRedirect(url) {
         // Only an explicitly configured checkout URL is authoritative. `portalUrl` defaults
         // to localhost, so including it would make this check reject legitimate messages.
         if (this.options.checkoutUrl) return new URL(this.options.checkoutUrl, window.location.href).origin;
-      } catch (e) { }
+      } catch { }
       return null;
     }
 
@@ -438,7 +438,6 @@ _isSafeRedirect(url) {
       if (expectedOrigin && e.origin !== expectedOrigin) return;
 
       const event = e.data.event;
-      const rawData = e.data.data || e.data;
 
       if (event === 'youpi.payment_success') {
         const payload = e.data.data || {};
@@ -489,10 +488,10 @@ _isSafeRedirect(url) {
         YoupiCheckout._emitEvent('youpi:payment:result', result);
 
         if (typeof this.options.onFailed === 'function') {
-          try { this.options.onFailed(result); } catch (err) { }
+          try { this.options.onFailed(result); } catch { }
         }
         if (typeof this.options.onPaymentFailed === 'function') {
-          try { this.options.onPaymentFailed(result); } catch (err) { }
+          try { this.options.onPaymentFailed(result); } catch { }
         }
 
         this.close(() => {
@@ -521,7 +520,7 @@ _isSafeRedirect(url) {
         YoupiCheckout._emitEvent('youpi:payment:result', result);
 
         if (typeof this.options.onSuspicious === 'function') {
-          try { this.options.onSuspicious(result); } catch (err) { }
+          try { this.options.onSuspicious(result); } catch { }
         }
 
         this.close(() => {
@@ -542,7 +541,7 @@ _isSafeRedirect(url) {
         YoupiCheckout._emitEvent('youpi:payment:result', result);
 
         if (typeof this.options.onExpired === 'function') {
-          try { this.options.onExpired(result); } catch (err) { }
+          try { this.options.onExpired(result); } catch { }
         }
 
         this.close(() => {
@@ -575,7 +574,7 @@ _isSafeRedirect(url) {
       YoupiCheckout._emitEvent('youpi:payment:result', result);
 
       if (typeof this.options.onCancelled === 'function') {
-        try { this.options.onCancelled(result); } catch (e) { }
+        try { this.options.onCancelled(result); } catch { }
       }
     }
 
@@ -585,7 +584,7 @@ _isSafeRedirect(url) {
         const ev = new CustomEvent(name, { detail, bubbles: true, cancelable: true });
         window.dispatchEvent(ev);
         document.dispatchEvent(ev);
-      } catch (e) { }
+      } catch { }
     }
 
     /**
@@ -613,7 +612,7 @@ _isSafeRedirect(url) {
       if (rawMeta) {
         try {
           metadata = JSON.parse(rawMeta);
-        } catch (e) {
+        } catch {
           metadata = { raw: rawMeta };
         }
       }

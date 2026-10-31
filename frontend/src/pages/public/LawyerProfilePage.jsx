@@ -7,22 +7,9 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@clerk/clerk-react';
 import { MOCK_LAWYERS } from '@/data/mockLawyers';
-import { fetchRealDistrictAdvocates } from '@/data/realIndianAdvocatesDatabase';
 import { ROUTES } from '@/constants/routes';
 import BentoTilt from '@/components/common/BentoTilt';
-import Button from '@/components/common/Button';
-import { TiLocationArrow } from 'react-icons/ti';
-import {
-  HiStar,
-  HiCheckCircle,
-  HiShieldCheck,
-  HiPhone,
-  HiQrcode,
-  HiCheck,
-  HiX,
-  HiInformationCircle,
-  HiClipboardCopy,
-} from 'react-icons/hi';
+import { HiCheckCircle, HiQrcode } from 'react-icons/hi';
 import {
   formatCurrency,
   formatPerMinuteRate,
@@ -54,9 +41,9 @@ const DURATION_OPTIONS = [
 ];
 
 const LawyerProfilePage = () => {
-  const { id }     = useParams();
-  const navigate   = useNavigate();
-  const location   = useLocation();
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { isSignedIn } = useAuth();
 
   // Lookup in mock or fallback to first featured advocate
@@ -69,29 +56,11 @@ const LawyerProfilePage = () => {
   const [selectedDuration, setSelectedDuration] = useState(20);
   const totalPayable = calculateConsultationCost(pricePerMinute, selectedDuration, 500);
 
-  // UPI Payment & UTR State
-  const [showQrModal, setShowQrModal]       = useState(false);
+  // UPI Payment State
+  const [showQrModal, setShowQrModal] = useState(false);
   const [createdConsultationId, setCreatedConsultationId] = useState(null);
-  const [utrNumber, setUtrNumber]           = useState('');
-  const [clientIssue, setClientIssue]       = useState('');
-  const [copiedUpi, setCopiedUpi]           = useState(false);
-  const [bookingStatus, setBookingStatus]   = useState(null); // null | 'submitted'
-  const [utrError, setUtrError]             = useState('');
-  const [isSubmitting, setIsSubmitting]     = useState(false);
-
-  // Read custom advocate payment settings if saved by advocate in Advocate Panel
-  const savedPaymentSettings = (() => {
-    try {
-      const saved = localStorage.getItem('nyaysetu_advocate_payment_settings');
-      return saved ? JSON.parse(saved) : null;
-    } catch {
-      return null;
-    }
-  })();
-
-  // Scalable Lawyer Specific UPI ID & QR Code Image Path (Custom Advocate QR or Default)
-  const upiId = savedPaymentSettings?.upiId || lawyer.upiId || lawyer.name.toLowerCase().replace(/[^a-z]/g, '') + '@upi';
-  const qrImage = savedPaymentSettings?.qrCodeImage || lawyer.qrCodeImage || lawyer.qr_image || '/img/qrcodes/priya_sharma_qr.png';
+  const [clientIssue, setClientIssue] = useState('');
+  const [bookingStatus, setBookingStatus] = useState(null); // null | 'submitted'
 
   // Prevent background body scrolling while payment modal is open
   useEffect(() => {
@@ -104,12 +73,6 @@ const LawyerProfilePage = () => {
       document.body.style.overflow = '';
     };
   }, [showQrModal]);
-
-  const handleCopyUpi = () => {
-    navigator.clipboard.writeText(upiId);
-    setCopiedUpi(true);
-    setTimeout(() => setCopiedUpi(false), 2000);
-  };
 
   const handleOpenPayment = async () => {
     // If not signed in → redirect to /sign-in, returning to THIS lawyer page after auth
@@ -126,15 +89,14 @@ const LawyerProfilePage = () => {
         durationMinutes: selectedDuration,
       });
       setCreatedConsultationId(consultRes?.id || 1);
-    } catch (err) {
+    } catch {
       setCreatedConsultationId(1);
     }
 
     setShowQrModal(true);
-    setUtrError('');
   };
 
-  const handlePaymentSuccess = (paymentRecord) => {
+  const handlePaymentSuccess = () => {
     setBookingStatus('submitted');
   };
 
@@ -243,11 +205,10 @@ const LawyerProfilePage = () => {
                     <button
                       key={opt.minutes}
                       onClick={() => setSelectedDuration(opt.minutes)}
-                      className={`flex justify-between items-center px-4 py-2.5 rounded-xl border text-xs font-inter transition-all ${
-                        selectedDuration === opt.minutes
+                      className={`flex justify-between items-center px-4 py-2.5 rounded-xl border text-xs font-inter transition-all ${selectedDuration === opt.minutes
                           ? 'border-ct-gold bg-ct-gold/20 text-ct-gold font-bold shadow-gold-glow'
                           : 'border-ct-gold/20 bg-ct-card/50 text-ct-ivory/80 hover:border-ct-gold/50'
-                      }`}
+                        }`}
                     >
                       <span>{opt.label}</span>
                       <span className="font-bold">{formatConsultationPrice(pricePerMinute, opt.minutes)}</span>

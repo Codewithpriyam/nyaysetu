@@ -49,7 +49,7 @@ export function formatCurrency(amount, { decimals = 0, fallback = 'Price unavail
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals,
     }).format(numeric);
-  } catch (e) {
+  } catch {
     return fallback;
   }
 }

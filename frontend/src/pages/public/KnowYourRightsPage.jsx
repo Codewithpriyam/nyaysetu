@@ -8,8 +8,7 @@
 
 import { useState, useMemo } from 'react';
 import BentoTilt from '@/components/common/BentoTilt';
-import { HiSearch, HiShieldCheck, HiPhone, HiClock, HiScale } from 'react-icons/hi';
-import { MdOutlineGavel } from 'react-icons/md';
+import { HiSearch } from 'react-icons/hi';
 
 const ALL_STATUTORY_RIGHTS = [
   {

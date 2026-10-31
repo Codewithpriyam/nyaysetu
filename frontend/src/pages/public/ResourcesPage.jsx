@@ -6,23 +6,18 @@
 
 import { useState, useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import BentoTilt from '@/components/common/BentoTilt';
 import {
   HiDownload,
   HiDocumentText,
   HiShieldCheck,
-  HiSearch,
-  HiFolderDownload,
   HiSparkles,
   HiClipboardCopy,
   HiCheck,
   HiInformationCircle,
-  HiClock,
-  HiCode,
   HiExclamationCircle,
   HiExternalLink,
 } from 'react-icons/hi';
-import { MdOutlineGavel, MdOutlineSmartToy } from 'react-icons/md';
+import { MdOutlineSmartToy } from 'react-icons/md';
 import apiClient from '@/services/api';
 import {
   queryGroqLegalAI,
@@ -108,8 +103,8 @@ const FormattedAiOutput = ({ text }) => {
         }
 
         // Bullet detection: starts with • or - or * or number.
-        const isBullet = /^[•\-\*]\s+/.test(trimmed) || /^\d+\.\s+/.test(trimmed);
-        const bulletMatch = trimmed.match(/^([•\-\*]|\d+\.)\s+(.*)$/);
+        const isBullet = /^[•\-*]\s+/.test(trimmed) || /^\d+\.\s+/.test(trimmed);
+        const bulletMatch = trimmed.match(/^([•\-*]|\d+\.)\s+(.*)$/);
         const lineContent = bulletMatch ? bulletMatch[2] : trimmed;
 
         if (isBullet) {
@@ -129,7 +124,7 @@ const FormattedAiOutput = ({ text }) => {
         }
 
         // Check if header line (contains emoji or ends with colon or bold title)
-        const isHeader = /^[⚖️📌🚀📞⚠️🛡️✅]/.test(trimmed) || /^[A-Za-z\s&]{3,}:/.test(trimmed);
+        const isHeader = /^(?:⚖️|📌|🚀|📞|⚠️|🛡️|✅)/u.test(trimmed) || /^[A-Za-z\s&]{3,}:/.test(trimmed);
         if (isHeader) {
           return (
             <div key={idx} className="pt-2 pb-0.5 font-bold text-ct-gold text-sm flex items-center gap-1.5">
@@ -280,6 +275,7 @@ const ResourcesPage = () => {
     if (initialPrompt && !aiOutput && !isLoading) {
       runAiChat(initialPrompt);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialPrompt]);
 
   useEffect(() => {

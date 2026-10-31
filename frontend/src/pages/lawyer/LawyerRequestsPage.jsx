@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import BentoTilt from '@/components/common/BentoTilt';
-import { HiUserGroup, HiCheck, HiX, HiCheckCircle, HiQrcode, HiVideoCamera, HiClock, HiLink, HiPhotograph } from 'react-icons/hi';
+import { HiCheck, HiX, HiQrcode, HiVideoCamera } from 'react-icons/hi';
 import { formatCurrency } from '@/utils';
 import apiClient from '@/services/api';
 
@@ -34,7 +34,7 @@ const LawyerRequestsPage = () => {
       await apiClient.patch(`/lawyer/payments/${paymentId}/verify`);
       setPayments((prev) => prev.map(p => p.id === paymentId ? { ...p, status: 'VERIFIED' } : p));
       setActionAlert(`Verified payment from ${userName}! Direct UPI transaction confirmed.`);
-    } catch (err) {
+    } catch {
       setPayments((prev) => prev.map(p => p.id === paymentId ? { ...p, status: 'VERIFIED' } : p));
       setActionAlert(`Verified payment from ${userName}!`);
     }
@@ -52,7 +52,7 @@ const LawyerRequestsPage = () => {
         provider,
       });
       setActionAlert(`Scheduled consultation meeting with ${activeModal.userName}! Google Meet link sent.`);
-    } catch (err) {
+    } catch {
       setActionAlert(`Meeting scheduled with ${activeModal.userName}! Join link activated.`);
     }
 

@@ -1,16 +1,17 @@
 package com.nyaysetu.backend;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class NyayaSetuApplication {
 
+    private static final Logger log = LoggerFactory.getLogger(NyayaSetuApplication.class);
+
     public static void main(String[] args) {
         SpringApplication.run(NyayaSetuApplication.class, args);
-        System.out.println("==========================================================");
-        System.out.println(" NyayaSetu Spring Boot Backend API Running on Port 8080!");
-        System.out.println(" H2 Console: http://localhost:8080/h2-console");
-        System.out.println("==========================================================");
+        log.info("NyayaSetu Spring Boot Backend API Running on Port 8080.");
     }
 }

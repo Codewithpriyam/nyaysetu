@@ -13,7 +13,7 @@ import { ROUTES, buildRoute } from '@/constants/routes';
 import { MOCK_LAWYERS } from '@/data/mockLawyers';
 import { TiLocationArrow } from 'react-icons/ti';
 import { HiStar, HiCheckCircle } from 'react-icons/hi';
-import { formatCurrency, formatPerMinuteRate, initials } from '@/utils';
+import { formatPerMinuteRate, initials } from '@/utils';
 import BentoTilt from '@/components/common/BentoTilt';
 
 const LawyerAvatar = ({ lawyer }) => (

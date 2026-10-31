@@ -3,9 +3,8 @@
  * Global Consultation & Dispute Resolution Monitor for Platform Admins.
  */
 
-import { useState } from 'react';
 import BentoTilt from '@/components/common/BentoTilt';
-import { HiShieldCheck, HiPhone, HiCheckCircle, HiStar, HiCurrencyRupee } from 'react-icons/hi';
+import { HiStar } from 'react-icons/hi';
 import { formatCurrency } from '@/utils';
 
 const ALL_MOCK_CONSULTATIONS = [

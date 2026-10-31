@@ -7,19 +7,11 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@/constants/routes';
 import BentoTilt from '@/components/common/BentoTilt';
-import Button from '@/components/common/Button';
 import {
   HiCheckCircle,
-  HiClock,
   HiStar,
-  HiCurrencyRupee,
-  HiUserGroup,
-  HiPhone,
   HiCheck,
   HiX,
-  HiExternalLink,
-  HiCog,
-  HiPlus,
   HiCalendar,
 } from 'react-icons/hi';
 import { MdOutlineGavel } from 'react-icons/md';
@@ -57,7 +49,7 @@ const LawyerDashboardPage = () => {
       await apiClient.patch(`/lawyer/cases/${caseId}/status`, { status: newStatus });
       setAssignedCases((prev) => prev.map(c => c.id === caseId ? { ...c, status: newStatus } : c));
       setActionAlert(`Case status updated to ${newStatus}. Client notified!`);
-    } catch (err) {
+    } catch {
       setAssignedCases((prev) => prev.map(c => c.id === caseId ? { ...c, status: newStatus } : c));
       setActionAlert(`Case status updated to ${newStatus}.`);
     }
@@ -74,7 +66,7 @@ const LawyerDashboardPage = () => {
         remarks: hearingRemarks || 'Court hearing scheduled.',
       });
       setActionAlert(`New Court Hearing scheduled for Case #${activeCaseModal.caseNumber}!`);
-    } catch (err) {
+    } catch {
       setActionAlert(`Court Hearing added for Case #${activeCaseModal.caseNumber}!`);
     }
 

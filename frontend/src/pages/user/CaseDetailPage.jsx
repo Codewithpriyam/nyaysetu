@@ -8,14 +8,10 @@ import { useParams, Link } from 'react-router-dom';
 import { ROUTES } from '@/constants/routes';
 import BentoTilt from '@/components/common/BentoTilt';
 import {
-  HiCheckCircle,
-  HiClock,
   HiFolder,
   HiDocumentText,
   HiArrowLeft,
-  HiPlus,
   HiDownload,
-  HiShieldCheck,
   HiCalendar,
 } from 'react-icons/hi';
 import { MdOutlineGavel } from 'react-icons/md';

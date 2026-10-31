@@ -4,7 +4,7 @@
  */
 
 import BentoTilt from '@/components/common/BentoTilt';
-import { HiCode, HiDatabase, HiShieldCheck, HiSparkles, HiLightningBolt } from 'react-icons/hi';
+import { HiCode, HiDatabase } from 'react-icons/hi';
 
 const ArchitecturePage = () => {
   return (

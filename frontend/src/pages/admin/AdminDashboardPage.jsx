@@ -5,21 +5,12 @@
  */
 
 import { useState, useEffect } from 'react';
-import BentoTilt from '@/components/common/BentoTilt';
 import {
-  HiShieldCheck,
-  HiCheckCircle,
-  HiXCircle,
-  HiDocumentText,
   HiUserGroup,
-  HiCheck,
-  HiX,
-  HiSparkles,
-  HiCog,
   HiCurrencyRupee,
   HiRefresh,
 } from 'react-icons/hi';
-import { MdOutlineGavel, MdOutlineSecurity } from 'react-icons/md';
+import { MdOutlineSecurity } from 'react-icons/md';
 import apiClient from '@/services/api';
 import { getRealRegisteredUsers, updateRealUserRoleInRegistry } from '@/utils/userRegistry';
 import { formatCurrency } from '@/utils';
@@ -120,7 +111,7 @@ const AdminDashboardPage = () => {
       });
       setActionAlert('Lawyer successfully linked to Clerk account!');
       setUnlinkedLawyers((prev) => prev.filter((l) => l.id !== selectedLawyerId));
-    } catch (err) {
+    } catch {
       setActionAlert('Lawyer mapped successfully in system!');
       setUnlinkedLawyers((prev) => prev.filter((l) => l.id !== selectedLawyerId));
     } finally {

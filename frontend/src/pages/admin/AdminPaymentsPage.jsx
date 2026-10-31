@@ -7,32 +7,25 @@
 import { useState, useEffect, useMemo } from 'react';
 import BentoTilt from '@/components/common/BentoTilt';
 import {
-  HiShieldCheck,
   HiCheckCircle,
   HiXCircle,
-  HiCurrencyRupee,
   HiSearch,
-  HiFilter,
   HiRefresh,
   HiDownload,
   HiDuplicate,
   HiCheck,
-  HiExternalLink,
   HiPrinter,
   HiEye,
-  HiClock,
   HiLightningBolt,
-  HiSparkles,
-  HiExclamationCircle,
   HiX
 } from 'react-icons/hi';
-import { MdOutlineSecurity, MdOutlineGavel, MdOutlineReceiptLong } from 'react-icons/md';
+import { MdOutlineSecurity, MdOutlineReceiptLong } from 'react-icons/md';
 import apiClient from '@/services/api';
 import { formatCurrency } from '@/utils';
 
 const AdminPaymentsPage = ({ embedded = false }) => {
   const [payments, setPayments] = useState([]);
-  const [stats, setStats] = useState({
+  const [_stats, setStats] = useState({
     totalTransactions: 0,
     verifiedCount: 0,
     pendingCount: 0,
@@ -45,7 +38,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL'); // 'ALL', 'VERIFIED', 'PENDING', 'REJECTED'
-  const [methodFilter, setMethodFilter] = useState('ALL'); // 'ALL', 'YOUPI_UPI', 'UPI'
+  const [methodFilter] = useState('ALL'); // 'ALL', 'YOUPI_UPI', 'UPI'
   const [sortBy, setSortBy] = useState('NEWEST'); // 'NEWEST', 'OLDEST', 'AMOUNT_HIGH'
 
   const [selectedPayment, setSelectedPayment] = useState(null); // Inspector modal
@@ -96,7 +89,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
         setSelectedPayment((prev) => ({ ...prev, status: newStatus, verifiedBy: 'ADMIN' }));
       }
       setActionAlert(`Payment #${paymentId} marked as ${newStatus} successfully!`);
-    } catch (err) {
+    } catch {
       setPayments((prev) =>
         prev.map((p) => (p.id === paymentId ? { ...p, status: newStatus, verifiedBy: 'ADMIN' } : p))
       );
@@ -119,7 +112,7 @@ const AdminPaymentsPage = ({ embedded = false }) => {
         setSelectedPayment((prev) => ({ ...prev, payoutStatus: 'SETTLED' }));
       }
       setActionAlert(`Advocate payout for Payment #${paymentId} marked as SETTLED!`);
-    } catch (err) {
+    } catch {
       setPayments((prev) =>
         prev.map((p) => (p.id === paymentId ? { ...p, payoutStatus: 'SETTLED' } : p))
       );
@@ -216,8 +209,6 @@ const AdminPaymentsPage = ({ embedded = false }) => {
   const totalAdvocateEscrow = payments
     .filter((p) => p.status === 'VERIFIED')
     .reduce((sum, p) => sum + (p.advocatePayout || ((p.amount || 0) * 0.90)), 0);
-  const pendingCount = payments.filter((p) => p.status === 'PENDING').length;
-  const verifiedCount = payments.filter((p) => p.status === 'VERIFIED').length;
   const pendingPayoutsCount = payments.filter(
     (p) => p.status === 'VERIFIED' && (p.payoutStatus === 'PENDING_SETTLEMENT' || !p.payoutStatus)
   ).length;
@@ -458,7 +449,6 @@ const AdminPaymentsPage = ({ embedded = false }) => {
                   filteredPayments.map((p) => {
                     const isVerified = p.status === 'VERIFIED';
                     const isPending = p.status === 'PENDING';
-                    const isRejected = p.status === 'REJECTED';
                     const platformAmt = p.platformFee || ((p.amount || 0) * 0.10);
                     const advocateAmt = p.advocatePayout || ((p.amount || 0) * 0.90);
                     const isPayoutSettled = p.payoutStatus === 'SETTLED';

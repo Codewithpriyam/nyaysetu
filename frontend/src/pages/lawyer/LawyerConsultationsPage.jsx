@@ -8,7 +8,7 @@
 
 import { useState } from 'react';
 import BentoTilt from '@/components/common/BentoTilt';
-import { HiVideoCamera, HiCheckCircle, HiStar, HiExternalLink, HiSearch, HiFilter } from 'react-icons/hi';
+import { HiVideoCamera, HiStar, HiFilter } from 'react-icons/hi';
 import { formatCurrency } from '@/utils';
 
 const ALL_MOCK_CONSULTATIONS = [

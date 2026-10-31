@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nyaysetu.backend.model.*;
 import com.nyaysetu.backend.repository.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -11,14 +13,14 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
+
+    private static final Logger log = LoggerFactory.getLogger(DataInitializer.class);
 
     @Autowired
     private AdvocateRepository advocateRepository;
@@ -55,7 +57,7 @@ public class DataInitializer implements CommandLineRunner {
             prince.setLanguages("Hindi, English");
             prince.setVerificationStatus("VERIFIED");
             lawyerProfileRepository.save(prince);
-            System.out.println(">>> Initialized LawyerProfile: Adv. Prince Kumar");
+            log.info("Initialized LawyerProfile: Adv. Prince Kumar");
         }
 
         if (lawyerProfileRepository.findBySlug("shruti").isEmpty()) {
@@ -70,27 +72,31 @@ public class DataInitializer implements CommandLineRunner {
             shruti.setLanguages("Hindi, English");
             shruti.setVerificationStatus("VERIFIED");
             lawyerProfileRepository.save(shruti);
-            System.out.println(">>> Initialized LawyerProfile: Adv. Shruti");
+            log.info("Initialized LawyerProfile: Adv. Shruti");
         }
     }
 
     private void seedAdvocateDatabase() {
-        System.out.println(">>> NyayaSetu DataInitializer: Checking Advocates Database...");
-
         if (advocateRepository.count() > 0) {
-            System.out.println(">>> Database already initialized with " + advocateRepository.count() + " advocate records.");
+            log.info("Advocates database already initialized with {} records.", advocateRepository.count());
             return;
         }
 
-        File datasetsFolder = new File("d:/Nyaysetu/frontend/src/data/officialStateAdvocates");
+        File datasetsFolder = new File("frontend/src/data/officialStateAdvocates");
         if (!datasetsFolder.exists() || !datasetsFolder.isDirectory()) {
-            System.out.println(">>> Datasets directory not found at " + datasetsFolder.getAbsolutePath());
+            datasetsFolder = new File("../frontend/src/data/officialStateAdvocates");
+        }
+        if (!datasetsFolder.exists() || !datasetsFolder.isDirectory()) {
+            datasetsFolder = new File("d:/Nyaysetu/frontend/src/data/officialStateAdvocates");
+        }
+        if (!datasetsFolder.exists() || !datasetsFolder.isDirectory()) {
+            log.warn("Official state advocates dataset directory not found at: {}", datasetsFolder.getAbsolutePath());
             return;
         }
 
         File[] jsonFiles = datasetsFolder.listFiles((dir, name) -> name.endsWith(".json"));
         if (jsonFiles == null || jsonFiles.length == 0) {
-            System.out.println(">>> No JSON state datasets found.");
+            log.warn("No JSON state datasets found in {}", datasetsFolder.getAbsolutePath());
             return;
         }
 
@@ -120,23 +126,20 @@ public class DataInitializer implements CommandLineRunner {
                         allAdvocates.add(advocate);
                     }
                 }
-                System.out.println("Loaded " + file.getName() + " -> " + (advocatesNode != null ? advocatesNode.size() : 0) + " records.");
+                log.info("Loaded {} -> {} records.", file.getName(), (advocatesNode != null ? advocatesNode.size() : 0));
             } catch (Exception e) {
-                System.err.println("Failed to parse dataset file: " + file.getName() + " -> " + e.getMessage());
+                log.error("Failed to parse dataset file {}: {}", file.getName(), e.getMessage());
             }
         }
 
         if (!allAdvocates.isEmpty()) {
             advocateRepository.saveAll(allAdvocates);
-            System.out.println("==========================================================================");
-            System.out.println(" SUCCESS: Loaded " + allAdvocates.size() + " REAL Advocate Records into Spring Boot Database!");
-            System.out.println("==========================================================================");
+            log.info("Successfully loaded {} advocate records into database.", allAdvocates.size());
         }
     }
 
     private void purgeFakeSeedPayments() {
         try {
-            // Remove any sample/mock payments previously seeded for testing
             List<String> mockEmails = List.of("rahul.sharma@gmail.com", "pooja.verma@gmail.com");
             for (String email : mockEmails) {
                 userRepository.findByEmail(email).ifPresent(user -> {
@@ -152,7 +155,6 @@ public class DataInitializer implements CommandLineRunner {
                 });
             }
 
-            // Remove any legacy mock payments by known dummy UTRs or mock session prefixes
             List<Payment> allPayments = paymentRepository.findAll();
             List<Payment> dummyPayments = allPayments.stream()
                 .filter(p -> (p.getUtrNumber() != null && (
@@ -168,12 +170,12 @@ public class DataInitializer implements CommandLineRunner {
 
             if (!dummyPayments.isEmpty()) {
                 paymentRepository.deleteAll(dummyPayments);
-                System.out.println(">>> NyayaSetu DataInitializer: Purged " + dummyPayments.size() + " dummy/fake payment records. Real payment records maintained.");
+                log.info("Purged {} legacy mock payment records from ledger.", dummyPayments.size());
             } else {
-                System.out.println(">>> NyayaSetu DataInitializer: Payment ledger is clean (0 fake records). Real payment records only.");
+                log.info("Payment ledger is clean. Only authentic payment records present.");
             }
         } catch (Exception e) {
-            System.err.println("Note on purgeFakeSeedPayments: " + e.getMessage());
+            log.warn("Notice during payment ledger check: {}", e.getMessage());
         }
     }
 }

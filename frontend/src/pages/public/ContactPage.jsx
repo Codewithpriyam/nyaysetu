@@ -3,7 +3,7 @@
  */
 
 import { useState } from 'react';
-import { HiMail, HiPhone, HiLocationMarker, HiCheckCircle } from 'react-icons/hi';
+import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
 
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);

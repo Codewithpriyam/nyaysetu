@@ -6,8 +6,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import BentoTilt from '@/components/common/BentoTilt';
-import Button from '@/components/common/Button';
-import { HiShieldCheck, HiPlus, HiSearch, HiFilter, HiCheckCircle, HiClock, HiDocumentText, HiX, HiCheck, HiFolder } from 'react-icons/hi';
+import { HiPlus, HiFilter, HiX, HiCheck } from 'react-icons/hi';
 import { MdOutlineGavel } from 'react-icons/md';
 import apiClient from '@/services/api';
 
@@ -54,7 +53,7 @@ const CasesPage = () => {
       if (res && res.id) {
         setCases((prev) => [res, ...prev]);
       }
-    } catch (err) {
+    } catch {
       // Local fallback for client UI reactivity
       const newCase = {
         id: Date.now(),

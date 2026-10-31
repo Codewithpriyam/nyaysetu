@@ -5,18 +5,13 @@
  */
 
 import { useState, useEffect } from 'react';
-import BentoTilt from '@/components/common/BentoTilt';
 import {
   HiSave,
   HiCheckCircle,
-  HiUser,
-  HiShieldCheck,
   HiQrcode,
   HiPhotograph,
   HiCheck,
   HiCreditCard,
-  HiRefresh,
-  HiPhone,
 } from 'react-icons/hi';
 import { MdOutlineGavel } from 'react-icons/md';
 

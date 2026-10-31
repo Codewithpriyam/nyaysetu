@@ -11,10 +11,7 @@ import { Link } from 'react-router-dom';
 import { CATEGORY_SETS, ALL_CATEGORIES } from '@/constants/legalCategories';
 import { ROUTES, buildRoute } from '@/constants/routes';
 import BentoTilt from '@/components/common/BentoTilt';
-import Button from '@/components/common/Button';
-import { TiLocationArrow } from 'react-icons/ti';
-import { HiSearch, HiShieldCheck, HiArrowRight } from 'react-icons/hi';
-import { MdOutlineGavel } from 'react-icons/md';
+import { HiSearch, HiArrowRight } from 'react-icons/hi';
 
 const CategoriesPage = () => {
   const [searchQuery, setSearchQuery] = useState('');

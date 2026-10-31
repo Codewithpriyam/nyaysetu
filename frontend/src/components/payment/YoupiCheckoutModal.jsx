@@ -12,16 +12,13 @@ import {
   HiCheckCircle,
   HiDuplicate,
   HiCheck,
-  HiExclamation,
-  HiExternalLink,
   HiRefresh,
   HiSparkles,
-  HiDeviceMobile,
   HiLightningBolt,
   HiArrowRight,
   HiQrcode
 } from 'react-icons/hi';
-import { MdOutlineSecurity, MdOutlineGavel } from 'react-icons/md';
+import { MdOutlineSecurity } from 'react-icons/md';
 import { useUser } from '@clerk/clerk-react';
 import apiClient from '@/services/api';
 import { formatCurrency } from '@/utils';
@@ -32,8 +29,8 @@ const YoupiCheckoutModal = ({
   consultationId,
   lawyer,
   amount = 500,
-  durationMinutes = 20,
-  clientIssue = 'Legal Consultation',
+  durationMinutes: _durationMinutes = 20,
+  clientIssue: _clientIssue = 'Legal Consultation',
   onSuccess,
 }) => {
   const { user } = useUser();
@@ -41,8 +38,6 @@ const YoupiCheckoutModal = ({
 
   const [activeTab, setActiveTab] = useState('QR'); // 'QR', 'MANUAL_UTR', 'SIMULATE'
   const [session, setSession] = useState(null);
-  const [isLoadingSession, setIsLoadingSession] = useState(true);
-  const [sessionError, setSessionError] = useState('');
   const [copiedUpi, setCopiedUpi] = useState(false);
   const [copiedUtr, setCopiedUtr] = useState(false);
 
@@ -86,9 +81,8 @@ const YoupiCheckoutModal = ({
       .then((res) => {
         if (!isMounted) return;
         setSession(res);
-        setIsLoadingSession(false);
       })
-      .catch((err) => {
+      .catch(() => {
         if (!isMounted) return;
         // Fallback local simulation session (Method B: Central Platform Escrow)
         const fallbackPaymentId = 'youpi_' + Math.random().toString(36).substring(2, 10);
@@ -149,7 +143,7 @@ const YoupiCheckoutModal = ({
           if (pollingIntervalRef.current) clearInterval(pollingIntervalRef.current);
           if (onSuccess) onSuccess(res);
         }
-      } catch (e) {
+      } catch {
         // Silent poll error
       }
     }, 3500);
@@ -211,7 +205,7 @@ const YoupiCheckoutModal = ({
           amount: amount,
         });
       }
-    } catch (err) {
+    } catch {
       // Local fallback success for test demo
       setVerifiedUtr(manualUtr.trim());
       setPaymentStatus('SUCCESS');

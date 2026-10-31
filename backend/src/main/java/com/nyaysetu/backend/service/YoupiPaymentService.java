@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nyaysetu.backend.model.*;
 import com.nyaysetu.backend.repository.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -20,6 +22,8 @@ import java.util.*;
 
 @Service
 public class YoupiPaymentService {
+
+    private static final Logger log = LoggerFactory.getLogger(YoupiPaymentService.class);
 
     @Value("${youpi.api.url:http://localhost:6100}")
     private String youpiApiUrl;
@@ -139,8 +143,7 @@ public class YoupiPaymentService {
                 if (resJson.has("status")) status = resJson.get("status").asText();
             }
         } catch (Exception e) {
-            // Graceful self-hosting fallback: YouPI local simulator mode
-            System.out.println(">>> YouPI-PG Gateway Central Admin Escrow mode: Session " + paymentId + " -> " + targetVpa);
+            log.info("YouPI-PG Gateway Central Admin Escrow mode: Session {} -> {}", paymentId, targetVpa);
         }
 
         // Persist Payment entity
