@@ -52,7 +52,7 @@ const PopularGuidesSection = () => {
             containerClass="!text-ct-ivory !text-left !items-start !px-0 !text-5xl md:!text-6xl"
           />
           <p className="mt-6 max-w-lg font-inter text-base text-ct-ivory/80 leading-relaxed">
-            Real legal questions from across India — click any to see your rights and options instantly.
+            Everyday legal scenarios from across India with instant statutory remedies.
           </p>
         </div>
 

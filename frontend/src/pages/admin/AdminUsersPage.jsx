@@ -1,2 +1,9 @@
-const AdminUsersPage = () => (<div className='min-h-screen bg-ct-void flex-center pt-32'><div className='text-center'><h1 className='font-calluna text-4xl text-ct-ivory mb-4'>AdminUsersPage</h1><p className='text-ct-muted font-inter text-sm'>Coming in next phase</p></div></div>);
+/**
+ * NyayaSetu — Admin Users Management
+ * Renders AdminDashboard with the Users tab open.
+ */
+import AdminDashboardPage from './AdminDashboardPage';
+
+const AdminUsersPage = () => <AdminDashboardPage initialTab="USERS" />;
+
 export default AdminUsersPage;

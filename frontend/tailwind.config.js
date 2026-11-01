@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         // NyayaSetu Typography Design System: Calluna (Headings) + Inter (Interface/Body)
+                torkias: ["'Torkias Jole'", "Calluna", "Georgia", "serif"],
         calluna: ["Calluna", "Georgia", "Times New Roman", "serif"],
         heading: ["Calluna", "Georgia", "Times New Roman", "serif"],
         cormorant: ["Calluna", "Georgia", "Times New Roman", "serif"],

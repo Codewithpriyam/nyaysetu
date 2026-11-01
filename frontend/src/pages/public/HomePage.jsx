@@ -17,10 +17,19 @@ import JusticeJourneySection  from '@/sections/home/JusticeJourneySection';
 import TrustSection           from '@/sections/home/TrustSection';
 import ConsultLawyerSection   from '@/sections/home/ConsultLawyerSection';
 import PopularGuidesSection   from '@/sections/home/PopularGuidesSection';
+import SplashCursor           from '@/components/common/SplashCursor';
 
 const HomePage = () => {
   return (
-    <main className="w-full overflow-hidden bg-ct-void">
+    <div className="w-full overflow-hidden bg-ct-void">
+      <SplashCursor
+        rainbow={false}
+        size={0.75}
+        force={0.60}
+        swirl={2}
+        trail={0.65}
+        clickSplash
+      />
       <HeroSection />
       <CategoryJourneySection />
       <HowItWorksSection />
@@ -28,7 +37,7 @@ const HomePage = () => {
       <TrustSection />
       <ConsultLawyerSection />
       <PopularGuidesSection />
-    </main>
+    </div>
   );
 };
 

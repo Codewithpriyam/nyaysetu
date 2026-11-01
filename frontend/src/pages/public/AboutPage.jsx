@@ -25,8 +25,21 @@ const AboutPage = () => {
         <BentoTilt className="mb-10" tiltAmount={3}>
           <div className="court-card-surface p-8 sm:p-10 border border-ct-gold/40 shadow-court-hover">
             <div className="flex flex-wrap items-center gap-6 mb-6">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-ct-gold/50 bg-ct-gold/20 font-zentry text-2xl font-black text-ct-gold shadow-gold-glow">
-                NS
+              <div className="relative flex h-20 w-20 items-center justify-center rounded-full overflow-hidden bg-black border border-orange/30 shrink-0">
+                <video
+                  src="/logo.mp4"
+                  poster="/logo-poster.png"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  webkit-playsinline="true"
+                  disablePictureInPicture
+                  disableRemotePlayback
+                  controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"
+                  className="h-full w-full object-contain p-1 pointer-events-none select-none"
+                  aria-hidden="true"
+                />
               </div>
               <div>
                 <h2 className="font-calluna text-3xl font-bold text-ct-ivory">NyayaSetu Engineering Team</h2>

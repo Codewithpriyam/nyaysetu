@@ -16,8 +16,8 @@ import { getRealRegisteredUsers, updateRealUserRoleInRegistry } from '@/utils/us
 import { formatCurrency } from '@/utils';
 import AdminPaymentsPage from '@/pages/admin/AdminPaymentsPage';
 
-const AdminDashboardPage = () => {
-  const [activeTab, setActiveTab]         = useState('ANALYTICS'); // ANALYTICS, PAYMENTS, ONBOARDING, USERS, SETTINGS
+const AdminDashboardPage = ({ initialTab = 'ANALYTICS' }) => {
+  const [activeTab, setActiveTab]         = useState(initialTab); // ANALYTICS, PAYMENTS, ONBOARDING, USERS, SETTINGS
   const [stats, setStats]                 = useState({
     registeredUsers: 0,
     registeredLawyers: 0,

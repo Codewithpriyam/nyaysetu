@@ -52,7 +52,7 @@ export async function searchRealDistrictAdvocates(state, district) {
   }
 
   // ─── 2. Local Official High Court Rolls (JSON datasets) ────────────────
-  const officialRollData = getOfficialHighCourtAdvocates(cleanState, cleanDistrict);
+  const officialRollData = await getOfficialHighCourtAdvocates(cleanState, cleanDistrict);
   if (officialRollData && officialRollData.length > 0) {
     return officialRollData;
   }

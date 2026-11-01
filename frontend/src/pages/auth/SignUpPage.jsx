@@ -10,9 +10,22 @@ const SignUpPage = () => (
     <div className="w-full max-w-md">
       <div className="text-center mb-8">
         <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-court-gold text-ct-void font-zentry text-lg font-black shadow-gold-glow">
-            NS
-          </div>
+          <div className="relative flex h-14 w-14 items-center justify-center rounded-full overflow-hidden bg-black border border-orange/30 shrink-0">
+              <video
+                src="/logo.mp4"
+                poster="/logo-poster.png"
+                autoPlay
+                loop
+                muted
+                playsInline
+                webkit-playsinline="true"
+                disablePictureInPicture
+                disableRemotePlayback
+                controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"
+                className="h-full w-full object-contain p-0.5 pointer-events-none select-none"
+                aria-hidden="true"
+              />
+            </div>
         </div>
         <h1 className="font-calluna text-3xl font-bold text-ct-ivory">
           Create Your Account

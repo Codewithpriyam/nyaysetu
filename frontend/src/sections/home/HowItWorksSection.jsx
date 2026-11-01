@@ -15,21 +15,21 @@ const STEPS = [
   {
     number: '01',
     title:  'Tell Us What Happened',
-    desc:   'Describe your situation in plain language — no legal jargon required. Our system understands everyday Indian situations.',
+    desc:   'Describe your situation in plain language — no legal jargon required.',
     icon:   '✍️',
     detail: 'Consumer issue · Banking fraud · Workplace dispute · Property matter · Cyber crime · Travel complaint',
   },
   {
     number: '02',
     title:  'Understand Your Rights',
-    desc:   'We retrieve verified legal information — your rights, applicable laws, relevant government authorities, and clear options.',
+    desc:   'Get verified statutory rights, applicable Indian laws, and clear legal remedies.',
     icon:   '⚖️',
     detail: 'Source-backed · Jurisdiction-aware · In plain Hindi & English · AI-explained, lawyer-verified',
   },
   {
     number: '03',
     title:  'Take the Right Action',
-    desc:   'Follow a clear step-by-step action plan. Save your case, track progress, upload documents, or consult a verified lawyer.',
+    desc:   'Follow an actionable plan, track case milestones, or consult a verified advocate.',
     icon:   '🎯',
     detail: 'Step-by-step guide · Document checklist · Case tracking · Lawyer consultation',
   },
@@ -106,7 +106,7 @@ const HowItWorksSection = () => {
           </h2>
 
           <p className="hiw-header-item mt-3 max-w-xl font-inter text-sm sm:text-base text-ct-muted leading-relaxed">
-            From confusion to clarity — NyayaSetu walks you through your legal situation so you know exactly where you stand and what to do next.
+            From confusion to clarity — three simple steps from your situation to verified legal action.
           </p>
         </div>
 

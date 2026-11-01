@@ -124,6 +124,7 @@ const SignUpPage           = lazy(() => import('@/pages/auth/SignUpPage'));
 const DashboardPage        = lazy(() => import('@/pages/user/DashboardPage'));
 const CasesPage            = lazy(() => import('@/pages/user/CasesPage'));
 const CaseDetailPage       = lazy(() => import('@/pages/user/CaseDetailPage'));
+const ConsultationsPage    = lazy(() => import('@/pages/user/ConsultationsPage'));
 
 // Lawyer (protected — LAWYER role required)
 const LawyerDashboardPage     = lazy(() => import('@/pages/lawyer/LawyerDashboardPage'));
@@ -137,6 +138,8 @@ const LawyerEarningsPage      = lazy(() => import('@/pages/lawyer/LawyerEarnings
 const AdminDashboardPage     = lazy(() => import('@/pages/admin/AdminDashboardPage'));
 const AdminConsultationsPage = lazy(() => import('@/pages/admin/AdminConsultationsPage'));
 const AdminPaymentsPage      = lazy(() => import('@/pages/admin/AdminPaymentsPage'));
+const AdminUsersPage         = lazy(() => import('@/pages/admin/AdminUsersPage'));
+const AdminLawyersPage       = lazy(() => import('@/pages/admin/AdminLawyersPage'));
 
 const AppRouter = () => {
   const { getToken, isLoaded, isSignedIn } = useAuth();
@@ -176,6 +179,7 @@ const AppRouter = () => {
         <Route path={ROUTES.DASHBOARD} element={<RequireAuth><PageWrapper><DashboardPage /></PageWrapper></RequireAuth>} />
         <Route path={ROUTES.CASES}     element={<RequireAuth><PageWrapper><CasesPage /></PageWrapper></RequireAuth>} />
         <Route path={ROUTES.CASE_DETAIL} element={<RequireAuth><PageWrapper><CaseDetailPage /></PageWrapper></RequireAuth>} />
+        <Route path={ROUTES.CONSULTATIONS} element={<RequireAuth><PageWrapper><ConsultationsPage /></PageWrapper></RequireAuth>} />
 
         {/* ── LAWYER (role protected — LAWYER required) ────────────────────── */}
         <Route path={ROUTES.LAWYER_DASHBOARD}    element={<RequireAuth requiredRole="LAWYER"><PageWrapper hideFooter><LawyerDashboardPage /></PageWrapper></RequireAuth>} />
@@ -190,6 +194,8 @@ const AppRouter = () => {
         <Route path={ROUTES.ADMIN_DASHBOARD}     element={<RequireAuth requiredRole="ADMIN"><PageWrapper hideFooter><AdminDashboardPage /></PageWrapper></RequireAuth>} />
         <Route path={ROUTES.ADMIN_PAYMENTS}      element={<RequireAuth requiredRole="ADMIN"><PageWrapper hideFooter><AdminPaymentsPage /></PageWrapper></RequireAuth>} />
         <Route path={ROUTES.ADMIN_CONSULTATIONS} element={<RequireAuth requiredRole="ADMIN"><PageWrapper hideFooter><AdminConsultationsPage /></PageWrapper></RequireAuth>} />
+        <Route path={ROUTES.ADMIN_USERS}         element={<RequireAuth requiredRole="ADMIN"><PageWrapper hideFooter><AdminUsersPage /></PageWrapper></RequireAuth>} />
+        <Route path={ROUTES.ADMIN_LAWYERS}       element={<RequireAuth requiredRole="ADMIN"><PageWrapper hideFooter><AdminLawyersPage /></PageWrapper></RequireAuth>} />
 
         {/* ── FALLBACK ──────────────────────────────────────────────────────── */}
         <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />

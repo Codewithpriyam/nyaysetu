@@ -67,11 +67,11 @@ const NavBar = () => {
     // Pure neutral, dense dark layered black shadows (zero gold/amber/colored glow)
     // Focuses darkness & density immediately around the bottom edge of the navbar for strong text separation
     const shadowTop =
-      '0 4px 12px rgba(0, 0, 0, 0.45), 0 10px 24px rgba(0, 0, 0, 0.40), 0 20px 45px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06)';
+      '0 4px 16px rgba(0, 0, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.06)';
     const shadowMid =
-      '0 4px 12px rgba(0, 0, 0, 0.50), 0 10px 26px rgba(0, 0, 0, 0.50), 0 20px 50px rgba(0, 0, 0, 0.35), 0 32px 75px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.06)';
+      '0 6px 20px rgba(0, 0, 0, 0.50), 0 2px 6px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06)';
     const shadowScrolled =
-      '0 4px 12px rgba(0, 0, 0, 0.55), 0 10px 28px rgba(0, 0, 0, 0.58), 0 22px 55px rgba(0, 0, 0, 0.42), 0 35px 80px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06)';
+      '0 10px 28px -4px rgba(0, 0, 0, 0.65), 0 4px 10px rgba(0, 0, 0, 0.40), inset 0 1px 0 rgba(255, 255, 255, 0.06)';
 
     let currentStage = 'top';
 
@@ -179,12 +179,12 @@ const NavBar = () => {
   }, [location.pathname]);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 flex justify-center pointer-events-none py-3 px-4 sm:px-6">
+    <header className="fixed top-0 inset-x-0 z-50 flex justify-center pointer-events-none py-2.5 px-2 sm:px-4 lg:px-6">
       <nav
         ref={navRef}
         className={clsx(
-          'glass-nav relative w-full max-w-6xl rounded-2xl pointer-events-auto',
-          'px-4 sm:px-6 lg:px-5 py-2.5',
+          'glass-nav relative w-[95%] max-w-[1720px] rounded-2xl pointer-events-auto',
+          'px-5 sm:px-7 lg:px-8 py-2.5',
           isScrolled && 'glass-nav--scrolled'
         )}
         onMouseMove={handleNavMouseMove}
@@ -195,7 +195,7 @@ const NavBar = () => {
         {/* Pointer-follow glow */}
         <div
           ref={glowRef}
-          className="absolute inset-0 rounded-2xl pointer-events-none z-0"
+          className="absolute inset-0 rounded-2xl pointer-events-none z-0 overflow-hidden"
           style={{
             background: 'radial-gradient(300px circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(255, 255, 255, 0.04) 0%, transparent 60%)',
             opacity: 0,
@@ -210,14 +210,27 @@ const NavBar = () => {
           <div className="flex items-center gap-6 xl:gap-8">
             {/* Brand Logo */}
             <Link to={ROUTES.HOME} className="flex items-center gap-2.5 group shrink-0" aria-label="NyayaSetu Home">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-court-gold text-ct-void font-zentry text-sm font-black shadow-gold-glow">
-                NS
+              <div className="relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full overflow-hidden bg-black border border-orange/30 shrink-0 group-hover:border-orange/60 transition-all duration-300">
+                <video
+                  src="/logo.mp4"
+                  poster="/logo-poster.png"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  webkit-playsinline="true"
+                  disablePictureInPicture
+                  disableRemotePlayback
+                  controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"
+                  className="h-full w-full object-contain p-0.5 pointer-events-none select-none"
+                  aria-hidden="true"
+                />
               </div>
               <div className="flex flex-col">
-                <span className="font-calluna text-lg font-bold tracking-wide text-ct-ivory group-hover:text-ct-gold transition-colors duration-200">
+                <span className="font-calluna text-lg sm:text-xl font-bold tracking-wide text-ct-ivory group-hover:text-ct-gold transition-colors duration-200">
                   NyayaSetu
                 </span>
-                <span className="font-inter text-[7px] uppercase tracking-[0.2em] text-ct-gold/70 -mt-0.5">
+                <span className="font-inter text-[7px] sm:text-[8px] uppercase tracking-[0.2em] text-ct-gold/80 -mt-0.5">
                   Justice. Simplified.
                 </span>
               </div>

@@ -28,7 +28,7 @@
   /* Dark glass surface using subtle deep-blue tinting, retaining blur and transparency */
   --lg-bg:                  rgba(35, 61, 77, 0.35);
   --lg-bg-hover:            rgba(35, 61, 77, 0.50);
-  --lg-bg-scrolled:         rgba(0, 0, 0, 0.85);
+  --lg-bg-scrolled:         rgba(10, 15, 22, 0.96);
   --lg-blur:                18px;
   --lg-blur-scrolled:       28px;
   --lg-saturation:          1.45;
@@ -74,10 +74,8 @@
                             inset 0 1px 0 rgba(234, 236, 240, 0.08);
 
   /* Scrolled state shadow (100px+): dark, dense separation zone + soft cinematic diffusion */
-  --lg-nav-shadow-scrolled: 0 4px 12px rgba(0, 0, 0, 0.55),
-                            0 10px 28px rgba(0, 0, 0, 0.58),
-                            0 22px 55px rgba(0, 0, 0, 0.42),
-                            0 35px 80px rgba(0, 0, 0, 0.25),
+  --lg-nav-shadow-scrolled: 0 10px 28px -4px rgba(0, 0, 0, 0.65),
+                            0 4px 10px rgba(0, 0, 0, 0.40),
                             inset 0 1px 0 rgba(234, 236, 240, 0.08);
 
   /* Button Mode: Primary (Orange CTA) */
@@ -100,6 +98,14 @@
    CUSTOM FONT FACES
    ============================================================ */
 @layer base {
+  @font-face {
+    font-family: "Torkias Jole";
+    src: url("/fonts/Torkias-Jole.otf") format("opentype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   @font-face {
     font-family: "Calluna";
     src: url("/fonts/calluna-regular.woff") format("woff"),
@@ -739,3 +745,13 @@ div[data-otp-input="true"] input {
 /* ── No Scrollbar Utility ────────────────────────────────────── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Suppress browser video controls & picture-in-picture popups ── */
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-panel,
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

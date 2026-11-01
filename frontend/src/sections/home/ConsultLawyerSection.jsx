@@ -89,7 +89,7 @@ const ConsultLawyerSection = () => {
           </h2>
 
           <p className="lawyer-header-item mt-3 max-w-xl font-inter text-sm sm:text-base text-ct-muted leading-relaxed">
-            Get one-to-one legal consultation from verified lawyers based on specialization, experience, and availability.
+            1-on-1 consultations with Bar Council verified advocates across High Courts and District Forums.
           </p>
         </div>
 
